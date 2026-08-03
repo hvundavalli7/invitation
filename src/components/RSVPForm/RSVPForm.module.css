@@ -107,16 +107,6 @@
   font-size: 0.98rem;
 }
 
-.hint {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-}
-
-.hint code {
-  color: var(--brass-bright);
-  font-size: 0.85em;
-}
-
 @media (max-width: 680px) {
   .row,
   .checks {

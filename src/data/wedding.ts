@@ -118,11 +118,11 @@ export const weddingData = {
     title: "Our Story",
     howWeMet: {
       title: "How We Met",
-      body: "Share the story of how Abhigna and Hemanth first met — a moment that began a beautiful journey. This placeholder is ready for your personal words.",
+      body: "Every love story has a beginning. Ours started with a spark that grew into something we knew we wanted to share with the people we love most.",
     },
     proposal: {
       title: "The Proposal",
-      body: "Tell guests about the proposal — the place, the joy, and the promise of forever. Replace this text with your own story.",
+      body: "With joy in our hearts and blessings from our families, we promised each other a lifetime — and now we invite you to celebrate that promise with us.",
     },
     message: {
       title: "A Note from Us",
