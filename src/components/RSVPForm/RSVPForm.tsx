@@ -247,11 +247,6 @@ export default function RSVPForm() {
               >
                 {status === "submitting" ? "Sending..." : "Send RSVP"}
               </button>
-
-              <p className={styles.hint}>
-                Form is ready to connect to Firebase, Supabase, Google Sheets, Formspree, or a custom API via{" "}
-                <code>weddingData.rsvp.endpoint</code>.
-              </p>
             </form>
           )}
         </ScrollReveal>

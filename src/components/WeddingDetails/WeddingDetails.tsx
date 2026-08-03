@@ -34,10 +34,14 @@ export default function WeddingDetails() {
         <ScrollReveal className={`${styles.contact} brass-frame`}>
           <h3>{details.contact.title}</h3>
           <p>{details.contact.note}</p>
-          <p>
-            <a href={`mailto:${details.contact.email}`}>{details.contact.email}</a>
-          </p>
-          <p>{details.contact.phone}</p>
+          {details.contact.email ? (
+            <p>
+              <a href={`mailto:${details.contact.email}`}>{details.contact.email}</a>
+            </p>
+          ) : null}
+          {details.contact.phone && !/X{2,}/i.test(details.contact.phone) ? (
+            <p>{details.contact.phone}</p>
+          ) : null}
         </ScrollReveal>
       </div>
     </section>
