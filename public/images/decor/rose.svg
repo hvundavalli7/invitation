@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160" fill="none">
+  <defs>
+    <radialGradient id="r-core" cx="50%" cy="48%" r="50%">
+      <stop offset="0%" stop-color="#e8b4c0"/>
+      <stop offset="45%" stop-color="#d47890"/>
+      <stop offset="100%" stop-color="#c45b7a" stop-opacity="0.9"/>
+    </radialGradient>
+    <radialGradient id="r-petal" cx="40%" cy="40%" r="70%">
+      <stop offset="0%" stop-color="#f0cdd6" stop-opacity="0.95"/>
+      <stop offset="60%" stop-color="#e8b4c0" stop-opacity="0.85"/>
+      <stop offset="100%" stop-color="#c45b7a" stop-opacity="0.55"/>
+    </radialGradient>
+    <radialGradient id="r-deep" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#c45b7a" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#a84466" stop-opacity="0.5"/>
+    </radialGradient>
+    <linearGradient id="r-leaf" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#c5d6c0"/>
+      <stop offset="100%" stop-color="#a2b992"/>
+    </linearGradient>
+  </defs>
+  <!-- Soft leaves under bloom -->
+  <ellipse cx="48" cy="118" rx="28" ry="12" fill="url(#r-leaf)" opacity="0.55" transform="rotate(-28 48 118)"/>
+  <ellipse cx="118" cy="112" rx="26" ry="11" fill="url(#r-leaf)" opacity="0.5" transform="rotate(32 118 112)"/>
+  <!-- Outer petals -->
+  <ellipse cx="80" cy="52" rx="22" ry="28" fill="url(#r-petal)" opacity="0.8"/>
+  <ellipse cx="48" cy="68" rx="26" ry="22" fill="url(#r-petal)" opacity="0.78" transform="rotate(-35 48 68)"/>
+  <ellipse cx="112" cy="68" rx="26" ry="22" fill="url(#r-petal)" opacity="0.78" transform="rotate(35 112 68)"/>
+  <ellipse cx="42" cy="98" rx="24" ry="20" fill="url(#r-deep)" opacity="0.7" transform="rotate(-15 42 98)"/>
+  <ellipse cx="118" cy="98" rx="24" ry="20" fill="url(#r-deep)" opacity="0.7" transform="rotate(15 118 98)"/>
+  <ellipse cx="80" cy="118" rx="28" ry="20" fill="url(#r-petal)" opacity="0.75"/>
+  <!-- Mid layer -->
+  <ellipse cx="66" cy="78" rx="18" ry="22" fill="url(#r-petal)" opacity="0.85" transform="rotate(-20 66 78)"/>
+  <ellipse cx="96" cy="78" rx="18" ry="22" fill="url(#r-petal)" opacity="0.85" transform="rotate(20 96 78)"/>
+  <ellipse cx="80" cy="98" rx="22" ry="18" fill="url(#r-deep)" opacity="0.72"/>
+  <!-- Inner spiral bloom -->
+  <path d="M80 70 C92 70 100 78 98 88 C96 98 86 104 78 102 C70 100 66 90 70 82 C72 76 78 72 84 74 C88 76 90 82 88 86" stroke="#c45b7a" stroke-width="3.5" stroke-linecap="round" fill="none" opacity="0.55"/>
+  <circle cx="82" cy="86" r="10" fill="url(#r-core)" opacity="0.9"/>
+  <circle cx="80" cy="84" r="4.5" fill="#f5d6de" opacity="0.7"/>
+</svg>
