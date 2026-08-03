@@ -1,0 +1,71 @@
+.section {
+  background: radial-gradient(ellipse at bottom, rgba(27, 58, 42, 0.18), transparent 55%);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.item {
+  padding: 1.2rem 1.25rem;
+  border-radius: 8px;
+}
+
+.itemHead {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  margin-bottom: 0.55rem;
+}
+
+.icon {
+  width: 1.35rem;
+  height: 1.35rem;
+  color: var(--brass);
+}
+
+.item h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  letter-spacing: 0.1em;
+  color: var(--brass-bright);
+}
+
+.item p {
+  color: var(--cream);
+  font-size: 1.05rem;
+}
+
+.contact {
+  margin-top: 1.5rem;
+  padding: 1.4rem 1.3rem;
+  text-align: center;
+  background: linear-gradient(160deg, rgba(92, 20, 40, 0.4), rgba(26, 15, 10, 0.9));
+}
+
+.contact h3 {
+  font-family: var(--font-display);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  color: var(--brass-bright);
+  margin-bottom: 0.55rem;
+}
+
+.contact p {
+  color: var(--cream);
+}
+
+.contact a {
+  color: var(--brass-bright);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 720px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

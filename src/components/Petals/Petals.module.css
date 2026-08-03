@@ -1,0 +1,44 @@
+.layer {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  overflow: hidden;
+}
+
+.petal,
+.gold {
+  position: absolute;
+  top: -10%;
+  border-radius: 60% 40% 60% 40%;
+  opacity: 0.75;
+  animation-name: fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+.petal {
+  background: linear-gradient(145deg, #f3d9e4, #c45b7a 55%, #8b1e1e);
+  box-shadow: 0 0 8px rgba(196, 91, 122, 0.35);
+}
+
+.gold {
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #f5e6a6, #c9a227 70%, #8a7018);
+  box-shadow: 0 0 10px rgba(201, 162, 39, 0.45);
+  opacity: 0.65;
+}
+
+@keyframes fall {
+  0% {
+    transform: translate3d(0, -10vh, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate3d(40px, 110vh, 0) rotate(360deg);
+    opacity: 0;
+  }
+}

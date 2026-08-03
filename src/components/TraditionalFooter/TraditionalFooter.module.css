@@ -1,0 +1,89 @@
+.footer {
+  position: relative;
+  padding: 3.5rem 1.25rem 2.5rem;
+  background:
+    radial-gradient(ellipse at top, rgba(201, 162, 39, 0.12), transparent 45%),
+    linear-gradient(180deg, #2c1810, #120a07 70%);
+  border-top: 1px solid rgba(201, 162, 39, 0.35);
+  overflow: hidden;
+}
+
+.mangoLeaf {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  background:
+    radial-gradient(circle at 10% 20%, #2f5d3a 0 10px, transparent 11px),
+    radial-gradient(circle at 90% 30%, #d4a017 0 8px, transparent 9px),
+    radial-gradient(circle at 20% 80%, #c45b7a 0 7px, transparent 8px),
+    radial-gradient(circle at 80% 75%, #2f5d3a 0 9px, transparent 10px);
+}
+
+.inner {
+  position: relative;
+  width: min(100%, 800px);
+  margin: 0 auto;
+  text-align: center;
+}
+
+.lamps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.diya,
+.lotus {
+  width: 1.7rem;
+  height: 1.7rem;
+  color: var(--brass-bright);
+}
+
+.names {
+  font-family: var(--font-script);
+  font-size: clamp(2.4rem, 7vw, 3.6rem);
+  color: var(--ivory);
+  line-height: 1;
+}
+
+.date {
+  margin-top: 0.5rem;
+  font-family: var(--font-display);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.78rem;
+  color: var(--brass);
+}
+
+.tagline {
+  margin-top: 0.85rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.nav {
+  margin-top: 1.4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.75rem 1.2rem;
+}
+
+.nav a {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+
+.nav a:hover {
+  color: var(--brass-bright);
+}
+
+.top {
+  margin-top: 1.5rem;
+}
