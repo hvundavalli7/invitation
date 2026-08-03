@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import ScratchReveal from "@/components/ScratchReveal/ScratchReveal";
+import EnvelopeOpen from "@/components/EnvelopeOpen/EnvelopeOpen";
 import TempleEntranceHero from "@/components/TempleEntranceHero/TempleEntranceHero";
 import WeddingCountdown from "@/components/WeddingCountdown/WeddingCountdown";
 import EventTimeline from "@/components/EventTimeline/EventTimeline";
@@ -28,12 +28,12 @@ export default function InvitationApp() {
     setRevealed(true);
     setMusicReady(true);
     setShowPetals(true);
-    window.setTimeout(() => setShowPetals(false), 12000);
+    window.setTimeout(() => setShowPetals(false), 10000);
   };
 
   return (
     <>
-      {!revealed ? <ScratchReveal onComplete={handleReveal} /> : null}
+      {!revealed ? <EnvelopeOpen onComplete={handleReveal} /> : null}
 
       <div
         className={revealed ? "invitation-revealed" : "invitation-hidden"}

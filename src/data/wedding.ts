@@ -31,6 +31,9 @@ export const weddingData = {
   hero: {
     ctaLabel: "View Celebrations",
     ctaHref: "#celebrations",
+    /** Set once couple photos are added under /public/images/couple/ */
+    image: "/images/couple/hero.jpg",
+    imageAlt: "Abhigna and Hemanth on the beach",
   },
 
   scratchCard: {
@@ -131,15 +134,15 @@ export const weddingData = {
     photos: [
       {
         id: "story-1",
-        alt: "Couple portrait placeholder",
-        src: "/images/gallery/couple-1.svg",
+        alt: "Abhigna and Hemanth embracing on the beach",
+        src: "/images/couple/embrace.jpg",
         caption: "Abhigna & Hemanth",
       },
       {
         id: "story-2",
-        alt: "Engagement photo placeholder",
-        src: "/images/gallery/couple-2.svg",
-        caption: "Engagement",
+        alt: "The proposal moment on the beach",
+        src: "/images/couple/proposal.jpg",
+        caption: "The Proposal",
       },
     ],
   },
@@ -218,55 +221,37 @@ export const weddingData = {
 
   gallery: {
     title: "Gallery",
-    subtitle: "Moments from our journey — engagement, portraits, and family.",
+    subtitle: "Moments from our journey — engagement, portraits, and forever.",
     images: [
       {
         id: "g1",
-        src: "/images/gallery/engagement-1.svg",
-        alt: "Engagement photo placeholder",
+        src: "/images/couple/hero.jpg",
+        alt: "Walking hand in hand on the beach at sunset",
         category: "Engagement",
       },
       {
         id: "g2",
-        src: "/images/gallery/engagement-2.svg",
-        alt: "Engagement photo placeholder",
-        category: "Engagement",
+        src: "/images/couple/forehead-kiss.jpg",
+        alt: "A tender forehead kiss by the shore",
+        category: "Couple",
       },
       {
         id: "g3",
-        src: "/images/gallery/prewedding-1.svg",
-        alt: "Pre-wedding photo placeholder",
+        src: "/images/couple/dance.jpg",
+        alt: "Dancing together on the coastal cliffs",
         category: "Pre-wedding",
       },
       {
         id: "g4",
-        src: "/images/gallery/prewedding-2.svg",
-        alt: "Pre-wedding photo placeholder",
-        category: "Pre-wedding",
+        src: "/images/couple/proposal.jpg",
+        alt: "The proposal with white roses on the beach",
+        category: "Engagement",
       },
       {
         id: "g5",
-        src: "/images/gallery/couple-1.svg",
-        alt: "Couple portrait placeholder",
+        src: "/images/couple/embrace.jpg",
+        alt: "Foreheads together, smiling on the beach",
         category: "Couple",
-      },
-      {
-        id: "g6",
-        src: "/images/gallery/couple-2.svg",
-        alt: "Couple portrait placeholder",
-        category: "Couple",
-      },
-      {
-        id: "g7",
-        src: "/images/gallery/family-1.svg",
-        alt: "Family photo placeholder",
-        category: "Family",
-      },
-      {
-        id: "g8",
-        src: "/images/gallery/family-2.svg",
-        alt: "Family photo placeholder",
-        category: "Family",
       },
     ],
   },
@@ -287,7 +272,7 @@ export const weddingData = {
     description:
       "You are warmly invited to the wedding of Abhigna and Hemanth on March 11, 2027 at Bella Cavalli Events, Aubrey, Texas. Join us for sacred South Indian Hindu wedding celebrations.",
     siteUrl: "https://abhigna-hemanth.wedding",
-    ogImage: "/images/og-invitation.svg",
+    ogImage: "/images/couple/hero.jpg",
   },
 } as const;
 
