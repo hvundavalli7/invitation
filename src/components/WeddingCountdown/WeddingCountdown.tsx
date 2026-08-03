@@ -62,12 +62,26 @@ function computeParts(target: number): Parts {
   return { days, hours, minutes, seconds, done: false };
 }
 
+const PLACEHOLDER: Parts = {
+  days: 0,
+  hours: 0,
+  minutes: 0,
+  seconds: 0,
+  done: false,
+};
+
 export default function WeddingCountdown() {
   const target = useMemo(() => getWeddingTimestamp(), []);
-  const [parts, setParts] = useState<Parts>(() => computeParts(target));
+  // Keep the initial render identical on server and client. Date.now() in the
+  // first paint causes hydration mismatches as the clock ticks between SSR and hydrate.
+  const [parts, setParts] = useState<Parts>(PLACEHOLDER);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const id = window.setInterval(() => setParts(computeParts(target)), 1000);
+    const tick = () => setParts(computeParts(target));
+    tick();
+    setReady(true);
+    const id = window.setInterval(tick, 1000);
     return () => window.clearInterval(id);
   }, [target]);
 
@@ -89,7 +103,7 @@ export default function WeddingCountdown() {
           <span className="ornament-rule__jewel" />
         </div>
 
-        {parts.done ? (
+        {ready && parts.done ? (
           <p className={styles.ended} role="status">
             {weddingData.countdown.endedMessage}
           </p>
@@ -98,7 +112,7 @@ export default function WeddingCountdown() {
             {units.map((unit) => (
               <div key={unit.label} className={`${styles.box} wood-panel`}>
                 <span className={styles.value}>
-                  {String(unit.value).padStart(2, "0")}
+                  {ready ? String(unit.value).padStart(2, "0") : "--"}
                 </span>
                 <span className={styles.label}>{unit.label}</span>
               </div>
