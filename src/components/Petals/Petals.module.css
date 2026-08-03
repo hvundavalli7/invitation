@@ -11,22 +11,27 @@
   position: absolute;
   top: -10%;
   border-radius: 60% 40% 60% 40%;
-  opacity: 0.75;
+  opacity: 0.7;
   animation-name: fall;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
 }
 
 .petal {
-  background: linear-gradient(145deg, #f3d9e4, #c45b7a 55%, #8b1e1e);
-  box-shadow: 0 0 8px rgba(196, 91, 122, 0.35);
+  background: linear-gradient(145deg, #f8e4ec, #e8b4c4 45%, #c45b7a 85%);
+  box-shadow: 0 0 8px rgba(196, 91, 122, 0.22);
+}
+
+.petal:nth-child(3n) {
+  background: linear-gradient(145deg, #e8f0e6, #d4e5d4 50%, #a2b992);
+  box-shadow: 0 0 8px rgba(162, 185, 146, 0.25);
 }
 
 .gold {
   border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #f5e6a6, #c9a227 70%, #8a7018);
-  box-shadow: 0 0 10px rgba(201, 162, 39, 0.45);
-  opacity: 0.65;
+  background: radial-gradient(circle at 30% 30%, #f5e6c8, var(--gold) 70%, var(--gold-deep));
+  box-shadow: 0 0 10px rgba(201, 168, 114, 0.35);
+  opacity: 0.6;
 }
 
 @keyframes fall {
@@ -35,7 +40,7 @@
     opacity: 0;
   }
   10% {
-    opacity: 0.8;
+    opacity: 0.75;
   }
   100% {
     transform: translate3d(40px, 110vh, 0) rotate(360deg);

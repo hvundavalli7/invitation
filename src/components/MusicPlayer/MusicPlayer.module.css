@@ -6,37 +6,51 @@
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  padding: 0.45rem 0.65rem;
-  background: linear-gradient(160deg, rgba(74, 44, 26, 0.92), rgba(18, 10, 7, 0.95));
-  border: 1px solid rgba(201, 162, 39, 0.45);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35);
-  backdrop-filter: blur(6px);
+  padding: 0.5rem 0.75rem;
+  background: linear-gradient(160deg, var(--ivory), var(--cream));
+  border: 1px solid rgba(201, 168, 114, 0.4);
+  border-radius: 999px;
+  box-shadow: var(--shadow-soft);
+  backdrop-filter: blur(8px);
 }
 
 .btn {
   min-width: 52px;
   height: 40px;
-  padding: 0 0.55rem;
+  padding: 0 0.7rem;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(201, 162, 39, 0.4);
-  color: var(--brass-bright);
-  background: rgba(0, 0, 0, 0.25);
-  font-family: var(--font-display);
-  font-size: 0.65rem;
+  border: 1px solid rgba(201, 168, 114, 0.4);
+  border-radius: 999px;
+  color: var(--ink);
+  background: rgba(201, 168, 114, 0.12);
+  font-family: var(--font-body);
+  font-size: 0.68rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease;
 }
 
 .btn:hover {
-  border-color: var(--brass-bright);
+  border-color: var(--gold-deep);
+  background: rgba(201, 168, 114, 0.22);
+  color: var(--ink);
+}
+
+.btn[aria-pressed="true"] {
+  background: linear-gradient(180deg, var(--gold-soft), var(--gold));
+  border-color: transparent;
+  color: #fff;
 }
 
 .label {
   display: none;
-  font-family: var(--font-display);
-  font-size: 0.65rem;
-  letter-spacing: 0.12em;
+  font-family: var(--font-body);
+  font-size: 0.68rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-muted);
   max-width: 9rem;

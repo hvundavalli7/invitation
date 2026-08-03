@@ -1,5 +1,6 @@
 .section {
-  background: radial-gradient(ellipse at bottom, rgba(27, 58, 42, 0.18), transparent 55%);
+  background:
+    radial-gradient(ellipse at bottom, rgba(212, 229, 212, 0.4), transparent 55%);
 }
 
 .grid {
@@ -10,7 +11,10 @@
 
 .item {
   padding: 1.2rem 1.25rem;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
+  background: var(--card);
+  border: 1px solid rgba(201, 168, 114, 0.28);
+  box-shadow: var(--shadow-card);
 }
 
 .itemHead {
@@ -23,18 +27,18 @@
 .icon {
   width: 1.35rem;
   height: 1.35rem;
-  color: var(--brass);
+  color: var(--gold-deep);
 }
 
 .item h3 {
   font-family: var(--font-display);
   font-size: 1rem;
   letter-spacing: 0.1em;
-  color: var(--brass-bright);
+  color: var(--rose);
 }
 
 .item p {
-  color: var(--cream);
+  color: var(--ink);
   font-size: 1.05rem;
 }
 
@@ -42,7 +46,10 @@
   margin-top: 1.5rem;
   padding: 1.4rem 1.3rem;
   text-align: center;
-  background: linear-gradient(160deg, rgba(92, 20, 40, 0.4), rgba(26, 15, 10, 0.9));
+  background: var(--ivory);
+  border: 1px solid rgba(201, 168, 114, 0.4);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
 }
 
 .contact h3 {
@@ -50,16 +57,16 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
   font-size: 0.9rem;
-  color: var(--brass-bright);
+  color: var(--gold-deep);
   margin-bottom: 0.55rem;
 }
 
 .contact p {
-  color: var(--cream);
+  color: var(--ink-soft);
 }
 
 .contact a {
-  color: var(--brass-bright);
+  color: var(--rose);
   text-decoration: underline;
   text-underline-offset: 3px;
 }

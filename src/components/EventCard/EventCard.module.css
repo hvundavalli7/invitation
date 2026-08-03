@@ -3,11 +3,10 @@
   grid-template-columns: auto 1fr;
   gap: 1rem;
   padding: 1.35rem 1.25rem;
-  border-radius: 8px;
-  border: 1px solid rgba(201, 162, 39, 0.3);
-  background:
-    linear-gradient(160deg, rgba(44, 24, 16, 0.92), rgba(18, 10, 7, 0.95));
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.28);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(201, 168, 114, 0.28);
+  background: var(--card);
+  box-shadow: var(--shadow-card);
   position: relative;
   overflow: hidden;
 }
@@ -19,7 +18,7 @@
   top: 0;
   bottom: 0;
   width: 4px;
-  background: var(--accent, var(--brass));
+  background: var(--accent, var(--rose));
 }
 
 .iconWrap {
@@ -27,15 +26,16 @@
   height: 3rem;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(201, 162, 39, 0.4);
-  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(201, 168, 114, 0.35);
+  background: var(--cream);
   border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(62, 39, 35, 0.06);
 }
 
 .icon {
   width: 1.55rem;
   height: 1.55rem;
-  color: var(--accent, var(--brass));
+  color: var(--accent, var(--rose));
 }
 
 .body {
@@ -43,11 +43,13 @@
 }
 
 .name {
-  font-family: var(--font-display);
-  font-size: clamp(1.25rem, 2.8vw, 1.55rem);
-  letter-spacing: 0.06em;
-  color: var(--cream);
+  font-family: var(--font-script);
+  font-size: clamp(1.55rem, 3.2vw, 2rem);
+  letter-spacing: 0.02em;
+  color: var(--rose);
   margin-bottom: 0.35rem;
+  line-height: 1.2;
+  font-weight: 400;
 }
 
 .meta,
@@ -61,13 +63,13 @@
 }
 
 .venue strong {
-  color: var(--brass-bright);
+  color: var(--gold-deep);
   font-weight: 600;
 }
 
 .description {
   margin-top: 0.75rem;
-  color: var(--ivory);
+  color: var(--ink);
   font-size: 1.08rem;
 }
 
@@ -82,15 +84,16 @@
   display: grid;
   gap: 0.15rem;
   padding: 0.65rem 0.75rem;
-  border: 1px solid rgba(201, 162, 39, 0.2);
-  background: rgba(255, 248, 220, 0.03);
+  border: 1px solid rgba(201, 168, 114, 0.22);
+  border-radius: var(--radius-sm);
+  background: var(--cream);
 }
 
 .subEvents strong {
   font-family: var(--font-display);
   font-size: 0.85rem;
   letter-spacing: 0.08em;
-  color: var(--brass-bright);
+  color: var(--gold-deep);
 }
 
 .subEvents span {
@@ -106,23 +109,19 @@
 }
 
 .mehendi {
-  --accent: #6fbf7a;
+  --accent: #6f9f6a;
 }
 
 .sangeet {
-  --accent: #c9a227;
-  background:
-    linear-gradient(160deg, rgba(92, 20, 40, 0.75), rgba(18, 10, 7, 0.95));
+  --accent: var(--rose);
 }
 
 .haldi {
-  --accent: #d4a017;
+  --accent: var(--gold);
 }
 
 .wedding {
-  --accent: #e0c15a;
-  background:
-    linear-gradient(160deg, rgba(139, 30, 30, 0.45), rgba(18, 10, 7, 0.95));
+  --accent: var(--rose);
 }
 
 @media (max-width: 560px) {

@@ -1,14 +1,15 @@
 .section {
-  background:
-    radial-gradient(ellipse at center, rgba(92, 20, 40, 0.28), transparent 55%),
-    linear-gradient(180deg, rgba(26, 15, 10, 0.3), rgba(18, 10, 7, 0.5));
+  background: transparent;
 }
 
 .panel {
   max-width: 760px;
   margin: 0 auto;
   padding: clamp(1.25rem, 3vw, 2rem);
-  border-radius: 10px;
+  border-radius: var(--radius-md);
+  background: var(--card);
+  border: 1px solid rgba(201, 168, 114, 0.28);
+  box-shadow: var(--shadow-card);
 }
 
 .form {
@@ -31,11 +32,11 @@
 
 .form span,
 .fieldset legend {
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--brass);
+  color: var(--ink-soft);
 }
 
 .form input,
@@ -44,10 +45,13 @@
   width: 100%;
   min-height: 46px;
   padding: 0.7rem 0.85rem;
-  border: 1px solid rgba(201, 162, 39, 0.35);
-  background: rgba(10, 6, 4, 0.45);
-  color: var(--ivory);
-  border-radius: 4px;
+  border: 1px solid rgba(201, 168, 114, 0.35);
+  background: var(--ivory);
+  color: var(--ink);
+  border-radius: var(--radius-sm);
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .form textarea {
@@ -55,17 +59,25 @@
   resize: vertical;
 }
 
+.form input::placeholder,
+.form textarea::placeholder {
+  color: var(--text-muted);
+  opacity: 0.75;
+}
+
 .form input:focus,
 .form select:focus,
 .form textarea:focus {
-  border-color: var(--brass-bright);
+  border-color: var(--rose);
   outline: none;
-  box-shadow: 0 0 0 2px rgba(201, 162, 39, 0.2);
+  box-shadow: 0 0 0 3px rgba(178, 44, 76, 0.12);
 }
 
 .fieldset {
-  border: 1px solid rgba(201, 162, 39, 0.25);
+  border: 1px solid rgba(201, 168, 114, 0.25);
+  border-radius: var(--radius-sm);
   padding: 0.9rem;
+  background: var(--cream);
 }
 
 .checks {
@@ -78,14 +90,14 @@
   display: flex !important;
   align-items: center;
   gap: 0.55rem;
-  color: var(--cream);
+  color: var(--ink);
   font-size: 1.02rem;
 }
 
 .inline input {
   width: auto;
   min-height: auto;
-  accent-color: var(--brass);
+  accent-color: var(--rose);
 }
 
 .submit {
@@ -97,13 +109,13 @@
   text-align: center;
   font-family: var(--font-script);
   font-size: clamp(1.8rem, 4vw, 2.6rem);
-  color: var(--brass-bright);
+  color: var(--rose);
   line-height: 1.35;
   padding: 1.5rem 0.5rem;
 }
 
 .error {
-  color: #f0b4b4;
+  color: var(--rose);
   font-size: 0.98rem;
 }
 

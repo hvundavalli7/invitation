@@ -35,7 +35,7 @@ export default function Gallery() {
   }, [active, close, prev, next]);
 
   return (
-    <section id="gallery" className={`section ${styles.section}`} aria-labelledby="gallery-title">
+    <section id="gallery" className={`section section--sage ${styles.section}`} aria-labelledby="gallery-title">
       <div className="section__inner">
         <ScrollReveal>
           <p className="section__eyebrow">Cherished moments</p>

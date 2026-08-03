@@ -1,5 +1,5 @@
 .section {
-  background: linear-gradient(180deg, rgba(18, 10, 7, 0.2), rgba(44, 24, 16, 0.45));
+  background: transparent;
 }
 
 .grid {
@@ -10,21 +10,24 @@
 
 .card {
   padding: 1.25rem;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
+  background: var(--card);
+  border: 1px solid rgba(201, 168, 114, 0.28);
+  box-shadow: var(--shadow-card);
 }
 
 .card h3 {
   font-family: var(--font-display);
   letter-spacing: 0.08em;
-  color: var(--brass-bright);
+  color: var(--rose);
   font-size: 1.25rem;
 }
 
 .address {
-  color: var(--ivory);
+  color: var(--ink);
 }
 
 .note {
@@ -34,17 +37,18 @@
 
 .mapWrap {
   margin-top: 0.35rem;
-  border: 1px solid rgba(201, 162, 39, 0.35);
+  border: 1px solid rgba(201, 168, 114, 0.3);
+  border-radius: var(--radius-sm);
   overflow: hidden;
   aspect-ratio: 16 / 11;
-  background: #1a0f0a;
+  background: var(--cream-deep);
 }
 
 .mapWrap iframe {
   width: 100%;
   height: 100%;
   border: 0;
-  filter: saturate(0.85) contrast(1.05);
+  filter: saturate(0.95) contrast(1.02);
 }
 
 .actions {

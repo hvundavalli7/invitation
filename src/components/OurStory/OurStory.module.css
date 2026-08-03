@@ -1,7 +1,5 @@
 .section {
-  background:
-    radial-gradient(ellipse at 80% 20%, rgba(201, 162, 39, 0.1), transparent 45%),
-    linear-gradient(180deg, rgba(44, 24, 16, 0.4), rgba(18, 10, 7, 0.2));
+  background: transparent;
 }
 
 .grid {
@@ -18,40 +16,57 @@
 
 .block {
   padding: 1.25rem 1.3rem;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
+  background: var(--card);
+  border: 1px solid rgba(201, 168, 114, 0.28);
+  box-shadow: var(--shadow-card);
 }
 
 .block h3 {
   font-family: var(--font-display);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   letter-spacing: 0.1em;
-  color: var(--brass-bright);
+  color: var(--gold-deep);
   margin-bottom: 0.55rem;
 }
 
 .block p {
-  color: var(--cream);
+  color: var(--ink);
 }
 
 .message {
-  border-color: rgba(201, 162, 39, 0.55);
-  background:
-    linear-gradient(160deg, rgba(92, 20, 40, 0.45), rgba(26, 15, 10, 0.9));
+  border-color: rgba(178, 44, 76, 0.22);
+  background: linear-gradient(160deg, var(--ivory), var(--cream));
+}
+
+.message h3 {
+  color: var(--rose);
 }
 
 .photos {
   display: grid;
-  gap: 1rem;
+  gap: 1.35rem;
+  padding: 0.5rem 0.25rem;
 }
 
 .frame {
-  padding: 0.7rem;
-  background:
-    linear-gradient(160deg, #4a2c1a, #2c1810);
-  border: 1px solid rgba(201, 162, 39, 0.5);
+  padding: 0.65rem 0.65rem 1.35rem;
+  background: #fff;
+  border: none;
+  border-radius: 3px;
   box-shadow:
-    inset 0 0 0 3px rgba(26, 15, 10, 0.7),
-    0 16px 36px rgba(0, 0, 0, 0.35);
+    0 2px 4px rgba(62, 39, 35, 0.06),
+    0 14px 32px rgba(62, 39, 35, 0.12);
+  transform: rotate(-1.5deg);
+  transition: transform 0.3s ease;
+}
+
+.frame:nth-child(even) {
+  transform: rotate(1.8deg);
+}
+
+.frame:hover {
+  transform: rotate(0deg) translateY(-3px);
 }
 
 .image {
@@ -59,16 +74,17 @@
   height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  display: block;
 }
 
 .frame figcaption {
-  margin-top: 0.55rem;
+  margin-top: 0.7rem;
   text-align: center;
-  font-family: var(--font-display);
-  font-size: 0.75rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--brass);
+  font-family: var(--font-script);
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
+  text-transform: none;
+  color: var(--ink-soft);
 }
 
 @media (max-width: 860px) {

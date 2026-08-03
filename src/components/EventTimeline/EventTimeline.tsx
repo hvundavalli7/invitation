@@ -9,7 +9,7 @@ export default function EventTimeline() {
   return (
     <section
       id="celebrations"
-      className={`section ${styles.section}`}
+      className={`section section--sage ${styles.section}`}
       aria-labelledby="events-title"
     >
       <div className="section__inner">
