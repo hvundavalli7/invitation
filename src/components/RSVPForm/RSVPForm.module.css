@@ -1,0 +1,125 @@
+.section {
+  background:
+    radial-gradient(ellipse at center, rgba(92, 20, 40, 0.28), transparent 55%),
+    linear-gradient(180deg, rgba(26, 15, 10, 0.3), rgba(18, 10, 7, 0.5));
+}
+
+.panel {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border-radius: 10px;
+}
+
+.form {
+  display: grid;
+  gap: 1rem;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+}
+
+.full,
+.row label,
+.fieldset {
+  display: grid;
+  gap: 0.4rem;
+}
+
+.form span,
+.fieldset legend {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--brass);
+}
+
+.form input,
+.form select,
+.form textarea {
+  width: 100%;
+  min-height: 46px;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid rgba(201, 162, 39, 0.35);
+  background: rgba(10, 6, 4, 0.45);
+  color: var(--ivory);
+  border-radius: 4px;
+}
+
+.form textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form input:focus,
+.form select:focus,
+.form textarea:focus {
+  border-color: var(--brass-bright);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(201, 162, 39, 0.2);
+}
+
+.fieldset {
+  border: 1px solid rgba(201, 162, 39, 0.25);
+  padding: 0.9rem;
+}
+
+.checks {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.45rem 0.8rem;
+}
+
+.inline {
+  display: flex !important;
+  align-items: center;
+  gap: 0.55rem;
+  color: var(--cream);
+  font-size: 1.02rem;
+}
+
+.inline input {
+  width: auto;
+  min-height: auto;
+  accent-color: var(--brass);
+}
+
+.submit {
+  justify-self: start;
+  margin-top: 0.35rem;
+}
+
+.success {
+  text-align: center;
+  font-family: var(--font-script);
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  color: var(--brass-bright);
+  line-height: 1.35;
+  padding: 1.5rem 0.5rem;
+}
+
+.error {
+  color: #f0b4b4;
+  font-size: 0.98rem;
+}
+
+.hint {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.hint code {
+  color: var(--brass-bright);
+  font-size: 0.85em;
+}
+
+@media (max-width: 680px) {
+  .row,
+  .checks {
+    grid-template-columns: 1fr;
+  }
+}

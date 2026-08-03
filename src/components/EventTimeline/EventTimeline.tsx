@@ -1,0 +1,47 @@
+import { weddingData, type WeddingEvent } from "@/data/wedding";
+import EventCard from "@/components/EventCard/EventCard";
+import ScrollReveal from "@/components/ScrollReveal/ScrollReveal";
+import styles from "./EventTimeline.module.css";
+
+const events = weddingData.events as readonly WeddingEvent[];
+
+export default function EventTimeline() {
+  return (
+    <section
+      id="celebrations"
+      className={`section ${styles.section}`}
+      aria-labelledby="events-title"
+    >
+      <div className="section__inner">
+        <ScrollReveal>
+          <p className="section__eyebrow">The celebrations</p>
+          <h2 id="events-title" className="section__title">
+            Wedding Events
+          </h2>
+          <p className="section__subtitle">
+            Join us across days of colour, music, blessings and sacred vows.
+          </p>
+          <div className="ornament-rule" aria-hidden="true">
+            <span className="ornament-rule__jewel" />
+          </div>
+        </ScrollReveal>
+
+        <ol className={styles.timeline}>
+          {events.map((event, index) => (
+            <li key={event.id} className={styles.item}>
+              <div className={styles.rail} aria-hidden="true">
+                <span className={styles.dot} />
+                {index < events.length - 1 ? (
+                  <span className={styles.line} />
+                ) : null}
+              </div>
+              <ScrollReveal className={styles.cardWrap}>
+                <EventCard event={event} index={index} />
+              </ScrollReveal>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}

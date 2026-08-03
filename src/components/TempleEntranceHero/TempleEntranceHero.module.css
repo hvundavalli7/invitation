@@ -1,0 +1,288 @@
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  padding: 2rem 1rem 3rem;
+  background:
+    radial-gradient(ellipse at 50% 20%, rgba(201, 162, 39, 0.16), transparent 45%),
+    radial-gradient(ellipse at 50% 80%, rgba(92, 20, 40, 0.45), transparent 50%),
+    linear-gradient(180deg, #120a07 0%, #2c1810 45%, #1a0f0a 100%);
+}
+
+.atmosphere {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(201, 162, 39, 0.08) 0 1px, transparent 1px),
+    radial-gradient(circle at 70% 60%, rgba(245, 240, 230, 0.05) 0 1px, transparent 1px);
+  background-size: 120px 120px, 90px 90px;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.garland {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 54px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.garland span {
+  flex: 1;
+  height: 100%;
+  background:
+    radial-gradient(ellipse at 50% 0%, #2f5d3a 0 18%, transparent 19%),
+    radial-gradient(circle at 12% 70%, #d4a017 0 8px, transparent 9px),
+    radial-gradient(circle at 28% 55%, #f5f0e6 0 6px, transparent 7px),
+    radial-gradient(circle at 45% 75%, #c45b7a 0 7px, transparent 8px),
+    radial-gradient(circle at 62% 55%, #f5f0e6 0 6px, transparent 7px),
+    radial-gradient(circle at 78% 70%, #d4a017 0 8px, transparent 9px),
+    radial-gradient(circle at 92% 55%, #c45b7a 0 6px, transparent 7px),
+    linear-gradient(180deg, #1b3a2a, transparent 80%);
+  transform-origin: top center;
+  animation: sway 5.5s ease-in-out infinite;
+}
+
+.garland span:nth-child(2) {
+  animation-delay: 0.6s;
+}
+
+.garland span:nth-child(3) {
+  animation-delay: 1.1s;
+}
+
+.stage {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 1100px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(28px, 72px) 1fr minmax(28px, 72px);
+  gap: clamp(0.5rem, 2vw, 1.5rem);
+  align-items: stretch;
+  min-height: min(78dvh, 760px);
+}
+
+.pillar {
+  position: relative;
+  border-radius: 6px 6px 0 0;
+  background:
+    linear-gradient(90deg, #1a0f0a, #4a2c1a 35%, #2c1810 55%, #1a0f0a),
+    repeating-linear-gradient(
+      180deg,
+      rgba(201, 162, 39, 0.08) 0 2px,
+      transparent 2px 16px
+    );
+  border: 1px solid rgba(201, 162, 39, 0.4);
+  box-shadow:
+    inset 4px 0 12px rgba(0, 0, 0, 0.35),
+    inset -4px 0 12px rgba(0, 0, 0, 0.35),
+    0 0 30px rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 1rem 0.25rem;
+}
+
+.pillar::before,
+.pillar::after {
+  content: "";
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  height: 14px;
+  background: linear-gradient(90deg, #8a7018, #e0c15a, #8a7018);
+  opacity: 0.75;
+}
+
+.pillar::before {
+  top: 0;
+}
+
+.pillar::after {
+  bottom: 0;
+}
+
+.carving {
+  width: 55%;
+  aspect-ratio: 1;
+  border: 1px solid rgba(201, 162, 39, 0.35);
+  border-radius: 50%;
+  box-shadow: inset 0 0 10px rgba(201, 162, 39, 0.2);
+}
+
+.center {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: clamp(1.5rem, 4vw, 3rem) clamp(0.75rem, 3vw, 2rem);
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(92, 20, 40, 0.35), transparent 60%),
+    linear-gradient(180deg, rgba(44, 24, 16, 0.55), rgba(18, 10, 7, 0.75));
+  border: 1px solid rgba(201, 162, 39, 0.28);
+  box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.35);
+}
+
+.bells {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.bell {
+  width: 1.6rem;
+  height: 1.6rem;
+  color: var(--brass-bright);
+  transform-origin: top center;
+  animation: ring 3.8s ease-in-out infinite;
+}
+
+.bellDelay {
+  animation-delay: 0.9s;
+}
+
+.eyebrow {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--brass);
+  margin-bottom: 0.75rem;
+}
+
+.names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  line-height: 0.95;
+}
+
+.name {
+  font-family: var(--font-script);
+  font-size: clamp(3.4rem, 12vw, 6.5rem);
+  font-weight: 500;
+  color: var(--ivory);
+  text-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+}
+
+.ampersand {
+  font-family: var(--font-display);
+  font-size: clamp(1rem, 2.5vw, 1.35rem);
+  letter-spacing: 0.35em;
+  color: var(--brass-bright);
+  margin: 0.2rem 0;
+}
+
+.ornament {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.1rem 0 1.25rem;
+}
+
+.diya,
+.lotus {
+  width: 1.8rem;
+  height: 1.8rem;
+  color: var(--brass);
+}
+
+.invite {
+  max-width: 28rem;
+  color: var(--cream);
+  font-size: clamp(1.15rem, 2.6vw, 1.45rem);
+  font-style: italic;
+}
+
+.date {
+  margin-top: 1.1rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.05rem, 2.4vw, 1.35rem);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--brass-bright);
+}
+
+.venue {
+  margin-top: 0.55rem;
+  color: var(--text-muted);
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+}
+
+.cta {
+  margin-top: 1.75rem;
+}
+
+.threshold {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 48px;
+  background:
+    linear-gradient(180deg, transparent, rgba(18, 10, 7, 0.9)),
+    repeating-linear-gradient(
+      90deg,
+      #2c1810 0 18px,
+      #4a2c1a 18px 20px,
+      #3d2314 20px 38px
+    );
+  border-top: 2px solid rgba(201, 162, 39, 0.35);
+}
+
+@keyframes sway {
+  0%,
+  100% {
+    transform: rotate(-1.2deg);
+  }
+  50% {
+    transform: rotate(1.2deg);
+  }
+}
+
+@keyframes ring {
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(8deg);
+  }
+  75% {
+    transform: rotate(-7deg);
+  }
+}
+
+@media (max-width: 640px) {
+  .stage {
+    grid-template-columns: 18px 1fr 18px;
+  }
+
+  .carving {
+    display: none;
+  }
+
+  .bells {
+    gap: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .garland span,
+  .bell {
+    animation: none;
+  }
+}

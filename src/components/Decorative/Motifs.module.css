@@ -1,0 +1,54 @@
+.icon {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: var(--brass);
+  flex-shrink: 0;
+}
+
+.flame {
+  transform-origin: 32px 32px;
+  animation: flicker 1.8s ease-in-out infinite;
+}
+
+.kolam {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem auto 2rem;
+  max-width: 20rem;
+}
+
+.kolam span {
+  flex: 1;
+  height: 1px;
+  background: var(--ornament);
+}
+
+.kolamLotus {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--brass-bright);
+}
+
+@keyframes flicker {
+  0%,
+  100% {
+    opacity: 0.75;
+    transform: scaleY(1) translateY(0);
+  }
+  40% {
+    opacity: 1;
+    transform: scaleY(1.08) translateY(-1px);
+  }
+  70% {
+    opacity: 0.85;
+    transform: scaleY(0.96) translateY(1px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flame {
+    animation: none;
+  }
+}

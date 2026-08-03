@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3d2314"/>
+      <stop offset="100%" stop-color="#1a0f0a"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#e0c15a" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#e0c15a" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#bg)"/>
+  <rect width="800" height="1000" fill="url(#glow)"/>
+  <rect x="40" y="40" width="720" height="920" fill="none" stroke="#e0c15a" stroke-width="3" opacity="0.7"/>
+  <rect x="55" y="55" width="690" height="890" fill="none" stroke="#e0c15a" stroke-width="1" opacity="0.4"/>
+  <circle cx="400" cy="420" r="90" fill="none" stroke="#e0c15a" stroke-width="2" opacity="0.55"/>
+  <circle cx="400" cy="420" r="55" fill="none" stroke="#e0c15a" stroke-width="1.5" opacity="0.4"/>
+  <path d="M400 340 C430 380,430 420,400 460 C370 420,370 380,400 340 Z" fill="#e0c15a" opacity="0.35"/>
+  <text x="400" y="620" text-anchor="middle" fill="#e0c15a" font-family="Georgia, serif" font-size="36" letter-spacing="4">Family</text>
+  <text x="400" y="670" text-anchor="middle" fill="#f5f0e6" font-family="Georgia, serif" font-size="22" opacity="0.75">Photo Coming Soon</text>
+  <text x="400" y="720" text-anchor="middle" fill="#ede4d3" font-family="Georgia, serif" font-size="18" opacity="0.55">Abhigna &amp; Hemanth</text>
+</svg>
