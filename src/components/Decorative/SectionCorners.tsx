@@ -1,36 +1,36 @@
 import Image from "next/image";
 import styles from "./SectionCorners.module.css";
 
-/** Soft colorful botanical accents for section borders. */
+/** Temple-style ornate corners for section borders. */
 export default function SectionCorners() {
   return (
     <div className={styles.corners} aria-hidden="true">
       <Image
-        src="/images/decor/leaf-sprig.svg"
+        src="/images/decor/ornate-corner.svg"
         alt=""
-        width={40}
-        height={52}
+        width={72}
+        height={72}
         className={`${styles.mark} ${styles.tl}`}
       />
       <Image
-        src="/images/decor/flower-pink.svg"
+        src="/images/decor/ornate-corner.svg"
         alt=""
-        width={34}
-        height={34}
+        width={72}
+        height={72}
         className={`${styles.mark} ${styles.tr}`}
       />
       <Image
-        src="/images/decor/flower-orange.svg"
+        src="/images/decor/ornate-corner.svg"
         alt=""
-        width={32}
-        height={32}
+        width={72}
+        height={72}
         className={`${styles.mark} ${styles.bl}`}
       />
       <Image
-        src="/images/decor/leaf-sprig.svg"
+        src="/images/decor/ornate-corner.svg"
         alt=""
-        width={40}
-        height={52}
+        width={72}
+        height={72}
         className={`${styles.mark} ${styles.br}`}
       />
     </div>

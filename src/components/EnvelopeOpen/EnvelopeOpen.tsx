@@ -28,6 +28,14 @@ export default function EnvelopeOpen({ onComplete }: Props) {
       aria-label="Open wedding invitation envelope"
     >
       <Image
+        src="/images/decor/mango-leaf-toran.svg"
+        alt=""
+        width={1200}
+        height={140}
+        className={styles.toran}
+        priority
+      />
+      <Image
         src="/images/decor/marigold-garland.svg"
         alt=""
         width={1200}
@@ -55,11 +63,21 @@ export default function EnvelopeOpen({ onComplete }: Props) {
 
       <div className={styles.floaters} aria-hidden="true">
         <Image src="/images/decor/marigold.svg" alt="" width={28} height={28} className={`${styles.floater} ${styles.f1}`} />
-        <Image src="/images/decor/flower-orange.svg" alt="" width={24} height={24} className={`${styles.floater} ${styles.f2}`} />
+        <Image src="/images/decor/diya.svg" alt="" width={26} height={26} className={`${styles.floater} ${styles.f2}`} />
         <Image src="/images/decor/marigold.svg" alt="" width={26} height={26} className={`${styles.floater} ${styles.f3}`} />
-        <Image src="/images/decor/coconut-frond.svg" alt="" width={40} height={64} className={`${styles.floater} ${styles.f4}`} />
+        <Image src="/images/decor/temple-bell.svg" alt="" width={24} height={30} className={`${styles.floater} ${styles.f4}`} />
         <Image src="/images/decor/flower-yellow.svg" alt="" width={22} height={22} className={`${styles.floater} ${styles.f5}`} />
         <Image src="/images/decor/marigold.svg" alt="" width={24} height={24} className={`${styles.floater} ${styles.f6}`} />
+      </div>
+
+      <div className={styles.ganesh} aria-hidden="true">
+        <Image
+          src="/images/decor/ganesh-idol.png"
+          alt=""
+          width={72}
+          height={72}
+          priority
+        />
       </div>
 
       <button type="button" className={styles.envelopeBtn} onClick={open} aria-label="Open invitation">

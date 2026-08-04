@@ -1,5 +1,7 @@
 .section {
-  background: transparent;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(200, 155, 60, 0.12), transparent 50%),
+    linear-gradient(180deg, var(--parchment), var(--sandstone));
 }
 
 .grid {
@@ -12,22 +14,36 @@
 .frame {
   width: 100%;
   display: block;
-  padding: 0.5rem;
-  background: var(--card);
-  border: 1px solid rgba(201, 168, 114, 0.28);
-  border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
+  padding: 0.55rem;
+  background:
+    linear-gradient(160deg, #6b4428, #3d261c 60%, #5c3d2e);
+  border: 2px solid rgba(200, 155, 60, 0.55);
+  border-radius: 6px;
+  box-shadow:
+    var(--shadow-card),
+    inset 0 0 0 3px rgba(200, 155, 60, 0.22);
   position: relative;
   transition:
-    transform 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.frame::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(240, 215, 138, 0.3);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .frame:hover {
-  transform: translateY(-3px);
-  border-color: rgba(178, 44, 76, 0.35);
-  box-shadow: var(--shadow-soft);
+  transform: translateY(-4px) scale(1.015);
+  border-color: var(--gold-soft);
+  box-shadow:
+    var(--shadow-soft),
+    0 0 18px rgba(200, 155, 60, 0.3);
 }
 
 .image {
@@ -35,25 +51,25 @@
   height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  border-radius: calc(var(--radius-md) - 6px);
+  border-radius: 2px;
 }
 
 .category {
   display: block;
-  margin-top: 0.5rem;
-  font-family: var(--font-body);
-  font-size: 0.72rem;
+  margin-top: 0.55rem;
+  font-family: var(--font-display);
+  font-size: 0.68rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--gold-soft);
 }
 
 .lightbox {
   position: fixed;
   inset: 0;
   z-index: 80;
-  background: rgba(62, 39, 35, 0.55);
-  backdrop-filter: blur(6px);
+  background: rgba(61, 38, 28, 0.72);
+  backdrop-filter: blur(4px);
   display: grid;
   place-items: center;
   padding: 1rem;
@@ -64,14 +80,14 @@
   top: 1rem;
   right: 1rem;
   z-index: 2;
-  font-family: var(--font-body);
+  font-family: var(--font-display);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--ink);
-  border: 1px solid rgba(201, 168, 114, 0.4);
+  color: var(--maroon-deep);
+  border: 1.5px solid rgba(200, 155, 60, 0.55);
   border-radius: 999px;
   padding: 0.55rem 0.9rem;
-  background: rgba(255, 253, 249, 0.92);
+  background: linear-gradient(180deg, var(--gold-soft), var(--gold));
   box-shadow: var(--shadow-card);
 }
 
@@ -82,12 +98,12 @@
   z-index: 2;
   width: 48px;
   height: 48px;
-  border: 1px solid rgba(201, 168, 114, 0.4);
+  border: 1.5px solid rgba(200, 155, 60, 0.55);
   border-radius: 50%;
-  color: var(--rose);
+  color: var(--maroon);
   font-size: 2rem;
   line-height: 1;
-  background: rgba(255, 253, 249, 0.92);
+  background: rgba(255, 248, 232, 0.95);
   box-shadow: var(--shadow-card);
 }
 
@@ -101,24 +117,27 @@
 
 .lightboxFrame {
   width: min(100%, 520px);
-  padding: 0.75rem;
-  background: var(--card);
-  border: 1px solid rgba(201, 168, 114, 0.35);
-  border-radius: var(--radius-md);
+  padding: 0.85rem;
+  background:
+    linear-gradient(160deg, #6b4428, #3d261c);
+  border: 2px solid rgba(200, 155, 60, 0.55);
+  border-radius: 8px;
   box-shadow: var(--shadow-soft);
 }
 
 .lightboxImage {
   width: 100%;
   height: auto;
-  border-radius: var(--radius-sm);
+  border-radius: 2px;
 }
 
 .lightboxFrame figcaption {
-  margin-top: 0.6rem;
+  margin-top: 0.65rem;
   text-align: center;
-  color: var(--text-muted);
+  color: var(--gold-soft);
   font-size: 0.95rem;
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
 }
 
 @media (max-width: 960px) {

@@ -1,10 +1,12 @@
 import { mapsDirectionsUrl, mapsSearchUrl, weddingData } from "@/data/wedding";
 import ScrollReveal from "@/components/ScrollReveal/ScrollReveal";
+import SectionCorners from "@/components/Decorative/SectionCorners";
 import styles from "./VenueMap.module.css";
 
 export default function VenueMap() {
   return (
     <section id="venues" className={`section section--cream ${styles.section}`} aria-labelledby="venues-title">
+      <SectionCorners />
       <div className="section__inner">
         <ScrollReveal>
           <p className="section__eyebrow">Find your way</p>

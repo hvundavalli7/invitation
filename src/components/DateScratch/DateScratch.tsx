@@ -37,25 +37,33 @@ export default function DateScratch({ onRevealed }: Props) {
 
     const { width, height } = rect;
     const gradient = ctx.createLinearGradient(0, 0, width, height);
-    gradient.addColorStop(0, "#d4a574");
-    gradient.addColorStop(0.5, "#f5d199");
-    gradient.addColorStop(1, "#b8853f");
+    gradient.addColorStop(0, "#9a7528");
+    gradient.addColorStop(0.35, "#e4c36a");
+    gradient.addColorStop(0.55, "#c89b3c");
+    gradient.addColorStop(0.8, "#f0d78a");
+    gradient.addColorStop(1, "#8a6820");
     ctx.globalCompositeOperation = "source-over";
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, width, height);
 
-    for (let i = 0; i < 900; i++) {
+    for (let i = 0; i < 1100; i++) {
       const x = Math.random() * width;
       const y = Math.random() * height;
-      ctx.fillStyle = `rgba(255,245,210,${0.05 + Math.random() * 0.12})`;
+      ctx.fillStyle = `rgba(255,245,210,${0.06 + Math.random() * 0.14})`;
       ctx.fillRect(x, y, 1.5, 1.5);
     }
 
-    ctx.fillStyle = "rgba(255,255,255,0.42)";
-    ctx.font = `600 ${Math.max(12, width * 0.045)}px Cinzel, serif`;
+    ctx.strokeStyle = "rgba(123,30,43,0.28)";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.arc(width / 2, height / 2, Math.min(width, height) * 0.28, 0, Math.PI * 2);
+    ctx.stroke();
+
+    ctx.fillStyle = "rgba(92,21,32,0.55)";
+    ctx.font = `700 ${Math.max(12, width * 0.042)}px Cinzel Decorative, Cinzel, serif`;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText("✦  SCRATCH TO REVEAL  ✦", width / 2, height / 2);
+    ctx.fillText("✦  SCRATCH GOLD FOIL  ✦", width / 2, height / 2);
   }, [revealed]);
 
   useEffect(() => {

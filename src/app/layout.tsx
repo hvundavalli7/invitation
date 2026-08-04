@@ -1,5 +1,11 @@
 import type { Metadata, Viewport } from "next";
-import { Cinzel, Cormorant_Garamond, Great_Vibes } from "next/font/google";
+import {
+  Cinzel,
+  Cinzel_Decorative,
+  Cormorant_Garamond,
+  Great_Vibes,
+  Lora,
+} from "next/font/google";
 import { weddingData } from "@/data/wedding";
 import "./globals.css";
 
@@ -10,8 +16,23 @@ const cinzel = Cinzel({
   display: "swap",
 });
 
+const cinzelDecorative = Cinzel_Decorative({
+  variable: "--font-cinzel-dec",
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  display: "swap",
+});
+
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
+});
+
+const lora = Lora({
+  variable: "--font-lora",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   style: ["normal", "italic"],
@@ -70,7 +91,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#8ec8e8",
+  themeColor: "#7b1e2b",
   width: "device-width",
   initialScale: 1,
 };
@@ -79,7 +100,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${cinzel.variable} ${cormorant.variable} ${greatVibes.variable}`}
+      className={`${cinzel.variable} ${cinzelDecorative.variable} ${cormorant.variable} ${lora.variable} ${greatVibes.variable}`}
     >
       <body>{children}</body>
     </html>

@@ -1,54 +1,78 @@
 :root {
-  /* South Indian invitation — sky, meadow, marigold, maroon, gold */
-  --sky: #8ec8e8;
-  --sky-soft: #b7ddf2;
-  --sky-deep: #5aafd8;
-  --meadow: #6fbf4a;
-  --meadow-deep: #3f9a3a;
-  --leaf: #256b28;
-  --cream: #f7faf4;
-  --cream-deep: #eaf3e4;
-  --ivory: #fffcf5;
-  --maroon: #8b1e2d;
-  --maroon-soft: #a83a4a;
-  --maroon-deep: #6a1522;
+  /* Royal Telugu wedding invitation — maroon, temple gold, parchment */
+  --maroon: #7b1e2b;
+  --maroon-soft: #9a2f3f;
+  --maroon-deep: #5c1520;
   --rose: var(--maroon);
   --rose-soft: var(--maroon-soft);
   --rose-muted: #c46a78;
-  --gold: #d4a017;
-  --gold-soft: #f0c14a;
-  --gold-deep: #b8860b;
-  --marigold: #f5a623;
-  --marigold-deep: #e07a1a;
+
+  --gold: #c89b3c;
+  --gold-soft: #e4c36a;
+  --gold-deep: #9a7528;
+  --brass: #b8893a;
+
+  --vermillion: #d84315;
+  --kumkum: #c62828;
+  --turmeric: #e8b923;
+  --mango: #f0a020;
+  --marigold: #f0a020;
+  --marigold-deep: #c86a12;
+  --leaf: #2f6b24;
+  --leaf-soft: #5a9a3a;
+  --peacock: #1a6b7a;
+  --emerald: #1e6b4a;
+
+  --ivory: #fff8e8;
+  --cream: #f7f0e4;
+  --cream-deep: #ebe0cc;
+  --parchment: #f3e8d4;
+  --sandstone: #e8d5b5;
+  --wood: #5c3d2e;
+  --wood-deep: #3d261c;
+
   --ink: #2c211c;
   --ink-soft: #4a372f;
   --text-muted: #6b5348;
-  --card: #ffffff;
-  --footer: #1f4d28;
-  --sage: #c8e4b8;
-  --sage-deep: #3f9a3a;
-  --sage-soft: #e6f4dc;
-  --shadow-soft: 0 14px 40px rgba(31, 77, 40, 0.12);
-  --shadow-card: 0 8px 28px rgba(44, 33, 28, 0.08);
 
-  --font-display: var(--font-cinzel), "Cinzel", "Palatino Linotype", serif;
+  --card: #fff9ef;
+  --footer: #5c1520;
+
+  --sage: var(--cream-deep);
+  --sage-deep: var(--leaf);
+  --sage-soft: var(--parchment);
+
+  --shadow-soft: 0 14px 40px rgba(92, 21, 32, 0.12);
+  --shadow-card: 0 8px 28px rgba(44, 33, 28, 0.1);
+  --shadow-gold: 0 0 18px rgba(200, 155, 60, 0.35);
+
+  --font-display: var(--font-cinzel-dec), var(--font-cinzel), "Cinzel Decorative", "Cinzel", "Palatino Linotype", serif;
   --font-script: var(--font-great-vibes), "Great Vibes", "Segoe Script", cursive;
-  --font-body: var(--font-cormorant), "Cormorant Garamond", Georgia, serif;
+  --font-body: var(--font-lora), var(--font-cormorant), "Lora", "Cormorant Garamond", Georgia, serif;
 
-  --radius-sm: 10px;
-  --radius-md: 18px;
-  --radius-lg: 28px;
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
   --section-pad: clamp(3.75rem, 9vw, 6.75rem);
   --content-max: 980px;
   --ornament: linear-gradient(
     90deg,
     transparent,
     var(--gold-deep),
-    var(--marigold),
     var(--gold-soft),
-    var(--marigold),
+    var(--maroon),
+    var(--gold-soft),
     var(--gold-deep),
     transparent
+  );
+
+  --frame-border: linear-gradient(
+    135deg,
+    var(--gold-soft),
+    var(--gold),
+    var(--gold-deep),
+    var(--gold),
+    var(--gold-soft)
   );
 }
 
@@ -74,11 +98,14 @@ body {
 body {
   min-height: 100%;
   color: var(--ink);
-  background:
-    radial-gradient(ellipse at 12% 0%, rgba(142, 200, 232, 0.45), transparent 42%),
-    radial-gradient(ellipse at 88% 8%, rgba(245, 166, 35, 0.16), transparent 36%),
-    radial-gradient(ellipse at 50% 100%, rgba(111, 191, 74, 0.22), transparent 48%),
-    linear-gradient(180deg, #e8f4fb 0%, var(--cream) 42%, #e4f0d8 100%);
+  background-color: var(--cream);
+  background-image:
+    radial-gradient(ellipse at 10% 0%, rgba(200, 155, 60, 0.14), transparent 42%),
+    radial-gradient(ellipse at 90% 8%, rgba(123, 30, 43, 0.08), transparent 38%),
+    radial-gradient(ellipse at 50% 100%, rgba(47, 107, 36, 0.08), transparent 48%),
+    url("/images/decor/parchment-texture.svg"),
+    linear-gradient(180deg, #faf3e6 0%, var(--cream) 40%, var(--parchment) 100%);
+  background-size: auto, auto, auto, 220px 220px, auto;
   font-family: var(--font-body);
   font-size: 1.15rem;
   line-height: 1.7;
@@ -141,12 +168,14 @@ button {
 
 .section--sage {
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.35), transparent 50%),
-    linear-gradient(180deg, var(--sage-soft), #c5e0b4 100%);
+    radial-gradient(ellipse at 50% 0%, rgba(200, 155, 60, 0.12), transparent 50%),
+    linear-gradient(180deg, var(--parchment), var(--sandstone) 100%);
 }
 
 .section--cream {
-  background: transparent;
+  background:
+    radial-gradient(ellipse at 80% 20%, rgba(123, 30, 43, 0.05), transparent 45%),
+    transparent;
 }
 
 .section__inner {
@@ -159,9 +188,9 @@ button {
 .section__eyebrow {
   display: block;
   text-align: center;
-  color: var(--ink-soft);
-  font-family: var(--font-body);
-  font-size: 0.82rem;
+  color: var(--gold-deep);
+  font-family: var(--font-display);
+  font-size: 0.78rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
   margin-bottom: 0.35rem;
@@ -191,24 +220,26 @@ button {
   justify-content: center;
   gap: 0.75rem;
   margin: 1.1rem auto 2.4rem;
-  max-width: 16rem;
+  max-width: 18rem;
 }
 
 .ornament-rule::before,
 .ornament-rule::after {
   content: "";
   flex: 1;
-  height: 1px;
+  height: 2px;
   background: var(--ornament);
-  opacity: 0.7;
+  opacity: 0.75;
 }
 
 .ornament-rule__jewel {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
   rotate: 45deg;
   border: 1px solid var(--gold);
-  background: linear-gradient(135deg, var(--gold-soft), var(--gold-deep));
+  background: linear-gradient(135deg, var(--gold-soft), var(--maroon), var(--gold-deep));
+  box-shadow: 0 0 10px rgba(200, 155, 60, 0.45);
+  animation: jewelSparkle 3.5s ease-in-out infinite;
 }
 
 .btn-temple,
@@ -217,18 +248,22 @@ button {
   align-items: center;
   justify-content: center;
   gap: 0.55rem;
-  padding: 0.85rem 1.7rem;
+  padding: 0.85rem 1.85rem;
   min-height: 48px;
-  border: none;
+  border: 2px solid var(--gold-deep);
   border-radius: 999px;
-  background: linear-gradient(180deg, var(--gold-soft), var(--gold-deep));
-  color: #fffdf5;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
+  background:
+    linear-gradient(180deg, var(--gold-soft) 0%, var(--gold) 48%, var(--gold-deep) 100%);
+  color: var(--maroon-deep);
+  font-family: var(--font-display);
+  font-size: 0.88rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  box-shadow: 0 10px 24px rgba(184, 134, 11, 0.35);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 248, 230, 0.55),
+    inset 0 -2px 0 rgba(90, 60, 10, 0.18),
+    0 10px 24px rgba(154, 117, 40, 0.35);
   transition:
     transform 0.25s ease,
     box-shadow 0.25s ease,
@@ -238,8 +273,12 @@ button {
 .btn-temple:hover,
 .btn-invite:hover {
   transform: translateY(-2px);
-  filter: brightness(1.03);
-  box-shadow: 0 14px 30px rgba(184, 134, 11, 0.42);
+  filter: brightness(1.04);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 248, 230, 0.65),
+    inset 0 -2px 0 rgba(90, 60, 10, 0.2),
+    0 14px 30px rgba(154, 117, 40, 0.45),
+    0 0 16px rgba(200, 155, 60, 0.35);
 }
 
 .btn-temple:active,
@@ -253,37 +292,60 @@ button {
   justify-content: center;
   min-height: 44px;
   padding: 0.65rem 1.2rem;
-  border: 1px solid rgba(139, 30, 45, 0.28);
+  border: 1.5px solid rgba(200, 155, 60, 0.55);
   border-radius: 999px;
   color: var(--maroon);
-  font-family: var(--font-body);
-  font-size: 0.88rem;
-  letter-spacing: 0.1em;
+  font-family: var(--font-display);
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(255, 248, 232, 0.75);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.45);
   transition:
     background 0.2s ease,
-    border-color 0.2s ease;
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .btn-ghost:hover {
-  background: rgba(139, 30, 45, 0.06);
-  border-color: var(--maroon);
+  background: rgba(200, 155, 60, 0.12);
+  border-color: var(--gold-deep);
+  box-shadow: 0 0 12px rgba(200, 155, 60, 0.25);
 }
 
 .wood-panel,
 .invite-card {
-  background: var(--card);
-  border: 1px solid rgba(212, 160, 23, 0.3);
+  background:
+    linear-gradient(160deg, rgba(255, 249, 239, 0.98), rgba(247, 240, 228, 0.96));
+  border: 2px solid transparent;
+  background-clip: padding-box;
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-card);
+  box-shadow:
+    var(--shadow-card),
+    inset 0 0 0 1px rgba(200, 155, 60, 0.28),
+    inset 0 0 0 5px rgba(255, 248, 232, 0.65);
+  position: relative;
+}
+
+.wood-panel::after,
+.invite-card::after {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid rgba(200, 155, 60, 0.22);
+  border-radius: calc(var(--radius-md) - 4px);
+  pointer-events: none;
 }
 
 .brass-frame {
-  border: 1px solid rgba(212, 160, 23, 0.45);
+  border: 2px solid rgba(200, 155, 60, 0.55);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-soft);
-  background: var(--ivory);
+  box-shadow:
+    var(--shadow-soft),
+    inset 0 0 0 4px rgba(255, 248, 232, 0.7),
+    0 0 0 1px rgba(154, 117, 40, 0.25);
+  background:
+    linear-gradient(160deg, var(--ivory), var(--parchment));
 }
 
 .fade-up {
@@ -319,6 +381,18 @@ button {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes jewelSparkle {
+  0%,
+  100% {
+    box-shadow: 0 0 8px rgba(200, 155, 60, 0.35);
+    filter: brightness(1);
+  }
+  50% {
+    box-shadow: 0 0 16px rgba(228, 195, 106, 0.7);
+    filter: brightness(1.15);
   }
 }
 

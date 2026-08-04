@@ -1,6 +1,7 @@
 .section {
-  /* Band color comes from global .section--sage */
-  background: transparent;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(123, 30, 43, 0.06), transparent 50%),
+    linear-gradient(180deg, var(--cream) 0%, var(--parchment) 100%);
 }
 
 .timeline {
@@ -30,8 +31,8 @@
   height: 14px;
   border-radius: 50%;
   background: radial-gradient(circle at 30% 30%, var(--gold-soft), var(--gold-deep));
-  border: 2px solid rgba(255, 253, 249, 0.9);
-  box-shadow: 0 0 12px rgba(201, 168, 114, 0.35);
+  border: 2px solid rgba(255, 248, 232, 0.95);
+  box-shadow: 0 0 14px rgba(200, 155, 60, 0.45);
   z-index: 1;
 }
 
@@ -39,7 +40,7 @@
   flex: 1;
   width: 2px;
   margin-top: 0.35rem;
-  background: linear-gradient(180deg, var(--gold), transparent);
+  background: linear-gradient(180deg, var(--gold), var(--maroon), transparent);
   opacity: 0.55;
   min-height: 2rem;
 }

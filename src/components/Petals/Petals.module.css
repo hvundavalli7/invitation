@@ -10,7 +10,7 @@
   position: absolute;
   top: -12%;
   display: block;
-  opacity: 0.85;
+  opacity: 0.8;
   animation-name: fall;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
@@ -23,8 +23,9 @@
   display: block;
 }
 
-.coconut {
+.diya {
   opacity: 0.7;
+  filter: drop-shadow(0 0 8px rgba(255, 179, 71, 0.45));
 }
 
 @keyframes fall {
@@ -33,7 +34,7 @@
     opacity: 0;
   }
   8% {
-    opacity: 0.9;
+    opacity: 0.85;
   }
   100% {
     transform: translate3d(var(--drift, 30px), 115vh, 0) rotate(340deg);

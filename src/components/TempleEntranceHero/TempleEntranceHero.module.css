@@ -7,63 +7,102 @@
   padding: 0;
   overflow: hidden;
   isolation: isolate;
-}
-
-.sky {
-  position: absolute;
-  inset: 0 0 38% 0;
   background:
-    radial-gradient(ellipse at 50% 100%, rgba(255, 255, 255, 0.35), transparent 55%),
-    linear-gradient(180deg, #7ec4e8 0%, #a8d8f0 55%, #c5e8f5 100%);
-  z-index: 0;
+    radial-gradient(ellipse at 50% 0%, rgba(200, 155, 60, 0.18), transparent 45%),
+    radial-gradient(ellipse at 50% 100%, rgba(123, 30, 43, 0.1), transparent 50%),
+    linear-gradient(180deg, #faf3e6 0%, var(--cream) 55%, var(--parchment) 100%);
 }
 
-.meadow {
+.parchment {
   position: absolute;
-  inset: 52% 0 0 0;
-  background:
-    radial-gradient(ellipse at 20% 20%, rgba(168, 224, 106, 0.45), transparent 40%),
-    radial-gradient(ellipse at 80% 10%, rgba(111, 191, 74, 0.4), transparent 42%),
-    linear-gradient(180deg, #8fd35a 0%, #5fb03f 45%, #3f9a3a 100%);
+  inset: 0;
   z-index: 0;
-}
-
-.meadow::before {
-  content: "";
-  position: absolute;
-  inset: -18% 0 auto 0;
-  height: 28%;
-  background: linear-gradient(180deg, transparent, rgba(143, 211, 90, 0.85));
+  opacity: 0.55;
+  background-image: url("/images/decor/parchment-texture.svg");
+  background-size: 220px 220px;
   pointer-events: none;
 }
 
-.gopuram {
+.templeArch {
   position: absolute;
   left: 50%;
-  top: 18%;
-  width: min(42vw, 280px);
-  height: min(38vw, 240px);
+  top: 8%;
+  width: min(78vw, 640px);
+  height: min(42vw, 280px);
   transform: translateX(-50%);
   z-index: 0;
-  opacity: 0.28;
+  opacity: 0.18;
   background:
-    linear-gradient(180deg, transparent 0 8%, rgba(180, 210, 225, 0.9) 8% 18%, transparent 18% 28%, rgba(180, 210, 225, 0.85) 28% 42%, transparent 42% 52%, rgba(180, 210, 225, 0.8) 52% 70%, transparent 70% 78%, rgba(180, 210, 225, 0.75) 78% 100%);
-  clip-path: polygon(50% 0%, 72% 18%, 82% 38%, 90% 58%, 96% 78%, 100% 100%, 0% 100%, 4% 78%, 10% 58%, 18% 38%, 28% 18%);
-  filter: blur(0.2px);
-  animation: gopuramGlow 8s ease-in-out infinite;
+    radial-gradient(ellipse at 50% 100%, rgba(200, 155, 60, 0.55), transparent 70%),
+    linear-gradient(180deg, transparent 0%, rgba(154, 117, 40, 0.35) 100%);
+  clip-path: polygon(
+    0% 100%,
+    0% 55%,
+    8% 40%,
+    18% 28%,
+    30% 18%,
+    42% 10%,
+    50% 6%,
+    58% 10%,
+    70% 18%,
+    82% 28%,
+    92% 40%,
+    100% 55%,
+    100% 100%
+  );
+  animation: archGlow 8s ease-in-out infinite;
 }
 
-.garland {
+.toran {
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
   width: min(120%, 1280px);
   height: auto;
-  z-index: 3;
+  z-index: 4;
   pointer-events: none;
   animation: garlandSway 7s ease-in-out infinite;
-  filter: drop-shadow(0 6px 10px rgba(44, 33, 28, 0.18));
+  filter: drop-shadow(0 4px 8px rgba(44, 33, 28, 0.16));
+}
+
+.garland {
+  position: absolute;
+  top: 2.2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(110%, 1100px);
+  height: auto;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0.92;
+  animation: garlandSway 8s ease-in-out infinite reverse;
+  filter: drop-shadow(0 6px 10px rgba(44, 33, 28, 0.14));
+}
+
+.bells {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 4;
+}
+
+.bell {
+  position: absolute;
+  top: 5.5rem;
+  width: clamp(28px, 5vw, 44px);
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(154, 117, 40, 0.35));
+  animation: bellSwing 4.5s ease-in-out infinite;
+}
+
+.bellLeft {
+  left: clamp(1rem, 8vw, 5rem);
+}
+
+.bellRight {
+  right: clamp(1rem, 8vw, 5rem);
+  animation-delay: 0.6s;
 }
 
 .sideLeaves {
@@ -75,50 +114,54 @@
 
 .banana {
   position: absolute;
-  width: clamp(120px, 22vw, 240px);
+  width: clamp(100px, 18vw, 200px);
   height: auto;
-  filter: drop-shadow(0 10px 18px rgba(31, 77, 40, 0.22));
+  filter: drop-shadow(0 10px 18px rgba(31, 77, 40, 0.2));
 }
 
 .bananaLeft {
-  left: -1.5rem;
-  top: 12%;
+  left: -1.25rem;
+  top: 22%;
   animation: leafSway 6.5s ease-in-out infinite;
 }
 
 .bananaRight {
-  right: -1.5rem;
-  top: 14%;
+  right: -1.25rem;
+  top: 24%;
   animation: leafSway 7.2s ease-in-out infinite reverse;
 }
 
-.coconut {
+.diyas {
   position: absolute;
-  width: clamp(90px, 16vw, 170px);
+  inset: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.diya {
+  position: absolute;
+  bottom: 8%;
+  width: clamp(36px, 6vw, 52px);
   height: auto;
-  opacity: 0.92;
-  filter: drop-shadow(0 8px 14px rgba(31, 77, 40, 0.18));
+  filter: drop-shadow(0 0 12px rgba(255, 179, 71, 0.55));
+  animation: diyaGlow 2.8s ease-in-out infinite;
 }
 
-.coconutLeft {
-  left: -0.5rem;
-  bottom: 4%;
-  animation: leafSway 8s ease-in-out infinite reverse;
+.diyaLeft {
+  left: clamp(0.75rem, 6vw, 3rem);
 }
 
-.coconutRight {
-  right: -0.5rem;
-  bottom: 3%;
-  transform: scaleX(-1);
-  animation: leafSwayFlip 7.5s ease-in-out infinite;
+.diyaRight {
+  right: clamp(0.75rem, 6vw, 3rem);
+  animation-delay: 1.1s;
 }
 
 .stage {
   position: relative;
-  z-index: 4;
+  z-index: 5;
   width: min(100%, 760px);
   margin: 0 auto;
-  padding: clamp(4.5rem, 10vw, 6.5rem) 1.25rem 3.5rem;
+  padding: clamp(5.5rem, 12vw, 7.5rem) 1.25rem 3.5rem;
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -126,13 +169,25 @@
   gap: 0.55rem;
 }
 
+.ganeshWrap {
+  width: clamp(64px, 12vw, 96px);
+  margin-bottom: 0.25rem;
+  animation: fadeRise 0.9s ease both;
+  filter: drop-shadow(0 4px 12px rgba(154, 117, 40, 0.35));
+}
+
+.ganesh {
+  width: 100%;
+  height: auto;
+}
+
 .label {
   font-family: var(--font-display);
-  font-size: clamp(0.78rem, 2vw, 0.95rem);
-  letter-spacing: 0.28em;
+  font-size: clamp(0.72rem, 2vw, 0.9rem);
+  letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: #4a342c;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
+  color: var(--gold-deep);
+  text-shadow: 0 1px 0 rgba(255, 252, 245, 0.45);
   animation: fadeRise 1s ease both;
 }
 
@@ -152,8 +207,8 @@
   line-height: 0.95;
   font-weight: 400;
   text-shadow:
-    0 2px 0 rgba(255, 252, 245, 0.35),
-    0 8px 24px rgba(106, 21, 34, 0.12);
+    0 2px 0 rgba(255, 252, 245, 0.4),
+    0 8px 24px rgba(92, 21, 32, 0.14);
 }
 
 .ampersand {
@@ -162,6 +217,7 @@
   color: var(--gold-deep);
   line-height: 1;
   margin: -0.15rem 0;
+  text-shadow: 0 0 12px rgba(200, 155, 60, 0.35);
 }
 
 .invite {
@@ -174,39 +230,83 @@
 
 .scene {
   position: relative;
-  width: min(100vw, 720px);
-  margin: 0.4rem 0 0.2rem;
+  width: min(92vw, 520px);
+  margin: 0.6rem 0 0.35rem;
   animation: sceneRise 1.35s ease both;
+}
+
+.ornateFrame {
+  position: relative;
+  padding: 0.85rem;
+  background:
+    linear-gradient(160deg, #f0d78a, #c89b3c 35%, #9a7528 70%, #e4c36a);
+  border-radius: 8px;
+  box-shadow:
+    0 0 0 2px rgba(154, 117, 40, 0.5),
+    0 0 24px rgba(200, 155, 60, 0.35),
+    0 18px 36px rgba(61, 38, 28, 0.22);
+}
+
+.ornateFrame::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1.5px solid rgba(255, 248, 230, 0.55);
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.frameCorner {
+  position: absolute;
+  width: clamp(36px, 8vw, 56px);
+  height: auto;
+  z-index: 3;
+  filter: drop-shadow(0 2px 4px rgba(61, 38, 28, 0.2));
+  pointer-events: none;
+}
+
+.fcTl {
+  top: -4px;
+  left: -4px;
+}
+
+.fcTr {
+  top: -4px;
+  right: -4px;
+  transform: scaleX(-1);
+}
+
+.fcBl {
+  bottom: -4px;
+  left: -4px;
+  transform: scaleY(-1);
+}
+
+.fcBr {
+  bottom: -4px;
+  right: -4px;
+  transform: scale(-1);
 }
 
 .sceneImage {
   width: 100%;
   height: auto;
-  max-height: min(62dvh, 680px);
+  max-height: min(52dvh, 560px);
   object-fit: cover;
-  object-position: center 35%;
-  mask-image: linear-gradient(
-    180deg,
-    transparent 0%,
-    #000 6%,
-    #000 88%,
-    transparent 100%
-  );
-  -webkit-mask-image: linear-gradient(
-    180deg,
-    transparent 0%,
-    #000 6%,
-    #000 88%,
-    transparent 100%
-  );
-  filter: drop-shadow(0 18px 28px rgba(31, 77, 40, 0.22));
+  object-position: center 30%;
+  border-radius: 3px;
+  display: block;
+  background: var(--cream);
 }
 
 .venue {
   color: var(--ink-soft);
   font-size: 1.08rem;
   font-weight: 500;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+  font-family: var(--font-display);
+  letter-spacing: 0.06em;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.35);
   animation: fadeRise 1.45s ease both;
 }
 
@@ -235,23 +335,35 @@
   }
 }
 
-@keyframes leafSwayFlip {
+@keyframes bellSwing {
   0%,
   100% {
-    transform: scaleX(-1) rotate(-2deg);
+    transform: rotate(-6deg);
   }
   50% {
-    transform: scaleX(-1) rotate(2deg);
+    transform: rotate(6deg);
   }
 }
 
-@keyframes gopuramGlow {
+@keyframes diyaGlow {
   0%,
   100% {
-    opacity: 0.24;
+    filter: drop-shadow(0 0 8px rgba(255, 179, 71, 0.4));
+    opacity: 0.9;
   }
   50% {
-    opacity: 0.34;
+    filter: drop-shadow(0 0 18px rgba(255, 179, 71, 0.75));
+    opacity: 1;
+  }
+}
+
+@keyframes archGlow {
+  0%,
+  100% {
+    opacity: 0.14;
+  }
+  50% {
+    opacity: 0.24;
   }
 }
 
@@ -280,33 +392,47 @@
 @media (max-width: 700px) {
   .bananaLeft,
   .bananaRight {
-    width: 92px;
-    opacity: 0.88;
+    width: 78px;
+    opacity: 0.85;
   }
 
-  .coconutLeft,
-  .coconutRight {
-    width: 72px;
-    opacity: 0.8;
+  .bell {
+    top: 4.5rem;
+    width: 26px;
+  }
+
+  .diya {
+    width: 32px;
+    bottom: 5%;
+  }
+
+  .garland {
+    top: 1.6rem;
+    opacity: 0.85;
   }
 
   .sceneImage {
-    max-height: min(54dvh, 520px);
+    max-height: min(46dvh, 420px);
   }
 
-  .gopuram {
-    top: 22%;
-    opacity: 0.2;
+  .templeArch {
+    opacity: 0.12;
+  }
+
+  .toran {
+    width: 140%;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .toran,
   .garland,
   .bananaLeft,
   .bananaRight,
-  .coconutLeft,
-  .coconutRight,
-  .gopuram,
+  .bell,
+  .diya,
+  .templeArch,
+  .ganeshWrap,
   .label,
   .names,
   .invite,

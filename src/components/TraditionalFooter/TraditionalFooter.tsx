@@ -10,6 +10,13 @@ export default function TraditionalFooter() {
     <footer className={styles.footer}>
       <div className={styles.mangoLeaf} aria-hidden="true" />
       <Image
+        src="/images/decor/mango-leaf-toran.svg"
+        alt=""
+        width={1200}
+        height={140}
+        className={styles.toran}
+      />
+      <Image
         src="/images/decor/marigold-garland.svg"
         alt=""
         width={1200}
@@ -17,6 +24,10 @@ export default function TraditionalFooter() {
         className={styles.garland}
       />
       <div className={styles.inner}>
+        <div className={styles.lamps} aria-hidden="true">
+          <Image src="/images/decor/diya.svg" alt="" width={28} height={28} className={styles.diya} />
+          <Image src="/images/decor/diya.svg" alt="" width={28} height={28} className={styles.diya} />
+        </div>
         <p className={styles.withLove}>With love</p>
         <p className={styles.names}>{couple.displayName}</p>
         <p className={styles.date}>{wedding.dateLabel}</p>

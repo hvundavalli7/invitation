@@ -7,10 +7,17 @@ export default function TempleEntranceHero() {
 
   return (
     <header className={styles.hero} id="top">
-      <div className={styles.sky} aria-hidden="true" />
-      <div className={styles.meadow} aria-hidden="true" />
-      <div className={styles.gopuram} aria-hidden="true" />
+      <div className={styles.parchment} aria-hidden="true" />
+      <div className={styles.templeArch} aria-hidden="true" />
 
+      <Image
+        src="/images/decor/mango-leaf-toran.svg"
+        alt=""
+        width={1200}
+        height={140}
+        className={styles.toran}
+        priority
+      />
       <Image
         src="/images/decor/marigold-garland.svg"
         alt=""
@@ -19,6 +26,23 @@ export default function TempleEntranceHero() {
         className={styles.garland}
         priority
       />
+
+      <div className={styles.bells} aria-hidden="true">
+        <Image
+          src="/images/decor/temple-bell.svg"
+          alt=""
+          width={48}
+          height={60}
+          className={`${styles.bell} ${styles.bellLeft}`}
+        />
+        <Image
+          src="/images/decor/temple-bell.svg"
+          alt=""
+          width={48}
+          height={60}
+          className={`${styles.bell} ${styles.bellRight}`}
+        />
+      </div>
 
       <div className={styles.sideLeaves} aria-hidden="true">
         <Image
@@ -35,23 +59,37 @@ export default function TempleEntranceHero() {
           height={520}
           className={`${styles.banana} ${styles.bananaRight}`}
         />
+      </div>
+
+      <div className={styles.diyas} aria-hidden="true">
         <Image
-          src="/images/decor/coconut-frond.svg"
+          src="/images/decor/diya.svg"
           alt=""
-          width={220}
-          height={360}
-          className={`${styles.coconut} ${styles.coconutLeft}`}
+          width={48}
+          height={48}
+          className={`${styles.diya} ${styles.diyaLeft}`}
         />
         <Image
-          src="/images/decor/coconut-frond.svg"
+          src="/images/decor/diya.svg"
           alt=""
-          width={220}
-          height={360}
-          className={`${styles.coconut} ${styles.coconutRight}`}
+          width={48}
+          height={48}
+          className={`${styles.diya} ${styles.diyaRight}`}
         />
       </div>
 
       <div className={styles.stage}>
+        <div className={styles.ganeshWrap}>
+          <Image
+            src="/images/decor/ganesh-idol.png"
+            alt=""
+            width={120}
+            height={120}
+            className={styles.ganesh}
+            priority
+          />
+        </div>
+
         <p className={styles.label}>Wedding Invitation</p>
 
         <h1 className={styles.names}>
@@ -66,15 +104,45 @@ export default function TempleEntranceHero() {
 
         {hero.image ? (
           <div className={styles.scene}>
-            <Image
-              src={hero.image}
-              alt={hero.imageAlt}
-              width={1024}
-              height={1536}
-              className={styles.sceneImage}
-              priority
-              sizes="(max-width: 800px) 100vw, 720px"
-            />
+            <div className={styles.ornateFrame}>
+              <Image
+                src="/images/decor/ornate-corner.svg"
+                alt=""
+                width={80}
+                height={80}
+                className={`${styles.frameCorner} ${styles.fcTl}`}
+              />
+              <Image
+                src="/images/decor/ornate-corner.svg"
+                alt=""
+                width={80}
+                height={80}
+                className={`${styles.frameCorner} ${styles.fcTr}`}
+              />
+              <Image
+                src="/images/decor/ornate-corner.svg"
+                alt=""
+                width={80}
+                height={80}
+                className={`${styles.frameCorner} ${styles.fcBl}`}
+              />
+              <Image
+                src="/images/decor/ornate-corner.svg"
+                alt=""
+                width={80}
+                height={80}
+                className={`${styles.frameCorner} ${styles.fcBr}`}
+              />
+              <Image
+                src={hero.image}
+                alt={hero.imageAlt}
+                width={1024}
+                height={1536}
+                className={styles.sceneImage}
+                priority
+                sizes="(max-width: 800px) 100vw, 560px"
+              />
+            </div>
           </div>
         ) : null}
 
