@@ -32,7 +32,7 @@ export const weddingData = {
     ctaLabel: "View Celebrations",
     ctaHref: "#celebrations",
     /** South Indian invitation caricature */
-    image: "/images/couple/caricature-hero.png",
+    image: "/images/couple/caricature-hero-feathered.webp",
     imageAlt:
       "Illustrated caricature of Abhigna and Hemanth in traditional South Indian wedding attire",
   },
@@ -283,7 +283,7 @@ export const weddingData = {
     description:
       "You are warmly invited to the wedding of Abhigna and Hemanth on March 11, 2027 at Bella Cavalli Events, Aubrey, Texas. Join us for sacred South Indian Hindu wedding celebrations.",
     siteUrl: "https://abhigna-hemanth.wedding",
-    ogImage: "/images/couple/caricature-hero.png",
+    ogImage: "/images/couple/caricature-hero-feathered.webp",
   },
 } as const;
 

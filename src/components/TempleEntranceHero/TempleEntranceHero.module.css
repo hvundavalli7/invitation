@@ -148,15 +148,12 @@
 
 .sceneBlend {
   position: absolute;
-  inset: -4%;
+  inset: -6%;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at 50% 38%, rgba(90, 150, 100, 0.18), transparent 42%),
-    radial-gradient(ellipse at 50% 78%, rgba(18, 56, 30, 0.55), transparent 55%),
-    linear-gradient(180deg, rgba(40, 90, 55, 0.35) 0%, transparent 28%, transparent 62%, rgba(14, 42, 22, 0.55) 100%),
-    linear-gradient(90deg, rgba(20, 60, 35, 0.4), transparent 18%, transparent 82%, rgba(20, 60, 35, 0.4));
-  mix-blend-mode: multiply;
-  opacity: 0.85;
+    radial-gradient(ellipse at 50% 45%, transparent 35%, rgba(18, 56, 30, 0.35) 78%, rgba(10, 32, 18, 0.55) 100%),
+    linear-gradient(180deg, rgba(30, 80, 45, 0.22) 0%, transparent 30%, transparent 68%, rgba(14, 42, 22, 0.4) 100%);
+  mix-blend-mode: soft-light;
 }
 
 .venue {
