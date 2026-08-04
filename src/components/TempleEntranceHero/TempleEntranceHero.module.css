@@ -298,6 +298,21 @@
   border-radius: 3px;
   display: block;
   background: var(--cream);
+  /* Warm the illustrated sky/meadow into the parchment invitation mood */
+  filter: sepia(0.18) saturate(0.92) contrast(1.04);
+}
+
+.ornateFrame::after {
+  content: "";
+  position: absolute;
+  inset: 0.85rem;
+  border-radius: 3px;
+  pointer-events: none;
+  z-index: 2;
+  background:
+    radial-gradient(ellipse at 50% 40%, transparent 52%, rgba(92, 21, 32, 0.18) 100%),
+    linear-gradient(180deg, rgba(200, 155, 60, 0.12), transparent 28%, transparent 72%, rgba(92, 21, 32, 0.16));
+  mix-blend-mode: multiply;
 }
 
 .venue {
