@@ -50,11 +50,33 @@
   display: none;
   font-family: var(--font-body);
   font-size: 0.68rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-muted);
-  max-width: 9rem;
+  max-width: 12rem;
   line-height: 1.3;
+}
+
+.artist {
+  display: block;
+  margin-top: 0.1rem;
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+  opacity: 0.8;
+}
+
+.ytHost {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+  padding: 0;
+  margin: -1px;
 }
 
 @media (min-width: 720px) {
