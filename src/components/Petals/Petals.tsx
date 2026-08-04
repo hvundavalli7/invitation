@@ -91,6 +91,7 @@ export default function Petals({ active }: { active: boolean }) {
             width={p.size}
             height={p.size}
             className={styles.img}
+            style={{ width: "100%", height: "auto" }}
           />
         </span>
       ))}
