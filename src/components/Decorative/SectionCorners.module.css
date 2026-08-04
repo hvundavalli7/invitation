@@ -7,39 +7,38 @@
 
 .mark {
   position: absolute;
-  opacity: 0.45;
+  opacity: 0.55;
   height: auto;
-  filter: saturate(1.15);
+  width: 56px;
+  filter: drop-shadow(0 2px 4px rgba(154, 117, 40, 0.2));
 }
 
 .tl {
-  top: 1.25rem;
-  left: 1rem;
-  width: 40px;
+  top: 0.85rem;
+  left: 0.75rem;
 }
 
 .tr {
-  top: 1.75rem;
-  right: 1.25rem;
-  width: 34px;
+  top: 0.85rem;
+  right: 0.75rem;
+  transform: scaleX(-1);
 }
 
 .bl {
-  bottom: 1.75rem;
-  left: 1.5rem;
-  width: 32px;
+  bottom: 0.85rem;
+  left: 0.75rem;
+  transform: scaleY(-1);
 }
 
 .br {
-  bottom: 1.25rem;
-  right: 1rem;
-  width: 40px;
-  transform: scaleX(-1);
+  bottom: 0.85rem;
+  right: 0.75rem;
+  transform: scale(-1);
 }
 
 @media (max-width: 700px) {
   .mark {
-    opacity: 0.2;
-    width: 26px;
+    opacity: 0.28;
+    width: 36px;
   }
 }

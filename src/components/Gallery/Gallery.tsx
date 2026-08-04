@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
 import { weddingData } from "@/data/wedding";
 import ScrollReveal from "@/components/ScrollReveal/ScrollReveal";
+import SectionCorners from "@/components/Decorative/SectionCorners";
 import styles from "./Gallery.module.css";
 
 export default function Gallery() {
@@ -36,6 +37,7 @@ export default function Gallery() {
 
   return (
     <section id="gallery" className={`section section--sage ${styles.section}`} aria-labelledby="gallery-title">
+      <SectionCorners />
       <div className="section__inner">
         <ScrollReveal>
           <p className="section__eyebrow">Cherished moments</p>

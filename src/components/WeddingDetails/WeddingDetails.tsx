@@ -1,5 +1,6 @@
 import { weddingData } from "@/data/wedding";
 import ScrollReveal from "@/components/ScrollReveal/ScrollReveal";
+import SectionCorners from "@/components/Decorative/SectionCorners";
 import { DiyaIcon } from "@/components/Decorative/Motifs";
 import styles from "./WeddingDetails.module.css";
 
@@ -8,6 +9,7 @@ export default function WeddingDetails() {
 
   return (
     <section id="details" className={`section ${styles.section}`} aria-labelledby="details-title">
+      <SectionCorners />
       <div className="section__inner">
         <ScrollReveal>
           <p className="section__eyebrow">For our honoured guests</p>

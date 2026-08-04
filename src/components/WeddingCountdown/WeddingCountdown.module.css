@@ -1,7 +1,5 @@
 .section {
-  background:
-    radial-gradient(ellipse at center, rgba(212, 229, 212, 0.45), transparent 55%),
-    transparent;
+  background: transparent;
 }
 
 .grid {
@@ -14,20 +12,37 @@
 
 .box {
   text-align: center;
-  padding: clamp(0.9rem, 2.5vw, 1.4rem) 0.5rem;
+  padding: clamp(0.95rem, 2.5vw, 1.45rem) 0.5rem;
   border-radius: var(--radius-md);
   position: relative;
-  background: var(--card);
-  border: 1px solid rgba(201, 168, 114, 0.28);
-  box-shadow: var(--shadow-card);
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(200, 155, 60, 0.45);
+  box-shadow:
+    var(--shadow-card),
+    inset 0 0 0 4px rgba(255, 248, 232, 0.35),
+    0 0 14px rgba(200, 155, 60, 0.12);
 }
 
 .box::before {
   content: "";
   position: absolute;
-  inset: 6px;
-  border: 1px solid rgba(201, 168, 114, 0.22);
-  border-radius: calc(var(--radius-md) - 4px);
+  inset: 7px;
+  border: 1px solid rgba(200, 155, 60, 0.28);
+  border-radius: calc(var(--radius-md) - 5px);
+  pointer-events: none;
+}
+
+.box::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--gold-soft), transparent);
+  opacity: 0.55;
   pointer-events: none;
 }
 
@@ -35,34 +50,37 @@
   display: block;
   font-family: var(--font-display);
   font-size: clamp(1.7rem, 5vw, 2.7rem);
-  color: var(--rose);
+  color: var(--maroon);
   letter-spacing: 0.08em;
   line-height: 1.1;
+  text-shadow: 0 1px 0 rgba(255, 248, 232, 0.6);
 }
 
 .label {
   display: block;
   margin-top: 0.45rem;
-  font-family: var(--font-body);
-  font-size: 0.72rem;
+  font-family: var(--font-display);
+  font-size: 0.68rem;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: var(--text-muted);
+  color: var(--gold-deep);
 }
 
 .ended {
   text-align: center;
   font-family: var(--font-script);
   font-size: clamp(2.2rem, 6vw, 3.4rem);
-  color: var(--rose);
+  color: var(--ivory);
   padding: 1rem 0;
+  text-shadow: 0 8px 24px rgba(10, 30, 15, 0.45);
 }
 
 .timezone {
   margin-top: 1.5rem;
   text-align: center;
-  color: var(--text-muted);
+  color: rgba(255, 248, 232, 0.82);
   font-size: 0.98rem;
+  text-shadow: 0 2px 10px rgba(10, 30, 15, 0.4);
 }
 
 @media (max-width: 520px) {

@@ -1,6 +1,5 @@
 .section {
-  background:
-    radial-gradient(ellipse at bottom, rgba(212, 229, 212, 0.4), transparent 55%);
+  background: transparent;
 }
 
 .grid {
@@ -10,11 +9,25 @@
 }
 
 .item {
-  padding: 1.2rem 1.25rem;
+  padding: 1.25rem 1.3rem;
   border-radius: var(--radius-md);
-  background: var(--card);
-  border: 1px solid rgba(201, 168, 114, 0.28);
-  box-shadow: var(--shadow-card);
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(200, 155, 60, 0.4);
+  box-shadow:
+    var(--shadow-card),
+    inset 0 0 0 5px rgba(255, 248, 232, 0.3);
+  position: relative;
+}
+
+.item::before {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border: 1px dashed rgba(200, 155, 60, 0.28);
+  border-radius: calc(var(--radius-md) - 6px);
+  pointer-events: none;
 }
 
 .itemHead {
@@ -25,16 +38,18 @@
 }
 
 .icon {
-  width: 1.35rem;
-  height: 1.35rem;
+  width: 1.4rem;
+  height: 1.4rem;
   color: var(--gold-deep);
+  filter: drop-shadow(0 0 6px rgba(255, 179, 71, 0.35));
 }
 
 .item h3 {
   font-family: var(--font-display);
-  font-size: 1rem;
-  letter-spacing: 0.1em;
-  color: var(--rose);
+  font-size: 0.95rem;
+  letter-spacing: 0.12em;
+  color: var(--maroon);
+  text-transform: uppercase;
 }
 
 .item p {
@@ -44,12 +59,15 @@
 
 .contact {
   margin-top: 1.5rem;
-  padding: 1.4rem 1.3rem;
+  padding: 1.5rem 1.4rem;
   text-align: center;
-  background: var(--ivory);
-  border: 1px solid rgba(201, 168, 114, 0.4);
+  background:
+    linear-gradient(160deg, var(--ivory), var(--parchment));
+  border: 2px solid rgba(200, 155, 60, 0.5);
   border-radius: var(--radius-md);
-  box-shadow: var(--shadow-soft);
+  box-shadow:
+    var(--shadow-soft),
+    inset 0 0 0 5px rgba(255, 248, 232, 0.65);
 }
 
 .contact h3 {
@@ -66,7 +84,7 @@
 }
 
 .contact a {
-  color: var(--rose);
+  color: var(--maroon);
   text-decoration: underline;
   text-underline-offset: 3px;
 }

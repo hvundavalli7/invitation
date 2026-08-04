@@ -10,11 +10,11 @@
   position: absolute;
   top: -12%;
   display: block;
-  opacity: 0.85;
+  opacity: 0.8;
   animation-name: fall;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
-  filter: drop-shadow(0 2px 4px rgba(62, 39, 35, 0.12));
+  filter: drop-shadow(0 2px 4px rgba(44, 33, 28, 0.12));
 }
 
 .img {
@@ -23,24 +23,9 @@
   display: block;
 }
 
-.butterfly .img {
-  animation: flap 0.28s ease-in-out infinite;
-}
-
-.butterflyPath {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 41;
-  pointer-events: none;
-  animation: butterflyFly 18s linear infinite;
-  will-change: transform;
-}
-
-.butterflyWings {
-  display: inline-block;
-  animation: flap 0.25s ease-in-out infinite;
-  transform-origin: center;
+.diya {
+  opacity: 0.7;
+  filter: drop-shadow(0 0 8px rgba(255, 179, 71, 0.45));
 }
 
 @keyframes fall {
@@ -49,7 +34,7 @@
     opacity: 0;
   }
   8% {
-    opacity: 0.9;
+    opacity: 0.85;
   }
   100% {
     transform: translate3d(var(--drift, 30px), 115vh, 0) rotate(340deg);
@@ -57,42 +42,8 @@
   }
 }
 
-@keyframes flap {
-  0%,
-  100% {
-    transform: scaleX(1);
-  }
-  50% {
-    transform: scaleX(0.55);
-  }
-}
-
-@keyframes butterflyFly {
-  0% {
-    transform: translate(-10vw, 60vh) rotate(-8deg) scale(1);
-  }
-  20% {
-    transform: translate(20vw, 35vh) rotate(6deg) scale(1.05);
-  }
-  40% {
-    transform: translate(45vw, 55vh) rotate(-4deg) scale(0.95);
-  }
-  60% {
-    transform: translate(65vw, 25vh) rotate(8deg) scale(1.1);
-  }
-  80% {
-    transform: translate(85vw, 45vh) rotate(-6deg) scale(1);
-  }
-  100% {
-    transform: translate(110vw, 30vh) rotate(4deg) scale(1);
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .item,
-  .butterflyPath,
-  .butterflyWings,
-  .butterfly .img {
+  .item {
     animation: none;
   }
 }

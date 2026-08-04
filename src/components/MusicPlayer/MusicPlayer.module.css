@@ -7,11 +7,12 @@
   align-items: center;
   gap: 0.45rem;
   padding: 0.5rem 0.75rem;
-  background: linear-gradient(160deg, var(--ivory), var(--cream));
-  border: 1px solid rgba(201, 168, 114, 0.4);
+  background: linear-gradient(160deg, var(--ivory), var(--parchment));
+  border: 2px solid rgba(200, 155, 60, 0.5);
   border-radius: 999px;
-  box-shadow: var(--shadow-soft);
-  backdrop-filter: blur(8px);
+  box-shadow:
+    var(--shadow-soft),
+    inset 0 0 0 3px rgba(255, 248, 232, 0.55);
 }
 
 .btn {
@@ -20,12 +21,12 @@
   padding: 0 0.7rem;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(201, 168, 114, 0.4);
+  border: 1.5px solid rgba(200, 155, 60, 0.45);
   border-radius: 999px;
-  color: var(--ink);
-  background: rgba(201, 168, 114, 0.12);
-  font-family: var(--font-body);
-  font-size: 0.68rem;
+  color: var(--maroon);
+  background: rgba(200, 155, 60, 0.12);
+  font-family: var(--font-display);
+  font-size: 0.65rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   transition:
@@ -36,14 +37,14 @@
 
 .btn:hover {
   border-color: var(--gold-deep);
-  background: rgba(201, 168, 114, 0.22);
-  color: var(--ink);
+  background: rgba(200, 155, 60, 0.22);
+  color: var(--maroon-deep);
 }
 
 .btn[aria-pressed="true"] {
   background: linear-gradient(180deg, var(--gold-soft), var(--gold));
-  border-color: transparent;
-  color: #fff;
+  border-color: var(--gold-deep);
+  color: var(--maroon-deep);
 }
 
 .label {

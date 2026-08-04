@@ -3,6 +3,7 @@
 import { FormEvent, useState } from "react";
 import { weddingData } from "@/data/wedding";
 import ScrollReveal from "@/components/ScrollReveal/ScrollReveal";
+import SectionCorners from "@/components/Decorative/SectionCorners";
 import styles from "./RSVPForm.module.css";
 
 type FormState = {
@@ -165,6 +166,7 @@ export default function RSVPForm() {
 
   return (
     <section id="rsvp" className={`section section--cream ${styles.section}`} aria-labelledby="rsvp-title">
+      <SectionCorners />
       <div className="section__inner">
         <ScrollReveal>
           <p className="section__eyebrow">Kindly respond</p>

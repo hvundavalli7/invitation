@@ -1,10 +1,11 @@
 .footer {
   position: relative;
-  padding: 3.5rem 1.25rem 2.5rem;
+  z-index: 1;
+  padding: 3.75rem 1.25rem 2.5rem;
   background:
-    radial-gradient(ellipse at top, rgba(201, 168, 114, 0.12), transparent 45%),
-    linear-gradient(180deg, #4a342e, var(--footer) 55%);
-  border-top: 1px solid rgba(201, 168, 114, 0.25);
+    radial-gradient(ellipse at top, rgba(200, 155, 60, 0.18), transparent 45%),
+    linear-gradient(180deg, rgba(20, 56, 32, 0.55), rgba(13, 36, 22, 0.88) 55%, #0a1a10);
+  border-top: 2px solid rgba(200, 155, 60, 0.35);
   overflow: hidden;
   color: var(--cream);
 }
@@ -15,10 +16,24 @@
   pointer-events: none;
   opacity: 0.18;
   background:
-    radial-gradient(circle at 10% 20%, #a2b992 0 10px, transparent 11px),
-    radial-gradient(circle at 90% 30%, #c9a872 0 8px, transparent 9px),
-    radial-gradient(circle at 20% 80%, #c45b7a 0 7px, transparent 8px),
-    radial-gradient(circle at 80% 75%, #a2b992 0 9px, transparent 10px);
+    radial-gradient(circle at 10% 20%, #5a9a3a 0 10px, transparent 11px),
+    radial-gradient(circle at 90% 30%, #c89b3c 0 8px, transparent 9px),
+    radial-gradient(circle at 20% 80%, #c62828 0 7px, transparent 8px),
+    radial-gradient(circle at 80% 75%, #5a9a3a 0 9px, transparent 10px);
+}
+
+.toran {
+  position: absolute;
+  top: -1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(140%, 1100px);
+  height: auto;
+  opacity: 0.88;
+  pointer-events: none;
+  filter: saturate(1.05);
+  mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
 }
 
 .inner {
@@ -26,21 +41,26 @@
   width: min(100%, 800px);
   margin: 0 auto;
   text-align: center;
+  padding-top: 1.5rem;
 }
 
 .lamps {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1.1rem;
-  margin-bottom: 1rem;
+  gap: 1.4rem;
+  margin-bottom: 0.85rem;
 }
 
-.diya,
-.lotus {
+.diya {
   width: 1.7rem;
-  height: 1.7rem;
-  color: var(--gold-soft);
+  height: auto;
+  filter: drop-shadow(0 0 10px rgba(255, 179, 71, 0.55));
+  animation: diyaPulse 2.8s ease-in-out infinite;
+}
+
+.diya:last-child {
+  animation-delay: 1s;
 }
 
 .withLove {
@@ -48,7 +68,7 @@
   font-size: 0.72rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold-soft);
   margin-bottom: 0.35rem;
 }
 
@@ -70,7 +90,7 @@
 
 .venue {
   margin-top: 0.35rem;
-  color: rgba(249, 246, 241, 0.78);
+  color: rgba(249, 246, 241, 0.8);
   font-size: 1.05rem;
 }
 
@@ -97,8 +117,8 @@
 }
 
 .nav a {
-  font-family: var(--font-body);
-  font-size: 0.78rem;
+  font-family: var(--font-display);
+  font-size: 0.72rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--cream);
@@ -110,13 +130,31 @@
 
 .top {
   margin-top: 1.5rem;
-  border-color: rgba(249, 246, 241, 0.35);
-  color: var(--cream);
-  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(200, 155, 60, 0.5);
+  color: var(--gold-soft);
+  background: rgba(255, 248, 232, 0.08);
 }
 
 .top:hover {
-  background: rgba(255, 255, 255, 0.12);
+  background: rgba(200, 155, 60, 0.18);
   border-color: var(--gold-soft);
   color: #fffdf9;
+}
+
+@keyframes diyaPulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 6px rgba(255, 179, 71, 0.4));
+    opacity: 0.88;
+  }
+  50% {
+    filter: drop-shadow(0 0 16px rgba(255, 179, 71, 0.75));
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .diya {
+    animation: none;
+  }
 }

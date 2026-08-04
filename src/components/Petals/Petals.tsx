@@ -10,27 +10,25 @@ type Floater = {
   delay: number;
   duration: number;
   size: number;
-  kind: "pink" | "orange" | "yellow" | "leaf" | "blue" | "butterfly";
+  kind: "marigold" | "orange" | "yellow" | "leaf";
   drift: number;
 };
 
 const SRC: Record<Floater["kind"], string> = {
-  pink: "/images/decor/flower-pink.svg",
+  marigold: "/images/decor/marigold.svg",
   orange: "/images/decor/flower-orange.svg",
   yellow: "/images/decor/flower-yellow.svg",
   leaf: "/images/decor/leaf-sprig.svg",
-  blue: "/images/decor/flower-blue.svg",
-  butterfly: "/images/decor/butterfly.svg",
 };
 
 const KINDS: Floater["kind"][] = [
-  "pink",
+  "marigold",
   "orange",
   "leaf",
-  "pink",
+  "marigold",
   "yellow",
-  "butterfly",
-  "blue",
+  "orange",
+  "marigold",
   "leaf",
 ];
 
@@ -45,14 +43,14 @@ function getReducedMotion() {
 }
 
 function createFloaters(): Floater[] {
-  return Array.from({ length: 22 }, (_, i) => ({
+  return Array.from({ length: 24 }, (_, i) => ({
     id: i,
     left: (i * 41 + 7) % 100,
-    delay: (i % 9) * 0.9,
-    duration: 10 + (i % 6) * 1.8,
-    size: 16 + (i % 5) * 4,
+    delay: (i % 10) * 0.85,
+    duration: 12 + (i % 7) * 1.6,
+    size: 12 + (i % 6) * 3.5,
     kind: KINDS[i % KINDS.length],
-    drift: (i % 2 === 0 ? 1 : -1) * (18 + (i % 4) * 8),
+    drift: (i % 2 === 0 ? 1 : -1) * (22 + (i % 5) * 10),
   }));
 }
 
@@ -75,7 +73,7 @@ export default function Petals({ active }: { active: boolean }) {
       {floaters.map((p) => (
         <span
           key={p.id}
-          className={`${styles.item} ${p.kind === "butterfly" ? styles.butterfly : ""}`}
+          className={styles.item}
           style={
             {
               left: `${p.left}%`,
@@ -92,20 +90,10 @@ export default function Petals({ active }: { active: boolean }) {
             width={p.size}
             height={p.size}
             className={styles.img}
+            style={{ width: "100%", height: "auto" }}
           />
         </span>
       ))}
-
-      <span className={styles.butterflyPath} style={{ animationDelay: "0s" }}>
-        <span className={styles.butterflyWings}>
-          <Image src={SRC.butterfly} alt="" width={38} height={32} />
-        </span>
-      </span>
-      <span className={styles.butterflyPath} style={{ animationDelay: "-9s", animationDuration: "22s" }}>
-        <span className={styles.butterflyWings}>
-          <Image src={SRC.butterfly} alt="" width={30} height={26} />
-        </span>
-      </span>
     </div>
   );
 }

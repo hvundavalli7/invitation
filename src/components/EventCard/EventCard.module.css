@@ -2,11 +2,15 @@
   display: grid;
   grid-template-columns: auto 1fr;
   gap: 1rem;
-  padding: 1.35rem 1.25rem;
+  padding: 1.4rem 1.3rem;
   border-radius: var(--radius-md);
-  border: 1px solid rgba(201, 168, 114, 0.28);
-  background: var(--card);
-  box-shadow: var(--shadow-card);
+  border: 2px solid rgba(200, 155, 60, 0.42);
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  box-shadow:
+    var(--shadow-card),
+    inset 0 0 0 5px rgba(255, 248, 232, 0.3);
   position: relative;
   overflow: hidden;
 }
@@ -17,25 +21,42 @@
   left: 0;
   top: 0;
   bottom: 0;
-  width: 4px;
-  background: var(--accent, var(--rose));
+  width: 5px;
+  background: linear-gradient(180deg, var(--gold-soft), var(--accent, var(--maroon)), var(--gold-deep));
+}
+
+.card::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 28px;
+  height: 28px;
+  opacity: 0.22;
+  background:
+    radial-gradient(circle at 50% 50%, var(--gold) 0 3px, transparent 4px),
+    conic-gradient(from 0deg, transparent 0 20%, var(--maroon) 20% 25%, transparent 25% 45%, var(--gold) 45% 50%, transparent 50%);
+  pointer-events: none;
 }
 
 .iconWrap {
-  width: 3rem;
-  height: 3rem;
+  width: 3.1rem;
+  height: 3.1rem;
   display: grid;
   place-items: center;
-  border: 1px solid rgba(201, 168, 114, 0.35);
-  background: var(--cream);
+  border: 2px solid rgba(200, 155, 60, 0.5);
+  background:
+    radial-gradient(circle at 35% 30%, #fff8e8, var(--parchment));
   border-radius: 50%;
-  box-shadow: 0 4px 12px rgba(62, 39, 35, 0.06);
+  box-shadow:
+    0 4px 12px rgba(92, 21, 32, 0.08),
+    inset 0 0 0 3px rgba(255, 248, 232, 0.7);
 }
 
 .icon {
   width: 1.55rem;
   height: 1.55rem;
-  color: var(--accent, var(--rose));
+  color: var(--accent, var(--maroon));
 }
 
 .body {
@@ -46,7 +67,7 @@
   font-family: var(--font-script);
   font-size: clamp(1.55rem, 3.2vw, 2rem);
   letter-spacing: 0.02em;
-  color: var(--rose);
+  color: var(--maroon);
   margin-bottom: 0.35rem;
   line-height: 1.2;
   font-weight: 400;
@@ -65,6 +86,8 @@
 .venue strong {
   color: var(--gold-deep);
   font-weight: 600;
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
 }
 
 .description {
@@ -84,16 +107,16 @@
   display: grid;
   gap: 0.15rem;
   padding: 0.65rem 0.75rem;
-  border: 1px solid rgba(201, 168, 114, 0.22);
+  border: 1px solid rgba(200, 155, 60, 0.3);
   border-radius: var(--radius-sm);
-  background: var(--cream);
+  background: rgba(255, 248, 232, 0.75);
 }
 
 .subEvents strong {
   font-family: var(--font-display);
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   letter-spacing: 0.08em;
-  color: var(--gold-deep);
+  color: var(--maroon);
 }
 
 .subEvents span {
@@ -109,19 +132,19 @@
 }
 
 .mehendi {
-  --accent: #6f9f6a;
+  --accent: #2f6b24;
 }
 
 .sangeet {
-  --accent: var(--rose);
+  --accent: var(--maroon);
 }
 
 .haldi {
-  --accent: var(--gold);
+  --accent: var(--turmeric);
 }
 
 .wedding {
-  --accent: var(--rose);
+  --accent: var(--maroon);
 }
 
 @media (max-width: 560px) {

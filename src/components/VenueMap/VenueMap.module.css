@@ -9,21 +9,38 @@
 }
 
 .card {
-  padding: 1.25rem;
+  padding: 1.3rem;
   border-radius: var(--radius-md);
   display: flex;
   flex-direction: column;
   gap: 0.65rem;
-  background: var(--card);
-  border: 1px solid rgba(201, 168, 114, 0.28);
-  box-shadow: var(--shadow-card);
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(200, 155, 60, 0.42);
+  box-shadow:
+    var(--shadow-card),
+    inset 0 0 0 5px rgba(255, 248, 232, 0.3);
+  position: relative;
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  border: 1px solid rgba(200, 155, 60, 0.22);
+  border-radius: calc(var(--radius-md) - 8px);
+  pointer-events: none;
 }
 
 .card h3 {
   font-family: var(--font-display);
   letter-spacing: 0.08em;
-  color: var(--rose);
-  font-size: 1.25rem;
+  color: var(--maroon);
+  font-size: 1.2rem;
 }
 
 .address {
@@ -37,18 +54,21 @@
 
 .mapWrap {
   margin-top: 0.35rem;
-  border: 1px solid rgba(201, 168, 114, 0.3);
+  border: 3px solid transparent;
+  background:
+    linear-gradient(var(--cream), var(--cream)) padding-box,
+    linear-gradient(135deg, var(--gold-soft), var(--gold-deep), var(--gold)) border-box;
   border-radius: var(--radius-sm);
   overflow: hidden;
   aspect-ratio: 16 / 11;
-  background: var(--cream-deep);
+  box-shadow: inset 0 0 0 4px rgba(255, 248, 232, 0.55);
 }
 
 .mapWrap iframe {
   width: 100%;
   height: 100%;
   border: 0;
-  filter: saturate(0.95) contrast(1.02);
+  filter: saturate(0.92) contrast(1.03) sepia(0.08);
 }
 
 .actions {

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <linearGradient id="brassD" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#f0d78a"/>
+      <stop offset="50%" stop-color="#c89b3c"/>
+      <stop offset="100%" stop-color="#8a6820"/>
+    </linearGradient>
+    <radialGradient id="flameG" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#fff6c8"/>
+      <stop offset="45%" stop-color="#ffb347"/>
+      <stop offset="100%" stop-color="#e05a1a"/>
+    </radialGradient>
+  </defs>
+  <path d="M32 6c7 9 9 15 0 26C23 21 25 15 32 6Z" fill="url(#flameG)"/>
+  <ellipse cx="32" cy="44" rx="22" ry="11" fill="url(#brassD)"/>
+  <path d="M12 44c4 11 14 16 20 16s16-5 20-16" fill="#a87d28"/>
+  <ellipse cx="32" cy="42" rx="14" ry="4" fill="#7b1e2b" opacity="0.25"/>
+  <path d="M26 30c2 4 4 6 6 8 2-2 4-4 6-8" stroke="#fff6c8" stroke-width="1" opacity="0.55"/>
+</svg>
