@@ -9,9 +9,17 @@ type Props = {
   onComplete: () => void;
 };
 
+const CORNER_SPRIGS = [
+  { className: styles.cornerTL, rotate: 0 },
+  { className: styles.cornerTR, rotate: 90 },
+  { className: styles.cornerBL, rotate: -90 },
+  { className: styles.cornerBR, rotate: 180 },
+] as const;
+
 export default function EnvelopeOpen({ onComplete }: Props) {
   const [opening, setOpening] = useState(false);
   const { couple } = weddingData;
+  const initials = `${couple.bride.charAt(0)} & ${couple.groom.charAt(0)}`;
 
   const open = () => {
     if (opening) return;
@@ -27,21 +35,41 @@ export default function EnvelopeOpen({ onComplete }: Props) {
       aria-label="Open wedding invitation envelope"
     >
       <div className={styles.floaters} aria-hidden="true">
-        <span className={styles.floater} />
-        <span className={`${styles.floater} ${styles.floater2}`} />
-        <span className={`${styles.floater} ${styles.floater3}`} />
-        <span className={`${styles.floater} ${styles.floater4}`} />
+        <Image src="/images/decor/flower-pink.svg" alt="" width={28} height={28} className={`${styles.floater} ${styles.f1}`} />
+        <Image src="/images/decor/flower-orange.svg" alt="" width={24} height={24} className={`${styles.floater} ${styles.f2}`} />
+        <Image src="/images/decor/butterfly.svg" alt="" width={34} height={28} className={`${styles.floater} ${styles.f3}`} />
+        <Image src="/images/decor/leaf-sprig.svg" alt="" width={26} height={34} className={`${styles.floater} ${styles.f4}`} />
+        <Image src="/images/decor/flower-pink.svg" alt="" width={22} height={22} className={`${styles.floater} ${styles.f5}`} />
+        <Image src="/images/decor/flower-yellow.svg" alt="" width={24} height={24} className={`${styles.floater} ${styles.f6}`} />
       </div>
 
-      <button type="button" className={styles.envelopeBtn} onClick={open} aria-label="Open invitation">
+      {CORNER_SPRIGS.map((corner) => (
         <Image
-          src="/images/decor/envelope.svg"
+          key={corner.className}
+          src="/images/decor/leaf-sprig.svg"
           alt=""
-          width={360}
-          height={290}
-          className={`${styles.envelope} ${opening ? styles.envelopeOpen : ""}`}
-          priority
+          width={48}
+          height={64}
+          className={`${styles.corner} ${corner.className}`}
+          style={{ transform: `rotate(${corner.rotate}deg)` }}
+          aria-hidden="true"
         />
+      ))}
+
+      <button type="button" className={styles.envelopeBtn} onClick={open} aria-label="Open invitation">
+        <span className={`${styles.card} ${opening ? styles.cardOpen : ""}`}>
+          <Image
+            src="/images/decor/invitation-envelope.png"
+            alt=""
+            width={871}
+            height={980}
+            className={styles.envelope}
+            priority
+          />
+          <span className={styles.seal} aria-hidden="true">
+            {initials}
+          </span>
+        </span>
       </button>
 
       <h1 className={styles.title}>You&apos;re Invited</h1>
