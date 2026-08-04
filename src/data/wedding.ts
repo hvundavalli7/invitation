@@ -31,6 +31,9 @@ export const weddingData = {
   hero: {
     ctaLabel: "View Celebrations",
     ctaHref: "#celebrations",
+    /** Set once couple photos are added under /public/images/couple/ */
+    image: "/images/gallery/sunset-walk.jpg",
+    imageAlt: "Abhigna and Hemanth on the beach",
   },
 
   scratchCard: {
@@ -131,15 +134,15 @@ export const weddingData = {
     photos: [
       {
         id: "story-1",
-        alt: "Couple portrait placeholder",
-        src: "/images/gallery/couple-1.svg",
-        caption: "Abhigna & Hemanth",
+        alt: "Proposal moment with golden retrievers in the mountains",
+        src: "/images/gallery/proposal-dogs-1.jpg",
+        caption: "The Proposal",
       },
       {
         id: "story-2",
-        alt: "Engagement photo placeholder",
-        src: "/images/gallery/couple-2.svg",
-        caption: "Engagement",
+        alt: "Celebrating the proposal surrounded by our beloved dogs",
+        src: "/images/gallery/proposal-dogs-2.jpg",
+        caption: "Celebrating with family",
       },
     ],
   },
@@ -174,8 +177,8 @@ export const weddingData = {
     ],
     contact: {
       title: "Contact",
-      email: "hello@abhigna-hemanth.wedding", // Update with real contact
-      phone: "+1 (XXX) XXX-XXXX", // Update with real contact
+      email: "hemanthbhargav13@gmail.com", // Update with real contact
+      phone: "+1 (609) 598-6984", // Update with real contact
       note: "For questions about the wedding, please reach out to the couple or their families.",
     },
   },
@@ -218,55 +221,37 @@ export const weddingData = {
 
   gallery: {
     title: "Gallery",
-    subtitle: "Moments from our journey — engagement, portraits, and family.",
+    subtitle: "Moments from our journey — engagement, portraits, and forever.",
     images: [
       {
         id: "g1",
-        src: "/images/gallery/engagement-1.svg",
-        alt: "Engagement photo placeholder",
+        src: "/images/gallery/beach-sitting.jpg",
+        alt: "Sitting together on the beach, holding hands with roses",
         category: "Engagement",
       },
       {
         id: "g2",
-        src: "/images/gallery/engagement-2.svg",
-        alt: "Engagement photo placeholder",
-        category: "Engagement",
+        src: "/images/gallery/coastal-dance.jpg",
+        alt: "Dancing together on the coastal cliffs",
+        category: "Couple",
       },
       {
         id: "g3",
-        src: "/images/gallery/prewedding-1.svg",
-        alt: "Pre-wedding photo placeholder",
+        src: "/images/gallery/beachfront-together.jpg",
+        alt: "Foreheads together, smiling with the ocean behind us",
         category: "Pre-wedding",
       },
       {
         id: "g4",
-        src: "/images/gallery/prewedding-2.svg",
-        alt: "Pre-wedding photo placeholder",
-        category: "Pre-wedding",
+        src: "/images/gallery/sunset-walk.jpg",
+        alt: "Walking hand in hand along the shore at sunset",
+        category: "Engagement",
       },
       {
         id: "g5",
-        src: "/images/gallery/couple-1.svg",
-        alt: "Couple portrait placeholder",
+        src: "/images/gallery/golden-moment.jpg",
+        alt: "A tender moment by the beach with ocean backdrop",
         category: "Couple",
-      },
-      {
-        id: "g6",
-        src: "/images/gallery/couple-2.svg",
-        alt: "Couple portrait placeholder",
-        category: "Couple",
-      },
-      {
-        id: "g7",
-        src: "/images/gallery/family-1.svg",
-        alt: "Family photo placeholder",
-        category: "Family",
-      },
-      {
-        id: "g8",
-        src: "/images/gallery/family-2.svg",
-        alt: "Family photo placeholder",
-        category: "Family",
       },
     ],
   },
@@ -287,7 +272,7 @@ export const weddingData = {
     description:
       "You are warmly invited to the wedding of Abhigna and Hemanth on March 11, 2027 at Bella Cavalli Events, Aubrey, Texas. Join us for sacred South Indian Hindu wedding celebrations.",
     siteUrl: "https://abhigna-hemanth.wedding",
-    ogImage: "/images/og-invitation.svg",
+    ogImage: "/images/couple/hero.jpg",
   },
 } as const;
 

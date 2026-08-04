@@ -90,7 +90,7 @@ export default function RSVPForm() {
   };
 
   return (
-    <section id="rsvp" className={`section ${styles.section}`} aria-labelledby="rsvp-title">
+    <section id="rsvp" className={`section section--cream ${styles.section}`} aria-labelledby="rsvp-title">
       <div className="section__inner">
         <ScrollReveal>
           <p className="section__eyebrow">Kindly respond</p>

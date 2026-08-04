@@ -2,22 +2,23 @@
   position: relative;
   padding: 3.5rem 1.25rem 2.5rem;
   background:
-    radial-gradient(ellipse at top, rgba(201, 162, 39, 0.12), transparent 45%),
-    linear-gradient(180deg, #2c1810, #120a07 70%);
-  border-top: 1px solid rgba(201, 162, 39, 0.35);
+    radial-gradient(ellipse at top, rgba(201, 168, 114, 0.12), transparent 45%),
+    linear-gradient(180deg, #4a342e, var(--footer) 55%);
+  border-top: 1px solid rgba(201, 168, 114, 0.25);
   overflow: hidden;
+  color: var(--cream);
 }
 
 .mangoLeaf {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.22;
+  opacity: 0.18;
   background:
-    radial-gradient(circle at 10% 20%, #2f5d3a 0 10px, transparent 11px),
-    radial-gradient(circle at 90% 30%, #d4a017 0 8px, transparent 9px),
+    radial-gradient(circle at 10% 20%, #a2b992 0 10px, transparent 11px),
+    radial-gradient(circle at 90% 30%, #c9a872 0 8px, transparent 9px),
     radial-gradient(circle at 20% 80%, #c45b7a 0 7px, transparent 8px),
-    radial-gradient(circle at 80% 75%, #2f5d3a 0 9px, transparent 10px);
+    radial-gradient(circle at 80% 75%, #a2b992 0 9px, transparent 10px);
 }
 
 .inner {
@@ -39,13 +40,22 @@
 .lotus {
   width: 1.7rem;
   height: 1.7rem;
-  color: var(--brass-bright);
+  color: var(--gold-soft);
+}
+
+.withLove {
+  font-family: var(--font-display);
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.35rem;
 }
 
 .names {
   font-family: var(--font-script);
   font-size: clamp(2.4rem, 7vw, 3.6rem);
-  color: var(--ivory);
+  color: #fffdf9;
   line-height: 1;
 }
 
@@ -55,12 +65,26 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   font-size: 0.78rem;
-  color: var(--brass);
+  color: var(--gold);
+}
+
+.venue {
+  margin-top: 0.35rem;
+  color: rgba(249, 246, 241, 0.78);
+  font-size: 1.05rem;
+}
+
+.hashtag {
+  margin-top: 0.85rem;
+  font-family: var(--font-display);
+  letter-spacing: 0.16em;
+  font-size: 0.85rem;
+  color: var(--gold-soft);
 }
 
 .tagline {
-  margin-top: 0.85rem;
-  color: var(--text-muted);
+  margin-top: 0.55rem;
+  color: rgba(249, 246, 241, 0.72);
   font-style: italic;
 }
 
@@ -73,17 +97,26 @@
 }
 
 .nav a {
-  font-family: var(--font-display);
-  font-size: 0.72rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--cream);
 }
 
 .nav a:hover {
-  color: var(--brass-bright);
+  color: var(--gold-soft);
 }
 
 .top {
   margin-top: 1.5rem;
+  border-color: rgba(249, 246, 241, 0.35);
+  color: var(--cream);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.top:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: var(--gold-soft);
+  color: #fffdf9;
 }

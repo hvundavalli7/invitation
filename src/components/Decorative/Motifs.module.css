@@ -1,13 +1,14 @@
 .icon {
   width: 1.75rem;
   height: 1.75rem;
-  color: var(--brass);
+  color: var(--rose);
   flex-shrink: 0;
 }
 
 .flame {
   transform-origin: 32px 32px;
   animation: flicker 1.8s ease-in-out infinite;
+  fill: var(--gold) !important;
 }
 
 .kolam {
@@ -28,7 +29,7 @@
 .kolamLotus {
   width: 1.5rem;
   height: 1.5rem;
-  color: var(--brass-bright);
+  color: var(--gold-deep);
 }
 
 @keyframes flicker {

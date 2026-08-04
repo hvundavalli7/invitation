@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none">
+  <defs>
+    <radialGradient id="fb-petal" cx="35%" cy="30%" r="70%">
+      <stop offset="0%" stop-color="#dce8f2"/>
+      <stop offset="50%" stop-color="#b7c9dc"/>
+      <stop offset="100%" stop-color="#8fa8c4" stop-opacity="0.7"/>
+    </radialGradient>
+    <radialGradient id="fb-wing" cx="40%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#e8f0f6" stop-opacity="0.95"/>
+      <stop offset="60%" stop-color="#a8bdd4" stop-opacity="0.8"/>
+      <stop offset="100%" stop-color="#7e9ab8" stop-opacity="0.55"/>
+    </radialGradient>
+    <radialGradient id="fb-center" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f5f0e6"/>
+      <stop offset="100%" stop-color="#c9a872" stop-opacity="0.85"/>
+    </radialGradient>
+  </defs>
+  <!-- Butterfly-like four-petal bloom -->
+  <ellipse cx="26" cy="28" rx="16" ry="20" fill="url(#fb-wing)" opacity="0.88" transform="rotate(-28 26 28)"/>
+  <ellipse cx="54" cy="28" rx="16" ry="20" fill="url(#fb-wing)" opacity="0.88" transform="rotate(28 54 28)"/>
+  <ellipse cx="28" cy="52" rx="14" ry="18" fill="url(#fb-petal)" opacity="0.82" transform="rotate(28 28 52)"/>
+  <ellipse cx="52" cy="52" rx="14" ry="18" fill="url(#fb-petal)" opacity="0.82" transform="rotate(-28 52 52)"/>
+  <!-- Soft inner wash -->
+  <ellipse cx="32" cy="34" rx="8" ry="10" fill="#dce8f2" opacity="0.55" transform="rotate(-20 32 34)"/>
+  <ellipse cx="48" cy="34" rx="8" ry="10" fill="#dce8f2" opacity="0.55" transform="rotate(20 48 34)"/>
+  <circle cx="40" cy="40" r="7" fill="url(#fb-center)"/>
+  <circle cx="40" cy="40" r="3" fill="#fffdf9" opacity="0.8"/>
+</svg>

@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cinzel, Cormorant_Garamond, Tangerine } from "next/font/google";
+import { Cinzel, Cormorant_Garamond, Great_Vibes } from "next/font/google";
 import { weddingData } from "@/data/wedding";
 import "./globals.css";
 
@@ -18,10 +18,10 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
 });
 
-const tangerine = Tangerine({
-  variable: "--font-tangerine",
+const greatVibes = Great_Vibes({
+  variable: "--font-great-vibes",
   subsets: ["latin"],
-  weight: ["400", "700"],
+  weight: ["400"],
   display: "swap",
 });
 
@@ -70,7 +70,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#2c1810",
+  themeColor: "#f9f6f1",
   width: "device-width",
   initialScale: 1,
 };
@@ -79,7 +79,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${cinzel.variable} ${cormorant.variable} ${tangerine.variable}`}
+      className={`${cinzel.variable} ${cormorant.variable} ${greatVibes.variable}`}
     >
       <body>{children}</body>
     </html>

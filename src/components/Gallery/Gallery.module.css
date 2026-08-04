@@ -1,6 +1,5 @@
 .section {
-  background:
-    radial-gradient(ellipse at top, rgba(92, 20, 40, 0.2), transparent 50%);
+  background: transparent;
 }
 
 .grid {
@@ -13,19 +12,22 @@
 .frame {
   width: 100%;
   display: block;
-  padding: 0.55rem;
-  background: linear-gradient(160deg, #4a2c1a, #1a0f0a);
-  border: 1px solid rgba(201, 162, 39, 0.45);
-  box-shadow:
-    inset 0 0 0 2px rgba(26, 15, 10, 0.65),
-    0 12px 28px rgba(0, 0, 0, 0.3);
+  padding: 0.5rem;
+  background: var(--card);
+  border: 1px solid rgba(201, 168, 114, 0.28);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-card);
   position: relative;
-  transition: transform 0.25s ease, border-color 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .frame:hover {
   transform: translateY(-3px);
-  border-color: var(--brass-bright);
+  border-color: rgba(178, 44, 76, 0.35);
+  box-shadow: var(--shadow-soft);
 }
 
 .image {
@@ -33,23 +35,25 @@
   height: auto;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  border-radius: calc(var(--radius-md) - 6px);
 }
 
 .category {
   display: block;
-  margin-top: 0.45rem;
-  font-family: var(--font-display);
-  font-size: 0.68rem;
+  margin-top: 0.5rem;
+  font-family: var(--font-body);
+  font-size: 0.72rem;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--brass);
+  color: var(--text-muted);
 }
 
 .lightbox {
   position: fixed;
   inset: 0;
   z-index: 80;
-  background: rgba(10, 6, 4, 0.92);
+  background: rgba(62, 39, 35, 0.55);
+  backdrop-filter: blur(6px);
   display: grid;
   place-items: center;
   padding: 1rem;
@@ -60,13 +64,15 @@
   top: 1rem;
   right: 1rem;
   z-index: 2;
-  font-family: var(--font-display);
+  font-family: var(--font-body);
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: var(--cream);
-  border: 1px solid rgba(201, 162, 39, 0.5);
+  color: var(--ink);
+  border: 1px solid rgba(201, 168, 114, 0.4);
+  border-radius: 999px;
   padding: 0.55rem 0.9rem;
-  background: rgba(26, 15, 10, 0.7);
+  background: rgba(255, 253, 249, 0.92);
+  box-shadow: var(--shadow-card);
 }
 
 .nav {
@@ -76,11 +82,13 @@
   z-index: 2;
   width: 48px;
   height: 48px;
-  border: 1px solid rgba(201, 162, 39, 0.5);
-  color: var(--brass-bright);
+  border: 1px solid rgba(201, 168, 114, 0.4);
+  border-radius: 50%;
+  color: var(--rose);
   font-size: 2rem;
   line-height: 1;
-  background: rgba(26, 15, 10, 0.7);
+  background: rgba(255, 253, 249, 0.92);
+  box-shadow: var(--shadow-card);
 }
 
 .prev {
@@ -94,13 +102,16 @@
 .lightboxFrame {
   width: min(100%, 520px);
   padding: 0.75rem;
-  background: linear-gradient(160deg, #4a2c1a, #1a0f0a);
-  border: 1px solid rgba(201, 162, 39, 0.55);
+  background: var(--card);
+  border: 1px solid rgba(201, 168, 114, 0.35);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-soft);
 }
 
 .lightboxImage {
   width: 100%;
   height: auto;
+  border-radius: var(--radius-sm);
 }
 
 .lightboxFrame figcaption {

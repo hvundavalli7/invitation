@@ -7,7 +7,7 @@ export default function OurStory() {
   const { story } = weddingData;
 
   return (
-    <section id="our-story" className={`section ${styles.section}`} aria-labelledby="story-title">
+    <section id="our-story" className={`section section--cream ${styles.section}`} aria-labelledby="story-title">
       <div className="section__inner">
         <ScrollReveal>
           <p className="section__eyebrow">Written in the stars</p>

@@ -4,7 +4,7 @@ import styles from "./VenueMap.module.css";
 
 export default function VenueMap() {
   return (
-    <section id="venues" className={`section ${styles.section}`} aria-labelledby="venues-title">
+    <section id="venues" className={`section section--cream ${styles.section}`} aria-labelledby="venues-title">
       <div className="section__inner">
         <ScrollReveal>
           <p className="section__eyebrow">Find your way</p>

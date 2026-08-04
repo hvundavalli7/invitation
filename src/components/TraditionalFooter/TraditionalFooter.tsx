@@ -1,27 +1,20 @@
 import { weddingData } from "@/data/wedding";
-import { DiyaIcon, LotusIcon } from "@/components/Decorative/Motifs";
 import styles from "./TraditionalFooter.module.css";
 
 export default function TraditionalFooter() {
   const { couple, wedding, footer } = weddingData;
+  const hashtag = `#${couple.bride}${couple.groom}`.replace(/\s+/g, "").toUpperCase();
 
   return (
     <footer className={styles.footer}>
-      <div className={styles.mangoLeaf} aria-hidden="true" />
-
       <div className={styles.inner}>
-        <div className={styles.lamps} aria-hidden="true">
-          <DiyaIcon className={styles.diya} />
-          <LotusIcon className={styles.lotus} />
-          <DiyaIcon className={styles.diya} />
-        </div>
-
+        <p className={styles.withLove}>With love</p>
         <p className={styles.names}>{couple.displayName}</p>
-        <p className={styles.date}>
-          {wedding.dateLabel}
-          <span aria-hidden="true"> · </span>
+        <p className={styles.date}>{wedding.dateLabel}</p>
+        <p className={styles.venue}>
           {wedding.venue}, {wedding.location}
         </p>
+        <p className={styles.hashtag}>{hashtag}</p>
         <p className={styles.tagline}>{footer.tagline}</p>
 
         <nav className={styles.nav} aria-label="Footer">
@@ -29,7 +22,6 @@ export default function TraditionalFooter() {
           <a href="#details">Details</a>
           <a href="#venues">Venues</a>
           <a href="#rsvp">RSVP</a>
-          <a href={`mailto:${footer.contactEmail}`}>{footer.contactEmail}</a>
         </nav>
 
         <a className={`btn-ghost ${styles.top}`} href="#top">

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="300" viewBox="0 0 200 300" fill="none">
+  <defs>
+    <linearGradient id="lr-blade" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#a2b992" stop-opacity="0.85"/>
+      <stop offset="55%" stop-color="#c5d6c0" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#8fa87e" stop-opacity="0.65"/>
+    </linearGradient>
+    <linearGradient id="lr-deep" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8fa87e" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#a2b992" stop-opacity="0.45"/>
+    </linearGradient>
+    <filter id="lr-soft" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="0.6"/>
+    </filter>
+  </defs>
+  <!-- Mirrored palm frond stem -->
+  <path d="M82 288 C88 220 92 150 98 80 C101 48 104 28 108 12" stroke="#8fa87e" stroke-width="2.2" stroke-linecap="round" opacity="0.55"/>
+  <!-- Fronds, right-leaning complementary leaf -->
+  <path d="M98 78 C130 72 162 58 182 40 C158 52 128 66 98 78Z" fill="url(#lr-blade)" opacity="0.9"/>
+  <path d="M96 98 C132 96 166 86 188 70 C160 84 126 96 96 98Z" fill="url(#lr-deep)" opacity="0.85"/>
+  <path d="M94 120 C130 122 168 116 192 100 C164 114 126 122 94 120Z" fill="url(#lr-blade)" opacity="0.88"/>
+  <path d="M92 142 C128 148 166 146 190 132 C162 144 124 148 92 142Z" fill="url(#lr-deep)" opacity="0.82"/>
+  <path d="M90 164 C124 174 160 178 184 168 C156 176 120 172 90 164Z" fill="url(#lr-blade)" opacity="0.86"/>
+  <path d="M88 186 C120 200 152 210 176 204 C148 208 114 196 88 186Z" fill="url(#lr-deep)" opacity="0.8"/>
+  <path d="M86 208 C114 226 142 242 164 240 C138 240 108 222 86 208Z" fill="url(#lr-blade)" opacity="0.84"/>
+  <path d="M84 230 C108 250 130 268 150 270 C126 266 102 246 84 230Z" fill="url(#lr-deep)" opacity="0.78"/>
+  <!-- Left-side leaflets -->
+  <path d="M98 72 C72 60 48 42 32 22 C52 40 74 58 98 72Z" fill="url(#lr-blade)" opacity="0.75"/>
+  <path d="M96 94 C66 86 40 68 22 48 C42 66 68 84 96 94Z" fill="url(#lr-deep)" opacity="0.72"/>
+  <path d="M94 116 C62 112 32 96 14 76 C34 94 64 110 94 116Z" fill="url(#lr-blade)" opacity="0.74"/>
+  <path d="M92 138 C60 138 28 126 10 108 C30 124 62 136 92 138Z" fill="url(#lr-deep)" opacity="0.7"/>
+  <path d="M90 160 C58 164 26 156 8 140 C28 154 60 162 90 160Z" fill="url(#lr-blade)" opacity="0.72"/>
+  <path d="M88 182 C60 192 32 190 14 178 C34 188 62 188 88 182Z" fill="url(#lr-deep)" opacity="0.68"/>
+  <path d="M86 204 C62 218 40 222 24 214 C42 220 64 214 86 204Z" fill="url(#lr-blade)" opacity="0.7"/>
+  <!-- Soft tip wash -->
+  <ellipse cx="108" cy="20" rx="10" ry="14" fill="#c5d6c0" opacity="0.35" filter="url(#lr-soft)"/>
+</svg>
