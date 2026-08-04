@@ -1,10 +1,11 @@
 .footer {
   position: relative;
+  z-index: 1;
   padding: 3.75rem 1.25rem 2.5rem;
   background:
-    radial-gradient(ellipse at top, rgba(200, 155, 60, 0.22), transparent 45%),
-    linear-gradient(180deg, #7b1e2b, var(--footer) 55%, #3d0f16);
-  border-top: 3px solid rgba(200, 155, 60, 0.45);
+    radial-gradient(ellipse at top, rgba(200, 155, 60, 0.18), transparent 45%),
+    linear-gradient(180deg, rgba(20, 56, 32, 0.55), rgba(13, 36, 22, 0.88) 55%, #0a1a10);
+  border-top: 2px solid rgba(200, 155, 60, 0.35);
   overflow: hidden;
   color: var(--cream);
 }
@@ -23,25 +24,16 @@
 
 .toran {
   position: absolute;
-  top: -0.15rem;
+  top: -1.5rem;
   left: 50%;
   transform: translateX(-50%);
-  width: min(115%, 1020px);
+  width: min(140%, 1100px);
   height: auto;
-  opacity: 0.75;
+  opacity: 0.88;
   pointer-events: none;
   filter: saturate(1.05);
-}
-
-.garland {
-  position: absolute;
-  top: 1.4rem;
-  left: 50%;
-  transform: translateX(-50%);
-  width: min(105%, 900px);
-  height: auto;
-  opacity: 0.45;
-  pointer-events: none;
+  mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
 }
 
 .inner {

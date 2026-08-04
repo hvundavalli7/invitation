@@ -7,75 +7,9 @@ export default function TempleEntranceHero() {
 
   return (
     <header className={styles.hero} id="top">
-      <div className={styles.parchment} aria-hidden="true" />
-      <div className={styles.templeArch} aria-hidden="true" />
-
-      <Image
-        src="/images/decor/mango-leaf-toran.svg"
-        alt=""
-        width={1200}
-        height={140}
-        className={styles.toran}
-        priority
-      />
-      <Image
-        src="/images/decor/marigold-garland.svg"
-        alt=""
-        width={1200}
-        height={160}
-        className={styles.garland}
-        priority
-      />
-
-      <div className={styles.bells} aria-hidden="true">
-        <Image
-          src="/images/decor/temple-bell.svg"
-          alt=""
-          width={48}
-          height={60}
-          className={`${styles.bell} ${styles.bellLeft}`}
-        />
-        <Image
-          src="/images/decor/temple-bell.svg"
-          alt=""
-          width={48}
-          height={60}
-          className={`${styles.bell} ${styles.bellRight}`}
-        />
-      </div>
-
-      <div className={styles.sideLeaves} aria-hidden="true">
-        <Image
-          src="/images/decor/banana-leaf-left.svg"
-          alt=""
-          width={280}
-          height={520}
-          className={`${styles.banana} ${styles.bananaLeft}`}
-        />
-        <Image
-          src="/images/decor/banana-leaf-right.svg"
-          alt=""
-          width={280}
-          height={520}
-          className={`${styles.banana} ${styles.bananaRight}`}
-        />
-      </div>
-
-      <div className={styles.diyas} aria-hidden="true">
-        <Image
-          src="/images/decor/diya.svg"
-          alt=""
-          width={48}
-          height={48}
-          className={`${styles.diya} ${styles.diyaLeft}`}
-        />
-        <Image
-          src="/images/decor/diya.svg"
-          alt=""
-          width={48}
-          height={48}
-          className={`${styles.diya} ${styles.diyaRight}`}
-        />
+      <div className={styles.atmosphere} aria-hidden="true">
+        <div className={styles.sunGlow} />
+        <div className={styles.groundFade} />
       </div>
 
       <div className={styles.stage}>
@@ -104,45 +38,16 @@ export default function TempleEntranceHero() {
 
         {hero.image ? (
           <div className={styles.scene}>
-            <div className={styles.ornateFrame}>
-              <Image
-                src="/images/decor/ornate-corner.svg"
-                alt=""
-                width={80}
-                height={80}
-                className={`${styles.frameCorner} ${styles.fcTl}`}
-              />
-              <Image
-                src="/images/decor/ornate-corner.svg"
-                alt=""
-                width={80}
-                height={80}
-                className={`${styles.frameCorner} ${styles.fcTr}`}
-              />
-              <Image
-                src="/images/decor/ornate-corner.svg"
-                alt=""
-                width={80}
-                height={80}
-                className={`${styles.frameCorner} ${styles.fcBl}`}
-              />
-              <Image
-                src="/images/decor/ornate-corner.svg"
-                alt=""
-                width={80}
-                height={80}
-                className={`${styles.frameCorner} ${styles.fcBr}`}
-              />
-              <Image
-                src={hero.image}
-                alt={hero.imageAlt}
-                width={1024}
-                height={1536}
-                className={styles.sceneImage}
-                priority
-                sizes="(max-width: 800px) 100vw, 560px"
-              />
-            </div>
+            <Image
+              src={hero.image}
+              alt={hero.imageAlt}
+              width={1024}
+              height={1536}
+              className={styles.sceneImage}
+              priority
+              sizes="(max-width: 800px) 92vw, 520px"
+            />
+            <div className={styles.sceneBlend} aria-hidden="true" />
           </div>
         ) : null}
 

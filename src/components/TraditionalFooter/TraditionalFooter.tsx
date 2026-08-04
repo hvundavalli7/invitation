@@ -10,18 +10,11 @@ export default function TraditionalFooter() {
     <footer className={styles.footer}>
       <div className={styles.mangoLeaf} aria-hidden="true" />
       <Image
-        src="/images/decor/mango-leaf-toran.svg"
+        src="/images/venue/venue-toran-garland.webp"
         alt=""
-        width={1200}
-        height={140}
+        width={1600}
+        height={480}
         className={styles.toran}
-      />
-      <Image
-        src="/images/decor/marigold-garland.svg"
-        alt=""
-        width={1200}
-        height={160}
-        className={styles.garland}
       />
       <div className={styles.inner}>
         <div className={styles.lamps} aria-hidden="true">

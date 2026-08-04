@@ -10,7 +10,7 @@ type Floater = {
   delay: number;
   duration: number;
   size: number;
-  kind: "marigold" | "orange" | "yellow" | "leaf" | "diya";
+  kind: "marigold" | "orange" | "yellow" | "leaf";
   drift: number;
 };
 
@@ -19,7 +19,6 @@ const SRC: Record<Floater["kind"], string> = {
   orange: "/images/decor/flower-orange.svg",
   yellow: "/images/decor/flower-yellow.svg",
   leaf: "/images/decor/leaf-sprig.svg",
-  diya: "/images/decor/diya.svg",
 };
 
 const KINDS: Floater["kind"][] = [
@@ -28,8 +27,8 @@ const KINDS: Floater["kind"][] = [
   "leaf",
   "marigold",
   "yellow",
-  "diya",
   "orange",
+  "marigold",
   "leaf",
 ];
 
@@ -44,14 +43,14 @@ function getReducedMotion() {
 }
 
 function createFloaters(): Floater[] {
-  return Array.from({ length: 18 }, (_, i) => ({
+  return Array.from({ length: 24 }, (_, i) => ({
     id: i,
     left: (i * 41 + 7) % 100,
-    delay: (i % 9) * 0.9,
-    duration: 11 + (i % 6) * 1.8,
-    size: 14 + (i % 5) * 4,
+    delay: (i % 10) * 0.85,
+    duration: 12 + (i % 7) * 1.6,
+    size: 12 + (i % 6) * 3.5,
     kind: KINDS[i % KINDS.length],
-    drift: (i % 2 === 0 ? 1 : -1) * (18 + (i % 4) * 8),
+    drift: (i % 2 === 0 ? 1 : -1) * (22 + (i % 5) * 10),
   }));
 }
 
@@ -74,13 +73,13 @@ export default function Petals({ active }: { active: boolean }) {
       {floaters.map((p) => (
         <span
           key={p.id}
-          className={`${styles.item} ${p.kind === "diya" ? styles.diya : ""}`}
+          className={styles.item}
           style={
             {
               left: `${p.left}%`,
               animationDelay: `${p.delay}s`,
               animationDuration: `${p.duration}s`,
-              width: p.kind === "diya" ? p.size * 1.15 : p.size,
+              width: p.size,
               "--drift": `${p.drift}px`,
             } as CSSProperties
           }
