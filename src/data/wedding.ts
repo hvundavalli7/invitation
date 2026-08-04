@@ -32,7 +32,7 @@ export const weddingData = {
     ctaLabel: "View Celebrations",
     ctaHref: "#celebrations",
     /** Set once couple photos are added under /public/images/couple/ */
-    image: "/images/couple/hero.jpg",
+    image: "/images/gallery/sunset-walk.jpg",
     imageAlt: "Abhigna and Hemanth on the beach",
   },
 
@@ -134,15 +134,15 @@ export const weddingData = {
     photos: [
       {
         id: "story-1",
-        alt: "Abhigna and Hemanth embracing on the beach",
-        src: "/images/couple/embrace.jpg",
-        caption: "Abhigna & Hemanth",
+        alt: "Proposal moment with golden retrievers in the mountains",
+        src: "/images/gallery/proposal-dogs-1.jpg",
+        caption: "The Proposal",
       },
       {
         id: "story-2",
-        alt: "The proposal moment on the beach",
-        src: "/images/couple/proposal.jpg",
-        caption: "The Proposal",
+        alt: "Celebrating the proposal surrounded by our beloved dogs",
+        src: "/images/gallery/proposal-dogs-2.jpg",
+        caption: "Celebrating with family",
       },
     ],
   },
@@ -177,8 +177,8 @@ export const weddingData = {
     ],
     contact: {
       title: "Contact",
-      email: "hello@abhigna-hemanth.wedding", // Update with real contact
-      phone: "+1 (XXX) XXX-XXXX", // Update with real contact
+      email: "hemanthbhargav13@gmail.com", // Update with real contact
+      phone: "+1 (609) 598-6984", // Update with real contact
       note: "For questions about the wedding, please reach out to the couple or their families.",
     },
   },
@@ -225,32 +225,32 @@ export const weddingData = {
     images: [
       {
         id: "g1",
-        src: "/images/couple/hero.jpg",
-        alt: "Walking hand in hand on the beach at sunset",
+        src: "/images/gallery/beach-sitting.jpg",
+        alt: "Sitting together on the beach, holding hands with roses",
         category: "Engagement",
       },
       {
         id: "g2",
-        src: "/images/couple/forehead-kiss.jpg",
-        alt: "A tender forehead kiss by the shore",
+        src: "/images/gallery/coastal-dance.jpg",
+        alt: "Dancing together on the coastal cliffs",
         category: "Couple",
       },
       {
         id: "g3",
-        src: "/images/couple/dance.jpg",
-        alt: "Dancing together on the coastal cliffs",
+        src: "/images/gallery/beachfront-together.jpg",
+        alt: "Foreheads together, smiling with the ocean behind us",
         category: "Pre-wedding",
       },
       {
         id: "g4",
-        src: "/images/couple/proposal.jpg",
-        alt: "The proposal with white roses on the beach",
+        src: "/images/gallery/sunset-walk.jpg",
+        alt: "Walking hand in hand along the shore at sunset",
         category: "Engagement",
       },
       {
         id: "g5",
-        src: "/images/couple/embrace.jpg",
-        alt: "Foreheads together, smiling on the beach",
+        src: "/images/gallery/golden-moment.jpg",
+        alt: "A tender moment by the beach with ocean backdrop",
         category: "Couple",
       },
     ],
