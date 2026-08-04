@@ -7,55 +7,101 @@
   padding: 3.5rem 1.25rem 4rem;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.7), transparent 55%),
-    linear-gradient(180deg, #fbf8f3 0%, var(--cream) 60%, #f1ebe2 100%);
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.75), transparent 55%),
+    radial-gradient(ellipse at 15% 80%, rgba(244, 167, 185, 0.18), transparent 40%),
+    radial-gradient(ellipse at 85% 70%, rgba(240, 193, 74, 0.14), transparent 38%),
+    linear-gradient(180deg, #fbf8f3 0%, var(--cream) 55%, #f1ebe2 100%);
+}
+
+.borderFrame {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .decor {
   position: absolute;
-  width: clamp(110px, 18vw, 190px);
+  width: clamp(130px, 22vw, 230px);
   height: auto;
-  opacity: 0.9;
-  pointer-events: none;
-  z-index: 0;
+  opacity: 1;
+  filter: saturate(1.15) contrast(1.05);
 }
 
-.decorLeft {
-  left: -1.5rem;
-  top: 12%;
+.decorLeftTop {
+  left: -1.25rem;
+  top: 6%;
   animation: sway 6s ease-in-out infinite;
 }
 
-.decorRight {
-  right: -1.5rem;
-  bottom: 10%;
+.decorRightTop {
+  right: -1.25rem;
+  top: 8%;
   animation: sway 7s ease-in-out infinite reverse;
+}
+
+.decorLeftBottom {
+  left: -0.5rem;
+  bottom: 4%;
+  width: clamp(100px, 16vw, 170px);
+  animation: swayFlipY 8s ease-in-out infinite reverse;
+}
+
+.decorRightBottom {
+  right: -0.5rem;
+  bottom: 3%;
+  width: clamp(100px, 16vw, 170px);
+  animation: swayFlipXY 7.5s ease-in-out infinite;
 }
 
 .bloom {
   position: absolute;
-  width: 36px;
+  width: 44px;
   height: auto;
-  pointer-events: none;
-  z-index: 0;
+  opacity: 0.95;
   animation: float 5.5s ease-in-out infinite;
+  filter: drop-shadow(0 2px 6px rgba(62, 39, 35, 0.14)) saturate(1.2);
 }
 
 .bloom1 {
-  top: 14%;
-  right: 18%;
+  top: 12%;
+  right: 16%;
+  width: 48px;
 }
 
 .bloom2 {
-  top: 28%;
-  left: 16%;
+  top: 26%;
+  left: 14%;
+  width: 36px;
   animation-delay: 0.8s;
 }
 
 .bloom3 {
-  bottom: 18%;
-  right: 22%;
+  bottom: 22%;
+  right: 18%;
+  width: 34px;
   animation-delay: 1.4s;
+}
+
+.bloom4 {
+  top: 18%;
+  left: 22%;
+  width: 40px;
+  animation-delay: 0.4s;
+}
+
+.bloom5 {
+  bottom: 16%;
+  left: 12%;
+  width: 34px;
+  animation-delay: 1.8s;
+}
+
+.bloom6 {
+  top: 48%;
+  right: 10%;
+  width: 36px;
+  animation-delay: 1.1s;
 }
 
 .stage {
@@ -71,15 +117,18 @@
 }
 
 .ganesh {
-  width: 68px;
+  width: clamp(88px, 18vw, 120px);
   height: auto;
-  margin-bottom: 0.15rem;
+  margin-bottom: 0.1rem;
+  filter: drop-shadow(0 8px 16px rgba(62, 39, 35, 0.18));
+  animation: ganeshGlow 4.5s ease-in-out infinite;
 }
 
 .mantra {
   color: var(--rose);
   font-family: var(--font-body);
-  font-size: 0.95rem;
+  font-style: italic;
+  font-size: clamp(1rem, 2.4vw, 1.2rem);
   letter-spacing: 0.04em;
 }
 
@@ -121,6 +170,7 @@
   background: #fff;
   border-radius: 4px;
   box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(201, 168, 114, 0.35);
   transform: rotate(-1.5deg);
 }
 
@@ -130,15 +180,6 @@
   aspect-ratio: 4 / 5;
   object-fit: cover;
   border-radius: 2px;
-}
-
-.date {
-  margin-top: 0.5rem;
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
-  color: var(--ink);
 }
 
 .venue {
@@ -160,6 +201,26 @@
   }
 }
 
+@keyframes swayFlipY {
+  0%,
+  100% {
+    transform: scaleY(-1) rotate(-2deg);
+  }
+  50% {
+    transform: scaleY(-1) rotate(2deg);
+  }
+}
+
+@keyframes swayFlipXY {
+  0%,
+  100% {
+    transform: scaleX(-1) scaleY(-1) rotate(-2deg);
+  }
+  50% {
+    transform: scaleX(-1) scaleY(-1) rotate(2deg);
+  }
+}
+
 @keyframes float {
   0%,
   100% {
@@ -170,25 +231,41 @@
   }
 }
 
+@keyframes ganeshGlow {
+  0%,
+  100% {
+    filter: drop-shadow(0 8px 16px rgba(62, 39, 35, 0.18));
+  }
+  50% {
+    filter: drop-shadow(0 10px 22px rgba(196, 90, 58, 0.28));
+  }
+}
+
 @media (max-width: 700px) {
-  .decorLeft,
-  .decorRight {
-    opacity: 0.55;
+  .decorLeftTop,
+  .decorRightTop,
+  .decorLeftBottom,
+  .decorRightBottom {
+    opacity: 0.62;
     width: 96px;
   }
 
   .bloom {
     width: 28px;
   }
+
+  .bloom1 {
+    width: 34px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .decorLeft,
-  .decorRight,
+  .decorLeftTop,
+  .decorRightTop,
+  .decorLeftBottom,
+  .decorRightBottom,
   .bloom,
-  .bloom1,
-  .bloom2,
-  .bloom3 {
+  .ganesh {
     animation: none;
   }
 }

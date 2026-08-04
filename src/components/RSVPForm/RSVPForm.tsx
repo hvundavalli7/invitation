@@ -12,7 +12,6 @@ type FormState = {
   guests: string;
   attending: "yes" | "no" | "";
   events: string[];
-  meal: string;
   dietary: string;
   message: string;
 };
@@ -24,13 +23,39 @@ const initial: FormState = {
   guests: "1",
   attending: "",
   events: [],
-  meal: "",
   dietary: "",
   message: "",
 };
 
-export default function RSVPForm() {
+function buildFormSubmitPayload(form: FormState) {
   const { rsvp } = weddingData;
+  const attendingLabel =
+    form.attending === "yes" ? "Joyfully attending" : "Unable to attend";
+  const eventLabels = form.events
+    .map((id) => rsvp.events.find((event) => event.id === id)?.label ?? id)
+    .join(", ");
+
+  return {
+    name: form.name.trim(),
+    email: form.email.trim(),
+    phone: form.phone.trim() || "—",
+    guests: form.guests.trim() || "1",
+    attending: attendingLabel,
+    events: eventLabels || "—",
+    dietary: form.dietary.trim() || "—",
+    message: form.message.trim() || "—",
+    _replyto: form.email.trim(),
+    _subject: `Wedding RSVP: ${form.name.trim()} (${
+      form.attending === "yes" ? "Attending" : "Declined"
+    })`,
+    _template: "table",
+    _captcha: "false",
+    _autoresponse: rsvp.confirmation,
+  };
+}
+
+export default function RSVPForm() {
+  const { rsvp, details } = weddingData;
   const [form, setForm] = useState<FormState>(initial);
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [error, setError] = useState("");
@@ -55,37 +80,86 @@ export default function RSVPForm() {
 
     setStatus("submitting");
 
-    const payload = {
-      ...form,
-      submittedAt: new Date().toISOString(),
-    };
-
     try {
-      if (rsvp.endpoint) {
-        const res = await fetch(rsvp.endpoint, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify(payload),
-        });
-        if (!res.ok) throw new Error("Request failed");
-      } else {
-        // Local / demo mode — ready to wire to Firebase, Supabase, Sheets, Formspree, or API
-        await new Promise((r) => setTimeout(r, 500));
-        if (typeof window !== "undefined") {
-          const key = "abhigna-hemanth-rsvps";
-          const existing = JSON.parse(window.localStorage.getItem(key) || "[]");
-          existing.push(payload);
-          window.localStorage.setItem(key, JSON.stringify(existing));
+      // Prefer an explicit endpoint, else Resend-backed /api/rsvp when configured,
+      // else browser FormSubmit (no API key) to the couple's contact email.
+      let endpoint = rsvp.endpoint.trim();
+
+      if (!endpoint) {
+        try {
+          const probe = await fetch("/api/rsvp", { method: "GET" });
+          const info = (await probe.json().catch(() => ({}))) as { provider?: string };
+          if (probe.ok && info.provider === "resend") {
+            endpoint = "/api/rsvp";
+          }
+        } catch {
+          // Fall through to FormSubmit
         }
       }
+
+      if (!endpoint) {
+        const notifyEmail = details.contact.email;
+        if (!notifyEmail) {
+          throw new Error("RSVP email is not configured.");
+        }
+        endpoint = `https://formsubmit.co/ajax/${encodeURIComponent(notifyEmail)}`;
+      }
+
+      const isFormSubmit = endpoint.includes("formsubmit.co");
+      const payload = isFormSubmit
+        ? buildFormSubmitPayload(form)
+        : {
+            ...form,
+            submittedAt: new Date().toISOString(),
+          };
+
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      const data = (await res.json().catch(() => ({}))) as {
+        error?: string;
+        success?: string | boolean;
+        message?: string;
+        ok?: boolean;
+      };
+
+      // FormSubmit returns HTTP 200 with success:"false" while waiting for
+      // a one-time inbox activation click — treat that as submitted.
+      const formSubmitNeedsActivation =
+        isFormSubmit &&
+        typeof data.message === "string" &&
+        data.message.toLowerCase().includes("activation");
+
+      const formSubmitOk =
+        isFormSubmit && (data.success === true || data.success === "true" || formSubmitNeedsActivation);
+
+      if (!res.ok && !formSubmitNeedsActivation) {
+        throw new Error(data.error || data.message || "Request failed");
+      }
+
+      if (isFormSubmit && !formSubmitOk) {
+        throw new Error(data.message || data.error || "Request failed");
+      }
+
+      if (!isFormSubmit && data.error) {
+        throw new Error(data.error);
+      }
+
       setStatus("success");
       setForm(initial);
-    } catch {
+    } catch (err) {
       setStatus("error");
-      setError("Something went wrong. Please try again shortly.");
+      setError(
+        err instanceof Error && err.message
+          ? err.message
+          : "Something went wrong. Please try again shortly.",
+      );
     }
   };
 
@@ -196,32 +270,15 @@ export default function RSVPForm() {
                 </div>
               </fieldset>
 
-              <div className={styles.row}>
-                <label>
-                  <span>Meal preference</span>
-                  <select
-                    name="meal"
-                    value={form.meal}
-                    onChange={(e) => setForm({ ...form, meal: e.target.value })}
-                  >
-                    <option value="">Select an option</option>
-                    {rsvp.mealOptions.map((opt) => (
-                      <option key={opt} value={opt}>
-                        {opt}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <label>
-                  <span>Dietary restrictions</span>
-                  <input
-                    name="dietary"
-                    value={form.dietary}
-                    onChange={(e) => setForm({ ...form, dietary: e.target.value })}
-                    placeholder="Allergies or preferences"
-                  />
-                </label>
-              </div>
+              <label className={styles.full}>
+                <span>Dietary restrictions</span>
+                <input
+                  name="dietary"
+                  value={form.dietary}
+                  onChange={(e) => setForm({ ...form, dietary: e.target.value })}
+                  placeholder="Allergies or preferences"
+                />
+              </label>
 
               <label className={styles.full}>
                 <span>Message for the couple</span>

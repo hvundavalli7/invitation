@@ -1,0 +1,45 @@
+.corners {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.mark {
+  position: absolute;
+  opacity: 0.45;
+  height: auto;
+  filter: saturate(1.15);
+}
+
+.tl {
+  top: 1.25rem;
+  left: 1rem;
+  width: 40px;
+}
+
+.tr {
+  top: 1.75rem;
+  right: 1.25rem;
+  width: 34px;
+}
+
+.bl {
+  bottom: 1.75rem;
+  left: 1.5rem;
+  width: 32px;
+}
+
+.br {
+  bottom: 1.25rem;
+  right: 1rem;
+  width: 40px;
+  transform: scaleX(-1);
+}
+
+@media (max-width: 700px) {
+  .mark {
+    opacity: 0.2;
+    width: 26px;
+  }
+}

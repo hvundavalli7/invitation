@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { weddingData } from "@/data/wedding";
 import ScrollReveal from "@/components/ScrollReveal/ScrollReveal";
+import SectionCorners from "@/components/Decorative/SectionCorners";
 import styles from "./OurStory.module.css";
 
 export default function OurStory() {
@@ -8,6 +9,7 @@ export default function OurStory() {
 
   return (
     <section id="our-story" className={`section section--cream ${styles.section}`} aria-labelledby="story-title">
+      <SectionCorners />
       <div className="section__inner">
         <ScrollReveal>
           <p className="section__eyebrow">Written in the stars</p>

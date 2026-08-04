@@ -6,32 +6,41 @@
   overflow: hidden;
 }
 
-.petal,
-.gold {
+.item {
   position: absolute;
-  top: -10%;
-  border-radius: 60% 40% 60% 40%;
-  opacity: 0.7;
+  top: -12%;
+  display: block;
+  opacity: 0.85;
   animation-name: fall;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
+  filter: drop-shadow(0 2px 4px rgba(62, 39, 35, 0.12));
 }
 
-.petal {
-  background: linear-gradient(145deg, #f8e4ec, #e8b4c4 45%, #c45b7a 85%);
-  box-shadow: 0 0 8px rgba(196, 91, 122, 0.22);
+.img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
-.petal:nth-child(3n) {
-  background: linear-gradient(145deg, #e8f0e6, #d4e5d4 50%, #a2b992);
-  box-shadow: 0 0 8px rgba(162, 185, 146, 0.25);
+.butterfly .img {
+  animation: flap 0.28s ease-in-out infinite;
 }
 
-.gold {
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #f5e6c8, var(--gold) 70%, var(--gold-deep));
-  box-shadow: 0 0 10px rgba(201, 168, 114, 0.35);
-  opacity: 0.6;
+.butterflyPath {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 41;
+  pointer-events: none;
+  animation: butterflyFly 18s linear infinite;
+  will-change: transform;
+}
+
+.butterflyWings {
+  display: inline-block;
+  animation: flap 0.25s ease-in-out infinite;
+  transform-origin: center;
 }
 
 @keyframes fall {
@@ -39,11 +48,51 @@
     transform: translate3d(0, -10vh, 0) rotate(0deg);
     opacity: 0;
   }
-  10% {
-    opacity: 0.75;
+  8% {
+    opacity: 0.9;
   }
   100% {
-    transform: translate3d(40px, 110vh, 0) rotate(360deg);
+    transform: translate3d(var(--drift, 30px), 115vh, 0) rotate(340deg);
     opacity: 0;
+  }
+}
+
+@keyframes flap {
+  0%,
+  100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(0.55);
+  }
+}
+
+@keyframes butterflyFly {
+  0% {
+    transform: translate(-10vw, 60vh) rotate(-8deg) scale(1);
+  }
+  20% {
+    transform: translate(20vw, 35vh) rotate(6deg) scale(1.05);
+  }
+  40% {
+    transform: translate(45vw, 55vh) rotate(-4deg) scale(0.95);
+  }
+  60% {
+    transform: translate(65vw, 25vh) rotate(8deg) scale(1.1);
+  }
+  80% {
+    transform: translate(85vw, 45vh) rotate(-6deg) scale(1);
+  }
+  100% {
+    transform: translate(110vw, 30vh) rotate(4deg) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .item,
+  .butterflyPath,
+  .butterflyWings,
+  .butterfly .img {
+    animation: none;
   }
 }
