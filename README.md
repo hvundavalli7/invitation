@@ -7,7 +7,7 @@ A premium, fully responsive South Indian Hindu wedding invitation website for **
 - Interactive scratch-card opening with temple-door reveal
 - Temple-inspired hero, countdown (America/Chicago), events timeline
 - Our Story, wedding details, venue maps, gallery lightbox, RSVP form
-- Optional instrumental music (starts only after guest interaction)
+- Background music: *Yedhemaina Sakhi* (starts only after guest interaction)
 - Centralized editable wedding data in `src/data/wedding.ts`
 
 ## Getting started
@@ -24,7 +24,7 @@ Open [http://localhost:3000](http://localhost:3000).
 Edit **`src/data/wedding.ts`** for names, dates, venues, copy, RSVP endpoint, gallery images, and music.
 
 - Replace gallery SVGs in `public/images/gallery/` with your photos
-- Replace `public/audio/wedding-instrumental.wav` with your preferred track
+- Music is configured in `weddingData.music` (`youtubeId` for Yedhemaina Sakhi via YouTube, or `src` for a local audio file)
 - Set `weddingData.rsvp.endpoint` to Formspree / Supabase / Firebase / Sheets / API
 - Update venue `fullAddress` fields once street addresses are verified
 

@@ -257,9 +257,17 @@ export const weddingData = {
   },
 
   music: {
-    src: "/audio/wedding-instrumental.wav",
-    label: "Traditional instrumental music",
+    /**
+     * Official Sony Music South VEVO upload of Yedhemaina Sakhi
+     * (Vikramasimha · A.R. Rahman). Streamed via YouTube IFrame API —
+     * no copyrighted audio file is hosted in this repo.
+     */
+    youtubeId: "tGEGGWt9wgI",
+    label: "Yedhemaina Sakhi",
+    artist: "A.R. Rahman",
     defaultVolume: 0.28,
+    /** Optional local fallback if youtubeId is removed */
+    src: "/audio/wedding-instrumental.wav",
   },
 
   footer: {
