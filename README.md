@@ -21,11 +21,14 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Customize
 
-Edit **`src/data/wedding.ts`** for names, dates, venues, copy, RSVP endpoint, gallery images, and music.
+Edit **`src/data/wedding.ts`** for names, dates, venues, copy, RSVP settings, gallery images, and music.
 
 - Replace gallery SVGs in `public/images/gallery/` with your photos
 - Music is configured in `weddingData.music` (`youtubeId` for Yedhemaina Sakhi via YouTube, or `src` for a local audio file)
-- Set `weddingData.rsvp.endpoint` to Formspree / Supabase / Firebase / Sheets / API
+- RSVP posts to `/api/rsvp` by default and emails `details.contact.email`, plus a confirmation to the guest
+  - First FormSubmit delivery may require clicking an activation link in that inbox
+  - Optional env vars: `RSVP_NOTIFY_EMAIL`, `RESEND_API_KEY`, `RSVP_FROM_EMAIL`
+  - Or set `weddingData.rsvp.endpoint` to a Formspree / Sheets / API URL
 - Update venue `fullAddress` fields once street addresses are verified
 
 ## Scripts

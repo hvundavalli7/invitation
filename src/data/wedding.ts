@@ -207,7 +207,11 @@ export const weddingData = {
     subtitle: "We joyfully request the honour of your presence. Kindly respond at your earliest convenience.",
     confirmation:
       "Thank you! Your RSVP has been received. We cannot wait to celebrate with you.",
-    /** Set to Formspree / API endpoint when ready. Leave empty for local confirmation demo. */
+    /**
+     * Leave empty to use the built-in `/api/rsvp` email handler
+     * (notifies details.contact.email and confirms the guest).
+     * Or set a third-party Formspree / Sheets / API endpoint.
+     */
     endpoint: "",
     events: [
       { id: "mehendi", label: "Mehendi" },
@@ -216,7 +220,6 @@ export const weddingData = {
       { id: "pellikoduku-pellikuthuru", label: "Pellikoduku–Pellikuthuru" },
       { id: "wedding", label: "Wedding" },
     ],
-    mealOptions: ["Vegetarian", "Non-Vegetarian", "Vegan", "No Preference"],
   },
 
   gallery: {

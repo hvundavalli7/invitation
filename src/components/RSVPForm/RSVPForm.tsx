@@ -12,7 +12,6 @@ type FormState = {
   guests: string;
   attending: "yes" | "no" | "";
   events: string[];
-  meal: string;
   dietary: string;
   message: string;
 };
@@ -24,7 +23,6 @@ const initial: FormState = {
   guests: "1",
   attending: "",
   events: [],
-  meal: "",
   dietary: "",
   message: "",
 };
@@ -61,31 +59,30 @@ export default function RSVPForm() {
     };
 
     try {
-      if (rsvp.endpoint) {
-        const res = await fetch(rsvp.endpoint, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Accept: "application/json",
-          },
-          body: JSON.stringify(payload),
-        });
-        if (!res.ok) throw new Error("Request failed");
-      } else {
-        // Local / demo mode — ready to wire to Firebase, Supabase, Sheets, Formspree, or API
-        await new Promise((r) => setTimeout(r, 500));
-        if (typeof window !== "undefined") {
-          const key = "abhigna-hemanth-rsvps";
-          const existing = JSON.parse(window.localStorage.getItem(key) || "[]");
-          existing.push(payload);
-          window.localStorage.setItem(key, JSON.stringify(existing));
-        }
+      const endpoint = rsvp.endpoint || "/api/rsvp";
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!res.ok) {
+        const data = (await res.json().catch(() => ({}))) as { error?: string };
+        throw new Error(data.error || "Request failed");
       }
+
       setStatus("success");
       setForm(initial);
-    } catch {
+    } catch (err) {
       setStatus("error");
-      setError("Something went wrong. Please try again shortly.");
+      setError(
+        err instanceof Error && err.message
+          ? err.message
+          : "Something went wrong. Please try again shortly.",
+      );
     }
   };
 
@@ -196,32 +193,15 @@ export default function RSVPForm() {
                 </div>
               </fieldset>
 
-              <div className={styles.row}>
-                <label>
-                  <span>Meal preference</span>
-                  <select
-                    name="meal"
-                    value={form.meal}
-                    onChange={(e) => setForm({ ...form, meal: e.target.value })}
-                  >
-                    <option value="">Select an option</option>
-                    {rsvp.mealOptions.map((opt) => (
-                      <option key={opt} value={opt}>
-                        {opt}
-                      </option>
-                    ))}
-                  </select>
-                </label>
-                <label>
-                  <span>Dietary restrictions</span>
-                  <input
-                    name="dietary"
-                    value={form.dietary}
-                    onChange={(e) => setForm({ ...form, dietary: e.target.value })}
-                    placeholder="Allergies or preferences"
-                  />
-                </label>
-              </div>
+              <label className={styles.full}>
+                <span>Dietary restrictions</span>
+                <input
+                  name="dietary"
+                  value={form.dietary}
+                  onChange={(e) => setForm({ ...form, dietary: e.target.value })}
+                  placeholder="Allergies or preferences"
+                />
+              </label>
 
               <label className={styles.full}>
                 <span>Message for the couple</span>
