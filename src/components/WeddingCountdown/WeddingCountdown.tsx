@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { weddingData } from "@/data/wedding";
 import ScrollReveal from "@/components/ScrollReveal/ScrollReveal";
+import SectionCorners from "@/components/Decorative/SectionCorners";
 import styles from "./WeddingCountdown.module.css";
 
 type Parts = {
@@ -94,6 +95,7 @@ export default function WeddingCountdown() {
 
   return (
     <section className={`section ${styles.section}`} aria-labelledby="countdown-title">
+      <SectionCorners />
       <ScrollReveal className="section__inner">
         <p className="section__eyebrow">Counting the auspicious moments</p>
         <h2 id="countdown-title" className="section__title">

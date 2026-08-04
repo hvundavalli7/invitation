@@ -1,0 +1,101 @@
+.section {
+  position: relative;
+  padding: clamp(2.5rem, 6vw, 4rem) 1.25rem;
+  text-align: center;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.65), transparent 55%),
+    linear-gradient(180deg, #fffdf8 0%, var(--cream) 100%);
+}
+
+.eyebrow {
+  color: var(--ink-soft);
+  font-size: 0.82rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: var(--font-script);
+  font-weight: 400;
+  font-size: clamp(2.4rem, 7vw, 3.6rem);
+  color: var(--rose);
+  line-height: 1.15;
+  margin-top: 0.2rem;
+}
+
+.card {
+  position: relative;
+  width: min(100%, 28rem);
+  height: 8.5rem;
+  margin: 0.25rem auto 0;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  border: 2px solid rgba(201, 168, 114, 0.55);
+  box-shadow: 0 14px 36px rgba(62, 39, 35, 0.1);
+  user-select: none;
+  touch-action: none;
+}
+
+.reveal {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  background:
+    radial-gradient(circle at 50% 40%, rgba(255, 255, 255, 0.85), transparent 60%),
+    linear-gradient(180deg, #fbf7ef, #f3ebe0);
+}
+
+.save {
+  font-family: var(--font-display);
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--sage-deep);
+  font-size: 0.95rem;
+}
+
+.date {
+  font-family: var(--font-script);
+  font-size: clamp(2.2rem, 6vw, 2.8rem);
+  color: var(--rose);
+  line-height: 1;
+}
+
+.canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none;
+}
+
+.canvas:active {
+  cursor: grabbing;
+}
+
+.skip {
+  margin-top: 1rem;
+}
+
+.hint {
+  margin-top: 1rem;
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  animation: fadeIn 0.6s ease both;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

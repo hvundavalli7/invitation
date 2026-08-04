@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import EnvelopeOpen from "@/components/EnvelopeOpen/EnvelopeOpen";
 import TempleEntranceHero from "@/components/TempleEntranceHero/TempleEntranceHero";
+import DateScratch from "@/components/DateScratch/DateScratch";
 import WeddingCountdown from "@/components/WeddingCountdown/WeddingCountdown";
 import EventTimeline from "@/components/EventTimeline/EventTimeline";
 import OurStory from "@/components/OurStory/OurStory";
@@ -17,7 +18,6 @@ import Petals from "@/components/Petals/Petals";
 export default function InvitationApp() {
   const [revealed, setRevealed] = useState(false);
   const [musicReady, setMusicReady] = useState(false);
-  const [showPetals, setShowPetals] = useState(false);
 
   useEffect(() => {
     document.body.classList.toggle("invitation-locked", !revealed);
@@ -27,8 +27,6 @@ export default function InvitationApp() {
   const handleReveal = () => {
     setRevealed(true);
     setMusicReady(true);
-    setShowPetals(true);
-    window.setTimeout(() => setShowPetals(false), 10000);
   };
 
   return (
@@ -41,6 +39,7 @@ export default function InvitationApp() {
         inert={!revealed ? true : undefined}
       >
         <TempleEntranceHero />
+        <DateScratch />
         <main>
           <WeddingCountdown />
           <EventTimeline />
@@ -54,7 +53,7 @@ export default function InvitationApp() {
       </div>
 
       {revealed ? <MusicPlayer shouldStart={musicReady} /> : null}
-      <Petals active={showPetals} />
+      <Petals active={revealed} />
     </>
   );
 }
