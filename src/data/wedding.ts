@@ -208,9 +208,8 @@ export const weddingData = {
     confirmation:
       "Thank you! Your RSVP has been received. We cannot wait to celebrate with you.",
     /**
-     * Leave empty to use the built-in `/api/rsvp` email handler
-     * (notifies details.contact.email and confirms the guest).
-     * Or set a third-party Formspree / Sheets / API endpoint.
+     * Leave empty to email details.contact.email via FormSubmit (browser)
+     * or via /api/rsvp when RESEND_API_KEY is set. Or set a Formspree / API URL.
      */
     endpoint: "",
     events: [

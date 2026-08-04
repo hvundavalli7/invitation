@@ -15,7 +15,24 @@ function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
+/** Reports whether the Resend-backed API is configured. */
+export async function GET() {
+  return Response.json({
+    provider: process.env.RESEND_API_KEY ? "resend" : "none",
+  });
+}
+
 export async function POST(request: Request) {
+  if (!process.env.RESEND_API_KEY) {
+    return Response.json(
+      {
+        error:
+          "Server email is not configured. Set RESEND_API_KEY, or leave rsvp.endpoint empty to use FormSubmit from the browser.",
+      },
+      { status: 503 },
+    );
+  }
+
   let body: RsvpBody;
 
   try {
@@ -67,41 +84,22 @@ export async function POST(request: Request) {
   const confirmation = weddingData.rsvp.confirmation;
 
   try {
-    if (process.env.RESEND_API_KEY) {
-      await sendWithResend({
-        notifyEmail,
-        guestEmail: email,
-        subject,
-        confirmation,
-        fields: {
-          name,
-          email,
-          phone: phone || "—",
-          guests,
-          attending: attendingLabel,
-          events: eventLabels || "—",
-          dietary: dietary || "—",
-          message: message || "—",
-        },
-      });
-    } else {
-      await sendWithFormSubmit({
-        notifyEmail,
-        guestEmail: email,
-        subject,
-        confirmation,
-        fields: {
-          name,
-          email,
-          phone: phone || "—",
-          guests,
-          attending: attendingLabel,
-          events: eventLabels || "—",
-          dietary: dietary || "—",
-          message: message || "—",
-        },
-      });
-    }
+    await sendWithResend({
+      notifyEmail,
+      guestEmail: email,
+      subject,
+      confirmation,
+      fields: {
+        name,
+        email,
+        phone: phone || "—",
+        guests,
+        attending: attendingLabel,
+        events: eventLabels || "—",
+        dietary: dietary || "—",
+        message: message || "—",
+      },
+    });
 
     return Response.json({ ok: true });
   } catch (error) {
@@ -110,42 +108,6 @@ export async function POST(request: Request) {
       { error: "Unable to send RSVP email right now. Please try again shortly." },
       { status: 502 },
     );
-  }
-}
-
-async function sendWithFormSubmit({
-  notifyEmail,
-  guestEmail,
-  subject,
-  confirmation,
-  fields,
-}: {
-  notifyEmail: string;
-  guestEmail: string;
-  subject: string;
-  confirmation: string;
-  fields: Record<string, string>;
-}) {
-  const res = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(notifyEmail)}`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify({
-      ...fields,
-      _replyto: guestEmail,
-      _subject: subject,
-      _template: "table",
-      _captcha: "false",
-      _autoresponse: confirmation,
-    }),
-  });
-
-  const data = (await res.json().catch(() => ({}))) as { success?: string | boolean; message?: string };
-
-  if (!res.ok || data.success === "false" || data.success === false) {
-    throw new Error(data.message || `FormSubmit request failed (${res.status})`);
   }
 }
 

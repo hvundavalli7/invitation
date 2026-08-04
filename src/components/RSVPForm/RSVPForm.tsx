@@ -27,8 +27,35 @@ const initial: FormState = {
   message: "",
 };
 
-export default function RSVPForm() {
+function buildFormSubmitPayload(form: FormState) {
   const { rsvp } = weddingData;
+  const attendingLabel =
+    form.attending === "yes" ? "Joyfully attending" : "Unable to attend";
+  const eventLabels = form.events
+    .map((id) => rsvp.events.find((event) => event.id === id)?.label ?? id)
+    .join(", ");
+
+  return {
+    name: form.name.trim(),
+    email: form.email.trim(),
+    phone: form.phone.trim() || "—",
+    guests: form.guests.trim() || "1",
+    attending: attendingLabel,
+    events: eventLabels || "—",
+    dietary: form.dietary.trim() || "—",
+    message: form.message.trim() || "—",
+    _replyto: form.email.trim(),
+    _subject: `Wedding RSVP: ${form.name.trim()} (${
+      form.attending === "yes" ? "Attending" : "Declined"
+    })`,
+    _template: "table",
+    _captcha: "false",
+    _autoresponse: rsvp.confirmation,
+  };
+}
+
+export default function RSVPForm() {
+  const { rsvp, details } = weddingData;
   const [form, setForm] = useState<FormState>(initial);
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [error, setError] = useState("");
@@ -53,13 +80,39 @@ export default function RSVPForm() {
 
     setStatus("submitting");
 
-    const payload = {
-      ...form,
-      submittedAt: new Date().toISOString(),
-    };
-
     try {
-      const endpoint = rsvp.endpoint || "/api/rsvp";
+      // Prefer an explicit endpoint, else Resend-backed /api/rsvp when configured,
+      // else browser FormSubmit (no API key) to the couple's contact email.
+      let endpoint = rsvp.endpoint.trim();
+
+      if (!endpoint) {
+        try {
+          const probe = await fetch("/api/rsvp", { method: "GET" });
+          const info = (await probe.json().catch(() => ({}))) as { provider?: string };
+          if (probe.ok && info.provider === "resend") {
+            endpoint = "/api/rsvp";
+          }
+        } catch {
+          // Fall through to FormSubmit
+        }
+      }
+
+      if (!endpoint) {
+        const notifyEmail = details.contact.email;
+        if (!notifyEmail) {
+          throw new Error("RSVP email is not configured.");
+        }
+        endpoint = `https://formsubmit.co/ajax/${encodeURIComponent(notifyEmail)}`;
+      }
+
+      const isFormSubmit = endpoint.includes("formsubmit.co");
+      const payload = isFormSubmit
+        ? buildFormSubmitPayload(form)
+        : {
+            ...form,
+            submittedAt: new Date().toISOString(),
+          };
+
       const res = await fetch(endpoint, {
         method: "POST",
         headers: {
@@ -69,9 +122,33 @@ export default function RSVPForm() {
         body: JSON.stringify(payload),
       });
 
-      if (!res.ok) {
-        const data = (await res.json().catch(() => ({}))) as { error?: string };
-        throw new Error(data.error || "Request failed");
+      const data = (await res.json().catch(() => ({}))) as {
+        error?: string;
+        success?: string | boolean;
+        message?: string;
+        ok?: boolean;
+      };
+
+      // FormSubmit returns HTTP 200 with success:"false" while waiting for
+      // a one-time inbox activation click — treat that as submitted.
+      const formSubmitNeedsActivation =
+        isFormSubmit &&
+        typeof data.message === "string" &&
+        data.message.toLowerCase().includes("activation");
+
+      const formSubmitOk =
+        isFormSubmit && (data.success === true || data.success === "true" || formSubmitNeedsActivation);
+
+      if (!res.ok && !formSubmitNeedsActivation) {
+        throw new Error(data.error || data.message || "Request failed");
+      }
+
+      if (isFormSubmit && !formSubmitOk) {
+        throw new Error(data.message || data.error || "Request failed");
+      }
+
+      if (!isFormSubmit && data.error) {
+        throw new Error(data.error);
       }
 
       setStatus("success");
