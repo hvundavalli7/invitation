@@ -7,8 +7,9 @@
 
 .mark {
   position: absolute;
-  opacity: 0.28;
+  opacity: 0.45;
   height: auto;
+  filter: saturate(1.15);
 }
 
 .tl {
