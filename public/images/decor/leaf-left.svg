@@ -34,4 +34,23 @@
   <path d="M114 204 C138 218 160 222 176 214 C158 220 136 214 114 204Z" fill="url(#ll-blade)" opacity="0.7"/>
   <!-- Soft tip wash -->
   <ellipse cx="92" cy="20" rx="10" ry="14" fill="#c5d6c0" opacity="0.35" filter="url(#ll-soft)"/>
+  <!-- Colorful flower accents along the frond -->
+  <g>
+    <ellipse cx="48" cy="86" rx="7" ry="10" fill="#f4a7b9" transform="rotate(-20 48 86)"/>
+    <ellipse cx="42" cy="92" rx="7" ry="10" fill="#e989a0" transform="rotate(40 42 92)"/>
+    <ellipse cx="54" cy="94" rx="7" ry="10" fill="#f4a7b9" transform="rotate(100 54 94)"/>
+    <circle cx="48" cy="92" r="4" fill="#f0c14a"/>
+  </g>
+  <g>
+    <ellipse cx="150" cy="58" rx="6" ry="9" fill="#f5b56a" transform="rotate(15 150 58)"/>
+    <ellipse cx="144" cy="64" rx="6" ry="9" fill="#f09a3e" transform="rotate(75 144 64)"/>
+    <ellipse cx="156" cy="66" rx="6" ry="9" fill="#f5b56a" transform="rotate(135 156 66)"/>
+    <circle cx="150" cy="64" r="3.5" fill="#ffe08a"/>
+  </g>
+  <g>
+    <ellipse cx="36" cy="150" rx="5.5" ry="8" fill="#b7c9dc" transform="rotate(-10 36 150)"/>
+    <ellipse cx="30" cy="156" rx="5.5" ry="8" fill="#8fa8c4" transform="rotate(50 30 156)"/>
+    <ellipse cx="42" cy="158" rx="5.5" ry="8" fill="#b7c9dc" transform="rotate(110 42 158)"/>
+    <circle cx="36" cy="156" r="3.2" fill="#f5e6b8"/>
+  </g>
 </svg>
