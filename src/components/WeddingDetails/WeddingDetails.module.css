@@ -1,7 +1,5 @@
 .section {
-  background:
-    radial-gradient(ellipse at bottom, rgba(200, 155, 60, 0.12), transparent 55%),
-    linear-gradient(180deg, var(--parchment), var(--cream));
+  background: transparent;
 }
 
 .grid {
@@ -13,12 +11,13 @@
 .item {
   padding: 1.25rem 1.3rem;
   border-radius: var(--radius-md);
-  background:
-    linear-gradient(160deg, #fff9ef, #f3e8d4);
+  background: var(--glass);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 2px solid rgba(200, 155, 60, 0.4);
   box-shadow:
     var(--shadow-card),
-    inset 0 0 0 5px rgba(255, 248, 232, 0.6);
+    inset 0 0 0 5px rgba(255, 248, 232, 0.3);
   position: relative;
 }
 

@@ -14,6 +14,7 @@ import RSVPForm from "@/components/RSVPForm/RSVPForm";
 import MusicPlayer from "@/components/MusicPlayer/MusicPlayer";
 import TraditionalFooter from "@/components/TraditionalFooter/TraditionalFooter";
 import Petals from "@/components/Petals/Petals";
+import VenueCanvas from "@/components/VenueCanvas/VenueCanvas";
 
 export default function InvitationApp() {
   const [revealed, setRevealed] = useState(false);
@@ -32,6 +33,8 @@ export default function InvitationApp() {
   return (
     <>
       {!revealed ? <EnvelopeOpen onComplete={handleReveal} /> : null}
+
+      <VenueCanvas active={revealed} />
 
       <div
         className={revealed ? "invitation-revealed" : "invitation-hidden"}

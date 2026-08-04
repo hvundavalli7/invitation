@@ -1,7 +1,5 @@
 .section {
-  background:
-    radial-gradient(ellipse at 50% 0%, rgba(123, 30, 43, 0.06), transparent 50%),
-    linear-gradient(180deg, var(--cream) 0%, var(--parchment) 100%);
+  background: transparent;
 }
 
 .timeline {
