@@ -111,9 +111,24 @@
 
 .scene {
   position: relative;
-  width: min(92vw, 520px);
+  width: min(92vw, 560px);
   margin: 0.4rem 0 0.2rem;
   animation: sceneRise 1.35s ease both;
+  /* Feather the couple into the living garden — no hard rectangle */
+  -webkit-mask-image: radial-gradient(
+    ellipse 78% 72% at 50% 46%,
+    #000 42%,
+    rgba(0, 0, 0, 0.85) 58%,
+    rgba(0, 0, 0, 0.35) 78%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 78% 72% at 50% 46%,
+    #000 42%,
+    rgba(0, 0, 0, 0.85) 58%,
+    rgba(0, 0, 0, 0.35) 78%,
+    transparent 100%
+  );
 }
 
 .sceneImage {
@@ -125,26 +140,23 @@
   display: block;
   border-radius: 0;
   background: transparent;
-  /* Soft vignette so couple sits in the garden, not a pasted frame */
-  -webkit-mask-image:
-    linear-gradient(180deg, transparent 0%, #000 8%, #000 78%, transparent 100%),
-    linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
-  mask-image:
-    linear-gradient(180deg, transparent 0%, #000 8%, #000 78%, transparent 100%),
-    linear-gradient(90deg, transparent 0%, #000 6%, #000 94%, transparent 100%);
-  -webkit-mask-composite: source-in;
-  mask-composite: intersect;
-  filter: saturate(1.05) contrast(1.03) drop-shadow(0 18px 36px rgba(12, 36, 18, 0.35));
+  filter:
+    saturate(1.08)
+    contrast(1.04)
+    drop-shadow(0 22px 40px rgba(12, 36, 18, 0.4));
 }
 
 .sceneBlend {
   position: absolute;
-  inset: 0;
+  inset: -4%;
   pointer-events: none;
   background:
-    radial-gradient(ellipse at 50% 70%, transparent 40%, rgba(30, 80, 45, 0.28) 100%),
-    linear-gradient(180deg, rgba(120, 170, 210, 0.08), transparent 30%, transparent 65%, rgba(20, 60, 30, 0.35));
-  mix-blend-mode: soft-light;
+    radial-gradient(ellipse at 50% 38%, rgba(90, 150, 100, 0.18), transparent 42%),
+    radial-gradient(ellipse at 50% 78%, rgba(18, 56, 30, 0.55), transparent 55%),
+    linear-gradient(180deg, rgba(40, 90, 55, 0.35) 0%, transparent 28%, transparent 62%, rgba(14, 42, 22, 0.55) 100%),
+    linear-gradient(90deg, rgba(20, 60, 35, 0.4), transparent 18%, transparent 82%, rgba(20, 60, 35, 0.4));
+  mix-blend-mode: multiply;
+  opacity: 0.85;
 }
 
 .venue {
