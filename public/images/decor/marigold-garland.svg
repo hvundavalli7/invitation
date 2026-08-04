@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="160" viewBox="0 0 1200 160" fill="none" aria-hidden="true">
+  <defs>
+    <radialGradient id="mg-o" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#ffd76a"/>
+      <stop offset="45%" stop-color="#f5a623"/>
+      <stop offset="100%" stop-color="#e07a1a"/>
+    </radialGradient>
+    <radialGradient id="mg-y" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#fff3a8"/>
+      <stop offset="50%" stop-color="#f6d04a"/>
+      <stop offset="100%" stop-color="#e8b020"/>
+    </radialGradient>
+    <radialGradient id="mg-r" cx="35%" cy="35%" r="65%">
+      <stop offset="0%" stop-color="#ff6b6b"/>
+      <stop offset="55%" stop-color="#c62828"/>
+      <stop offset="100%" stop-color="#8e1b1b"/>
+    </radialGradient>
+  </defs>
+  <!-- hanging strings -->
+  <g>
+    <circle cx="36" cy="18" r="10" fill="url(#mg-r)"/>
+    <circle cx="36" cy="40" r="10" fill="url(#mg-y)"/>
+    <circle cx="36" cy="62" r="10" fill="url(#mg-r)"/>
+    <circle cx="36" cy="84" r="10" fill="url(#mg-y)"/>
+    <circle cx="36" cy="106" r="10" fill="url(#mg-r)"/>
+    <circle cx="36" cy="128" r="9" fill="url(#mg-y)"/>
+  </g>
+  <g>
+    <circle cx="1164" cy="18" r="10" fill="url(#mg-r)"/>
+    <circle cx="1164" cy="40" r="10" fill="url(#mg-y)"/>
+    <circle cx="1164" cy="62" r="10" fill="url(#mg-r)"/>
+    <circle cx="1164" cy="84" r="10" fill="url(#mg-y)"/>
+    <circle cx="1164" cy="106" r="10" fill="url(#mg-r)"/>
+    <circle cx="1164" cy="128" r="9" fill="url(#mg-y)"/>
+  </g>
+  <!-- arched garland rows -->
+  <g>
+    <!-- upper arc -->
+    <path d="M70 28 Q600 8 1130 28" stroke="#2f7a3a" stroke-width="10" fill="none" opacity="0.55"/>
+    <path d="M70 42 Q600 22 1130 42" stroke="#3f9a4a" stroke-width="8" fill="none" opacity="0.45"/>
+  </g>
+  <!-- flowers along arcs -->
+  <g id="flowers">
+    <circle cx="90" cy="34" r="14" fill="url(#mg-o)"/><circle cx="90" cy="34" r="5" fill="#fff6c8"/>
+    <circle cx="140" cy="28" r="13" fill="url(#mg-y)"/><circle cx="140" cy="28" r="4.5" fill="#fff6c8"/>
+    <circle cx="190" cy="24" r="14" fill="url(#mg-o)"/><circle cx="190" cy="24" r="5" fill="#fff6c8"/>
+    <circle cx="245" cy="20" r="13" fill="url(#mg-y)"/><circle cx="245" cy="20" r="4.5" fill="#fff6c8"/>
+    <circle cx="300" cy="18" r="14" fill="url(#mg-o)"/><circle cx="300" cy="18" r="5" fill="#fff6c8"/>
+    <circle cx="355" cy="16" r="13" fill="url(#mg-y)"/><circle cx="355" cy="16" r="4.5" fill="#fff6c8"/>
+    <circle cx="410" cy="15" r="14" fill="url(#mg-o)"/><circle cx="410" cy="15" r="5" fill="#fff6c8"/>
+    <circle cx="465" cy="14" r="13" fill="url(#mg-y)"/><circle cx="465" cy="14" r="4.5" fill="#fff6c8"/>
+    <circle cx="520" cy="14" r="14" fill="url(#mg-o)"/><circle cx="520" cy="14" r="5" fill="#fff6c8"/>
+    <circle cx="575" cy="14" r="13" fill="url(#mg-y)"/><circle cx="575" cy="14" r="4.5" fill="#fff6c8"/>
+    <circle cx="630" cy="14" r="14" fill="url(#mg-o)"/><circle cx="630" cy="14" r="5" fill="#fff6c8"/>
+    <circle cx="685" cy="14" r="13" fill="url(#mg-y)"/><circle cx="685" cy="14" r="4.5" fill="#fff6c8"/>
+    <circle cx="740" cy="15" r="14" fill="url(#mg-o)"/><circle cx="740" cy="15" r="5" fill="#fff6c8"/>
+    <circle cx="795" cy="16" r="13" fill="url(#mg-y)"/><circle cx="795" cy="16" r="4.5" fill="#fff6c8"/>
+    <circle cx="850" cy="18" r="14" fill="url(#mg-o)"/><circle cx="850" cy="18" r="5" fill="#fff6c8"/>
+    <circle cx="905" cy="20" r="13" fill="url(#mg-y)"/><circle cx="905" cy="20" r="4.5" fill="#fff6c8"/>
+    <circle cx="960" cy="24" r="14" fill="url(#mg-o)"/><circle cx="960" cy="24" r="5" fill="#fff6c8"/>
+    <circle cx="1010" cy="28" r="13" fill="url(#mg-y)"/><circle cx="1010" cy="28" r="4.5" fill="#fff6c8"/>
+    <circle cx="1060" cy="32" r="14" fill="url(#mg-o)"/><circle cx="1060" cy="32" r="5" fill="#fff6c8"/>
+    <circle cx="1110" cy="36" r="13" fill="url(#mg-y)"/><circle cx="1110" cy="36" r="4.5" fill="#fff6c8"/>
+  </g>
+  <!-- second denser row -->
+  <g opacity="0.95">
+    <circle cx="115" cy="48" r="11" fill="url(#mg-y)"/>
+    <circle cx="170" cy="42" r="12" fill="url(#mg-o)"/>
+    <circle cx="225" cy="38" r="11" fill="url(#mg-y)"/>
+    <circle cx="280" cy="35" r="12" fill="url(#mg-o)"/>
+    <circle cx="335" cy="33" r="11" fill="url(#mg-y)"/>
+    <circle cx="390" cy="32" r="12" fill="url(#mg-o)"/>
+    <circle cx="445" cy="31" r="11" fill="url(#mg-y)"/>
+    <circle cx="500" cy="30" r="12" fill="url(#mg-o)"/>
+    <circle cx="555" cy="30" r="11" fill="url(#mg-y)"/>
+    <circle cx="610" cy="30" r="12" fill="url(#mg-o)"/>
+    <circle cx="665" cy="30" r="11" fill="url(#mg-y)"/>
+    <circle cx="720" cy="31" r="12" fill="url(#mg-o)"/>
+    <circle cx="775" cy="32" r="11" fill="url(#mg-y)"/>
+    <circle cx="830" cy="34" r="12" fill="url(#mg-o)"/>
+    <circle cx="885" cy="37" r="11" fill="url(#mg-y)"/>
+    <circle cx="940" cy="41" r="12" fill="url(#mg-o)"/>
+    <circle cx="995" cy="46" r="11" fill="url(#mg-y)"/>
+    <circle cx="1050" cy="50" r="12" fill="url(#mg-o)"/>
+  </g>
+  <!-- mango leaf accents -->
+  <g fill="#2f8a3e" opacity="0.85">
+    <ellipse cx="160" cy="58" rx="7" ry="14" transform="rotate(-25 160 58)"/>
+    <ellipse cx="320" cy="48" rx="7" ry="14" transform="rotate(18 320 48)"/>
+    <ellipse cx="480" cy="46" rx="7" ry="14" transform="rotate(-12 480 46)"/>
+    <ellipse cx="640" cy="46" rx="7" ry="14" transform="rotate(10 640 46)"/>
+    <ellipse cx="800" cy="48" rx="7" ry="14" transform="rotate(-18 800 48)"/>
+    <ellipse cx="960" cy="56" rx="7" ry="14" transform="rotate(22 960 56)"/>
+  </g>
+</svg>

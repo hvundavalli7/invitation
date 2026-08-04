@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { weddingData } from "@/data/wedding";
 import styles from "./TraditionalFooter.module.css";
 
@@ -7,6 +8,14 @@ export default function TraditionalFooter() {
 
   return (
     <footer className={styles.footer}>
+      <div className={styles.mangoLeaf} aria-hidden="true" />
+      <Image
+        src="/images/decor/marigold-garland.svg"
+        alt=""
+        width={1200}
+        height={160}
+        className={styles.garland}
+      />
       <div className={styles.inner}>
         <p className={styles.withLove}>With love</p>
         <p className={styles.names}>{couple.displayName}</p>

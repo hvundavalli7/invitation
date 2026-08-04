@@ -7,74 +7,75 @@ export default function TempleEntranceHero() {
 
   return (
     <header className={styles.hero} id="top">
-      <div className={styles.borderFrame} aria-hidden="true">
-        <Image
-          src="/images/decor/leaf-left.svg"
-          alt=""
-          width={200}
-          height={300}
-          className={`${styles.decor} ${styles.decorLeftTop}`}
-        />
-        <Image
-          src="/images/decor/leaf-right.svg"
-          alt=""
-          width={200}
-          height={300}
-          className={`${styles.decor} ${styles.decorRightTop}`}
-        />
-        <Image
-          src="/images/decor/corner-botanical.svg"
-          alt=""
-          width={180}
-          height={180}
-          className={`${styles.decor} ${styles.decorLeftBottom}`}
-        />
-        <Image
-          src="/images/decor/corner-botanical.svg"
-          alt=""
-          width={180}
-          height={180}
-          className={`${styles.decor} ${styles.decorRightBottom}`}
-        />
+      <div className={styles.sky} aria-hidden="true" />
+      <div className={styles.meadow} aria-hidden="true" />
+      <div className={styles.gopuram} aria-hidden="true" />
 
-        <Image src="/images/decor/rose.svg" alt="" width={52} height={52} className={`${styles.bloom} ${styles.bloom1}`} />
-        <Image src="/images/decor/flower-yellow.svg" alt="" width={40} height={40} className={`${styles.bloom} ${styles.bloom2}`} />
-        <Image src="/images/decor/flower-blue.svg" alt="" width={38} height={38} className={`${styles.bloom} ${styles.bloom3}`} />
-        <Image src="/images/decor/flower-pink.svg" alt="" width={42} height={42} className={`${styles.bloom} ${styles.bloom4}`} />
-        <Image src="/images/decor/flower-orange.svg" alt="" width={36} height={36} className={`${styles.bloom} ${styles.bloom5}`} />
-        <Image src="/images/decor/leaf-sprig.svg" alt="" width={40} height={52} className={`${styles.bloom} ${styles.bloom6}`} />
+      <Image
+        src="/images/decor/marigold-garland.svg"
+        alt=""
+        width={1200}
+        height={160}
+        className={styles.garland}
+        priority
+      />
+
+      <div className={styles.sideLeaves} aria-hidden="true">
+        <Image
+          src="/images/decor/banana-leaf-left.svg"
+          alt=""
+          width={280}
+          height={520}
+          className={`${styles.banana} ${styles.bananaLeft}`}
+        />
+        <Image
+          src="/images/decor/banana-leaf-right.svg"
+          alt=""
+          width={280}
+          height={520}
+          className={`${styles.banana} ${styles.bananaRight}`}
+        />
+        <Image
+          src="/images/decor/coconut-frond.svg"
+          alt=""
+          width={220}
+          height={360}
+          className={`${styles.coconut} ${styles.coconutLeft}`}
+        />
+        <Image
+          src="/images/decor/coconut-frond.svg"
+          alt=""
+          width={220}
+          height={360}
+          className={`${styles.coconut} ${styles.coconutRight}`}
+        />
       </div>
 
       <div className={styles.stage}>
-        <Image
-          src="/images/decor/ganesh-idol.png"
-          alt="Lord Ganesha"
-          width={120}
-          height={120}
-          className={styles.ganesh}
-          priority
-        />
-        <p className={styles.mantra}>॥ Shree Ganeshaya Namah ॥</p>
-
-        <p className={styles.invite}>{couple.inviteLine}</p>
+        <p className={styles.label}>Wedding Invitation</p>
 
         <h1 className={styles.names}>
           <span className={styles.name}>{couple.bride}</span>
-          <span className={styles.with}>with</span>
+          <span className={styles.ampersand} aria-hidden="true">
+            &amp;
+          </span>
           <span className={styles.name}>{couple.groom}</span>
         </h1>
 
+        <p className={styles.invite}>{couple.inviteLine}</p>
+
         {hero.image ? (
-          <figure className={styles.photoFrame}>
+          <div className={styles.scene}>
             <Image
               src={hero.image}
               alt={hero.imageAlt}
-              width={720}
-              height={900}
-              className={styles.photo}
+              width={1024}
+              height={1536}
+              className={styles.sceneImage}
               priority
+              sizes="(max-width: 800px) 100vw, 720px"
             />
-          </figure>
+          </div>
         ) : null}
 
         <p className={styles.venue}>

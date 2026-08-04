@@ -4,8 +4,8 @@
   text-align: center;
   overflow: hidden;
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.65), transparent 55%),
-    linear-gradient(180deg, #fffdf8 0%, var(--cream) 100%);
+    radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.45), transparent 55%),
+    linear-gradient(180deg, #d8f0c8 0%, var(--cream) 100%);
 }
 
 .eyebrow {

@@ -2,9 +2,9 @@
   position: relative;
   padding: 3.5rem 1.25rem 2.5rem;
   background:
-    radial-gradient(ellipse at top, rgba(201, 168, 114, 0.12), transparent 45%),
-    linear-gradient(180deg, #4a342e, var(--footer) 55%);
-  border-top: 1px solid rgba(201, 168, 114, 0.25);
+    radial-gradient(ellipse at top, rgba(245, 166, 35, 0.16), transparent 45%),
+    linear-gradient(180deg, #2f7a36, var(--footer) 55%);
+  border-top: 1px solid rgba(240, 193, 74, 0.28);
   overflow: hidden;
   color: var(--cream);
 }
@@ -13,12 +13,24 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  opacity: 0.18;
+  opacity: 0.22;
   background:
-    radial-gradient(circle at 10% 20%, #a2b992 0 10px, transparent 11px),
-    radial-gradient(circle at 90% 30%, #c9a872 0 8px, transparent 9px),
-    radial-gradient(circle at 20% 80%, #c45b7a 0 7px, transparent 8px),
-    radial-gradient(circle at 80% 75%, #a2b992 0 9px, transparent 10px);
+    radial-gradient(circle at 10% 20%, #6fbf4a 0 10px, transparent 11px),
+    radial-gradient(circle at 90% 30%, #f0c14a 0 8px, transparent 9px),
+    radial-gradient(circle at 20% 80%, #c62828 0 7px, transparent 8px),
+    radial-gradient(circle at 80% 75%, #6fbf4a 0 9px, transparent 10px);
+}
+
+.garland {
+  position: absolute;
+  top: -0.35rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(110%, 980px);
+  height: auto;
+  opacity: 0.55;
+  pointer-events: none;
+  filter: saturate(1.1);
 }
 
 .inner {
@@ -48,7 +60,7 @@
   font-size: 0.72rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold-soft);
   margin-bottom: 0.35rem;
 }
 

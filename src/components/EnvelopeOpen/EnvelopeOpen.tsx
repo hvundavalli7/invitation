@@ -9,13 +9,6 @@ type Props = {
   onComplete: () => void;
 };
 
-const CORNER_SPRIGS = [
-  { className: styles.cornerTL, rotate: 0 },
-  { className: styles.cornerTR, rotate: 90 },
-  { className: styles.cornerBL, rotate: -90 },
-  { className: styles.cornerBR, rotate: 180 },
-] as const;
-
 export default function EnvelopeOpen({ onComplete }: Props) {
   const [opening, setOpening] = useState(false);
   const { couple } = weddingData;
@@ -34,27 +27,40 @@ export default function EnvelopeOpen({ onComplete }: Props) {
       aria-modal="true"
       aria-label="Open wedding invitation envelope"
     >
-      <div className={styles.floaters} aria-hidden="true">
-        <Image src="/images/decor/flower-pink.svg" alt="" width={28} height={28} className={`${styles.floater} ${styles.f1}`} />
-        <Image src="/images/decor/flower-orange.svg" alt="" width={24} height={24} className={`${styles.floater} ${styles.f2}`} />
-        <Image src="/images/decor/butterfly.svg" alt="" width={34} height={28} className={`${styles.floater} ${styles.f3}`} />
-        <Image src="/images/decor/leaf-sprig.svg" alt="" width={26} height={34} className={`${styles.floater} ${styles.f4}`} />
-        <Image src="/images/decor/flower-pink.svg" alt="" width={22} height={22} className={`${styles.floater} ${styles.f5}`} />
-        <Image src="/images/decor/flower-yellow.svg" alt="" width={24} height={24} className={`${styles.floater} ${styles.f6}`} />
+      <Image
+        src="/images/decor/marigold-garland.svg"
+        alt=""
+        width={1200}
+        height={160}
+        className={styles.garland}
+        priority
+      />
+
+      <div className={styles.sideLeaves} aria-hidden="true">
+        <Image
+          src="/images/decor/banana-leaf-left.svg"
+          alt=""
+          width={220}
+          height={400}
+          className={`${styles.banana} ${styles.bananaLeft}`}
+        />
+        <Image
+          src="/images/decor/banana-leaf-right.svg"
+          alt=""
+          width={220}
+          height={400}
+          className={`${styles.banana} ${styles.bananaRight}`}
+        />
       </div>
 
-      {CORNER_SPRIGS.map((corner) => (
-        <Image
-          key={corner.className}
-          src="/images/decor/leaf-sprig.svg"
-          alt=""
-          width={48}
-          height={64}
-          className={`${styles.corner} ${corner.className}`}
-          style={{ transform: `rotate(${corner.rotate}deg)` }}
-          aria-hidden="true"
-        />
-      ))}
+      <div className={styles.floaters} aria-hidden="true">
+        <Image src="/images/decor/marigold.svg" alt="" width={28} height={28} className={`${styles.floater} ${styles.f1}`} />
+        <Image src="/images/decor/flower-orange.svg" alt="" width={24} height={24} className={`${styles.floater} ${styles.f2}`} />
+        <Image src="/images/decor/marigold.svg" alt="" width={26} height={26} className={`${styles.floater} ${styles.f3}`} />
+        <Image src="/images/decor/coconut-frond.svg" alt="" width={40} height={64} className={`${styles.floater} ${styles.f4}`} />
+        <Image src="/images/decor/flower-yellow.svg" alt="" width={22} height={22} className={`${styles.floater} ${styles.f5}`} />
+        <Image src="/images/decor/marigold.svg" alt="" width={24} height={24} className={`${styles.floater} ${styles.f6}`} />
+      </div>
 
       <button type="button" className={styles.envelopeBtn} onClick={open} aria-label="Open invitation">
         <span className={`${styles.card} ${opening ? styles.cardOpen : ""}`}>
