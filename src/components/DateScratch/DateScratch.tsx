@@ -91,6 +91,7 @@ export default function DateScratch({
     }
     try {
       sessionStorage.setItem(weddingData.scratchCard.sessionKey, "1");
+      window.dispatchEvent(new Event("ah-scratch-revealed"));
     } catch {
       // sessionStorage may be unavailable
     }

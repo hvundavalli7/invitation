@@ -21,7 +21,11 @@ import { weddingData } from "@/data/wedding";
 
 function subscribeScratchSession(onStoreChange: () => void) {
   window.addEventListener("storage", onStoreChange);
-  return () => window.removeEventListener("storage", onStoreChange);
+  window.addEventListener("ah-scratch-revealed", onStoreChange);
+  return () => {
+    window.removeEventListener("storage", onStoreChange);
+    window.removeEventListener("ah-scratch-revealed", onStoreChange);
+  };
 }
 
 function getScratchSession() {
