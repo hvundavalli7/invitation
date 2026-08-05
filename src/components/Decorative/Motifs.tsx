@@ -189,8 +189,6 @@ export function EventIcon({
       return <HennaIcon className={className} />;
     case "music":
       return <MusicIcon className={className} />;
-    case "turmeric":
-      return <TurmericIcon className={className} />;
     case "lotus":
     default:
       return <LotusIcon className={className} />;

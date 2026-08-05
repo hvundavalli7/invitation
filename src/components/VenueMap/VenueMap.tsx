@@ -1,4 +1,4 @@
-import { mapsDirectionsUrl, mapsSearchUrl, weddingData } from "@/data/wedding";
+import { mapsSearchUrl, weddingData } from "@/data/wedding";
 import ScrollReveal from "@/components/ScrollReveal/ScrollReveal";
 import SectionCorners from "@/components/Decorative/SectionCorners";
 import styles from "./VenueMap.module.css";
@@ -14,7 +14,7 @@ export default function VenueMap() {
             Locations
           </h2>
           <p className="section__subtitle">
-            Addresses are editable until verified — open each venue in Google Maps for the latest directions.
+            Tap a venue card to open it in Google Maps.
           </p>
           <div className="ornament-rule" aria-hidden="true">
             <span className="ornament-rule__jewel" />
@@ -23,39 +23,35 @@ export default function VenueMap() {
 
         <div className={styles.grid}>
           {weddingData.venues.map((venue) => {
+            const mapsUrl = mapsSearchUrl(venue.mapsQuery);
             const embedSrc = `https://maps.google.com/maps?q=${encodeURIComponent(venue.mapsQuery)}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
             return (
-              <ScrollReveal key={venue.id} className={`${styles.card} wood-panel`}>
-                <h3>{venue.name}</h3>
-                <p className={styles.address}>{venue.fullAddress}</p>
-                <p className={styles.note}>{venue.note}</p>
-                <div className={styles.mapWrap}>
-                  <iframe
-                    title={`Map for ${venue.name}`}
-                    src={embedSrc}
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    allowFullScreen
+              <ScrollReveal key={venue.id} className={styles.cardWrap}>
+                <article className={`${styles.card} wood-panel`}>
+                  <a
+                    className={styles.stretchLink}
+                    href={mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Open ${venue.name} in Google Maps`}
                   />
-                </div>
-                <div className={styles.actions}>
-                  <a
-                    className="btn-temple"
-                    href={mapsSearchUrl(venue.mapsQuery)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
+                  <h3>{venue.name}</h3>
+                  <p className={styles.address}>{venue.fullAddress}</p>
+                  <p className={styles.note}>{venue.note}</p>
+                  <div className={styles.mapWrap}>
+                    <iframe
+                      title={`Map for ${venue.name}`}
+                      src={embedSrc}
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                      allowFullScreen
+                      tabIndex={-1}
+                    />
+                  </div>
+                  <span className={styles.mapAction} aria-hidden="true">
                     Open in Google Maps
-                  </a>
-                  <a
-                    className="btn-ghost"
-                    href={mapsDirectionsUrl(venue.mapsQuery)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Get Directions
-                  </a>
-                </div>
+                  </span>
+                </article>
               </ScrollReveal>
             );
           })}

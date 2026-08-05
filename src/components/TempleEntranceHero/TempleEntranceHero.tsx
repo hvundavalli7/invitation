@@ -3,7 +3,7 @@ import { weddingData } from "@/data/wedding";
 import styles from "./TempleEntranceHero.module.css";
 
 export default function TempleEntranceHero() {
-  const { couple, wedding, hero } = weddingData;
+  const { couple, hero } = weddingData;
 
   return (
     <header className={styles.hero} id="top">
@@ -24,17 +24,17 @@ export default function TempleEntranceHero() {
           />
         </div>
 
-        <p className={styles.label}>Wedding Invitation</p>
+        <p className={styles.blessing}>{hero.ganeshaBlessing}</p>
+
+        <p className={styles.together}>{couple.togetherLine}</p>
 
         <h1 className={styles.names}>
           <span className={styles.name}>{couple.bride}</span>
           <span className={styles.ampersand} aria-hidden="true">
-            &amp;
+            and
           </span>
           <span className={styles.name}>{couple.groom}</span>
         </h1>
-
-        <p className={styles.invite}>{couple.inviteLine}</p>
 
         {hero.image ? (
           <div className={styles.scene}>
@@ -47,19 +47,8 @@ export default function TempleEntranceHero() {
               priority
               sizes="(max-width: 800px) 92vw, 520px"
             />
-            <div className={styles.sceneBlend} aria-hidden="true" />
           </div>
         ) : null}
-
-        <p className={styles.venue}>
-          {wedding.venue}
-          <span aria-hidden="true"> · </span>
-          {wedding.location}
-        </p>
-
-        <a className={`btn-invite ${styles.cta}`} href={hero.ctaHref}>
-          {hero.ctaLabel}
-        </a>
       </div>
     </header>
   );

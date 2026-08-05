@@ -7,6 +7,13 @@ import ScrollReveal from "@/components/ScrollReveal/ScrollReveal";
 import SectionCorners from "@/components/Decorative/SectionCorners";
 import styles from "./Gallery.module.css";
 
+const CATEGORY_LABELS: Record<string, string> = {
+  "old-memory": "Older memory",
+  travel: "Travel & candid",
+  engagement: "Engagement",
+  recent: "Recent",
+};
+
 export default function Gallery() {
   const images = weddingData.gallery.images;
   const [active, setActive] = useState<number | null>(null);
@@ -68,7 +75,9 @@ export default function Gallery() {
                     loading="lazy"
                     className={styles.image}
                   />
-                  <span className={styles.category}>{image.category}</span>
+                  <span className={styles.category}>
+                    {CATEGORY_LABELS[image.category] ?? image.category}
+                  </span>
                 </button>
               </ScrollReveal>
             </li>
@@ -111,7 +120,10 @@ export default function Gallery() {
               priority
             />
             <figcaption>
-              {images[active].category} · {images[active].alt}
+              {images[active].caption
+                ? `${images[active].caption} · `
+                : ""}
+              {CATEGORY_LABELS[images[active].category] ?? images[active].category}
             </figcaption>
           </figure>
           <button

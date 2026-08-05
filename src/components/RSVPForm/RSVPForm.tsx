@@ -234,43 +234,50 @@ export default function RSVPForm() {
                 </label>
               </div>
 
-              <fieldset className={styles.fieldset}>
-                <legend>Will you be attending?</legend>
-                <label className={styles.inline}>
-                  <input
-                    type="radio"
-                    name="attending"
-                    checked={form.attending === "yes"}
-                    onChange={() => setForm({ ...form, attending: "yes" })}
-                  />
-                  Joyfully attending
-                </label>
-                <label className={styles.inline}>
-                  <input
-                    type="radio"
-                    name="attending"
-                    checked={form.attending === "no"}
-                    onChange={() => setForm({ ...form, attending: "no" })}
-                  />
-                  Regretfully unable to attend
-                </label>
-              </fieldset>
-
-              <fieldset className={styles.fieldset}>
-                <legend>Events attending</legend>
-                <div className={styles.checks}>
-                  {rsvp.events.map((event) => (
-                    <label key={event.id} className={styles.inline}>
-                      <input
-                        type="checkbox"
-                        checked={form.events.includes(event.id)}
-                        onChange={() => toggleEvent(event.id)}
-                      />
-                      {event.label}
-                    </label>
-                  ))}
+              <fieldset className={styles.fieldGroup}>
+                <legend className={styles.groupLegend}>Will you be attending?</legend>
+                <div className={styles.choiceBox} role="presentation">
+                  <label className={styles.inline}>
+                    <input
+                      type="radio"
+                      name="attending"
+                      checked={form.attending === "yes"}
+                      onChange={() => setForm({ ...form, attending: "yes" })}
+                    />
+                    Yes, can&apos;t wait
+                  </label>
+                  <label className={styles.inline}>
+                    <input
+                      type="radio"
+                      name="attending"
+                      checked={form.attending === "no"}
+                      onChange={() =>
+                        setForm({ ...form, attending: "no", events: [] })
+                      }
+                    />
+                    Sorry, can&apos;t make it
+                  </label>
                 </div>
               </fieldset>
+
+              {form.attending !== "no" ? (
+                <fieldset className={styles.fieldGroup}>
+                  <legend className={styles.groupLegend}>Events attending</legend>
+                  <div className={`${styles.choiceBox} ${styles.checks}`} role="presentation">
+                    {rsvp.events.map((event) => (
+                      <label key={event.id} className={styles.inline}>
+                        <input
+                          type="checkbox"
+                          checked={form.events.includes(event.id)}
+                          onChange={() => toggleEvent(event.id)}
+                          disabled={form.attending !== "yes"}
+                        />
+                        {event.label}
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+              ) : null}
 
               <label className={styles.full}>
                 <span>Dietary restrictions</span>
