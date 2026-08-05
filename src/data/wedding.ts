@@ -33,8 +33,9 @@ export const weddingData = {
   hero: {
     ganeshaBlessing: "|| Shree Ganesha Namah ||",
     /**
-     * Soft-edged invitation-style caricature (gold saree, jasmine bun, laptop/tube)
-     * blended into VenueCanvas marigold + banana garden.
+     * Animated couple cutout from the South Indian invitation caricature
+     * (gathbandhan knot, gold saree, laptop + drafting tube) soft-blended
+     * into VenueCanvas.
      */
     image: "/images/couple/caricature-hero-feathered.webp",
     imageAlt:
