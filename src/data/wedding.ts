@@ -32,7 +32,7 @@ export const weddingData = {
 
   hero: {
     ganeshaBlessing: "|| Shree Ganesha Namah ||",
-    /** South Indian invitation caricature */
+    /** Soft-edged South Indian invitation caricature (blends into VenueCanvas) */
     image: "/images/couple/caricature-hero-feathered.webp",
     imageAlt:
       "Illustrated caricature of Abhigna and Hemanth in traditional South Indian wedding attire",
