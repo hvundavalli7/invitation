@@ -14,6 +14,10 @@ type Parts = {
   done: boolean;
 };
 
+type Props = {
+  visible?: boolean;
+};
+
 function getWeddingTimestamp() {
   // Interpret wedding local time in America/Chicago using a stable approach:
   // Build a date string and compute offset via Intl.
@@ -71,41 +75,54 @@ const PLACEHOLDER: Parts = {
   done: false,
 };
 
-export default function WeddingCountdown() {
+export default function WeddingCountdown({ visible = false }: Props) {
   const target = useMemo(() => getWeddingTimestamp(), []);
   // Keep the initial render identical on server and client. Date.now() in the
   // first paint causes hydration mismatches as the clock ticks between SSR and hydrate.
-  const [parts, setParts] = useState<Parts>(PLACEHOLDER);
-  const [ready, setReady] = useState(false);
+  const [parts, setParts] = useState<Parts | null>(null);
 
   useEffect(() => {
+    if (!visible) return;
     const tick = () => setParts(computeParts(target));
-    tick();
-    setReady(true);
     const id = window.setInterval(tick, 1000);
-    return () => window.clearInterval(id);
-  }, [target]);
+    // Defer first paint value to avoid sync setState-in-effect lint
+    const frame = window.requestAnimationFrame(tick);
+    return () => {
+      window.clearInterval(id);
+      window.cancelAnimationFrame(frame);
+    };
+  }, [target, visible]);
+
+  if (!visible) {
+    return null;
+  }
+
+  const display = parts ?? PLACEHOLDER;
+  const ready = parts !== null;
 
   const units = [
-    { label: "Days", value: parts.days },
-    { label: "Hours", value: parts.hours },
-    { label: "Minutes", value: parts.minutes },
-    { label: "Seconds", value: parts.seconds },
+    { label: "Days", value: display.days },
+    { label: "Hours", value: display.hours },
+    { label: "Minutes", value: display.minutes },
+    { label: "Seconds", value: display.seconds },
   ];
 
   return (
-    <section className={`section ${styles.section}`} aria-labelledby="countdown-title">
+    <section
+      className={`section ${styles.section} ${styles.reveal}`}
+      aria-labelledby="countdown-title"
+    >
       <SectionCorners />
       <ScrollReveal className="section__inner">
         <p className="section__eyebrow">Counting the auspicious moments</p>
         <h2 id="countdown-title" className="section__title">
-          Until We Wed
+          {weddingData.countdown.heading}
         </h2>
         <div className="ornament-rule" aria-hidden="true">
           <span className="ornament-rule__jewel" />
         </div>
 
-        {ready && parts.done ? (
+        {ready && display.done ? (
           <p className={styles.ended} role="status">
             {weddingData.countdown.endedMessage}
           </p>
@@ -122,10 +139,7 @@ export default function WeddingCountdown() {
           </div>
         )}
 
-        <p className={styles.timezone}>
-          Wedding day · {weddingData.wedding.dateLabel} · {weddingData.wedding.time}{" "}
-          {weddingData.wedding.timeZoneLabel}
-        </p>
+        <p className={styles.message}>{weddingData.countdown.celebrationMessage}</p>
       </ScrollReveal>
     </section>
   );

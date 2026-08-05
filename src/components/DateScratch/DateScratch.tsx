@@ -7,17 +7,23 @@ import styles from "./DateScratch.module.css";
 
 type Props = {
   onRevealed?: () => void;
+  initiallyRevealed?: boolean;
 };
 
 const BRUSH = 28;
-const THRESHOLD = 0.45;
 
-export default function DateScratch({ onRevealed }: Props) {
+export default function DateScratch({
+  onRevealed,
+  initiallyRevealed = false,
+}: Props) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const wrapRef = useRef<HTMLDivElement | null>(null);
   const scratching = useRef(false);
   const checking = useRef(false);
-  const [revealed, setRevealed] = useState(false);
+  const finishedRef = useRef(false);
+  const [localRevealed, setLocalRevealed] = useState(false);
+  const revealed = initiallyRevealed || localRevealed;
+  const threshold = weddingData.scratchCard.revealThreshold;
 
   const paintCover = useCallback(() => {
     const canvas = canvasRef.current;
@@ -73,8 +79,9 @@ export default function DateScratch({ onRevealed }: Props) {
   }, [paintCover]);
 
   const finish = useCallback(() => {
-    if (revealed) return;
-    setRevealed(true);
+    if (finishedRef.current || initiallyRevealed || localRevealed) return;
+    finishedRef.current = true;
+    setLocalRevealed(true);
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
     if (canvas && ctx) {
@@ -82,8 +89,13 @@ export default function DateScratch({ onRevealed }: Props) {
       ctx.globalCompositeOperation = "destination-out";
       ctx.fillRect(0, 0, rect.width, rect.height);
     }
+    try {
+      sessionStorage.setItem(weddingData.scratchCard.sessionKey, "1");
+    } catch {
+      // sessionStorage may be unavailable
+    }
     onRevealed?.();
-  }, [onRevealed, revealed]);
+  }, [initiallyRevealed, localRevealed, onRevealed]);
 
   const clearedRatio = () => {
     const canvas = canvasRef.current;
@@ -103,7 +115,7 @@ export default function DateScratch({ onRevealed }: Props) {
 
   const scratchAt = (clientX: number, clientY: number) => {
     const canvas = canvasRef.current;
-    if (!canvas || revealed) return;
+    if (!canvas || revealed || finishedRef.current) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
     const rect = canvas.getBoundingClientRect();
@@ -116,7 +128,7 @@ export default function DateScratch({ onRevealed }: Props) {
       checking.current = true;
       window.requestAnimationFrame(() => {
         checking.current = false;
-        if (clearedRatio() >= THRESHOLD) finish();
+        if (clearedRatio() >= threshold) finish();
       });
     }
   };
@@ -163,20 +175,16 @@ export default function DateScratch({ onRevealed }: Props) {
             onPointerUp={onPointerUp}
             onPointerCancel={onPointerUp}
             onPointerLeave={onPointerUp}
-            aria-label="Scratch to reveal the wedding date"
+            aria-label={weddingData.scratchCard.prompt}
           />
         ) : null}
       </div>
 
       {!revealed ? (
         <button type="button" className={`btn-ghost ${styles.skip}`} onClick={finish}>
-          Reveal date
+          {weddingData.scratchCard.skipLabel}
         </button>
-      ) : (
-        <p className={styles.hint}>
-          {weddingData.wedding.time} · {weddingData.wedding.venue}
-        </p>
-      )}
+      ) : null}
     </section>
   );
 }
