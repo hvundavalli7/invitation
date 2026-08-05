@@ -1,12 +1,12 @@
 "use client";
 
 import Script from "next/script";
-import { useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState, useSyncExternalStore } from "react";
 import { weddingData } from "@/data/wedding";
 import styles from "./MusicPlayer.module.css";
 
 type Props = {
-  /** Start playback after user has interacted (envelope / scratch / skip). */
+  /** Attempt autoplay after the invitation opening sequence is ready. */
   shouldStart?: boolean;
 };
 
@@ -53,24 +53,40 @@ declare global {
   }
 }
 
+const MUTE_KEY = "ah-music-muted";
+
+function subscribeMute(onStoreChange: () => void) {
+  window.addEventListener("ah-music-mute", onStoreChange);
+  return () => window.removeEventListener("ah-music-mute", onStoreChange);
+}
+
+function getMutedPreference() {
+  try {
+    return sessionStorage.getItem(MUTE_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
 export default function MusicPlayer({ shouldStart = false }: Props) {
   const hostId = `yt-music-${useId().replace(/:/g, "")}`;
   const playerRef = useRef<YtPlayer | null>(null);
   const startedRef = useRef(false);
-  const shouldStartRef = useRef(shouldStart);
   const previousReadyHandler = useRef<(() => void) | undefined>(undefined);
+  const interactionBoundRef = useRef(false);
   const [apiReady, setApiReady] = useState(false);
   const [playerReady, setPlayerReady] = useState(false);
   const [playing, setPlaying] = useState(false);
-  const [muted, setMuted] = useState(false);
+  const muted = useSyncExternalStore(subscribeMute, getMutedPreference, () => false);
+  const mutedRef = useRef(muted);
 
   const youtubeId = weddingData.music.youtubeId;
   const useYoutube = Boolean(youtubeId);
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    shouldStartRef.current = shouldStart;
-  }, [shouldStart]);
+    mutedRef.current = muted;
+  }, [muted]);
 
   useEffect(() => {
     return () => {
@@ -123,11 +139,6 @@ export default function MusicPlayer({ shouldStart = false }: Props) {
         onReady: (event) => {
           event.target.setVolume(volume);
           setPlayerReady(true);
-          if (shouldStartRef.current && !startedRef.current) {
-            startedRef.current = true;
-            event.target.playVideo();
-            setPlaying(true);
-          }
         },
         onStateChange: (event) => {
           const playingState = window.YT?.PlayerState.PLAYING;
@@ -138,16 +149,6 @@ export default function MusicPlayer({ shouldStart = false }: Props) {
   }, [apiReady, hostId, useYoutube, youtubeId]);
 
   useEffect(() => {
-    if (!useYoutube) return;
-    const player = playerRef.current;
-    if (!player || !playerReady || !shouldStart || startedRef.current) return;
-
-    startedRef.current = true;
-    player.playVideo();
-    setPlaying(true);
-  }, [playerReady, shouldStart, useYoutube]);
-
-  useEffect(() => {
     if (useYoutube) return;
     const audio = audioRef.current;
     if (!audio) return;
@@ -156,16 +157,84 @@ export default function MusicPlayer({ shouldStart = false }: Props) {
   }, [useYoutube]);
 
   useEffect(() => {
-    if (useYoutube) return;
-    const audio = audioRef.current;
-    if (!audio || !shouldStart || startedRef.current) return;
+    if (!shouldStart) return;
 
-    startedRef.current = true;
-    audio
-      .play()
-      .then(() => setPlaying(true))
-      .catch(() => setPlaying(false));
-  }, [shouldStart, useYoutube]);
+    let cancelled = false;
+
+    const removeInteractionListeners = () => {
+      if (!interactionBoundRef.current) return;
+      interactionBoundRef.current = false;
+      window.removeEventListener("pointerdown", onFirstInteraction, true);
+      window.removeEventListener("touchstart", onFirstInteraction, true);
+      window.removeEventListener("keydown", onFirstInteraction, true);
+    };
+
+    const markStarted = () => {
+      startedRef.current = true;
+      setPlaying(true);
+      removeInteractionListeners();
+    };
+
+    const tryStart = async () => {
+      if (startedRef.current || cancelled) return true;
+
+      if (useYoutube) {
+        const player = playerRef.current;
+        if (!player || !playerReady) return false;
+        try {
+          if (mutedRef.current) player.mute();
+          else player.unMute();
+          player.setVolume(
+            Math.round(
+              Math.min(1, Math.max(0, weddingData.music.defaultVolume)) * 100,
+            ),
+          );
+          player.playVideo();
+          markStarted();
+          return true;
+        } catch {
+          return false;
+        }
+      }
+
+      const audio = audioRef.current;
+      if (!audio) return false;
+      try {
+        audio.volume = weddingData.music.defaultVolume;
+        audio.muted = mutedRef.current;
+        await audio.play();
+        markStarted();
+        return true;
+      } catch {
+        return false;
+      }
+    };
+
+    const onFirstInteraction = () => {
+      void tryStart();
+    };
+
+    const bindFallback = () => {
+      if (interactionBoundRef.current || startedRef.current) return;
+      interactionBoundRef.current = true;
+      window.addEventListener("pointerdown", onFirstInteraction, true);
+      window.addEventListener("touchstart", onFirstInteraction, {
+        capture: true,
+        passive: true,
+      });
+      window.addEventListener("keydown", onFirstInteraction, true);
+    };
+
+    void (async () => {
+      const ok = await tryStart();
+      if (!cancelled && !ok) bindFallback();
+    })();
+
+    return () => {
+      cancelled = true;
+      removeInteractionListeners();
+    };
+  }, [shouldStart, useYoutube, playerReady]);
 
   const togglePlay = async () => {
     if (useYoutube) {
@@ -176,6 +245,7 @@ export default function MusicPlayer({ shouldStart = false }: Props) {
         setPlaying(false);
       } else {
         player.playVideo();
+        startedRef.current = true;
         setPlaying(true);
       }
       return;
@@ -189,6 +259,7 @@ export default function MusicPlayer({ shouldStart = false }: Props) {
     } else {
       try {
         await audio.play();
+        startedRef.current = true;
         setPlaying(true);
       } catch {
         setPlaying(false);
@@ -197,23 +268,26 @@ export default function MusicPlayer({ shouldStart = false }: Props) {
   };
 
   const toggleMute = () => {
+    const next = !muted;
+    mutedRef.current = next;
+    try {
+      sessionStorage.setItem(MUTE_KEY, next ? "1" : "0");
+    } catch {
+      // ignore
+    }
+    window.dispatchEvent(new Event("ah-music-mute"));
+
     if (useYoutube) {
       const player = playerRef.current;
       if (!player) return;
-      if (player.isMuted()) {
-        player.unMute();
-        setMuted(false);
-      } else {
-        player.mute();
-        setMuted(true);
-      }
+      if (next) player.mute();
+      else player.unMute();
       return;
     }
 
     const audio = audioRef.current;
     if (!audio) return;
-    audio.muted = !audio.muted;
-    setMuted(audio.muted);
+    audio.muted = next;
   };
 
   return (
@@ -228,7 +302,7 @@ export default function MusicPlayer({ shouldStart = false }: Props) {
           <div id={hostId} className={styles.ytHost} aria-hidden="true" />
         </>
       ) : (
-        <audio ref={audioRef} src={weddingData.music.src} preload="none" />
+        <audio ref={audioRef} src={weddingData.music.src} preload="auto" />
       )}
 
       <button

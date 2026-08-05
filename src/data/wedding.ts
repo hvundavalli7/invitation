@@ -8,6 +8,8 @@ export const weddingData = {
     bride: "Abhigna",
     groom: "Hemanth",
     displayName: "Abhigna & Hemanth",
+    /** Line shown directly above the couple names in the hero */
+    togetherLine: "Together with their families",
     inviteLine:
       "Together with their families, invite you to celebrate their wedding",
   },
@@ -25,12 +27,11 @@ export const weddingData = {
     address: "Bella Cavalli Events, Aubrey, Texas", // Update with verified full address
     mapsQuery: "Bella Cavalli Events, Aubrey, Texas",
     description:
-      "Together with our families, we invite you to witness our sacred Hindu wedding ceremony and celebrate the beginning of our forever.",
+      "Together with our families, we invite you to witness our sacred Hindu wedding, rooted in Telugu tradition, as we begin our forever.",
   },
 
   hero: {
-    ctaLabel: "View Celebrations",
-    ctaHref: "#celebrations",
+    ganeshaBlessing: "|| Shree Ganesha Namah ||",
     /** South Indian invitation caricature */
     image: "/images/couple/caricature-hero-feathered.webp",
     imageAlt:
@@ -39,12 +40,15 @@ export const weddingData = {
 
   scratchCard: {
     prompt: "Scratch to Reveal Our Wedding Invitation",
-    skipLabel: "Skip and Enter",
-    revealThreshold: 0.55,
+    skipLabel: "Reveal invitation",
+    revealThreshold: 0.5,
+    sessionKey: "ah-scratch-revealed",
   },
 
   countdown: {
+    heading: "The big day is just around the corner",
     endedMessage: "The Celebration Has Begun!",
+    celebrationMessage: "We cannot wait to celebrate with you.",
   },
 
   events: [
@@ -52,13 +56,14 @@ export const weddingData = {
       id: "mehendi",
       name: "Mehendi",
       dateLabel: "March 9, 2027",
-      time: "9:00 AM · Morning",
+      time: "9:00 AM onwards",
       venue: "To be announced",
       location: "Aubrey, Texas",
       address: "", // Add verified address when available
       mapsQuery: "Aubrey, Texas",
       description:
-        "Join us for a joyful morning filled with intricate henna, music, laughter and the beginning of our wedding celebrations.",
+        "Join us for a joyful morning filled with vibrant colours, music, dance and henna as we kick off the wedding celebrations!",
+      attire: "Attire: Bright festive colours.",
       motif: "mehendi" as const,
       icon: "henna",
     },
@@ -72,35 +77,10 @@ export const weddingData = {
       address: "The Bliss at Aubrey, Aubrey, Texas", // Update with verified full address
       mapsQuery: "The Bliss at Aubrey, Aubrey, Texas",
       description:
-        "An evening of music, dance and celebration as our families come together before the wedding.",
+        "Two families. One playlist. Endless dancing. With hearts full and speakers louder, please join us to celebrate our Sangeet night.",
+      attire: "Attire: Festive glam/Bollywood chic (comfortable shoes recommended).",
       motif: "sangeet" as const,
       icon: "music",
-    },
-    {
-      id: "haldi-pellikoduku-pellikuthuru",
-      name: "Haldi & Pellikoduku–Pellikuthuru",
-      dateLabel: "March 10, 2027",
-      time: "7:00 AM onwards",
-      venue: "To be announced",
-      location: "Aubrey, Texas",
-      address: "", // Add verified address when available
-      mapsQuery: "Aubrey, Texas",
-      description:
-        "A vibrant traditional ceremony filled with turmeric, blessings, laughter and love — including the cherished Telugu Pellikoduku–Pellikuthuru rites where the bride and groom receive blessings from their families before beginning their new journey.",
-      motif: "haldi" as const,
-      icon: "turmeric",
-      subEvents: [
-        {
-          name: "Haldi",
-          description:
-            "A vibrant traditional ceremony filled with turmeric, blessings, laughter and love.",
-        },
-        {
-          name: "Pellikoduku–Pellikuthuru",
-          description:
-            "A cherished Telugu pre-wedding tradition where the bride and groom receive blessings from their families before beginning their new journey.",
-        },
-      ],
     },
     {
       id: "wedding",
@@ -112,7 +92,8 @@ export const weddingData = {
       address: "Bella Cavalli Events, Aubrey, Texas", // Update with verified full address
       mapsQuery: "Bella Cavalli Events, Aubrey, Texas",
       description:
-        "Together with our families, we invite you to witness our sacred Hindu wedding ceremony and celebrate the beginning of our forever.",
+        "Together with our families, we invite you to witness our sacred Hindu wedding, rooted in Telugu tradition, as we begin our forever.",
+      attire: "Attire: Traditional attire. Please avoid white and black.",
       motif: "wedding" as const,
       icon: "lotus",
     },
@@ -132,6 +113,7 @@ export const weddingData = {
       title: "A Note from Us",
       body: "Dear family and friends, we are so grateful to celebrate this sacred occasion with you. Your love and blessings mean the world to us as we begin our life together.",
     },
+    /** Keep only the preferred primary proposal image */
     photos: [
       {
         id: "story-1",
@@ -139,13 +121,36 @@ export const weddingData = {
         src: "/images/gallery/proposal-dogs-1.jpg",
         caption: "The Proposal",
       },
-      {
-        id: "story-2",
-        alt: "Celebrating the proposal surrounded by our beloved dogs",
-        src: "/images/gallery/proposal-dogs-2.jpg",
-        caption: "Celebrating with family",
-      },
     ],
+  },
+
+  /**
+   * Favorites — enter real answers below.
+   * Empty strings are hidden in the public UI (no TBD / placeholder copy).
+   */
+  favorites: {
+    title: "Our Favorites",
+    subtitle: "A few little things that make us, us.",
+    abhigna: {
+      // Enter Abhigna’s favorites here:
+      food: "",
+      dessert: "",
+      song: "",
+      movie: "",
+      travelDestination: "",
+      partnerQuality: "",
+      ultimateFavorite: "",
+    },
+    hemanth: {
+      // Enter Hemanth’s favorites here:
+      food: "",
+      dessert: "",
+      song: "",
+      movie: "",
+      travelDestination: "",
+      partnerQuality: "",
+      ultimateFavorite: "",
+    },
   },
 
   details: {
@@ -216,45 +221,73 @@ export const weddingData = {
     events: [
       { id: "mehendi", label: "Mehendi" },
       { id: "sangeet", label: "Sangeet" },
-      { id: "haldi", label: "Haldi" },
-      { id: "pellikoduku-pellikuthuru", label: "Pellikoduku–Pellikuthuru" },
-      { id: "wedding", label: "Wedding" },
+      { id: "wedding", label: "Wedding Ceremony" },
     ],
   },
 
   gallery: {
     title: "Gallery",
-    subtitle: "Moments from our journey — engagement, portraits, and forever.",
+    subtitle: "Moments from our journey — older memories to recent celebrations.",
+    /**
+     * Story order: older memories → early relationship → travel/candid →
+     * engagement/pre-wedding → recent formal.
+     *
+     * Older / early-relationship photographs are not yet in the repository.
+     * Add files under /public/images/gallery/ (suggested names):
+     *   - old-memory-1.jpg, old-memory-2.jpg  (category: "old-memory")
+     *   - early-1.jpg, early-2.jpg            (category: "travel")
+     *   - recent-formal-1.jpg                 (category: "recent")
+     * Then register them at the top of this images array. Do not invent remote URLs.
+     * Proposal photo kept for engagement chapter: /images/gallery/proposal-dogs-1.jpg
+     */
     images: [
+      {
+        id: "g-proposal",
+        src: "/images/gallery/proposal-dogs-1.jpg",
+        alt: "Proposal moment with golden retrievers in the mountains",
+        caption: "The proposal",
+        year: "",
+        category: "engagement" as const,
+      },
       {
         id: "g1",
         src: "/images/gallery/beach-sitting.jpg",
         alt: "Sitting together on the beach, holding hands with roses",
-        category: "Engagement",
+        caption: "By the shore",
+        year: "",
+        category: "travel" as const,
       },
       {
         id: "g2",
         src: "/images/gallery/coastal-dance.jpg",
         alt: "Dancing together on the coastal cliffs",
-        category: "Couple",
+        caption: "Coastal dance",
+        year: "",
+        category: "travel" as const,
       },
       {
         id: "g3",
         src: "/images/gallery/beachfront-together.jpg",
         alt: "Foreheads together, smiling with the ocean behind us",
-        category: "Pre-wedding",
+        caption: "Ocean breeze",
+        year: "",
+        category: "travel" as const,
       },
       {
         id: "g4",
         src: "/images/gallery/sunset-walk.jpg",
         alt: "Walking hand in hand along the shore at sunset",
-        category: "Engagement",
+        caption: "Sunset walk",
+        year: "",
+        category: "engagement" as const,
       },
       {
         id: "g5",
         src: "/images/gallery/golden-moment.jpg",
         alt: "A tender moment by the beach with ocean backdrop",
-        category: "Couple",
+        caption: "Golden hour",
+        year: "",
+        category: "recent" as const,
       },
     ],
   },
@@ -287,7 +320,9 @@ export const weddingData = {
   },
 } as const;
 
-export type EventMotif = "mehendi" | "sangeet" | "haldi" | "wedding";
+export type EventMotif = "mehendi" | "sangeet" | "wedding";
+
+export type GalleryCategory = "old-memory" | "travel" | "engagement" | "recent";
 
 export type WeddingEvent = {
   id: string;
@@ -299,20 +334,23 @@ export type WeddingEvent = {
   address: string;
   mapsQuery: string;
   description: string;
+  attire: string;
   motif: EventMotif;
   icon: string;
-  subEvents?: ReadonlyArray<{
-    name: string;
-    description: string;
-  }>;
+};
+
+export type FavoritePerson = {
+  food: string;
+  dessert: string;
+  song: string;
+  movie: string;
+  travelDestination: string;
+  partnerQuality: string;
+  ultimateFavorite: string;
 };
 
 export type WeddingData = typeof weddingData;
 
 export function mapsSearchUrl(query: string) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
-}
-
-export function mapsDirectionsUrl(query: string) {
-  return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(query)}`;
 }

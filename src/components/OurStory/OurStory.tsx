@@ -6,6 +6,7 @@ import styles from "./OurStory.module.css";
 
 export default function OurStory() {
   const { story } = weddingData;
+  const primaryPhoto = story.photos[0];
 
   return (
     <section id="our-story" className={`section section--cream ${styles.section}`} aria-labelledby="story-title">
@@ -37,21 +38,21 @@ export default function OurStory() {
             </article>
           </ScrollReveal>
 
-          <ScrollReveal className={styles.photos}>
-            {story.photos.map((photo) => (
-              <figure key={photo.id} className={styles.frame}>
+          {primaryPhoto ? (
+            <ScrollReveal className={styles.photos}>
+              <figure className={styles.frame}>
                 <Image
-                  src={photo.src}
-                  alt={photo.alt}
+                  src={primaryPhoto.src}
+                  alt={primaryPhoto.alt}
                   width={480}
                   height={600}
                   loading="lazy"
                   className={styles.image}
                 />
-                <figcaption>{photo.caption}</figcaption>
+                <figcaption>{primaryPhoto.caption}</figcaption>
               </figure>
-            ))}
-          </ScrollReveal>
+            </ScrollReveal>
+          ) : null}
         </div>
       </div>
     </section>
