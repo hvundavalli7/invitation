@@ -2,13 +2,20 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
-import { weddingData } from "@/data/wedding";
+import { weddingData, type GalleryImage } from "@/data/wedding";
 import ScrollReveal from "@/components/ScrollReveal/ScrollReveal";
 import SectionCorners from "@/components/Decorative/SectionCorners";
 import styles from "./Gallery.module.css";
 
+const CATEGORY_LABEL: Record<GalleryImage["category"], string> = {
+  "old-memory": "Older memory",
+  travel: "Travel",
+  engagement: "Engagement",
+  recent: "Recent",
+};
+
 export default function Gallery() {
-  const images = weddingData.gallery.images;
+  const images = weddingData.gallery.images as readonly GalleryImage[];
   const [active, setActive] = useState<number | null>(null);
 
   const close = useCallback(() => setActive(null), []);
@@ -68,7 +75,10 @@ export default function Gallery() {
                     loading="lazy"
                     className={styles.image}
                   />
-                  <span className={styles.category}>{image.category}</span>
+                  <span className={styles.category}>
+                    {CATEGORY_LABEL[image.category]}
+                    {image.year ? ` · ${image.year}` : ""}
+                  </span>
                 </button>
               </ScrollReveal>
             </li>
@@ -111,7 +121,8 @@ export default function Gallery() {
               priority
             />
             <figcaption>
-              {images[active].category} · {images[active].alt}
+              {images[active].caption || CATEGORY_LABEL[images[active].category]}
+              {images[active].year ? ` · ${images[active].year}` : ""}
             </figcaption>
           </figure>
           <button

@@ -14,15 +14,16 @@ type Parts = {
   done: boolean;
 };
 
+type Props = {
+  visible: boolean;
+};
+
 function getWeddingTimestamp() {
-  // Interpret wedding local time in America/Chicago using a stable approach:
-  // Build a date string and compute offset via Intl.
   const { dateISO, timeZone } = weddingData.wedding;
   const [datePart, timePart] = dateISO.split("T");
   const [y, m, d] = datePart.split("-").map(Number);
   const [hh, mm, ss] = timePart.split(":").map(Number);
 
-  // Guess UTC by iterating: find the UTC time that formats to the desired local wall time.
   let guess = Date.UTC(y, m - 1, d, hh, mm, ss);
   for (let i = 0; i < 3; i++) {
     const parts = new Intl.DateTimeFormat("en-US", {
@@ -71,20 +72,32 @@ const PLACEHOLDER: Parts = {
   done: false,
 };
 
-export default function WeddingCountdown() {
+export default function WeddingCountdown({ visible }: Props) {
   const target = useMemo(() => getWeddingTimestamp(), []);
-  // Keep the initial render identical on server and client. Date.now() in the
-  // first paint causes hydration mismatches as the clock ticks between SSR and hydrate.
   const [parts, setParts] = useState<Parts>(PLACEHOLDER);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const tick = () => setParts(computeParts(target));
-    tick();
-    setReady(true);
+    if (!visible) return;
+    let cancelled = false;
+    const tick = () => {
+      if (cancelled) return;
+      setParts(computeParts(target));
+      setReady(true);
+    };
+    const startId = window.setTimeout(tick, 0);
     const id = window.setInterval(tick, 1000);
-    return () => window.clearInterval(id);
-  }, [target]);
+    return () => {
+      cancelled = true;
+      window.clearTimeout(startId);
+      window.clearInterval(id);
+    };
+  }, [target, visible]);
+
+  if (!visible) {
+    // Do not reserve a large blank area for the hidden timer
+    return null;
+  }
 
   const units = [
     { label: "Days", value: parts.days },
@@ -94,12 +107,15 @@ export default function WeddingCountdown() {
   ];
 
   return (
-    <section className={`section ${styles.section}`} aria-labelledby="countdown-title">
+    <section
+      className={`section ${styles.section} ${styles.reveal}`}
+      aria-labelledby="countdown-title"
+    >
       <SectionCorners />
       <ScrollReveal className="section__inner">
         <p className="section__eyebrow">Counting the auspicious moments</p>
         <h2 id="countdown-title" className="section__title">
-          Until We Wed
+          {weddingData.countdown.heading}
         </h2>
         <div className="ornament-rule" aria-hidden="true">
           <span className="ornament-rule__jewel" />
@@ -122,10 +138,7 @@ export default function WeddingCountdown() {
           </div>
         )}
 
-        <p className={styles.timezone}>
-          Wedding day · {weddingData.wedding.dateLabel} · {weddingData.wedding.time}{" "}
-          {weddingData.wedding.timeZoneLabel}
-        </p>
+        <p className={styles.message}>{weddingData.countdown.celebrationMessage}</p>
       </ScrollReveal>
     </section>
   );

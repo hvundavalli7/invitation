@@ -7,17 +7,27 @@ import styles from "./DateScratch.module.css";
 
 type Props = {
   onRevealed?: () => void;
+  initiallyRevealed?: boolean;
 };
 
 const BRUSH = 28;
-const THRESHOLD = 0.45;
 
-export default function DateScratch({ onRevealed }: Props) {
+export default function DateScratch({
+  onRevealed,
+  initiallyRevealed = false,
+}: Props) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const wrapRef = useRef<HTMLDivElement | null>(null);
   const scratching = useRef(false);
   const checking = useRef(false);
-  const [revealed, setRevealed] = useState(false);
+  const completedRef = useRef(initiallyRevealed);
+  const [localRevealed, setLocalRevealed] = useState(false);
+  const revealed = initiallyRevealed || localRevealed;
+  const threshold = weddingData.scratchCard.revealThreshold;
+
+  useEffect(() => {
+    completedRef.current = revealed;
+  }, [revealed]);
 
   const paintCover = useCallback(() => {
     const canvas = canvasRef.current;
@@ -63,18 +73,20 @@ export default function DateScratch({ onRevealed }: Props) {
     ctx.font = `700 ${Math.max(12, width * 0.042)}px Cinzel Decorative, Cinzel, serif`;
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
-    ctx.fillText("✦  SCRATCH GOLD FOIL  ✦", width / 2, height / 2);
+    ctx.fillText("✦  SCRATCH TO REVEAL  ✦", width / 2, height / 2);
   }, [revealed]);
 
   useEffect(() => {
+    if (revealed) return;
     paintCover();
     window.addEventListener("resize", paintCover);
     return () => window.removeEventListener("resize", paintCover);
-  }, [paintCover]);
+  }, [paintCover, revealed]);
 
   const finish = useCallback(() => {
-    if (revealed) return;
-    setRevealed(true);
+    if (completedRef.current) return;
+    completedRef.current = true;
+    setLocalRevealed(true);
     const canvas = canvasRef.current;
     const ctx = canvas?.getContext("2d");
     if (canvas && ctx) {
@@ -83,7 +95,7 @@ export default function DateScratch({ onRevealed }: Props) {
       ctx.fillRect(0, 0, rect.width, rect.height);
     }
     onRevealed?.();
-  }, [onRevealed, revealed]);
+  }, [onRevealed]);
 
   const clearedRatio = () => {
     const canvas = canvasRef.current;
@@ -103,7 +115,7 @@ export default function DateScratch({ onRevealed }: Props) {
 
   const scratchAt = (clientX: number, clientY: number) => {
     const canvas = canvasRef.current;
-    if (!canvas || revealed) return;
+    if (!canvas || completedRef.current) return;
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
     const rect = canvas.getBoundingClientRect();
@@ -116,19 +128,20 @@ export default function DateScratch({ onRevealed }: Props) {
       checking.current = true;
       window.requestAnimationFrame(() => {
         checking.current = false;
-        if (clearedRatio() >= THRESHOLD) finish();
+        if (clearedRatio() >= threshold) finish();
       });
     }
   };
 
   const onPointerDown = (e: React.PointerEvent<HTMLCanvasElement>) => {
+    if (completedRef.current) return;
     scratching.current = true;
     e.currentTarget.setPointerCapture(e.pointerId);
     scratchAt(e.clientX, e.clientY);
   };
 
   const onPointerMove = (e: React.PointerEvent<HTMLCanvasElement>) => {
-    if (!scratching.current) return;
+    if (!scratching.current || completedRef.current) return;
     e.preventDefault();
     scratchAt(e.clientX, e.clientY);
   };
@@ -140,9 +153,9 @@ export default function DateScratch({ onRevealed }: Props) {
   return (
     <section className={styles.section} aria-labelledby="date-scratch-title">
       <SectionCorners />
-      <p className={styles.eyebrow}>A date to remember</p>
+      <p className={styles.eyebrow}>A special reveal</p>
       <h2 id="date-scratch-title" className={styles.title}>
-        Scratch to Reveal
+        {weddingData.scratchCard.prompt}
       </h2>
       <div className="ornament-rule" aria-hidden="true">
         <span className="ornament-rule__jewel" />
@@ -150,8 +163,8 @@ export default function DateScratch({ onRevealed }: Props) {
 
       <div ref={wrapRef} className={styles.card}>
         <div className={styles.reveal} aria-hidden={!revealed}>
-          <p className={styles.save}>SAVE THE DATE</p>
-          <p className={styles.date}>{weddingData.wedding.dateLabel}</p>
+          <p className={styles.save}>YOU&apos;RE INVITED</p>
+          <p className={styles.date}>{weddingData.couple.displayName}</p>
         </div>
 
         {!revealed ? (
@@ -163,19 +176,17 @@ export default function DateScratch({ onRevealed }: Props) {
             onPointerUp={onPointerUp}
             onPointerCancel={onPointerUp}
             onPointerLeave={onPointerUp}
-            aria-label="Scratch to reveal the wedding date"
+            aria-label="Scratch to reveal the invitation"
           />
         ) : null}
       </div>
 
       {!revealed ? (
         <button type="button" className={`btn-ghost ${styles.skip}`} onClick={finish}>
-          Reveal date
+          {weddingData.scratchCard.skipLabel}
         </button>
       ) : (
-        <p className={styles.hint}>
-          {weddingData.wedding.time} · {weddingData.wedding.venue}
-        </p>
+        <p className={styles.hint}>Welcome to our celebration</p>
       )}
     </section>
   );

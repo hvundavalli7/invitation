@@ -8,13 +8,12 @@
   padding: clamp(1.4rem, 3vw, 2.15rem);
   border-radius: var(--radius-md);
   background: var(--glass);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 2px solid rgba(200, 155, 60, 0.48);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 2px solid rgba(201, 162, 74, 0.5);
   box-shadow:
     var(--shadow-card),
-    inset 0 0 0 6px rgba(255, 248, 232, 0.3),
-    0 0 24px rgba(200, 155, 60, 0.12);
+    inset 0 0 0 6px rgba(255, 248, 232, 0.35);
   position: relative;
 }
 
@@ -22,14 +21,14 @@
   content: "";
   position: absolute;
   inset: 10px;
-  border: 1px dashed rgba(200, 155, 60, 0.3);
+  border: 1px dashed rgba(201, 162, 74, 0.28);
   border-radius: calc(var(--radius-md) - 8px);
   pointer-events: none;
 }
 
 .form {
   display: grid;
-  gap: 1rem;
+  gap: 1.15rem;
   position: relative;
   z-index: 1;
 }
@@ -41,14 +40,13 @@
 }
 
 .full,
-.row label,
-.fieldset {
+.row label {
   display: grid;
   gap: 0.4rem;
 }
 
 .form span,
-.fieldset legend {
+.groupLegend {
   font-family: var(--font-display);
   font-size: 0.72rem;
   letter-spacing: 0.14em;
@@ -62,7 +60,7 @@
   width: 100%;
   min-height: 46px;
   padding: 0.7rem 0.85rem;
-  border: 1.5px solid rgba(200, 155, 60, 0.4);
+  border: 1.5px solid rgba(201, 162, 74, 0.4);
   background: var(--ivory);
   color: var(--ink);
   border-radius: var(--radius-sm);
@@ -90,15 +88,32 @@
   box-shadow: 0 0 0 3px rgba(123, 30, 43, 0.12);
 }
 
-.fieldset {
-  border: 1.5px solid rgba(200, 155, 60, 0.32);
+/* Labels sit outside the bordered control boxes */
+.fieldGroup {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.55rem;
+  min-width: 0;
+}
+
+.groupLegend {
+  padding: 0;
+  float: none;
+  width: auto;
+}
+
+.controlBox {
+  display: grid;
+  gap: 0.55rem;
+  border: 1.5px solid rgba(201, 162, 74, 0.32);
   border-radius: var(--radius-sm);
   padding: 0.9rem;
   background: rgba(255, 248, 232, 0.7);
 }
 
 .checks {
-  display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.45rem 0.8rem;
 }

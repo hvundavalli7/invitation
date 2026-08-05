@@ -82,8 +82,6 @@ export default function RSVPForm() {
     setStatus("submitting");
 
     try {
-      // Prefer an explicit endpoint, else Resend-backed /api/rsvp when configured,
-      // else browser FormSubmit (no API key) to the couple's contact email.
       let endpoint = rsvp.endpoint.trim();
 
       if (!endpoint) {
@@ -130,8 +128,6 @@ export default function RSVPForm() {
         ok?: boolean;
       };
 
-      // FormSubmit returns HTTP 200 with success:"false" while waiting for
-      // a one-time inbox activation click — treat that as submitted.
       const formSubmitNeedsActivation =
         isFormSubmit &&
         typeof data.message === "string" &&
@@ -163,6 +159,8 @@ export default function RSVPForm() {
       );
     }
   };
+
+  const showEvents = form.attending !== "no";
 
   return (
     <section id="rsvp" className={`section section--cream ${styles.section}`} aria-labelledby="rsvp-title">
@@ -234,43 +232,49 @@ export default function RSVPForm() {
                 </label>
               </div>
 
-              <fieldset className={styles.fieldset}>
-                <legend>Will you be attending?</legend>
-                <label className={styles.inline}>
-                  <input
-                    type="radio"
-                    name="attending"
-                    checked={form.attending === "yes"}
-                    onChange={() => setForm({ ...form, attending: "yes" })}
-                  />
-                  Joyfully attending
-                </label>
-                <label className={styles.inline}>
-                  <input
-                    type="radio"
-                    name="attending"
-                    checked={form.attending === "no"}
-                    onChange={() => setForm({ ...form, attending: "no" })}
-                  />
-                  Regretfully unable to attend
-                </label>
-              </fieldset>
-
-              <fieldset className={styles.fieldset}>
-                <legend>Events attending</legend>
-                <div className={styles.checks}>
-                  {rsvp.events.map((event) => (
-                    <label key={event.id} className={styles.inline}>
-                      <input
-                        type="checkbox"
-                        checked={form.events.includes(event.id)}
-                        onChange={() => toggleEvent(event.id)}
-                      />
-                      {event.label}
-                    </label>
-                  ))}
+              <fieldset className={styles.fieldGroup}>
+                <legend className={styles.groupLegend}>Will you be attending?</legend>
+                <div className={styles.controlBox} role="presentation">
+                  <label className={styles.inline}>
+                    <input
+                      type="radio"
+                      name="attending"
+                      checked={form.attending === "yes"}
+                      onChange={() => setForm({ ...form, attending: "yes" })}
+                    />
+                    Yes, can&apos;t wait
+                  </label>
+                  <label className={styles.inline}>
+                    <input
+                      type="radio"
+                      name="attending"
+                      checked={form.attending === "no"}
+                      onChange={() =>
+                        setForm({ ...form, attending: "no", events: [] })
+                      }
+                    />
+                    Sorry, can&apos;t make it
+                  </label>
                 </div>
               </fieldset>
+
+              {showEvents ? (
+                <fieldset className={styles.fieldGroup}>
+                  <legend className={styles.groupLegend}>Events attending</legend>
+                  <div className={`${styles.controlBox} ${styles.checks}`} role="presentation">
+                    {rsvp.events.map((event) => (
+                      <label key={event.id} className={styles.inline}>
+                        <input
+                          type="checkbox"
+                          checked={form.events.includes(event.id)}
+                          onChange={() => toggleEvent(event.id)}
+                        />
+                        {event.label}
+                      </label>
+                    ))}
+                  </div>
+                </fieldset>
+              ) : null}
 
               <label className={styles.full}>
                 <span>Dietary restrictions</span>

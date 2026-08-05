@@ -10,10 +10,10 @@ export default function TraditionalFooter() {
     <footer className={styles.footer}>
       <div className={styles.mangoLeaf} aria-hidden="true" />
       <Image
-        src="/images/venue/venue-toran-garland.webp"
+        src="/images/decor/mango-leaf-toran.svg"
         alt=""
-        width={1600}
-        height={480}
+        width={1400}
+        height={160}
         className={styles.toran}
       />
       <div className={styles.inner}>
@@ -32,7 +32,8 @@ export default function TraditionalFooter() {
 
         <nav className={styles.nav} aria-label="Footer">
           <a href="#celebrations">Celebrations</a>
-          <a href="#details">Details</a>
+          <a href="#favorites">Favorites</a>
+          <a href="#gallery">Gallery</a>
           <a href="#venues">Venues</a>
           <a href="#rsvp">RSVP</a>
         </nav>

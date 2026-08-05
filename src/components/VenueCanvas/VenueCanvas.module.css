@@ -10,235 +10,87 @@
 .baseWash {
   position: absolute;
   inset: 0;
+  /* Same cream family as body — keeps scroll visually consistent */
   background:
-    radial-gradient(ellipse at 50% 18%, rgba(120, 170, 210, 0.35), transparent 42%),
-    radial-gradient(ellipse at 50% 80%, rgba(20, 70, 36, 0.55), transparent 55%),
-    linear-gradient(180deg, #6fa8c8 0%, #8fbf7a 28%, #2f6b3a 58%, #1a3d24 100%);
+    radial-gradient(ellipse at 50% 0%, rgba(255, 248, 232, 0.7), transparent 48%),
+    radial-gradient(ellipse at 20% 80%, rgba(232, 220, 190, 0.35), transparent 42%),
+    radial-gradient(ellipse at 80% 75%, rgba(220, 235, 210, 0.22), transparent 40%),
+    linear-gradient(180deg, #fffaf2 0%, #f8f1e4 45%, #f0e4d0 100%);
 }
 
-.templeLayer {
-  position: absolute;
-  inset: -8% -4% -18%;
-  will-change: transform;
-}
-
-.templeImage {
-  object-fit: cover;
-  object-position: center 42%;
-  filter: saturate(1.08) contrast(1.04);
-}
-
-.mist {
+.parchment {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse at 50% 45%, rgba(255, 248, 230, 0.18), transparent 38%),
-    radial-gradient(ellipse at 30% 60%, rgba(200, 230, 210, 0.14), transparent 40%),
-    linear-gradient(180deg, rgba(140, 190, 220, 0.12), transparent 35%, rgba(18, 48, 28, 0.28) 100%);
-  mix-blend-mode: soft-light;
-}
-
-.lightRays {
-  position: absolute;
-  inset: -10% 0 20%;
-  background:
-    conic-gradient(
-      from 210deg at 28% 8%,
-      transparent 0deg,
-      rgba(255, 236, 170, 0.07) 8deg,
-      transparent 16deg,
-      rgba(255, 244, 200, 0.1) 28deg,
-      transparent 40deg,
-      rgba(255, 230, 150, 0.06) 52deg,
-      transparent 68deg
-    );
-  animation: rayPulse 11s ease-in-out infinite;
-  mix-blend-mode: screen;
-  opacity: 0.85;
-}
-
-.side {
-  position: absolute;
-  top: 8%;
-  bottom: 0;
-  width: min(28vw, 320px);
-  will-change: transform;
-}
-
-.sideLeft {
-  left: -2%;
-}
-
-.sideRight {
-  right: -2%;
-}
-
-.sideRight .sideImage {
-  transform: scaleX(-1);
-  margin-left: auto;
-  transform-origin: top right;
-  animation: leafWindRight 8.2s ease-in-out infinite;
-}
-
-.sideImage {
-  height: 100%;
-  width: auto;
-  max-width: none;
-  object-fit: cover;
-  filter: drop-shadow(0 12px 28px rgba(10, 40, 20, 0.35));
-}
-
-.swayLeft {
-  transform-origin: top left;
-  animation: leafWindLeft 7.5s ease-in-out infinite;
-}
-
-.toranWrap {
-  position: absolute;
-  top: -2%;
-  left: 50%;
-  width: min(130vw, 1600px);
-  transform: translateX(-50%);
-  z-index: 3;
-  mask-image: linear-gradient(180deg, #000 0%, #000 52%, transparent 100%);
-  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 52%, transparent 100%);
-}
-
-.toran {
-  width: 100%;
-  height: auto;
-  transform-origin: top center;
-  animation: garlandSway 8s ease-in-out infinite;
-  filter: drop-shadow(0 10px 18px rgba(20, 40, 10, 0.35));
-}
-
-.gardenLayer {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -8%;
-  height: min(48vh, 420px);
-  will-change: transform;
-  mask-image: linear-gradient(180deg, transparent 0%, #000 28%, #000 100%);
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 28%, #000 100%);
-}
-
-.gardenImage {
-  object-fit: cover;
-  object-position: center 70%;
-  opacity: 0.92;
+  opacity: 0.35;
+  background-image: url("/images/decor/parchment-texture.svg");
+  background-size: 420px 420px;
+  mix-blend-mode: multiply;
 }
 
 .cornerBloom {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 0% 100%, rgba(40, 110, 50, 0.45), transparent 32%),
-    radial-gradient(ellipse at 100% 100%, rgba(40, 110, 50, 0.45), transparent 32%),
-    radial-gradient(ellipse at 0% 0%, rgba(30, 80, 40, 0.35), transparent 28%),
-    radial-gradient(ellipse at 100% 0%, rgba(30, 80, 40, 0.35), transparent 28%);
-  z-index: 2;
+    radial-gradient(ellipse at 0% 100%, rgba(200, 155, 60, 0.1), transparent 28%),
+    radial-gradient(ellipse at 100% 100%, rgba(123, 30, 43, 0.06), transparent 28%),
+    radial-gradient(ellipse at 0% 0%, rgba(47, 107, 36, 0.06), transparent 24%),
+    radial-gradient(ellipse at 100% 0%, rgba(200, 155, 60, 0.08), transparent 24%);
 }
 
-.particles {
+.toranWrap {
+  position: absolute;
+  top: -1%;
+  left: 50%;
+  width: min(120vw, 1400px);
+  transform: translateX(-50%);
+  opacity: 0.72;
+  mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%);
+}
+
+.toran {
+  width: 100%;
+  height: auto;
+}
+
+.floaters {
   position: absolute;
   inset: 0;
-  z-index: 4;
 }
 
-.particle {
+.floater {
   position: absolute;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 244, 200, 0.95), rgba(255, 200, 80, 0.15));
-  box-shadow: 0 0 10px rgba(255, 220, 120, 0.55);
-  animation: particleFloat linear infinite;
-  opacity: 0;
+  opacity: 0.55;
+  filter: drop-shadow(0 4px 8px rgba(80, 50, 30, 0.12));
 }
 
-@keyframes garlandSway {
+.floaterDrift {
+  animation: floaterDrift 9s ease-in-out infinite;
+}
+
+@keyframes floaterDrift {
   0%,
   100% {
-    transform: rotate(-0.55deg) translateY(0);
+    transform: translate3d(0, 0, 0) rotate(0deg);
   }
   50% {
-    transform: rotate(0.55deg) translateY(3px);
-  }
-}
-
-@keyframes leafWindLeft {
-  0%,
-  100% {
-    transform: rotate(-1.2deg) translateX(0);
-  }
-  50% {
-    transform: rotate(1.6deg) translateX(4px);
-  }
-}
-
-@keyframes leafWindRight {
-  0%,
-  100% {
-    transform: scaleX(-1) rotate(1.2deg) translateX(0);
-  }
-  50% {
-    transform: scaleX(-1) rotate(-1.6deg) translateX(4px);
-  }
-}
-
-@keyframes rayPulse {
-  0%,
-  100% {
-    opacity: 0.55;
-  }
-  50% {
-    opacity: 0.95;
-  }
-}
-
-@keyframes particleFloat {
-  0% {
-    opacity: 0;
-    transform: translate3d(0, 12px, 0) scale(0.7);
-  }
-  15% {
-    opacity: 0.85;
-  }
-  70% {
-    opacity: 0.55;
-  }
-  100% {
-    opacity: 0;
-    transform: translate3d(18px, -48px, 0) scale(1.15);
+    transform: translate3d(0, -8px, 0) rotate(4deg);
   }
 }
 
 @media (max-width: 700px) {
-  .side {
-    width: min(38vw, 150px);
-    opacity: 0.92;
-  }
-
   .toranWrap {
-    width: 165vw;
-    top: -1%;
+    width: 150vw;
+    opacity: 0.6;
   }
 
-  .gardenLayer {
-    height: 36vh;
-    opacity: 0.88;
-  }
-
-  .lightRays {
-    opacity: 0.65;
+  .floater {
+    opacity: 0.42;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .toran,
-  .swayLeft,
-  .swayRight,
-  .lightRays,
-  .particle {
+  .floaterDrift {
     animation: none !important;
   }
 }

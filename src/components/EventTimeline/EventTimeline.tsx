@@ -28,15 +28,9 @@ export default function EventTimeline() {
           </div>
         </ScrollReveal>
 
-        <ol className={styles.timeline}>
+        <ol className={styles.grid}>
           {events.map((event, index) => (
             <li key={event.id} className={styles.item}>
-              <div className={styles.rail} aria-hidden="true">
-                <span className={styles.dot} />
-                {index < events.length - 1 ? (
-                  <span className={styles.line} />
-                ) : null}
-              </div>
               <ScrollReveal className={styles.cardWrap}>
                 <EventCard event={event} index={index} />
               </ScrollReveal>

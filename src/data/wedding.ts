@@ -7,7 +7,9 @@ export const weddingData = {
   couple: {
     bride: "Abhigna",
     groom: "Hemanth",
-    displayName: "Abhigna & Hemanth",
+    displayName: "Abhigna and Hemanth",
+    /** Short line shown directly above the couple names in the hero */
+    togetherLine: "Together with their families",
     inviteLine:
       "Together with their families, invite you to celebrate their wedding",
   },
@@ -25,25 +27,28 @@ export const weddingData = {
     address: "Bella Cavalli Events, Aubrey, Texas", // Update with verified full address
     mapsQuery: "Bella Cavalli Events, Aubrey, Texas",
     description:
-      "Together with our families, we invite you to witness our sacred Hindu wedding ceremony and celebrate the beginning of our forever.",
+      "Together with our families, we invite you to witness our sacred Hindu wedding, rooted in Telugu tradition, as we begin our forever.",
   },
 
   hero: {
-    ctaLabel: "View Celebrations",
-    ctaHref: "#celebrations",
-    /** South Indian invitation caricature */
+    ganeshBlessing: "|| Shree Ganesha Namah ||",
+    /** South Indian invitation caricature — transparent/cream-blended */
     image: "/images/couple/caricature-hero-feathered.webp",
     imageAlt:
-      "Illustrated caricature of Abhigna and Hemanth in traditional South Indian wedding attire",
+      "Illustrated caricature of Abhigna and Hemanth in traditional South Indian wedding attire — Abhigna in an off-white saree with a green border, Hemanth with a green kanduva",
   },
 
   scratchCard: {
     prompt: "Scratch to Reveal Our Wedding Invitation",
-    skipLabel: "Skip and Enter",
-    revealThreshold: 0.55,
+    skipLabel: "Reveal invitation",
+    /** Fraction of scratched surface required to complete (45%–60%) */
+    revealThreshold: 0.52,
+    sessionKey: "ah-invitation-scratch-revealed",
   },
 
   countdown: {
+    heading: "The big day is just around the corner",
+    celebrationMessage: "We cannot wait to celebrate with you.",
     endedMessage: "The Celebration Has Begun!",
   },
 
@@ -52,13 +57,14 @@ export const weddingData = {
       id: "mehendi",
       name: "Mehendi",
       dateLabel: "March 9, 2027",
-      time: "9:00 AM · Morning",
+      time: "9:00 AM onwards",
       venue: "To be announced",
       location: "Aubrey, Texas",
       address: "", // Add verified address when available
       mapsQuery: "Aubrey, Texas",
       description:
-        "Join us for a joyful morning filled with intricate henna, music, laughter and the beginning of our wedding celebrations.",
+        "Join us for a joyful morning filled with vibrant colours, music, dance and henna as we kick off the wedding celebrations!",
+      attire: "Attire: Bright festive colours.",
       motif: "mehendi" as const,
       icon: "henna",
     },
@@ -72,35 +78,10 @@ export const weddingData = {
       address: "The Bliss at Aubrey, Aubrey, Texas", // Update with verified full address
       mapsQuery: "The Bliss at Aubrey, Aubrey, Texas",
       description:
-        "An evening of music, dance and celebration as our families come together before the wedding.",
+        "Two families. One playlist. Endless dancing. With hearts full and speakers louder, please join us to celebrate our Sangeet night.",
+      attire: "Attire: Festive glam/Bollywood chic (comfortable shoes recommended).",
       motif: "sangeet" as const,
       icon: "music",
-    },
-    {
-      id: "haldi-pellikoduku-pellikuthuru",
-      name: "Haldi & Pellikoduku–Pellikuthuru",
-      dateLabel: "March 10, 2027",
-      time: "7:00 AM onwards",
-      venue: "To be announced",
-      location: "Aubrey, Texas",
-      address: "", // Add verified address when available
-      mapsQuery: "Aubrey, Texas",
-      description:
-        "A vibrant traditional ceremony filled with turmeric, blessings, laughter and love — including the cherished Telugu Pellikoduku–Pellikuthuru rites where the bride and groom receive blessings from their families before beginning their new journey.",
-      motif: "haldi" as const,
-      icon: "turmeric",
-      subEvents: [
-        {
-          name: "Haldi",
-          description:
-            "A vibrant traditional ceremony filled with turmeric, blessings, laughter and love.",
-        },
-        {
-          name: "Pellikoduku–Pellikuthuru",
-          description:
-            "A cherished Telugu pre-wedding tradition where the bride and groom receive blessings from their families before beginning their new journey.",
-        },
-      ],
     },
     {
       id: "wedding",
@@ -112,7 +93,8 @@ export const weddingData = {
       address: "Bella Cavalli Events, Aubrey, Texas", // Update with verified full address
       mapsQuery: "Bella Cavalli Events, Aubrey, Texas",
       description:
-        "Together with our families, we invite you to witness our sacred Hindu wedding ceremony and celebrate the beginning of our forever.",
+        "Together with our families, we invite you to witness our sacred Hindu wedding, rooted in Telugu tradition, as we begin our forever.",
+      attire: "Attire: Traditional attire. Please avoid white and black.",
       motif: "wedding" as const,
       icon: "lotus",
     },
@@ -132,6 +114,7 @@ export const weddingData = {
       title: "A Note from Us",
       body: "Dear family and friends, we are so grateful to celebrate this sacred occasion with you. Your love and blessings mean the world to us as we begin our life together.",
     },
+    /** Keep only the preferred primary proposal image */
     photos: [
       {
         id: "story-1",
@@ -139,13 +122,48 @@ export const weddingData = {
         src: "/images/gallery/proposal-dogs-1.jpg",
         caption: "The Proposal",
       },
-      {
-        id: "story-2",
-        alt: "Celebrating the proposal surrounded by our beloved dogs",
-        src: "/images/gallery/proposal-dogs-2.jpg",
-        caption: "Celebrating with family",
-      },
     ],
+  },
+
+  /**
+   * Favorites — fill in values below when ready.
+   * Empty strings are hidden in the public UI (no TBD / placeholder copy).
+   *
+   * WHERE TO ENTER VALUES:
+   * - favorites.abhigna.* and favorites.hemanth.*
+   */
+  favorites: {
+    title: "Our Favorites",
+    eyebrow: "A little more about us",
+    abhigna: {
+      name: "Abhigna",
+      heading: "Abhigna’s Favorites",
+      portrait: "/images/favorites/abhigna.webp",
+      portraitAlt: "Illustrated portrait of Abhigna in traditional wedding attire",
+      // Enter Abhigna’s answers here:
+      food: "",
+      dessert: "",
+      song: "",
+      movie: "",
+      travelDestination: "",
+      partnerQuality: "",
+      ultimateFavorite: "",
+    },
+    hemanth: {
+      name: "Hemanth",
+      heading: "Hemanth’s Favorites",
+      portrait: "/images/favorites/hemanth.webp",
+      portraitAlt: "Illustrated portrait of Hemanth in traditional wedding attire",
+      // Enter Hemanth’s answers here:
+      food: "",
+      dessert: "",
+      song: "",
+      movie: "",
+      travelDestination: "",
+      partnerQuality: "",
+      /** Example: ultimateFavorite: "Only Abhigna" */
+      ultimateFavorite: "",
+    },
   },
 
   details: {
@@ -216,46 +234,120 @@ export const weddingData = {
     events: [
       { id: "mehendi", label: "Mehendi" },
       { id: "sangeet", label: "Sangeet" },
-      { id: "haldi", label: "Haldi" },
-      { id: "pellikoduku-pellikuthuru", label: "Pellikoduku–Pellikuthuru" },
-      { id: "wedding", label: "Wedding" },
+      { id: "wedding", label: "Wedding Ceremony" },
     ],
   },
 
   gallery: {
     title: "Gallery",
-    subtitle: "Moments from our journey — engagement, portraits, and forever.",
+    subtitle: "A visual story of our journey — older memories to recent days.",
+    /**
+     * Gallery story order: older memories → early relationship → travel/candid
+     * → engagement/pre-wedding → recent formal.
+     *
+     * To add older photographs:
+     * 1. Place image files in /public/images/gallery/old-memories/
+     * 2. Add entries below with category: "old-memory"
+     * Do not invent external image URLs. Only reference files that exist.
+     */
     images: [
       {
-        id: "g1",
+        id: "g-proposal-1",
+        src: "/images/gallery/proposal-dogs-1.jpg",
+        alt: "Proposal celebration with golden retrievers in the mountains",
+        caption: "The proposal",
+        year: "",
+        category: "old-memory" as const,
+      },
+      {
+        id: "g-proposal-moment",
+        src: "/images/couple/proposal.jpg",
+        alt: "Abhigna and Hemanth during their proposal celebration",
+        caption: "A joyful yes",
+        year: "",
+        category: "old-memory" as const,
+      },
+      {
+        id: "g-beach-sitting",
         src: "/images/gallery/beach-sitting.jpg",
         alt: "Sitting together on the beach, holding hands with roses",
-        category: "Engagement",
+        caption: "Early days by the sea",
+        year: "",
+        category: "travel" as const,
       },
       {
-        id: "g2",
+        id: "g-coastal-dance",
         src: "/images/gallery/coastal-dance.jpg",
         alt: "Dancing together on the coastal cliffs",
-        category: "Couple",
+        caption: "Coastal dance",
+        year: "",
+        category: "travel" as const,
       },
       {
-        id: "g3",
+        id: "g-beachfront",
         src: "/images/gallery/beachfront-together.jpg",
         alt: "Foreheads together, smiling with the ocean behind us",
-        category: "Pre-wedding",
+        caption: "By the shore",
+        year: "",
+        category: "travel" as const,
       },
       {
-        id: "g4",
+        id: "g-sunset",
         src: "/images/gallery/sunset-walk.jpg",
         alt: "Walking hand in hand along the shore at sunset",
-        category: "Engagement",
+        caption: "Sunset walk",
+        year: "",
+        category: "engagement" as const,
       },
       {
-        id: "g5",
+        id: "g-embrace",
+        src: "/images/couple/embrace.jpg",
+        alt: "Abhigna and Hemanth sharing a warm embrace",
+        caption: "Closer still",
+        year: "",
+        category: "engagement" as const,
+      },
+      {
+        id: "g-dance",
+        src: "/images/couple/dance.jpg",
+        alt: "Abhigna and Hemanth dancing together",
+        caption: "Dancing through it all",
+        year: "",
+        category: "engagement" as const,
+      },
+      {
+        id: "g-golden",
         src: "/images/gallery/golden-moment.jpg",
         alt: "A tender moment by the beach with ocean backdrop",
-        category: "Couple",
+        caption: "Golden hour",
+        year: "",
+        category: "recent" as const,
       },
+      {
+        id: "g-forehead",
+        src: "/images/couple/forehead-kiss.jpg",
+        alt: "A tender forehead kiss between Abhigna and Hemanth",
+        caption: "Quiet affection",
+        year: "",
+        category: "recent" as const,
+      },
+      {
+        id: "g-hero-portrait",
+        src: "/images/couple/hero.jpg",
+        alt: "Formal portrait of Abhigna and Hemanth",
+        caption: "Together",
+        year: "",
+        category: "recent" as const,
+      },
+      // Older memory slots — add files to /public/images/gallery/old-memories/ then uncomment:
+      // {
+      //   id: "g-old-1",
+      //   src: "/images/gallery/old-memories/memory-1.jpg",
+      //   alt: "Describe the older memory",
+      //   caption: "Early memory",
+      //   year: "20XX",
+      //   category: "old-memory" as const,
+      // },
     ],
   },
 
@@ -268,7 +360,8 @@ export const weddingData = {
     youtubeId: "tGEGGWt9wgI",
     label: "Yedhemaina Sakhi",
     artist: "A.R. Rahman",
-    defaultVolume: 0.28,
+    defaultVolume: 0.3,
+    muteStorageKey: "ah-music-muted",
     /** Optional local fallback if youtubeId is removed */
     src: "/audio/wedding-instrumental.wav",
   },
@@ -287,7 +380,7 @@ export const weddingData = {
   },
 } as const;
 
-export type EventMotif = "mehendi" | "sangeet" | "haldi" | "wedding";
+export type EventMotif = "mehendi" | "sangeet" | "wedding";
 
 export type WeddingEvent = {
   id: string;
@@ -299,20 +392,42 @@ export type WeddingEvent = {
   address: string;
   mapsQuery: string;
   description: string;
+  attire: string;
   motif: EventMotif;
   icon: string;
-  subEvents?: ReadonlyArray<{
-    name: string;
-    description: string;
-  }>;
+};
+
+export type GalleryCategory =
+  | "old-memory"
+  | "travel"
+  | "engagement"
+  | "recent";
+
+export type GalleryImage = {
+  id: string;
+  src: string;
+  alt: string;
+  caption: string;
+  year: string;
+  category: GalleryCategory;
+};
+
+export type FavoritePerson = {
+  name: string;
+  heading: string;
+  portrait: string;
+  portraitAlt: string;
+  food: string;
+  dessert: string;
+  song: string;
+  movie: string;
+  travelDestination: string;
+  partnerQuality: string;
+  ultimateFavorite: string;
 };
 
 export type WeddingData = typeof weddingData;
 
 export function mapsSearchUrl(query: string) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
-}
-
-export function mapsDirectionsUrl(query: string) {
-  return `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(query)}`;
 }
