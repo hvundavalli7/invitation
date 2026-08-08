@@ -178,18 +178,11 @@ export default function MusicPlayer({ shouldStart = false }: Props) {
     const tryStart = async () => {
       if (startedRef.current || cancelled) return true;
 
-      // Detect mobile: try to start muted first for autoplay to work on mobile
-      const isMobileOrTablet = () => {
-        return typeof navigator !== 'undefined' && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-      };
-
       if (useYoutube) {
         const player = playerRef.current;
         if (!player || !playerReady) return false;
         try {
-          // On mobile, force mute for autoplay to work
-          const shouldForceMute = isMobileOrTablet();
-          if (shouldForceMute || mutedRef.current) player.mute();
+          if (mutedRef.current) player.mute();
           else player.unMute();
           player.setVolume(
             Math.round(
@@ -208,9 +201,7 @@ export default function MusicPlayer({ shouldStart = false }: Props) {
       if (!audio) return false;
       try {
         audio.volume = weddingData.music.defaultVolume;
-        // On mobile, force mute for autoplay to work
-        const isMobile = isMobileOrTablet();
-        audio.muted = isMobile || mutedRef.current;
+        audio.muted = mutedRef.current;
         await audio.play();
         markStarted();
         return true;
@@ -311,7 +302,7 @@ export default function MusicPlayer({ shouldStart = false }: Props) {
           <div id={hostId} className={styles.ytHost} aria-hidden="true" />
         </>
       ) : (
-        <audio ref={audioRef} src={weddingData.music.src} preload="auto" />
+        <audio ref={audioRef} src={weddingData.music.src} preload="auto" playsInline />
       )}
 
       <button
