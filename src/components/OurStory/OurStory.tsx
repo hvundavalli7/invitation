@@ -32,10 +32,6 @@ export default function OurStory() {
               <h3>{story.proposal.title}</h3>
               <p>{story.proposal.body}</p>
             </article>
-            <article className={`${styles.block} ${styles.message} wood-panel`}>
-              <h3>{story.message.title}</h3>
-              <p>{story.message.body}</p>
-            </article>
           </ScrollReveal>
 
           {primaryPhoto ? (

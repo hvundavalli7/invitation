@@ -178,11 +178,18 @@ export default function MusicPlayer({ shouldStart = false }: Props) {
     const tryStart = async () => {
       if (startedRef.current || cancelled) return true;
 
+      // Detect mobile: try to start muted first for autoplay to work on mobile
+      const isMobileOrTablet = () => {
+        return typeof navigator !== 'undefined' && /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+      };
+
       if (useYoutube) {
         const player = playerRef.current;
         if (!player || !playerReady) return false;
         try {
-          if (mutedRef.current) player.mute();
+          // On mobile, force mute for autoplay to work
+          const shouldForceMute = isMobileOrTablet();
+          if (shouldForceMute || mutedRef.current) player.mute();
           else player.unMute();
           player.setVolume(
             Math.round(
@@ -201,7 +208,9 @@ export default function MusicPlayer({ shouldStart = false }: Props) {
       if (!audio) return false;
       try {
         audio.volume = weddingData.music.defaultVolume;
-        audio.muted = mutedRef.current;
+        // On mobile, force mute for autoplay to work
+        const isMobile = isMobileOrTablet();
+        audio.muted = isMobile || mutedRef.current;
         await audio.play();
         markStarted();
         return true;

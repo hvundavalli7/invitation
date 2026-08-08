@@ -11,7 +11,6 @@ import OurStory from "@/components/OurStory/OurStory";
 import Favorites from "@/components/Favorites/Favorites";
 import WeddingDetails from "@/components/WeddingDetails/WeddingDetails";
 import VenueMap from "@/components/VenueMap/VenueMap";
-import Gallery from "@/components/Gallery/Gallery";
 import RSVPForm from "@/components/RSVPForm/RSVPForm";
 import MusicPlayer from "@/components/MusicPlayer/MusicPlayer";
 import TraditionalFooter from "@/components/TraditionalFooter/TraditionalFooter";
@@ -93,7 +92,6 @@ export default function InvitationApp() {
           <Favorites />
           <WeddingDetails />
           <VenueMap />
-          <Gallery />
           <RSVPForm />
         </main>
         <TraditionalFooter />

@@ -82,7 +82,7 @@
 }
 
 .frame {
-  width: min(100%, 420px);
+  width: min(100%, 520px);
   padding: 0.75rem 0.75rem 1.35rem;
   background:
     linear-gradient(160deg, #6b4428, #3d261c 55%, #5c3d2e);
@@ -112,8 +112,9 @@
 .image {
   width: 100%;
   height: auto;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
+  object-position: 45% 36%;
   display: block;
   border: 1px solid rgba(200, 155, 60, 0.25);
 }

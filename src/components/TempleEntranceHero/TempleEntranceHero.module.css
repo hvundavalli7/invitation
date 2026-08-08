@@ -23,7 +23,7 @@
   inset: 0;
   background:
     radial-gradient(ellipse at 50% 18%, rgba(255, 244, 200, 0.28), transparent 42%),
-    radial-gradient(ellipse at 50% 55%, rgba(255, 252, 240, 0.14), transparent 36%);
+    radial-gradient(ellipse at 50% 58%, rgba(255, 252, 240, 0.12), transparent 34%);
 }
 
 .groundFade {
@@ -38,14 +38,14 @@
 .stage {
   position: relative;
   z-index: 2;
-  width: min(100%, 760px);
+  width: min(100%, 820px);
   margin: 0 auto;
-  padding: clamp(6.5rem, 14vw, 8.5rem) 1.25rem 2.5rem;
+  padding: clamp(5.5rem, 12vw, 7.5rem) 1rem 1.5rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.35rem;
+  gap: 0.16rem;
 }
 
 .ganeshWrap {
@@ -62,12 +62,16 @@
 
 .blessing {
   font-family: var(--font-display);
-  font-size: clamp(0.82rem, 2.1vw, 1rem);
-  letter-spacing: 0.12em;
+  font-weight: 600;
+  font-size: clamp(0.88rem, 2.2vw, 1.05rem);
+  letter-spacing: 0.14em;
   color: var(--gold-soft);
-  text-shadow: 0 2px 10px rgba(20, 40, 10, 0.45);
+  text-shadow:
+    0 2px 0 rgba(45, 25, 10, 0.22),
+    0 4px 14px rgba(14, 32, 16, 0.55),
+    0 0 14px rgba(255, 236, 186, 0.26);
   animation: fadeRise 1s ease both;
-  margin: 0.15rem 0 0.35rem;
+  margin: 0.15rem 0 0.18rem;
   white-space: nowrap;
 }
 
@@ -86,7 +90,7 @@
   flex-direction: column;
   align-items: center;
   gap: 0.05rem;
-  margin: 0.05rem 0 0.2rem;
+  margin: 0.05rem 0 0.1rem;
   animation: fadeRise 1.2s ease both;
 }
 
@@ -114,29 +118,52 @@
 
 .scene {
   position: relative;
-  width: min(92vw, 560px);
-  margin: 0.35rem auto 0;
+  width: min(92vw, 760px);
+  height: min(78dvh, 760px);
+  margin: 0.12rem auto 0;
   display: flex;
   justify-content: center;
   animation: sceneRise 1.35s ease both;
   background: transparent;
   isolation: isolate;
+  overflow: hidden;
+}
+
+.scene::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: 72%;
+  height: 58%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 236, 180, 0.22) 0%,
+    rgba(180, 210, 140, 0.1) 42%,
+    transparent 72%
+  );
+  pointer-events: none;
+  z-index: 0;
+  animation: glowPulse 7s ease-in-out infinite;
 }
 
 .sceneImage {
+  position: relative;
+  z-index: 1;
   width: 100%;
-  height: auto;
-  max-height: min(58dvh, 620px);
-  object-fit: contain;
-  object-position: center center;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 52%;
   display: block;
   border-radius: 0;
   background: transparent;
-  /* Warm green shadow only — avoid cool/blue halos around the art */
+  animation: coupleDrift 8.5s ease-in-out infinite;
   filter:
-    saturate(1.04)
-    contrast(1.02)
-    drop-shadow(0 16px 28px rgba(12, 40, 18, 0.28));
+    saturate(1.05)
+    contrast(1.03)
+    drop-shadow(0 18px 32px rgba(12, 40, 18, 0.32))
+    drop-shadow(0 4px 14px rgba(180, 130, 40, 0.12));
 }
 
 @keyframes fadeRise {
@@ -161,13 +188,43 @@
   }
 }
 
+@keyframes coupleDrift {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes glowPulse {
+  0%,
+  100% {
+    opacity: 0.7;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.04);
+  }
+}
+
 @media (max-width: 700px) {
+  .scene {
+    width: min(100vw, 560px);
+  }
+
   .sceneImage {
-    max-height: min(52dvh, 480px);
+    max-height: min(56dvh, 520px);
   }
 
   .name {
     font-size: clamp(3rem, 15vw, 4.6rem);
+  }
+
+  .stage {
+    padding-top: clamp(5rem, 16vw, 6.5rem);
   }
 }
 
@@ -176,7 +233,9 @@
   .blessing,
   .together,
   .names,
-  .scene {
+  .scene,
+  .sceneImage,
+  .scene::before {
     animation: none;
   }
 }
