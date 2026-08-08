@@ -1,9 +1,12 @@
+import Image from "next/image";
 import { weddingData } from "@/data/wedding";
 import ScrollReveal from "@/components/ScrollReveal/ScrollReveal";
 import SectionCorners from "@/components/Decorative/SectionCorners";
 import styles from "./Favorites.module.css";
 
 type FavoriteFields = {
+  photo: string;
+  quote: string;
   food: string;
   dessert: string;
   song: string;
@@ -11,55 +14,83 @@ type FavoriteFields = {
   travelDestination: string;
   partnerQuality: string;
   ultimateFavorite: string;
+  ultimateTagline: string;
 };
 
-const LABELS: { key: keyof Omit<FavoriteFields, "ultimateFavorite">; label: string }[] = [
-  { key: "food", label: "Favorite food" },
-  { key: "dessert", label: "Favorite dessert" },
-  { key: "song", label: "Favorite song" },
-  { key: "movie", label: "Favorite movie" },
-  { key: "travelDestination", label: "Favorite travel destination" },
-  { key: "partnerQuality", label: "Favorite quality about their partner" },
+const CHIPS: { key: keyof Omit<FavoriteFields, "ultimateFavorite" | "ultimateTagline" | "photo" | "quote">; icon: string }[] = [
+  { key: "food",              icon: "🍽️" },
+  { key: "dessert",           icon: "🍦" },
+  { key: "song",              icon: "🎵" },
+  { key: "movie",             icon: "🎬" },
+  { key: "travelDestination", icon: "✈️" },
+  { key: "partnerQuality",    icon: "❤️" },
 ];
 
-function FavoriteCard({
-  name,
-  data,
-}: {
-  name: string;
-  data: FavoriteFields;
-}) {
-  const items = LABELS.filter((item) => data[item.key].trim().length > 0);
+function FavoriteCard({ name, data }: { name: string; data: FavoriteFields }) {
+  const chips = CHIPS.filter((c) => data[c.key].trim().length > 0);
   const ultimate = data.ultimateFavorite.trim();
+  const hasPhoto = data.photo.trim().length > 0;
+  const hasQuote = data.quote.trim().length > 0;
 
   return (
     <article className={styles.card}>
       <div className={styles.corner} aria-hidden="true" />
       <div className={`${styles.corner} ${styles.cornerBr}`} aria-hidden="true" />
+
       <h3 className={styles.cardTitle}>{name}</h3>
-      {items.length > 0 ? (
-        <ul className={styles.list}>
-          {items.map((item) => (
-            <li key={item.key} className={styles.row}>
-              <span className={styles.icon} aria-hidden="true">
-                ✦
-              </span>
-              <div>
-                <p className={styles.label}>{item.label}</p>
-                <p className={styles.value}>{data[item.key]}</p>
-              </div>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p className={styles.emptyHint} aria-hidden="true" />
-      )}
-      {ultimate ? (
-        <div className={styles.ultimate}>
-          <p className={styles.ultimateLabel}>Ultimate favorite</p>
-          <p className={styles.ultimateValue}>{ultimate}</p>
+
+      {/* Portrait image */}
+      {hasPhoto && (
+        <div className={styles.photoFrame}>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/decor/marigold.svg" className={`${styles.florals} ${styles.floralTL}`} alt="" aria-hidden="true" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/decor/marigold.svg" className={`${styles.florals} ${styles.floralTR}`} alt="" aria-hidden="true" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/decor/flower-orange.svg" className={`${styles.florals} ${styles.floralBL}`} alt="" aria-hidden="true" />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/images/decor/flower-orange.svg" className={`${styles.florals} ${styles.floralBR}`} alt="" aria-hidden="true" />
+          <div className={styles.photoWrap}>
+            <Image
+              src={data.photo}
+              alt={`Photo of ${name.split("\u2019")[0]}`}
+              width={480}
+              height={640}
+              className={styles.photo}
+            />
+          </div>
         </div>
-      ) : null}
+      )}
+
+      {/* Pill chips — 2-column grid */}
+      {chips.length > 0 && (
+        <div className={styles.chips}>
+          {chips.map((c) => (
+            <div key={c.key} className={styles.chip}>
+              <span className={styles.chipIcon} aria-hidden="true">{c.icon}</span>
+              <span className={styles.chipText}>{data[c.key]}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Personality quote */}
+      {hasQuote && (
+        <div className={styles.quoteBlock}>
+          <p className={styles.quoteText}>&ldquo;{data.quote}&rdquo;</p>
+        </div>
+      )}
+
+      {/* Ultimate favourite */}
+      {ultimate && (
+        <div className={styles.ultimate}>
+          <p className={styles.ultimateLabel}>Ultimate Favourite</p>
+          <p className={styles.ultimateValue}>{ultimate} ❤️</p>
+          {data.ultimateTagline && (
+            <p className={styles.ultimateTagline}>{data.ultimateTagline}</p>
+          )}
+        </div>
+      )}
     </article>
   );
 }
@@ -89,13 +120,13 @@ export default function Favorites() {
         <div className={styles.grid}>
           <ScrollReveal>
             <FavoriteCard
-              name={`${couple.bride}’s Favorites`}
+              name={`${couple.bride}\u2019s Favourite`}
               data={favorites.abhigna}
             />
           </ScrollReveal>
           <ScrollReveal>
             <FavoriteCard
-              name={`${couple.groom}’s Favorites`}
+              name={`${couple.groom}\u2019s Favourite`}
               data={favorites.hemanth}
             />
           </ScrollReveal>

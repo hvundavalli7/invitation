@@ -136,24 +136,28 @@ export const weddingData = {
     title: "Our Favorites",
     subtitle: "A few little things that make us, us.",
     abhigna: {
-      // Enter Abhigna’s favorites here:
-      food: "",
-      dessert: "",
+      photo: "/images/couple/abhigna-favourite.jpeg",
+      quote: "",
+      food: "Coffee",
+      dessert: "Ice Cream",
       song: "",
       movie: "",
-      travelDestination: "",
-      partnerQuality: "",
+      travelDestination: "Traveling",
+      partnerQuality: "Loves to shop",
       ultimateFavorite: "",
+      ultimateTagline: "",
     },
     hemanth: {
-      // Enter Hemanth’s favorites here:
+      photo: "/images/couple/hemanth-favourite.jpeg",
+      quote: "",
       food: "",
       dessert: "",
       song: "",
       movie: "",
       travelDestination: "",
       partnerQuality: "",
-      ultimateFavorite: "",
+      ultimateFavorite: "Abhigna",
+      ultimateTagline: "That’s it. That’s the favourite!",
     },
   },
 
@@ -229,73 +233,6 @@ export const weddingData = {
     ],
   },
 
-  gallery: {
-    title: "Gallery",
-    subtitle: "Moments from our journey — older memories to recent celebrations.",
-    /**
-     * Story order: older memories → early relationship → travel/candid →
-     * engagement/pre-wedding → recent formal.
-     *
-     * Older / early-relationship photographs are not yet in the repository.
-     * Add files under /public/images/gallery/ (suggested names):
-     *   - old-memory-1.jpg, old-memory-2.jpg  (category: "old-memory")
-     *   - early-1.jpg, early-2.jpg            (category: "travel")
-     *   - recent-formal-1.jpg                 (category: "recent")
-     * Then register them at the top of this images array. Do not invent remote URLs.
-     * Proposal photo kept for engagement chapter: /images/gallery/proposal-dogs-1.jpg
-     */
-    images: [
-      {
-        id: "g-proposal",
-        src: "/images/gallery/proposal-dogs-1.jpg",
-        alt: "Proposal moment with golden retrievers in the mountains",
-        caption: "The proposal",
-        year: "",
-        category: "engagement" as const,
-      },
-      {
-        id: "g1",
-        src: "/images/gallery/beach-sitting.jpg",
-        alt: "Sitting together on the beach, holding hands with roses",
-        caption: "By the shore",
-        year: "",
-        category: "travel" as const,
-      },
-      {
-        id: "g2",
-        src: "/images/gallery/coastal-dance.jpg",
-        alt: "Dancing together on the coastal cliffs",
-        caption: "Coastal dance",
-        year: "",
-        category: "travel" as const,
-      },
-      {
-        id: "g3",
-        src: "/images/gallery/beachfront-together.jpg",
-        alt: "Foreheads together, smiling with the ocean behind us",
-        caption: "Ocean breeze",
-        year: "",
-        category: "travel" as const,
-      },
-      {
-        id: "g4",
-        src: "/images/gallery/sunset-walk.jpg",
-        alt: "Walking hand in hand along the shore at sunset",
-        caption: "Sunset walk",
-        year: "",
-        category: "engagement" as const,
-      },
-      {
-        id: "g5",
-        src: "/images/gallery/golden-moment.jpg",
-        alt: "A tender moment by the beach with ocean backdrop",
-        caption: "Golden hour",
-        year: "",
-        category: "recent" as const,
-      },
-    ],
-  },
-
   music: {
     /**
      * Official Sony Music South VEVO upload of Yedhemaina Sakhi
@@ -325,8 +262,6 @@ export const weddingData = {
 } as const;
 
 export type EventMotif = "mehendi" | "sangeet" | "wedding";
-
-export type GalleryCategory = "old-memory" | "travel" | "engagement" | "recent";
 
 export type WeddingEvent = {
   id: string;
