@@ -41,11 +41,11 @@ export default function TempleEntranceHero() {
             <Image
               src={hero.image}
               alt={hero.imageAlt}
-              width={1024}
-              height={1536}
+              width={1400}
+              height={980}
               className={styles.sceneImage}
               priority
-              sizes="(max-width: 800px) 92vw, 520px"
+              sizes="(max-width: 800px) 96vw, 820px"
             />
           </div>
         ) : null}

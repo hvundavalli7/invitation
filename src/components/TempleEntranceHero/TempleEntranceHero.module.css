@@ -118,30 +118,31 @@
 
 .scene {
   position: relative;
-  width: min(92vw, 760px);
-  height: min(78dvh, 760px);
-  margin: -6.2rem auto 0;
+  width: min(96vw, 920px);
+  height: min(58dvh, 640px);
+  margin: -3.4rem auto 0;
   display: flex;
   justify-content: center;
+  align-items: flex-end;
   animation: sceneRise 1.35s ease both;
   background: transparent;
   isolation: isolate;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .scene::before {
   content: "";
   position: absolute;
   left: 50%;
-  top: 42%;
-  width: 72%;
-  height: 58%;
+  top: 58%;
+  width: 78%;
+  height: 62%;
   transform: translate(-50%, -50%);
   background: radial-gradient(
     ellipse at center,
-    rgba(255, 236, 180, 0.22) 0%,
-    rgba(180, 210, 140, 0.1) 42%,
-    transparent 72%
+    rgba(255, 236, 180, 0.26) 0%,
+    rgba(180, 210, 140, 0.12) 44%,
+    transparent 74%
   );
   pointer-events: none;
   z-index: 0;
@@ -153,17 +154,17 @@
   z-index: 1;
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center 52%;
+  object-fit: contain;
+  object-position: center bottom;
   display: block;
   border-radius: 0;
   background: transparent;
   animation: coupleDrift 8.5s ease-in-out infinite;
   filter:
-    saturate(1.05)
+    saturate(1.06)
     contrast(1.03)
-    drop-shadow(0 18px 32px rgba(12, 40, 18, 0.32))
-    drop-shadow(0 4px 14px rgba(180, 130, 40, 0.12));
+    drop-shadow(0 16px 28px rgba(12, 40, 18, 0.34))
+    drop-shadow(0 4px 14px rgba(180, 130, 40, 0.14));
 }
 
 @keyframes fadeRise {
@@ -212,11 +213,13 @@
 
 @media (max-width: 700px) {
   .scene {
-    width: min(100vw, 560px);
+    width: min(100vw, 640px);
+    height: min(48dvh, 420px);
+    margin-top: -2.2rem;
   }
 
   .sceneImage {
-    max-height: min(56dvh, 520px);
+    max-height: min(48dvh, 420px);
   }
 
   .name {
