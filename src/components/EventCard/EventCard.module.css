@@ -111,6 +111,14 @@
   --accent: #2f6b24;
 }
 
+.haldi {
+  --accent: #b88b10;
+}
+
+.pellikuthuru {
+  --accent: #7f2432;
+}
+
 .sangeet {
   --accent: var(--maroon);
 }

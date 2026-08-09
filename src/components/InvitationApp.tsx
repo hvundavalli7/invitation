@@ -87,8 +87,8 @@ export default function InvitationApp() {
         />
         <main>
           <WeddingCountdown visible={scratchDone} />
-          <EventTimeline />
           <OurStory />
+          <EventTimeline />
           <Favorites />
           <WeddingDetails />
           <VenueMap />

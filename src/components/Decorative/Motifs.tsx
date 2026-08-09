@@ -187,6 +187,10 @@ export function EventIcon({
   switch (type) {
     case "henna":
       return <HennaIcon className={className} />;
+    case "turmeric":
+      return <TurmericIcon className={className} />;
+    case "bell":
+      return <BellIcon className={className} />;
     case "music":
       return <MusicIcon className={className} />;
     case "lotus":

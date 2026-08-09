@@ -31,7 +31,7 @@ export const weddingData = {
   },
 
   hero: {
-    ganeshaBlessing: "|| Shree Ganesha Namah ||",
+    ganeshaBlessing: "|| Shree Ganeshay Namah ||",
     /**
      * Animated couple cutout from the South Indian invitation caricature
      * (gathbandhan knot, gold saree, laptop + drafting tube) soft-blended
@@ -87,6 +87,36 @@ export const weddingData = {
       icon: "music",
     },
     {
+      id: "haldi",
+      name: "Haldi",
+      dateLabel: "March 10, 2027",
+      time: "Morning",
+      venue: "To be announced",
+      location: "Aubrey, Texas",
+      address: "", // Add verified address when available
+      mapsQuery: "Aubrey, Texas",
+      description:
+        "A vibrant turmeric ceremony filled with laughter, blessings, and bright yellow hues as we begin another joyful chapter of our wedding celebrations.",
+      attire: "Attire: Shades of yellow or festive pastels are encouraged.",
+      motif: "haldi" as const,
+      icon: "turmeric",
+    },
+    {
+      id: "pellikoduku-pellikuthuru",
+      name: "Pellikoduku & Pellikuthuru",
+      dateLabel: "March 10, 2027",
+      time: "Afternoon",
+      venue: "To be announced",
+      location: "Aubrey, Texas",
+      address: "", // Add verified address when available
+      mapsQuery: "Aubrey, Texas",
+      description:
+        "Traditional Telugu pre-wedding rituals with family blessings, sacred customs, and meaningful moments for both bride and groom.",
+      attire: "Attire: Traditional Indian wear is recommended.",
+      motif: "pellikuthuru" as const,
+      icon: "bell",
+    },
+    {
       id: "wedding",
       name: "Wedding Ceremony",
       dateLabel: "March 11, 2027",
@@ -107,11 +137,21 @@ export const weddingData = {
     title: "Our Story",
     howWeMet: {
       title: "How We Met",
-      body: "Every love story has a beginning. Ours started with a spark that grew into something we knew we wanted to share with the people we love most.",
+      body: "A Cafe, A conversation. The year 2022. Neither of us knew it then, but that day marked the beginning of our journey together.",
+      photo: {
+        src: "/images/gallery/meeting.jpeg",
+        alt: "Abhigna and Hemanth during one of their early cafe dates",
+        caption: "Where it all began",
+      },
     },
     proposal: {
       title: "The Proposal",
-      body: "With joy in our hearts and blessings from our families, we promised each other a lifetime — and now we invite you to celebrate that promise with us.",
+      body: "Vermont. A dozen golden retrievers. One knee on the ground. The most unexpected, most perfect proposal ever.",
+      photo: {
+        src: "/images/gallery/proposal-dogs-1.jpg",
+        alt: "Proposal moment surrounded by golden retrievers",
+        caption: "The Proposal",
+      },
     },
     message: {
       title: "A Note from Us",
@@ -136,14 +176,14 @@ export const weddingData = {
     title: "Our Favorites",
     subtitle: "A few little things that make us, us.",
     abhigna: {
-      photo: "/images/couple/abhigna-favourite.jpeg",
+      photo: "/images/couple/abhigna_favourite.jpeg",
       quote: "",
       food: "Coffee",
       dessert: "Ice Cream",
-      song: "",
+      song: "Dance",
       movie: "",
-      travelDestination: "Traveling",
-      partnerQuality: "Loves to shop",
+      travelDestination: "",
+      partnerQuality: "Dogs",
       ultimateFavorite: "",
       ultimateTagline: "",
     },
@@ -164,10 +204,6 @@ export const weddingData = {
   details: {
     title: "Wedding Details",
     items: [
-      {
-        title: "Dress Code",
-        body: "Traditional South Indian / Indian festive attire is warmly encouraged. Think silk sarees, elegant lehengas, kurtas, and sherwanis in rich jewel tones of maroon, gold, ivory, and emerald.",
-      },
       {
         title: "Ceremony Timing",
         body: "The wedding ceremony begins at 8:00 AM on March 11, 2027. Guests are kindly requested to arrive 30–45 minutes early to settle in and receive a warm welcome.",
@@ -229,6 +265,8 @@ export const weddingData = {
     events: [
       { id: "mehendi", label: "Mehendi" },
       { id: "sangeet", label: "Sangeet" },
+      { id: "haldi", label: "Haldi" },
+      { id: "pellikoduku-pellikuthuru", label: "Pellikoduku & Pellikuthuru" },
       { id: "wedding", label: "Wedding Ceremony" },
     ],
   },
@@ -261,7 +299,7 @@ export const weddingData = {
   },
 } as const;
 
-export type EventMotif = "mehendi" | "sangeet" | "wedding";
+export type EventMotif = "mehendi" | "haldi" | "pellikuthuru" | "sangeet" | "wedding";
 
 export type WeddingEvent = {
   id: string;
