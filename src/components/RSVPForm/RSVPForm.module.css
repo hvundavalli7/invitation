@@ -141,6 +141,12 @@
   margin-top: 0.35rem;
 }
 
+.successWrap {
+  display: grid;
+  gap: 0.9rem;
+  justify-items: center;
+}
+
 .success {
   text-align: center;
   font-family: var(--font-script);
@@ -148,6 +154,10 @@
   color: var(--maroon);
   line-height: 1.35;
   padding: 1.5rem 0.5rem;
+}
+
+.updateButton {
+  margin-top: 0.2rem;
 }
 
 .error {

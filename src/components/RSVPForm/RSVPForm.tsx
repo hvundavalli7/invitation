@@ -89,8 +89,11 @@ export default function RSVPForm() {
       if (!endpoint) {
         try {
           const probe = await fetch("/api/rsvp", { method: "GET" });
-          const info = (await probe.json().catch(() => ({}))) as { provider?: string };
-          if (probe.ok && info.provider === "resend") {
+          const info = (await probe.json().catch(() => ({}))) as {
+            database?: boolean;
+            email?: boolean;
+          };
+          if (probe.ok && (info.database || info.email)) {
             endpoint = "/api/rsvp";
           }
         } catch {
@@ -181,9 +184,18 @@ export default function RSVPForm() {
 
         <ScrollReveal className={`${styles.panel} wood-panel`}>
           {status === "success" ? (
-            <p className={styles.success} role="status">
-              {rsvp.confirmation}
-            </p>
+            <div className={styles.successWrap}>
+              <p className={styles.success} role="status">
+                {rsvp.confirmation}
+              </p>
+              <button
+                type="button"
+                className={`btn-temple ${styles.updateButton}`}
+                onClick={() => setStatus("idle")}
+              >
+                Update RSVP
+              </button>
+            </div>
           ) : (
             <form className={styles.form} onSubmit={onSubmit} noValidate>
               <div className={styles.row}>

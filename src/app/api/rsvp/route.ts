@@ -11,23 +11,64 @@ type RsvpBody = {
   message?: string;
 };
 
+type RsvpRecord = {
+  name: string;
+  email: string;
+  phone: string;
+  guests: string;
+  attending: string;
+  attendingValue: "yes" | "no";
+  events: string;
+  dietary: string;
+  message: string;
+  submittedAt: string;
+  updatedAt: string;
+};
+
+type RsvpCapabilities = {
+  database: boolean;
+  email: boolean;
+};
+
+type RsvpDbRow = {
+  name: string;
+  email: string;
+  phone: string;
+  guests: number;
+  attending: "yes" | "no";
+  events: string;
+  dietary: string;
+  message: string;
+  submitted_at: string;
+  updated_at: string;
+};
+
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
 
-/** Reports whether the Resend-backed API is configured. */
+function getRsvpCapabilities(): RsvpCapabilities {
+  return {
+    database: Boolean(process.env.SUPABASE_URL?.trim() && process.env.SUPABASE_SERVICE_ROLE_KEY?.trim()),
+    email: Boolean(process.env.RESEND_API_KEY?.trim()),
+  };
+}
+
+/** Reports whether the RSVP storage and email providers are configured. */
 export async function GET() {
   return Response.json({
-    provider: process.env.RESEND_API_KEY ? "resend" : "none",
+    ...getRsvpCapabilities(),
   });
 }
 
 export async function POST(request: Request) {
-  if (!process.env.RESEND_API_KEY) {
+  const capabilities = getRsvpCapabilities();
+
+  if (!capabilities.database && !capabilities.email) {
     return Response.json(
       {
         error:
-          "Server email is not configured. Set RESEND_API_KEY, or leave rsvp.endpoint empty to use FormSubmit from the browser.",
+          "RSVP delivery is not configured. Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY for database storage, RESEND_API_KEY for email, or leave rsvp.endpoint empty to use FormSubmit from the browser.",
       },
       { status: 503 },
     );
@@ -65,49 +106,184 @@ export async function POST(request: Request) {
     return Response.json({ error: "Please choose whether you will attend." }, { status: 400 });
   }
 
+  const record = buildRsvpRecord({
+    name,
+    email,
+    phone,
+    guests,
+    attending,
+    events,
+    dietary,
+    message,
+  });
+
+  let databaseSaved = !capabilities.database;
+  let emailSent = !capabilities.email;
+  let emailError: unknown;
+
+  if (capabilities.database) {
+    try {
+      await saveToSupabase(record);
+      databaseSaved = true;
+    } catch (error) {
+      console.error("RSVP database save failed:", error);
+      return Response.json(
+        { error: "Unable to save your RSVP right now. Please try again shortly." },
+        { status: 502 },
+      );
+    }
+  }
+
+  if (capabilities.email) {
+    try {
+      await sendRsvpEmails({
+        email,
+        name,
+        attending,
+        phone,
+        guests,
+        dietary,
+        message,
+        record,
+      });
+      emailSent = true;
+    } catch (error) {
+      emailError = error;
+      console.error("RSVP email failed:", error);
+    }
+  }
+
+  if (databaseSaved && emailSent) {
+    return Response.json({ ok: true, database: capabilities.database, email: capabilities.email });
+  }
+
+  if (databaseSaved && !emailSent) {
+    return Response.json({
+      ok: true,
+      database: true,
+      email: false,
+      warning: "RSVP was saved, but the confirmation email could not be sent.",
+    });
+  }
+
+  console.error("RSVP delivery failed:", emailError);
+  return Response.json(
+    { error: "Unable to send your RSVP right now. Please try again shortly." },
+    { status: 502 },
+  );
+}
+
+async function sendRsvpEmails({
+  email,
+  name,
+  attending,
+  phone,
+  guests,
+  dietary,
+  message,
+  record,
+}: {
+  email: string;
+  name: string;
+  attending: string;
+  phone: string;
+  guests: string;
+  dietary: string;
+  message: string;
+  record: RsvpRecord;
+}) {
   const notifyEmail =
     process.env.RSVP_NOTIFY_EMAIL?.trim() || weddingData.details.contact.email;
 
   if (!notifyEmail || !isValidEmail(notifyEmail)) {
-    return Response.json(
-      { error: "RSVP email is not configured. Please contact the couple directly." },
-      { status: 500 },
-    );
+    throw new Error("RSVP email is not configured. Please contact the couple directly.");
   }
 
-  const attendingLabel = attending === "yes" ? "Joyfully attending" : "Unable to attend";
-  const eventLabels = events
+  await sendWithResend({
+    notifyEmail,
+    guestEmail: email,
+    subject: `Wedding RSVP: ${name} (${attending === "yes" ? "Attending" : "Declined"})`,
+    confirmation: weddingData.rsvp.confirmation,
+    fields: {
+      name,
+      email,
+      phone: phone || "—",
+      guests,
+      attending: record.attending,
+      events: record.events || "—",
+      dietary: dietary || "—",
+      message: message || "—",
+    },
+  });
+}
+
+function buildRsvpRecord(body: {
+  name: string;
+  email: string;
+  phone: string;
+  guests: string;
+  attending: string;
+  events: string[];
+  dietary: string;
+  message: string;
+}): RsvpRecord {
+  const attendingLabel = body.attending === "yes" ? "Joyfully attending" : "Unable to attend";
+  const eventLabels = body.events
     .map((id) => weddingData.rsvp.events.find((event) => event.id === id)?.label ?? id)
     .join(", ");
 
-  const subject = `Wedding RSVP: ${name} (${attending === "yes" ? "Attending" : "Declined"})`;
-  const confirmation = weddingData.rsvp.confirmation;
+  const submittedAt = new Date().toISOString();
 
-  try {
-    await sendWithResend({
-      notifyEmail,
-      guestEmail: email,
-      subject,
-      confirmation,
-      fields: {
-        name,
-        email,
-        phone: phone || "—",
-        guests,
-        attending: attendingLabel,
-        events: eventLabels || "—",
-        dietary: dietary || "—",
-        message: message || "—",
-      },
-    });
+  return {
+    name: body.name,
+    email: body.email,
+    phone: body.phone || "—",
+    guests: body.guests,
+    attending: attendingLabel,
+    attendingValue: body.attending as "yes" | "no",
+    events: eventLabels || "—",
+    dietary: body.dietary || "—",
+    message: body.message || "—",
+    submittedAt,
+    updatedAt: submittedAt,
+  };
+}
 
-    return Response.json({ ok: true });
-  } catch (error) {
-    console.error("RSVP email failed:", error);
-    return Response.json(
-      { error: "Unable to send RSVP email right now. Please try again shortly." },
-      { status: 502 },
-    );
+async function saveToSupabase(record: RsvpRecord) {
+  const supabaseUrl = process.env.SUPABASE_URL?.trim();
+  const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY?.trim();
+
+  if (!supabaseUrl || !serviceRoleKey) {
+    throw new Error("Supabase database credentials are not configured.");
+  }
+
+  const payload: RsvpDbRow = {
+    name: record.name,
+    email: record.email,
+    phone: record.phone,
+    guests: Number.parseInt(record.guests, 10) || 1,
+    attending: record.attendingValue,
+    events: record.events,
+    dietary: record.dietary,
+    message: record.message,
+    submitted_at: record.submittedAt,
+    updated_at: record.updatedAt,
+  };
+
+  const response = await fetch(`${supabaseUrl.replace(/\/$/, "")}/rest/v1/rsvps?on_conflict=email`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${serviceRoleKey}`,
+      apikey: serviceRoleKey,
+      Prefer: "resolution=merge-duplicates,return=representation",
+    },
+    body: JSON.stringify([payload]),
+  });
+
+  if (!response.ok) {
+    const errText = await response.text();
+    throw new Error(`Supabase RSVP upsert failed: ${errText}`);
   }
 }
 
