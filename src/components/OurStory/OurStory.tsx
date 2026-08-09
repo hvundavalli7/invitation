@@ -6,7 +6,6 @@ import styles from "./OurStory.module.css";
 
 export default function OurStory() {
   const { story } = weddingData;
-  const primaryPhoto = story.photos[0];
 
   return (
     <section id="our-story" className={`section section--cream ${styles.section}`} aria-labelledby="story-title">
@@ -27,28 +26,42 @@ export default function OurStory() {
             <article className={`${styles.block} wood-panel`}>
               <h3>{story.howWeMet.title}</h3>
               <p>{story.howWeMet.body}</p>
+              {story.howWeMet.photo ? (
+                <figure className={styles.inlineFrame}>
+                  <Image
+                    src={story.howWeMet.photo.src}
+                    alt={story.howWeMet.photo.alt}
+                    width={640}
+                    height={880}
+                    loading="lazy"
+                    className={styles.inlineImage}
+                  />
+                  <figcaption>{story.howWeMet.photo.caption}</figcaption>
+                </figure>
+              ) : null}
             </article>
             <article className={`${styles.block} wood-panel`}>
               <h3>{story.proposal.title}</h3>
               <p>{story.proposal.body}</p>
+              {story.proposal.photo ? (
+                <figure className={styles.inlineFrame}>
+                  <Image
+                    src={story.proposal.photo.src}
+                    alt={story.proposal.photo.alt}
+                    width={640}
+                    height={880}
+                    loading="lazy"
+                    className={`${styles.inlineImage} ${styles.proposalImage}`}
+                  />
+                  <figcaption>{story.proposal.photo.caption}</figcaption>
+                </figure>
+              ) : null}
+            </article>
+            <article className={`${styles.block} ${styles.message} wood-panel`}>
+              <h3>{story.message.title}</h3>
+              <p>{story.message.body}</p>
             </article>
           </ScrollReveal>
-
-          {primaryPhoto ? (
-            <ScrollReveal className={styles.photos}>
-              <figure className={styles.frame}>
-                <Image
-                  src={primaryPhoto.src}
-                  alt={primaryPhoto.alt}
-                  width={480}
-                  height={600}
-                  loading="lazy"
-                  className={styles.image}
-                />
-                <figcaption>{primaryPhoto.caption}</figcaption>
-              </figure>
-            </ScrollReveal>
-          ) : null}
         </div>
       </div>
     </section>
