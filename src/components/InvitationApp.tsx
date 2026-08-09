@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useState } from "react";
 import EnvelopeOpen from "@/components/EnvelopeOpen/EnvelopeOpen";
 import TempleEntranceHero from "@/components/TempleEntranceHero/TempleEntranceHero";
 import DateScratch from "@/components/DateScratch/DateScratch";
@@ -16,36 +16,13 @@ import MusicPlayer from "@/components/MusicPlayer/MusicPlayer";
 import TraditionalFooter from "@/components/TraditionalFooter/TraditionalFooter";
 import Petals from "@/components/Petals/Petals";
 import VenueCanvas from "@/components/VenueCanvas/VenueCanvas";
-import { weddingData } from "@/data/wedding";
-
-function subscribeScratchSession(onStoreChange: () => void) {
-  window.addEventListener("storage", onStoreChange);
-  window.addEventListener("ah-scratch-revealed", onStoreChange);
-  return () => {
-    window.removeEventListener("storage", onStoreChange);
-    window.removeEventListener("ah-scratch-revealed", onStoreChange);
-  };
-}
-
-function getScratchSession() {
-  try {
-    return sessionStorage.getItem(weddingData.scratchCard.sessionKey) === "1";
-  } catch {
-    return false;
-  }
-}
 
 export default function InvitationApp() {
   const [revealed, setRevealed] = useState(false);
   const [musicReady, setMusicReady] = useState(false);
-  const sessionScratch = useSyncExternalStore(
-    subscribeScratchSession,
-    getScratchSession,
-    () => false,
-  );
   const [scratchRevealed, setScratchRevealed] = useState(false);
   const [confettiActive, setConfettiActive] = useState(false);
-  const scratchDone = sessionScratch || scratchRevealed;
+  const scratchDone = scratchRevealed;
 
   useEffect(() => {
     document.body.classList.toggle("invitation-locked", !revealed);
@@ -59,14 +36,14 @@ export default function InvitationApp() {
 
   const handleScratchRevealed = useCallback(() => {
     setScratchRevealed((prev) => {
-      if (prev || sessionScratch) return true;
+      if (prev) return true;
       queueMicrotask(() => {
         setConfettiActive(true);
         window.setTimeout(() => setConfettiActive(false), 3000);
       });
       return true;
     });
-  }, [sessionScratch]);
+  }, []);
 
   return (
     <>

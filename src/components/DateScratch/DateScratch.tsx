@@ -89,12 +89,6 @@ export default function DateScratch({
       ctx.globalCompositeOperation = "destination-out";
       ctx.fillRect(0, 0, rect.width, rect.height);
     }
-    try {
-      sessionStorage.setItem(weddingData.scratchCard.sessionKey, "1");
-      window.dispatchEvent(new Event("ah-scratch-revealed"));
-    } catch {
-      // sessionStorage may be unavailable
-    }
     onRevealed?.();
   }, [initiallyRevealed, localRevealed, onRevealed]);
 
