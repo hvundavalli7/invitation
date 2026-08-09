@@ -25,11 +25,11 @@ Edit **`src/data/wedding.ts`** for names, dates, venues, copy, RSVP settings, ga
 
 - Replace gallery SVGs in `public/images/gallery/` with your photos
 - Music is configured in `weddingData.music` (`youtubeId` for Yedhemaina Sakhi via YouTube, or `src` for a local audio file)
-- RSVP emails `details.contact.email` and sends a guest confirmation via FormSubmit (browser)
-  - **First submission:** open the activation email FormSubmit sends to that inbox and click Activate
-  - After activation, the couple gets each RSVP and the guest gets an auto-reply
-  - Optional: set `RESEND_API_KEY` (+ optional `RSVP_NOTIFY_EMAIL`, `RSVP_FROM_EMAIL`) to use `/api/rsvp` instead
-  - Or set `weddingData.rsvp.endpoint` to a Formspree / Sheets / API URL
+- RSVP submissions can be routed three ways:
+  - Leave `weddingData.rsvp.endpoint` empty and it will fall back to FormSubmit from the browser
+  - Set `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` to save every RSVP into the Supabase `rsvps` table
+  - Set `RESEND_API_KEY` (+ optional `RSVP_NOTIFY_EMAIL`, `RSVP_FROM_EMAIL`) to keep the email-based RSVP flow
+  - With both configured, the API writes to the database and sends the email confirmation
 - Update venue `fullAddress` fields once street addresses are verified
 
 ## Scripts
