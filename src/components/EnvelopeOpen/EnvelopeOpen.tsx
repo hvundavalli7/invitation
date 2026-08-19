@@ -6,15 +6,17 @@ import { weddingData } from "@/data/wedding";
 import styles from "./EnvelopeOpen.module.css";
 
 type Props = {
+  onOpenStart?: () => void;
   onComplete: () => void;
 };
 
-export default function EnvelopeOpen({ onComplete }: Props) {
+export default function EnvelopeOpen({ onOpenStart, onComplete }: Props) {
   const [opening, setOpening] = useState(false);
   const { couple } = weddingData;
 
   const open = () => {
     if (opening) return;
+    onOpenStart?.();
     setOpening(true);
     window.setTimeout(() => onComplete(), 1900);
   };

@@ -29,6 +29,11 @@ export default function InvitationApp() {
     return () => document.body.classList.remove("invitation-locked");
   }, [revealed]);
 
+  const handleOpenStart = useCallback(() => {
+    setMusicReady(true);
+    window.dispatchEvent(new Event("ah-music-start"));
+  }, []);
+
   const handleReveal = () => {
     setRevealed(true);
     setMusicReady(true);
@@ -47,7 +52,9 @@ export default function InvitationApp() {
 
   return (
     <>
-      {!revealed ? <EnvelopeOpen onComplete={handleReveal} /> : null}
+      {!revealed ? (
+        <EnvelopeOpen onOpenStart={handleOpenStart} onComplete={handleReveal} />
+      ) : null}
 
       <VenueCanvas active={revealed} />
       <ConfettiBurst active={confettiActive} />
@@ -76,7 +83,7 @@ export default function InvitationApp() {
         </div>
       </div>
 
-      {revealed ? <MusicPlayer shouldStart={musicReady} /> : null}
+      <MusicPlayer shouldStart={musicReady} visible={revealed} />
       <Petals active={revealed} />
     </>
   );
