@@ -58,20 +58,22 @@ export default function InvitationApp() {
         inert={!revealed ? true : undefined}
       >
         <TempleEntranceHero />
-        <DateScratch
-          onRevealed={handleScratchRevealed}
-          initiallyRevealed={scratchDone}
-        />
-        <main>
-          <WeddingCountdown visible={scratchDone} />
-          <OurStory />
-          <EventTimeline />
-          <Favorites />
-          <WeddingDetails />
-          <VenueMap />
-          <RSVPForm />
-        </main>
-        <TraditionalFooter />
+        <div className="invitation-details-shell">
+          <DateScratch
+            onRevealed={handleScratchRevealed}
+            initiallyRevealed={scratchDone}
+          />
+          <main className="invitation-details-main">
+            <WeddingCountdown visible={scratchDone} />
+            <OurStory />
+            <EventTimeline />
+            <Favorites />
+            <WeddingDetails />
+            <VenueMap />
+            <RSVPForm />
+          </main>
+          <TraditionalFooter className="invitation-details-footer" />
+        </div>
       </div>
 
       {revealed ? <MusicPlayer shouldStart={musicReady} /> : null}

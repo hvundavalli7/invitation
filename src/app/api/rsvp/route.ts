@@ -43,6 +43,8 @@ type RsvpDbRow = {
   updated_at: string;
 };
 
+const ADDITIONAL_RSVP_NOTIFY_EMAILS = ["sai.abhigna7@yahoo.com"] as const;
+
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
@@ -192,15 +194,22 @@ async function sendRsvpEmails({
   message: string;
   record: RsvpRecord;
 }) {
-  const notifyEmail =
-    process.env.RSVP_NOTIFY_EMAIL?.trim() || weddingData.details.contact.email;
+  const notifyEmails = Array.from(
+    new Set(
+      [
+        process.env.RSVP_NOTIFY_EMAIL?.trim(),
+        weddingData.details.contact.email,
+        ...ADDITIONAL_RSVP_NOTIFY_EMAILS,
+      ].filter((value): value is string => Boolean(value && isValidEmail(value))),
+    ),
+  );
 
-  if (!notifyEmail || !isValidEmail(notifyEmail)) {
+  if (!notifyEmails.length) {
     throw new Error("RSVP email is not configured. Please contact the couple directly.");
   }
 
   await sendWithResend({
-    notifyEmail,
+    notifyEmails,
     guestEmail: email,
     subject: `Wedding RSVP: ${name} (${attending === "yes" ? "Attending" : "Declined"})`,
     confirmation: weddingData.rsvp.confirmation,
@@ -288,13 +297,13 @@ async function saveToSupabase(record: RsvpRecord) {
 }
 
 async function sendWithResend({
-  notifyEmail,
+  notifyEmails,
   guestEmail,
   subject,
   confirmation,
   fields,
 }: {
-  notifyEmail: string;
+  notifyEmails: string[];
   guestEmail: string;
   subject: string;
   confirmation: string;
@@ -332,7 +341,7 @@ async function sendWithResend({
     },
     body: JSON.stringify({
       from,
-      to: [notifyEmail],
+      to: notifyEmails,
       reply_to: guestEmail,
       subject,
       html: notifyHtml,

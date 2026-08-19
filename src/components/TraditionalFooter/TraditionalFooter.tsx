@@ -2,12 +2,16 @@ import Image from "next/image";
 import { weddingData } from "@/data/wedding";
 import styles from "./TraditionalFooter.module.css";
 
-export default function TraditionalFooter() {
+type Props = {
+  className?: string;
+};
+
+export default function TraditionalFooter({ className }: Props) {
   const { couple, wedding, footer } = weddingData;
   const hashtag = `#${couple.bride}${couple.groom}`.replace(/\s+/g, "").toUpperCase();
 
   return (
-    <footer className={styles.footer}>
+    <footer className={[styles.footer, className].filter(Boolean).join(" ")}>
       <div className={styles.mangoLeaf} aria-hidden="true" />
       <Image
         src="/images/venue/venue-toran-garland.webp"
