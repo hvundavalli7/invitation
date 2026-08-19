@@ -81,21 +81,12 @@ export default function MusicPlayer({ shouldStart = false, visible = false }: Pr
   const [playing, setPlaying] = useState(false);
   const muted = useSyncExternalStore(subscribeMute, getMutedPreference, () => false);
   const mutedRef = useRef(muted);
-  const [preferNativeAudio, setPreferNativeAudio] = useState(false);
 
   const youtubeId = weddingData.music.youtubeId;
   const useYoutube = Boolean(youtubeId);
   const hasNativeAudio = Boolean(weddingData.music.src);
-  const useNativeAudio = hasNativeAudio && (preferNativeAudio || !useYoutube);
+  const useNativeAudio = hasNativeAudio && !useYoutube;
   const audioRef = useRef<HTMLAudioElement | null>(null);
-
-  useEffect(() => {
-    const media = window.matchMedia("(pointer: coarse), (hover: none), (max-width: 820px)");
-    const sync = () => setPreferNativeAudio(media.matches);
-    sync();
-    media.addEventListener("change", sync);
-    return () => media.removeEventListener("change", sync);
-  }, []);
 
   useEffect(() => {
     mutedRef.current = muted;

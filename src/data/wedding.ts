@@ -273,13 +273,13 @@ export const weddingData = {
 
   music: {
     /**
-     * Official Sony Music South VEVO upload of Yedhemaina Sakhi
-     * (Vikramasimha · A.R. Rahman). Streamed via YouTube IFrame API —
+     * Vaa Kannamma (Violin Version) by Nikhil Neelakandan.
+     * Streamed via YouTube IFrame API —
      * no copyrighted audio file is hosted in this repo.
      */
-    youtubeId: "tGEGGWt9wgI",
-    label: "Yedhemaina Sakhi",
-    artist: "A.R. Rahman",
+    youtubeId: "rvnDI7myzZY",
+    label: "Vaa Kannamma (Violin Version)",
+    artist: "Nikhil Neelakandan",
     defaultVolume: 0.28,
     /** Optional local fallback if youtubeId is removed */
     src: "/audio/wedding-instrumental.wav",
