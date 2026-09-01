@@ -94,7 +94,7 @@ export default function RSVPForm() {
     setStatus("submitting");
 
     try {
-      // Prefer an explicit endpoint, else Resend-backed /api/rsvp when configured,
+      // Prefer an explicit endpoint, else /api/rsvp when storage/email is configured,
       // else browser FormSubmit (no API key) to the couple's contact email.
       let endpoint = rsvp.endpoint.trim();
 
@@ -104,8 +104,9 @@ export default function RSVPForm() {
           const info = (await probe.json().catch(() => ({}))) as {
             database?: boolean;
             email?: boolean;
+            sheets?: boolean;
           };
-          if (probe.ok && (info.database || info.email)) {
+          if (probe.ok && (info.database || info.email || info.sheets)) {
             endpoint = "/api/rsvp";
           }
         } catch {
