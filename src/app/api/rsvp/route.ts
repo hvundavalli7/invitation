@@ -203,13 +203,29 @@ async function saveToGoogleSheets(record: RsvpRecord) {
     throw new Error("Google Sheets webhook is not configured.");
   }
 
-  const response = await fetch(webhookUrl, {
+  const payload = JSON.stringify(record);
+  const headers = {
+    "Content-Type": "application/json",
+  };
+
+  let response = await fetch(webhookUrl, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(record),
+    headers,
+    body: payload,
+    redirect: "manual",
   });
+
+  if (
+    [301, 302, 303, 307, 308].includes(response.status) &&
+    response.headers.get("location")
+  ) {
+    const redirectedUrl = new URL(response.headers.get("location") as string, webhookUrl).toString();
+    response = await fetch(redirectedUrl, {
+      method: "POST",
+      headers,
+      body: payload,
+    });
+  }
 
   if (!response.ok) {
     const errText = await response.text();
