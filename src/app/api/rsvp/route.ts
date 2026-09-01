@@ -172,7 +172,12 @@ export async function POST(request: Request) {
   }
 
   if (databaseSaved && sheetsSaved && emailSent) {
-    return Response.json({ ok: true, database: capabilities.database, email: capabilities.email });
+    return Response.json({
+      ok: true,
+      database: capabilities.database,
+      email: capabilities.email,
+      sheets: capabilities.sheets,
+    });
   }
 
   if (databaseSaved && sheetsSaved && !emailSent) {
@@ -180,6 +185,7 @@ export async function POST(request: Request) {
       ok: true,
       database: capabilities.database,
       email: false,
+      sheets: capabilities.sheets,
       warning: "RSVP was saved, but the confirmation email could not be sent.",
     });
   }
@@ -208,6 +214,24 @@ async function saveToGoogleSheets(record: RsvpRecord) {
   if (!response.ok) {
     const errText = await response.text();
     throw new Error(`Google Sheets webhook failed: ${errText}`);
+  }
+
+  const bodyText = await response.text();
+  if (!bodyText.trim()) {
+    return;
+  }
+
+  try {
+    const body = JSON.parse(bodyText) as { ok?: boolean; error?: string };
+    if (body.ok === false) {
+      throw new Error(body.error || "Google Sheets webhook returned ok:false");
+    }
+  } catch (error) {
+    if (error instanceof SyntaxError) {
+      // Some Apps Script setups return plain text like "OK"; treat non-JSON as success.
+      return;
+    }
+    throw error;
   }
 }
 
