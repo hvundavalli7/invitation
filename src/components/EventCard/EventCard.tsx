@@ -26,7 +26,7 @@ export default function EventCard({ event, index }: Props) {
         </p>
         <p className={styles.venue}>
           <strong>{event.venue}</strong>
-          {event.location ? ` · ${event.location}` : null}
+          {event.location ? <span className={styles.location}> · {event.location}</span> : null}
         </p>
         <p className={styles.description}>{event.description}</p>
         {event.attire ? <p className={styles.attire}>{event.attire}</p> : null}

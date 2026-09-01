@@ -60,6 +60,19 @@ export default function OurStory() {
             <article className={`${styles.block} ${styles.message} wood-panel`}>
               <h3>{story.message.title}</h3>
               <p>{story.message.body}</p>
+              {story.message.photo ? (
+                <figure className={styles.messageFrame}>
+                  <Image
+                    src={story.message.photo.src}
+                    alt={story.message.photo.alt}
+                    width={900}
+                    height={1200}
+                    loading="lazy"
+                    className={styles.messageImage}
+                  />
+                  <figcaption>{story.message.photo.caption}</figcaption>
+                </figure>
+              ) : null}
             </article>
           </ScrollReveal>
         </div>

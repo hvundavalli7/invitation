@@ -115,11 +115,11 @@
 }
 
 .name {
-  font-family: var(--font-script);
+  font-family: var(--font-body);
   font-size: clamp(3.4rem, 13vw, 6.2rem);
   color: #fffdf7;
   line-height: 0.95;
-  font-weight: 400;
+  font-weight: 600;
   text-shadow:
     0 2px 0 rgba(52, 18, 18, 0.45),
     0 6px 18px rgba(10, 18, 8, 0.72),
