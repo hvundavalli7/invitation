@@ -296,7 +296,7 @@ export const weddingData = {
       * Leave empty to use /api/rsvp when SUPABASE_URL + SUPABASE_SERVICE_ROLE_KEY
       * or RESEND_API_KEY is set, or use FormSubmit (browser) as the fallback.
      */
-    endpoint: "/api/rsvp",
+    endpoint: "",
     events: [
       { id: "mehendi", label: "Mehendi" },
       { id: "sangeet", label: "Sangeet" },
