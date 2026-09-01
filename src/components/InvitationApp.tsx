@@ -29,6 +29,11 @@ export default function InvitationApp() {
     return () => document.body.classList.remove("invitation-locked");
   }, [revealed]);
 
+  const handleOpenStart = useCallback(() => {
+    setMusicReady(true);
+    window.dispatchEvent(new Event("ah-music-start"));
+  }, []);
+
   const handleReveal = () => {
     setRevealed(true);
     setMusicReady(true);
@@ -47,7 +52,9 @@ export default function InvitationApp() {
 
   return (
     <>
-      {!revealed ? <EnvelopeOpen onComplete={handleReveal} /> : null}
+      {!revealed ? (
+        <EnvelopeOpen onOpenStart={handleOpenStart} onComplete={handleReveal} />
+      ) : null}
 
       <VenueCanvas active={revealed} />
       <ConfettiBurst active={confettiActive} />
@@ -58,23 +65,25 @@ export default function InvitationApp() {
         inert={!revealed ? true : undefined}
       >
         <TempleEntranceHero />
-        <DateScratch
-          onRevealed={handleScratchRevealed}
-          initiallyRevealed={scratchDone}
-        />
-        <main>
-          <WeddingCountdown visible={scratchDone} />
-          <OurStory />
-          <EventTimeline />
-          <Favorites />
-          <WeddingDetails />
-          <VenueMap />
-          <RSVPForm />
-        </main>
-        <TraditionalFooter />
+        <div className="invitation-details-shell">
+          <DateScratch
+            onRevealed={handleScratchRevealed}
+            initiallyRevealed={scratchDone}
+          />
+          <main className="invitation-details-main">
+            <WeddingCountdown visible={scratchDone} />
+            <OurStory />
+            <EventTimeline />
+            <Favorites />
+            <WeddingDetails />
+            <VenueMap />
+            <RSVPForm />
+          </main>
+          <TraditionalFooter className="invitation-details-footer" />
+        </div>
       </div>
 
-      {revealed ? <MusicPlayer shouldStart={musicReady} /> : null}
+      <MusicPlayer shouldStart={musicReady} visible={revealed} />
       <Petals active={revealed} />
     </>
   );

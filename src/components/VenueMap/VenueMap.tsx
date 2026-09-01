@@ -36,7 +36,6 @@ export default function VenueMap() {
                     aria-label={`Open ${venue.name} in Google Maps`}
                   />
                   <h3>{venue.name}</h3>
-                  <p className={styles.address}>{venue.fullAddress}</p>
                   <p className={styles.note}>{venue.note}</p>
                   <div className={styles.mapWrap}>
                     <iframe

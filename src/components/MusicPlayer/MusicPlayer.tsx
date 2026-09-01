@@ -1,13 +1,14 @@
 "use client";
 
 import Script from "next/script";
-import { useEffect, useId, useRef, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useId, useRef, useState, useSyncExternalStore } from "react";
 import { weddingData } from "@/data/wedding";
 import styles from "./MusicPlayer.module.css";
 
 type Props = {
   /** Attempt autoplay after the invitation opening sequence is ready. */
   shouldStart?: boolean;
+  visible?: boolean;
 };
 
 type YtPlayer = {
@@ -54,6 +55,7 @@ declare global {
 }
 
 const MUTE_KEY = "ah-music-muted";
+const START_EVENT = "ah-music-start";
 
 function subscribeMute(onStoreChange: () => void) {
   window.addEventListener("ah-music-mute", onStoreChange);
@@ -68,7 +70,7 @@ function getMutedPreference() {
   }
 }
 
-export default function MusicPlayer({ shouldStart = false }: Props) {
+export default function MusicPlayer({ shouldStart = false, visible = false }: Props) {
   const hostId = `yt-music-${useId().replace(/:/g, "")}`;
   const playerRef = useRef<YtPlayer | null>(null);
   const startedRef = useRef(false);
@@ -82,6 +84,8 @@ export default function MusicPlayer({ shouldStart = false }: Props) {
 
   const youtubeId = weddingData.music.youtubeId;
   const useYoutube = Boolean(youtubeId);
+  const hasNativeAudio = Boolean(weddingData.music.src);
+  const useNativeAudio = hasNativeAudio && !useYoutube;
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
@@ -112,7 +116,7 @@ export default function MusicPlayer({ shouldStart = false }: Props) {
   };
 
   useEffect(() => {
-    if (!useYoutube || !apiReady || !window.YT?.Player || playerRef.current) {
+    if (useNativeAudio || !useYoutube || !apiReady || !window.YT?.Player || playerRef.current) {
       return;
     }
 
@@ -146,15 +150,85 @@ export default function MusicPlayer({ shouldStart = false }: Props) {
         },
       },
     });
-  }, [apiReady, hostId, useYoutube, youtubeId]);
+  }, [apiReady, hostId, useNativeAudio, useYoutube, youtubeId]);
 
   useEffect(() => {
-    if (useYoutube) return;
+    if (!useNativeAudio) return;
     const audio = audioRef.current;
     if (!audio) return;
     audio.volume = weddingData.music.defaultVolume;
     audio.loop = true;
-  }, [useYoutube]);
+  }, [useNativeAudio]);
+
+  useEffect(() => {
+    if (!useNativeAudio) return;
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const onPlay = () => setPlaying(true);
+    const onPause = () => setPlaying(false);
+    const onEnded = () => setPlaying(false);
+
+    audio.addEventListener("play", onPlay);
+    audio.addEventListener("pause", onPause);
+    audio.addEventListener("ended", onEnded);
+
+    return () => {
+      audio.removeEventListener("play", onPlay);
+      audio.removeEventListener("pause", onPause);
+      audio.removeEventListener("ended", onEnded);
+    };
+  }, [useNativeAudio]);
+
+  const startPlayback = useCallback(async () => {
+    if (startedRef.current) return true;
+
+    if (useNativeAudio) {
+      const audio = audioRef.current;
+      if (!audio) return false;
+      try {
+        audio.volume = weddingData.music.defaultVolume;
+        audio.muted = mutedRef.current;
+        await audio.play();
+        startedRef.current = true;
+        setPlaying(true);
+        return true;
+      } catch {
+        return false;
+      }
+    }
+
+    if (useYoutube) {
+      const player = playerRef.current;
+      if (!player || !playerReady) return false;
+      try {
+        if (mutedRef.current) player.mute();
+        else player.unMute();
+        player.setVolume(
+          Math.round(
+            Math.min(1, Math.max(0, weddingData.music.defaultVolume)) * 100,
+          ),
+        );
+        player.playVideo();
+        startedRef.current = true;
+        setPlaying(true);
+        return true;
+      } catch {
+        return false;
+      }
+    }
+
+    return false;
+  }, [playerReady, useNativeAudio, useYoutube]);
+
+  useEffect(() => {
+    const onStartEvent = () => {
+      void startPlayback();
+    };
+
+    window.addEventListener(START_EVENT, onStartEvent);
+    return () => window.removeEventListener(START_EVENT, onStartEvent);
+  }, [startPlayback]);
 
   useEffect(() => {
     if (!shouldStart) return;
@@ -169,45 +243,12 @@ export default function MusicPlayer({ shouldStart = false }: Props) {
       window.removeEventListener("keydown", onFirstInteraction, true);
     };
 
-    const markStarted = () => {
-      startedRef.current = true;
-      setPlaying(true);
-      removeInteractionListeners();
-    };
-
     const tryStart = async () => {
       if (startedRef.current || cancelled) return true;
 
-      if (useYoutube) {
-        const player = playerRef.current;
-        if (!player || !playerReady) return false;
-        try {
-          if (mutedRef.current) player.mute();
-          else player.unMute();
-          player.setVolume(
-            Math.round(
-              Math.min(1, Math.max(0, weddingData.music.defaultVolume)) * 100,
-            ),
-          );
-          player.playVideo();
-          markStarted();
-          return true;
-        } catch {
-          return false;
-        }
-      }
-
-      const audio = audioRef.current;
-      if (!audio) return false;
-      try {
-        audio.volume = weddingData.music.defaultVolume;
-        audio.muted = mutedRef.current;
-        await audio.play();
-        markStarted();
-        return true;
-      } catch {
-        return false;
-      }
+      const ok = await startPlayback();
+      if (ok) removeInteractionListeners();
+      return ok;
     };
 
     const onFirstInteraction = () => {
@@ -234,9 +275,27 @@ export default function MusicPlayer({ shouldStart = false }: Props) {
       cancelled = true;
       removeInteractionListeners();
     };
-  }, [shouldStart, useYoutube, playerReady]);
+  }, [playerReady, shouldStart, startPlayback, useNativeAudio, useYoutube]);
 
   const togglePlay = async () => {
+    if (useNativeAudio) {
+      const audio = audioRef.current;
+      if (!audio) return;
+      if (playing) {
+        audio.pause();
+        setPlaying(false);
+      } else {
+        try {
+          await audio.play();
+          startedRef.current = true;
+          setPlaying(true);
+        } catch {
+          setPlaying(false);
+        }
+      }
+      return;
+    }
+
     if (useYoutube) {
       const player = playerRef.current;
       if (!player) return;
@@ -251,20 +310,6 @@ export default function MusicPlayer({ shouldStart = false }: Props) {
       return;
     }
 
-    const audio = audioRef.current;
-    if (!audio) return;
-    if (playing) {
-      audio.pause();
-      setPlaying(false);
-    } else {
-      try {
-        await audio.play();
-        startedRef.current = true;
-        setPlaying(true);
-      } catch {
-        setPlaying(false);
-      }
-    }
   };
 
   const toggleMute = () => {
@@ -277,7 +322,7 @@ export default function MusicPlayer({ shouldStart = false }: Props) {
     }
     window.dispatchEvent(new Event("ah-music-mute"));
 
-    if (useYoutube) {
+    if (!useNativeAudio && useYoutube) {
       const player = playerRef.current;
       if (!player) return;
       if (next) player.mute();
@@ -291,8 +336,12 @@ export default function MusicPlayer({ shouldStart = false }: Props) {
   };
 
   return (
-    <div className={styles.player} role="region" aria-label="Background music controls">
-      {useYoutube ? (
+    <div
+      className={`${styles.player} ${!visible ? styles.playerHidden : ""}`}
+      role="region"
+      aria-label="Background music controls"
+    >
+      {!useNativeAudio && useYoutube ? (
         <>
           <Script
             src="https://www.youtube.com/iframe_api"
@@ -301,9 +350,11 @@ export default function MusicPlayer({ shouldStart = false }: Props) {
           />
           <div id={hostId} className={styles.ytHost} aria-hidden="true" />
         </>
-      ) : (
+      ) : null}
+
+      {hasNativeAudio ? (
         <audio ref={audioRef} src={weddingData.music.src} preload="auto" playsInline />
-      )}
+      ) : null}
 
       <button
         type="button"
@@ -325,12 +376,6 @@ export default function MusicPlayer({ shouldStart = false }: Props) {
       >
         {muted ? "Muted" : "Sound"}
       </button>
-      <span className={styles.label}>
-        {weddingData.music.label}
-        {weddingData.music.artist ? (
-          <span className={styles.artist}>{weddingData.music.artist}</span>
-        ) : null}
-      </span>
     </div>
   );
 }

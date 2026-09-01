@@ -252,6 +252,80 @@ button {
   animation: jewelSparkle 3.5s ease-in-out infinite;
 }
 
+.invitation-details-shell {
+  position: relative;
+  z-index: 2;
+  width: min(calc(100% - 1.5rem), 1100px);
+  margin: clamp(1.25rem, 3vw, 2.5rem) auto clamp(2rem, 5vw, 3.5rem);
+  padding: clamp(1rem, 2vw, 1.4rem);
+  border-radius: clamp(28px, 5vw, 44px);
+  border: 2px solid rgba(228, 195, 106, 0.68);
+  background:
+    linear-gradient(180deg, rgba(126, 18, 34, 0.96), rgba(90, 16, 27, 0.94)) padding-box,
+    linear-gradient(135deg, rgba(246, 225, 165, 0.95), rgba(200, 155, 60, 0.9), rgba(244, 220, 148, 0.95)) border-box;
+  box-shadow:
+    0 32px 80px rgba(19, 10, 9, 0.38),
+    0 10px 32px rgba(200, 155, 60, 0.14),
+    inset 0 0 0 1px rgba(255, 243, 214, 0.22);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.invitation-details-shell::before {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(247, 221, 156, 0.35);
+  border-radius: clamp(22px, 4vw, 36px);
+  pointer-events: none;
+}
+
+.invitation-details-shell::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top, rgba(255, 228, 170, 0.14), transparent 28%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.05), transparent 18%, transparent 82%, rgba(0, 0, 0, 0.08));
+  pointer-events: none;
+}
+
+.invitation-details-main {
+  position: relative;
+  z-index: 1;
+}
+
+.invitation-details-shell .section {
+  padding-inline: clamp(0.4rem, 1vw, 0.8rem);
+}
+
+.invitation-details-shell .section__inner {
+  width: min(100%, 980px);
+}
+
+.invitation-details-shell .section__subtitle,
+.invitation-details-shell .section__eyebrow,
+.invitation-details-shell .section__title {
+  position: relative;
+  z-index: 1;
+}
+
+.invitation-details-shell .section__subtitle {
+  color: rgba(255, 244, 222, 0.94);
+}
+
+.invitation-details-footer {
+  background: transparent !important;
+  border-top: 0 !important;
+}
+
+@media (max-width: 700px) {
+  .invitation-details-shell {
+    width: min(calc(100% - 1rem), 1100px);
+    margin-top: clamp(1rem, 4vw, 1.5rem);
+  }
+}
+
 .btn-temple,
 .btn-invite {
   display: inline-flex;

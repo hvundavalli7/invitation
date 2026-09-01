@@ -13,6 +13,15 @@
   box-shadow:
     var(--shadow-soft),
     inset 0 0 0 3px rgba(255, 248, 232, 0.55);
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+.playerHidden {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
 }
 
 .btn {

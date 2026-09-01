@@ -10,8 +10,7 @@ export const weddingData = {
     displayName: "Abhigna & Hemanth",
     /** Line shown directly above the couple names in the hero */
     togetherLine: "Together with their families",
-    inviteLine:
-      "Together with their families, invite you to celebrate their wedding",
+    inviteLine: "invite you to celebrate their wedding",
   },
 
   /** Main wedding ceremony — America/Chicago (Texas Central Time) */
@@ -61,10 +60,10 @@ export const weddingData = {
       name: "Mehendi",
       dateLabel: "March 9, 2027",
       time: "9:00 AM onwards",
-      venue: "To be announced",
+      venue: "316 Parkwood Dr",
       location: "Aubrey, Texas",
-      address: "", // Add verified address when available
-      mapsQuery: "Aubrey, Texas",
+      address: "316 Parkwood Dr, Lakewood Village, TX 75068",
+      mapsQuery: "316 Parkwood Dr, Lakewood Village, TX 75068",
       description:
         "Join us for a joyful morning filled with vibrant colours, music, dance and henna as we kick off the wedding celebrations!",
       attire: "Attire: Bright festive colours.",
@@ -75,7 +74,7 @@ export const weddingData = {
       id: "sangeet",
       name: "Sangeet",
       dateLabel: "March 9, 2027",
-      time: "Evening",
+      time: "6:00 PM",
       venue: "The Bliss at Aubrey",
       location: "Aubrey, Texas",
       address: "The Bliss at Aubrey, Aubrey, Texas", // Update with verified full address
@@ -87,34 +86,34 @@ export const weddingData = {
       icon: "music",
     },
     {
-      id: "haldi",
-      name: "Haldi",
-      dateLabel: "March 10, 2027",
-      time: "Morning",
-      venue: "To be announced",
-      location: "Aubrey, Texas",
-      address: "", // Add verified address when available
-      mapsQuery: "Aubrey, Texas",
-      description:
-        "A vibrant turmeric ceremony filled with laughter, blessings, and bright yellow hues as we begin another joyful chapter of our wedding celebrations.",
-      attire: "Attire: Shades of yellow or festive pastels are encouraged.",
-      motif: "haldi" as const,
-      icon: "turmeric",
-    },
-    {
       id: "pellikoduku-pellikuthuru",
       name: "Pellikoduku & Pellikuthuru",
       dateLabel: "March 10, 2027",
-      time: "Afternoon",
-      venue: "To be announced",
+      time: "9:30 AM",
+      venue: "316 Parkwood Dr",
       location: "Aubrey, Texas",
-      address: "", // Add verified address when available
-      mapsQuery: "Aubrey, Texas",
+      address: "316 Parkwood Dr, Lakewood Village, TX 75068",
+      mapsQuery: "316 Parkwood Dr, Lakewood Village, TX 75068",
       description:
         "Traditional Telugu pre-wedding rituals with family blessings, sacred customs, and meaningful moments for both bride and groom.",
       attire: "Attire: Traditional Indian wear is recommended.",
       motif: "pellikuthuru" as const,
       icon: "bell",
+    },
+    {
+      id: "haldi",
+      name: "Haldi",
+      dateLabel: "March 10, 2027",
+      time: "After Pellikoduku & Pellikuthuru",
+      venue: "316 Parkwood Dr",
+      location: "Aubrey, Texas",
+      address: "316 Parkwood Dr, Lakewood Village, TX 75068",
+      mapsQuery: "316 Parkwood Dr, Lakewood Village, TX 75068",
+      description:
+        "A vibrant turmeric ceremony filled with laughter, blessings, and a joyful chapter of our wedding celebrations.",
+      attire: "Attire: Shades of mint and sage green are encouraged.",
+      motif: "haldi" as const,
+      icon: "turmeric",
     },
     {
       id: "wedding",
@@ -127,7 +126,7 @@ export const weddingData = {
       mapsQuery: "Bella Cavalli Events, Aubrey, Texas",
       description:
         "Together with our families, we invite you to witness our sacred Hindu wedding, rooted in Telugu tradition, as we begin our forever.",
-      attire: "Attire: Traditional attire. Please avoid white and black.",
+      attire: "Attire: Traditional attire. Please avoid black.",
       motif: "wedding" as const,
       icon: "lotus",
     },
@@ -155,7 +154,12 @@ export const weddingData = {
     },
     message: {
       title: "A Note from Us",
-      body: "Dear family and friends, we are so grateful to celebrate this sacred occasion with you. Your love and blessings mean the world to us as we begin our life together.",
+      body: "Dear family and friends, we are so grateful to celebrate this sacred occasion with you. Your love and blessings mean the world to us as we begin our life together. Here's to forever.",
+      photo: {
+        src: "/images/gallery/WhatsApp Image 2026-08-09 at 20.08.57.jpeg",
+        alt: "Abhigna and Hemanth standing together on a beach",
+        caption: "Here's to forever",
+      },
     },
     /** Keep only the preferred primary proposal image */
     photos: [
@@ -174,9 +178,9 @@ export const weddingData = {
    */
   favorites: {
     title: "Our Favorites",
-    subtitle: "A few little things that make us, us.",
+    subtitle: "",
     abhigna: {
-      photo: "/images/couple/abhigna_favourite.jpeg",
+      photo: "/images/couple/abhi.jpeg",
       quote: "",
       food: "Coffee",
       dessert: "Ice Cream",
@@ -188,7 +192,7 @@ export const weddingData = {
       ultimateTagline: "",
     },
     hemanth: {
-      photo: "/images/couple/hemanth-favourite.jpeg",
+      photo: "/images/couple/abhihem.jpeg",
       quote: "",
       food: "",
       dessert: "",
@@ -209,26 +213,49 @@ export const weddingData = {
         body: "The wedding ceremony begins at 8:00 AM on March 11, 2027. Guests are kindly requested to arrive 30–45 minutes early to settle in and receive a warm welcome.",
       },
       {
-        title: "Arrival Instructions",
-        body: "Please follow venue signage upon arrival. A welcome desk will guide you to seating. Details will be updated closer to the wedding date.",
-      },
-      {
-        title: "Parking",
-        body: "Parking information for Bella Cavalli Events and other venues will be shared here once confirmed. Please check back closer to the celebrations.",
-      },
-      {
-        title: "Accommodation",
-        body: "Hotel and lodging recommendations for guests traveling to Aubrey, Texas will be listed here. Contact the couple or families for early assistance.",
-      },
-      {
-        title: "Important Notes",
-        body: "This is a sacred Hindu wedding celebration. Kindly silence phones during the ceremony. Additional guest notes will be shared as plans are finalized.",
+        title: "A Note on Gifts",
+        body: "We are truly grateful to have you celebrate with us. As we are both travelling from different cities, physical gifts can be tricky to carry. So in lieu of gifts, cash contributions are welcomed and appreciated.",
       },
     ],
+    accommodation: {
+      title: "Accommodation",
+      subtitle: "Tap the box below to view our suggestions.",
+      hotels: [
+        {
+          name: "Courtyard by Marriott Denton Texas",
+          fullAddress: "Courtyard by Marriott Denton, 2800 Colorado Blvd, Denton, TX 76210",
+          query: "Courtyard by Marriott Denton, TX",
+        },
+        {
+          name: "Hampton Inn and Suites Denton Texas",
+          fullAddress: "Hampton Inn & Suites Denton, 1513 Centre Place Dr, Denton, TX 76205",
+          query: "Hampton Inn and Suites Denton, TX",
+        },
+        {
+          name: "Hilton Garden Inn Denton Texas",
+          fullAddress: "Hilton Garden Inn Denton, 4211 N Interstate 35, Denton, TX 76207",
+          query: "Hilton Garden Inn Denton, TX",
+        },
+        {
+          name: "SpringHill Suites by Marriott Denton Texas",
+          fullAddress: "SpringHill Suites by Marriott Denton, 1434 Centre Place Dr, Denton, TX 76205",
+          query: "SpringHill Suites by Marriott Denton, TX",
+        },
+        {
+          name: "The Elm, a Ramada by Wyndham Little Elm Texas",
+          fullAddress: "The Elm, a Ramada by Wyndham, 1100 W Eldorado Pkwy, Little Elm, TX 75068",
+          query: "The Elm, a Ramada by Wyndham, Little Elm, TX",
+        },
+      ],
+    },
     contact: {
       title: "Contact",
       email: "hemanthbhargav13@gmail.com", // Update with real contact
       phone: "+1 (609) 598-6984", // Update with real contact
+      additional: {
+        email: "sai.abhigna7@yahoo.com",
+        phone: "+1 (204) 939-4590",
+      },
       note: "For questions about the wedding, please reach out to the couple or their families.",
     },
   },
@@ -240,7 +267,7 @@ export const weddingData = {
       fullAddress: "Bella Cavalli Events, Aubrey, Texas", // Replace with verified street address
       location: "Aubrey, Texas",
       mapsQuery: "Bella Cavalli Events, Aubrey, Texas",
-      note: "Primary wedding venue. Full street address to be confirmed.",
+      note: "Primary wedding venue.",
     },
     {
       id: "the-bliss",
@@ -248,13 +275,21 @@ export const weddingData = {
       fullAddress: "The Bliss at Aubrey, Aubrey, Texas", // Replace with verified street address
       location: "Aubrey, Texas",
       mapsQuery: "The Bliss at Aubrey, Aubrey, Texas",
-      note: "Sangeet venue. Full street address to be confirmed.",
+      note: "Sangeet venue.",
+    },
+    {
+      id: "airbnb-lakewood-village",
+      name: "Pre Wedding Events",
+      fullAddress: "316 Parkwood Dr, Lakewood Village, TX 75068",
+      location: "Lakewood Village, Texas",
+      mapsQuery: "316 Parkwood Dr, Lakewood Village, TX 75068",
+      note: "Haldi, Mehendi, and Pellikoduku & Pellikuthuru venue.",
     },
   ],
 
   rsvp: {
     title: "RSVP",
-    subtitle: "We joyfully request the honour of your presence. Kindly respond at your earliest convenience.",
+    subtitle: "We joyfully request the honour of your presence. please rsvp by november 1st 2026",
     confirmation:
       "Thank you! Your RSVP has been received. We cannot wait to celebrate with you.",
     /**
@@ -273,13 +308,13 @@ export const weddingData = {
 
   music: {
     /**
-     * Official Sony Music South VEVO upload of Yedhemaina Sakhi
-     * (Vikramasimha · A.R. Rahman). Streamed via YouTube IFrame API —
+     * Vaa Kannamma (Violin Version) by Nikhil Neelakandan.
+     * Streamed via YouTube IFrame API —
      * no copyrighted audio file is hosted in this repo.
      */
-    youtubeId: "tGEGGWt9wgI",
-    label: "Yedhemaina Sakhi",
-    artist: "A.R. Rahman",
+    youtubeId: "rvnDI7myzZY",
+    label: "Vaa Kannamma (Violin Version)",
+    artist: "Nikhil Neelakandan",
     defaultVolume: 0.28,
     /** Optional local fallback if youtubeId is removed */
     src: "/audio/wedding-instrumental.wav",

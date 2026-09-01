@@ -28,6 +28,7 @@ type RsvpRecord = {
 type RsvpCapabilities = {
   database: boolean;
   email: boolean;
+  sheets: boolean;
 };
 
 type RsvpDbRow = {
@@ -43,6 +44,8 @@ type RsvpDbRow = {
   updated_at: string;
 };
 
+const ADDITIONAL_RSVP_NOTIFY_EMAILS = ["sai.abhigna7@yahoo.com"] as const;
+
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
@@ -51,6 +54,7 @@ function getRsvpCapabilities(): RsvpCapabilities {
   return {
     database: Boolean(process.env.SUPABASE_URL?.trim() && process.env.SUPABASE_SERVICE_ROLE_KEY?.trim()),
     email: Boolean(process.env.RESEND_API_KEY?.trim()),
+    sheets: Boolean(process.env.GOOGLE_SHEETS_WEBHOOK_URL?.trim()),
   };
 }
 
@@ -64,11 +68,11 @@ export async function GET() {
 export async function POST(request: Request) {
   const capabilities = getRsvpCapabilities();
 
-  if (!capabilities.database && !capabilities.email) {
+  if (!capabilities.database && !capabilities.email && !capabilities.sheets) {
     return Response.json(
       {
         error:
-          "RSVP delivery is not configured. Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY for database storage, RESEND_API_KEY for email, or leave rsvp.endpoint empty to use FormSubmit from the browser.",
+          "RSVP delivery is not configured. Set SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY for database storage, GOOGLE_SHEETS_WEBHOOK_URL for Google Sheets storage, RESEND_API_KEY for email, or leave rsvp.endpoint empty to use FormSubmit from the browser.",
       },
       { status: 503 },
     );
@@ -118,6 +122,7 @@ export async function POST(request: Request) {
   });
 
   let databaseSaved = !capabilities.database;
+  let sheetsSaved = !capabilities.sheets;
   let emailSent = !capabilities.email;
   let emailError: unknown;
 
@@ -127,6 +132,19 @@ export async function POST(request: Request) {
       databaseSaved = true;
     } catch (error) {
       console.error("RSVP database save failed:", error);
+      return Response.json(
+        { error: "Unable to save your RSVP right now. Please try again shortly." },
+        { status: 502 },
+      );
+    }
+  }
+
+  if (capabilities.sheets) {
+    try {
+      await saveToGoogleSheets(record);
+      sheetsSaved = true;
+    } catch (error) {
+      console.error("RSVP Google Sheets save failed:", error);
       return Response.json(
         { error: "Unable to save your RSVP right now. Please try again shortly." },
         { status: 502 },
@@ -153,14 +171,14 @@ export async function POST(request: Request) {
     }
   }
 
-  if (databaseSaved && emailSent) {
+  if (databaseSaved && sheetsSaved && emailSent) {
     return Response.json({ ok: true, database: capabilities.database, email: capabilities.email });
   }
 
-  if (databaseSaved && !emailSent) {
+  if (databaseSaved && sheetsSaved && !emailSent) {
     return Response.json({
       ok: true,
-      database: true,
+      database: capabilities.database,
       email: false,
       warning: "RSVP was saved, but the confirmation email could not be sent.",
     });
@@ -171,6 +189,26 @@ export async function POST(request: Request) {
     { error: "Unable to send your RSVP right now. Please try again shortly." },
     { status: 502 },
   );
+}
+
+async function saveToGoogleSheets(record: RsvpRecord) {
+  const webhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL?.trim();
+  if (!webhookUrl) {
+    throw new Error("Google Sheets webhook is not configured.");
+  }
+
+  const response = await fetch(webhookUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(record),
+  });
+
+  if (!response.ok) {
+    const errText = await response.text();
+    throw new Error(`Google Sheets webhook failed: ${errText}`);
+  }
 }
 
 async function sendRsvpEmails({
@@ -192,15 +230,22 @@ async function sendRsvpEmails({
   message: string;
   record: RsvpRecord;
 }) {
-  const notifyEmail =
-    process.env.RSVP_NOTIFY_EMAIL?.trim() || weddingData.details.contact.email;
+  const notifyEmails = Array.from(
+    new Set(
+      [
+        process.env.RSVP_NOTIFY_EMAIL?.trim(),
+        weddingData.details.contact.email,
+        ...ADDITIONAL_RSVP_NOTIFY_EMAILS,
+      ].filter((value): value is string => Boolean(value && isValidEmail(value))),
+    ),
+  );
 
-  if (!notifyEmail || !isValidEmail(notifyEmail)) {
+  if (!notifyEmails.length) {
     throw new Error("RSVP email is not configured. Please contact the couple directly.");
   }
 
   await sendWithResend({
-    notifyEmail,
+    notifyEmails,
     guestEmail: email,
     subject: `Wedding RSVP: ${name} (${attending === "yes" ? "Attending" : "Declined"})`,
     confirmation: weddingData.rsvp.confirmation,
@@ -288,13 +333,13 @@ async function saveToSupabase(record: RsvpRecord) {
 }
 
 async function sendWithResend({
-  notifyEmail,
+  notifyEmails,
   guestEmail,
   subject,
   confirmation,
   fields,
 }: {
-  notifyEmail: string;
+  notifyEmails: string[];
   guestEmail: string;
   subject: string;
   confirmation: string;
@@ -332,7 +377,7 @@ async function sendWithResend({
     },
     body: JSON.stringify({
       from,
-      to: [notifyEmail],
+      to: notifyEmails,
       reply_to: guestEmail,
       subject,
       html: notifyHtml,
