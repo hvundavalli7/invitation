@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import { weddingData } from "@/data/wedding";
 import styles from "./EnvelopeOpen.module.css";
 
 type Props = {
@@ -12,7 +11,6 @@ type Props = {
 
 export default function EnvelopeOpen({ onOpenStart, onComplete }: Props) {
   const [opening, setOpening] = useState(false);
-  const { couple } = weddingData;
 
   const open = () => {
     if (opening) return;
@@ -63,9 +61,6 @@ export default function EnvelopeOpen({ onOpenStart, onComplete }: Props) {
 
         <h1 className={styles.title}>You&apos;re Invited</h1>
         <p className={styles.subtitle}>Tap the envelope to open your invitation</p>
-        <p className={styles.names}>
-          {couple.bride} &amp; {couple.groom}
-        </p>
       </div>
     </div>
   );

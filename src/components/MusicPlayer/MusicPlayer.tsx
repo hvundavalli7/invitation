@@ -376,12 +376,6 @@ export default function MusicPlayer({ shouldStart = false, visible = false }: Pr
       >
         {muted ? "Muted" : "Sound"}
       </button>
-      <span className={styles.label}>
-        {weddingData.music.label}
-        {weddingData.music.artist ? (
-          <span className={styles.artist}>{weddingData.music.artist}</span>
-        ) : null}
-      </span>
     </div>
   );
 }

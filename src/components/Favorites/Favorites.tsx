@@ -111,7 +111,9 @@ export default function Favorites() {
           <h2 id="favorites-title" className="section__title">
             {favorites.title}
           </h2>
-          <p className="section__subtitle">{favorites.subtitle}</p>
+          {favorites.subtitle.trim().length > 0 ? (
+            <p className="section__subtitle">{favorites.subtitle}</p>
+          ) : null}
           <div className="ornament-rule" aria-hidden="true">
             <span className="ornament-rule__jewel" />
           </div>

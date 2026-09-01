@@ -116,15 +116,23 @@
 
 .name {
   font-family: var(--font-body);
-  font-size: clamp(3.4rem, 13vw, 6.2rem);
+  font-size: clamp(3rem, 11.5vw, 5.5rem);
   color: #fffdf7;
   line-height: 0.95;
+  font-style: italic;
   font-weight: 600;
   text-shadow:
     0 2px 0 rgba(52, 18, 18, 0.45),
     0 6px 18px rgba(10, 18, 8, 0.72),
     0 14px 34px rgba(10, 18, 8, 0.62),
     0 0 18px rgba(255, 240, 210, 0.12);
+}
+
+.initial {
+  font-family: var(--font-display);
+  font-size: 1em;
+  font-weight: 600;
+  line-height: inherit;
 }
 
 .ampersand {
@@ -137,6 +145,18 @@
     0 2px 6px rgba(10, 18, 8, 0.78),
     0 0 12px rgba(255, 220, 120, 0.32);
   letter-spacing: 0.04em;
+}
+
+.inviteLine {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: clamp(1rem, 2.3vw, 1.22rem);
+  font-weight: 600;
+  color: rgba(255, 248, 232, 0.98);
+  text-shadow:
+    0 2px 8px rgba(10, 18, 8, 0.78),
+    0 8px 20px rgba(10, 18, 8, 0.62);
+  margin: 0.35rem 0 0.15rem;
 }
 
 .scene {

@@ -28,8 +28,19 @@ const initial: FormState = {
   message: "",
 };
 
+function isValidEmail(email: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
 function buildFormSubmitPayload(form: FormState) {
   const { rsvp } = weddingData;
+  const ccEmails = Array.from(
+    new Set(
+      [weddingData.details.contact.additional?.email?.trim()].filter(
+        (value): value is string => Boolean(value && isValidEmail(value)),
+      ),
+    ),
+  );
   const attendingLabel =
     form.attending === "yes" ? "Joyfully attending" : "Unable to attend";
   const eventLabels = form.events
@@ -52,6 +63,7 @@ function buildFormSubmitPayload(form: FormState) {
     _template: "table",
     _captcha: "false",
     _autoresponse: rsvp.confirmation,
+    ...(ccEmails.length ? { _cc: ccEmails.join(",") } : {}),
   };
 }
 

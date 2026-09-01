@@ -7,8 +7,8 @@ type Props = {
 };
 
 export default function TraditionalFooter({ className }: Props) {
-  const { couple, wedding, footer } = weddingData;
-  const hashtag = `#${couple.bride}${couple.groom}`.replace(/\s+/g, "").toUpperCase();
+  const { couple } = weddingData;
+  const hashtag = "#ABHIMANTH";
 
   return (
     <footer className={[styles.footer, className].filter(Boolean).join(" ")}>
@@ -27,12 +27,7 @@ export default function TraditionalFooter({ className }: Props) {
         </div>
         <p className={styles.withLove}>With love</p>
         <p className={styles.names}>{couple.displayName}</p>
-        <p className={styles.date}>{wedding.dateLabel}</p>
-        <p className={styles.venue}>
-          {wedding.venue}, {wedding.location}
-        </p>
         <p className={styles.hashtag}>{hashtag}</p>
-        <p className={styles.tagline}>{footer.tagline}</p>
 
         <nav className={styles.nav} aria-label="Footer">
           <a href="#celebrations">Celebrations</a>

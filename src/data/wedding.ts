@@ -10,8 +10,7 @@ export const weddingData = {
     displayName: "Abhigna & Hemanth",
     /** Line shown directly above the couple names in the hero */
     togetherLine: "Together with their families",
-    inviteLine:
-      "Together with their families, invite you to celebrate their wedding",
+    inviteLine: "invite you to celebrate their wedding",
   },
 
   /** Main wedding ceremony — America/Chicago (Texas Central Time) */
@@ -75,7 +74,7 @@ export const weddingData = {
       id: "sangeet",
       name: "Sangeet",
       dateLabel: "March 9, 2027",
-      time: "Evening",
+      time: "6:00 PM",
       venue: "The Bliss at Aubrey",
       location: "Aubrey, Texas",
       address: "The Bliss at Aubrey, Aubrey, Texas", // Update with verified full address
@@ -105,14 +104,14 @@ export const weddingData = {
       id: "haldi",
       name: "Haldi",
       dateLabel: "March 10, 2027",
-      time: "Afternoon",
+      time: "After Pellikoduku & Pellikuthuru",
       venue: "316 Parkwood Dr",
       location: "Aubrey, Texas",
       address: "316 Parkwood Dr, Lakewood Village, TX 75068",
       mapsQuery: "316 Parkwood Dr, Lakewood Village, TX 75068",
       description:
         "A vibrant turmeric ceremony filled with laughter, blessings, and a joyful chapter of our wedding celebrations.",
-      attire: "Attire: Shades of mint, sage green, or white are encouraged.",
+      attire: "Attire: Shades of mint and sage green are encouraged.",
       motif: "haldi" as const,
       icon: "turmeric",
     },
@@ -179,9 +178,9 @@ export const weddingData = {
    */
   favorites: {
     title: "Our Favorites",
-    subtitle: "A few little things that make us, us.",
+    subtitle: "",
     abhigna: {
-      photo: "/images/couple/abhigna_favourite.jpeg",
+      photo: "/images/couple/abhi.jpeg",
       quote: "",
       food: "Coffee",
       dessert: "Ice Cream",
@@ -193,7 +192,7 @@ export const weddingData = {
       ultimateTagline: "",
     },
     hemanth: {
-      photo: "/images/couple/hemanth-favourite.jpeg",
+      photo: "/images/couple/abhihem.jpeg",
       quote: "",
       food: "",
       dessert: "",
@@ -216,10 +215,6 @@ export const weddingData = {
       {
         title: "A Note on Gifts",
         body: "We are truly grateful to have you celebrate with us. As we are both travelling from different cities, physical gifts can be tricky to carry. So in lieu of gifts, cash contributions are welcomed and appreciated.",
-      },
-      {
-        title: "Important Notes",
-        body: "This is a sacred Hindu wedding celebration. Kindly silence phones during the ceremony. Additional guest notes will be shared as plans are finalized.",
       },
     ],
     accommodation: {
@@ -272,7 +267,7 @@ export const weddingData = {
       fullAddress: "Bella Cavalli Events, Aubrey, Texas", // Replace with verified street address
       location: "Aubrey, Texas",
       mapsQuery: "Bella Cavalli Events, Aubrey, Texas",
-      note: "Primary wedding venue. Full street address to be confirmed.",
+      note: "Primary wedding venue.",
     },
     {
       id: "the-bliss",
@@ -280,13 +275,21 @@ export const weddingData = {
       fullAddress: "The Bliss at Aubrey, Aubrey, Texas", // Replace with verified street address
       location: "Aubrey, Texas",
       mapsQuery: "The Bliss at Aubrey, Aubrey, Texas",
-      note: "Sangeet venue. Full street address to be confirmed.",
+      note: "Sangeet venue.",
+    },
+    {
+      id: "airbnb-lakewood-village",
+      name: "Pre Wedding Events",
+      fullAddress: "316 Parkwood Dr, Lakewood Village, TX 75068",
+      location: "Lakewood Village, Texas",
+      mapsQuery: "316 Parkwood Dr, Lakewood Village, TX 75068",
+      note: "Haldi, Mehendi, and Pellikoduku & Pellikuthuru venue.",
     },
   ],
 
   rsvp: {
     title: "RSVP",
-    subtitle: "We joyfully request the honour of your presence. Kindly respond at your earliest convenience.",
+    subtitle: "We joyfully request the honour of your presence. please rsvp by november 1st 2026",
     confirmation:
       "Thank you! Your RSVP has been received. We cannot wait to celebrate with you.",
     /**
