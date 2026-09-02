@@ -290,13 +290,13 @@
 
   .scene {
     width: 100vw;
-    height: clamp(360px, 74vw, 560px);
+    height: clamp(420px, 82vw, 620px);
     margin-top: -0.25rem;
   }
 
   .sceneImage {
     object-fit: cover;
-    object-position: center 30%;
+    object-position: center 24%;
     max-height: none;
     transform: none;
   }
