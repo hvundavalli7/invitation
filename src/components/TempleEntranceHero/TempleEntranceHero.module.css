@@ -1,6 +1,6 @@
 .hero {
   position: relative;
-  z-index: 1;
+  z-index: 3;
   min-height: 100dvh;
   display: flex;
   align-items: stretch;
@@ -110,29 +110,22 @@
   flex-direction: column;
   align-items: center;
   gap: 0.05rem;
-  margin: 0.05rem 0 0.1rem;
+  margin: 0.05rem 0 0;
   animation: fadeRise 1.2s ease both;
 }
 
 .name {
-  font-family: var(--font-body);
+  font-family: var(--font-script);
   font-size: clamp(3rem, 11.5vw, 5.5rem);
   color: #fffdf7;
   line-height: 0.95;
-  font-style: italic;
-  font-weight: 600;
+  font-style: normal;
+  font-weight: 500;
   text-shadow:
     0 2px 0 rgba(52, 18, 18, 0.45),
     0 6px 18px rgba(10, 18, 8, 0.72),
     0 14px 34px rgba(10, 18, 8, 0.62),
     0 0 18px rgba(255, 240, 210, 0.12);
-}
-
-.initial {
-  font-family: var(--font-display);
-  font-size: 1em;
-  font-weight: 600;
-  line-height: inherit;
 }
 
 .ampersand {
@@ -156,14 +149,14 @@
   text-shadow:
     0 2px 8px rgba(10, 18, 8, 0.78),
     0 8px 20px rgba(10, 18, 8, 0.62);
-  margin: 0.35rem 0 0.15rem;
+  margin: 0 0 -5.1rem;
 }
 
 .scene {
   position: relative;
-  width: min(92vw, 760px);
-  height: min(78dvh, 760px);
-  margin: -6.2rem auto 0;
+  width: min(96vw, 820px);
+  height: min(83dvh, 840px);
+  margin: -11.1rem auto 0;
   display: flex;
   justify-content: center;
   animation: sceneRise 1.35s ease both;
@@ -255,11 +248,11 @@
 
 @media (max-width: 700px) {
   .scene {
-    width: min(100vw, 560px);
+    width: min(100vw, 600px);
   }
 
   .sceneImage {
-    max-height: min(56dvh, 520px);
+    max-height: min(61dvh, 600px);
   }
 
   .name {

@@ -4,12 +4,6 @@ import styles from "./TempleEntranceHero.module.css";
 
 export default function TempleEntranceHero() {
   const { couple, hero } = weddingData;
-  const renderName = (value: string) => (
-    <>
-      <span className={styles.initial}>{value.charAt(0)}</span>
-      {value.slice(1)}
-    </>
-  );
 
   return (
     <header className={styles.hero} id="top">
@@ -35,11 +29,11 @@ export default function TempleEntranceHero() {
         <p className={styles.together}>{couple.togetherLine}</p>
 
         <h1 className={styles.names}>
-          <span className={styles.name}>{renderName(couple.bride)}</span>
+          <span className={styles.name}>{couple.bride}</span>
           <span className={styles.ampersand} aria-hidden="true">
             and
           </span>
-          <span className={styles.name}>{renderName(couple.groom)}</span>
+          <span className={styles.name}>{couple.groom}</span>
         </h1>
 
         <p className={styles.inviteLine}>{couple.inviteLine}</p>
@@ -53,7 +47,7 @@ export default function TempleEntranceHero() {
               height={1536}
               className={styles.sceneImage}
               priority
-              sizes="(max-width: 800px) 92vw, 520px"
+              sizes="(max-width: 800px) 94vw, 560px"
             />
           </div>
         ) : null}
