@@ -194,7 +194,6 @@
   display: block;
   border-radius: 0;
   background: transparent;
-  animation: coupleDrift 8.5s ease-in-out infinite;
   filter:
     saturate(1.05)
     contrast(1.03)
