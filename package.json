@@ -1,11 +1,11 @@
 {
-  "name": "wedding-invitation-v2",
+  "name": "abhigna-hemanth-wedding",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --hostname 127.0.0.1 --port 3006",
+    "dev": "next dev",
     "build": "next build",
-    "start": "next start --hostname 127.0.0.1 --port 3006",
+    "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
