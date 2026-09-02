@@ -289,15 +289,16 @@
   }
 
   .scene {
-    width: min(100vw, 620px);
-    height: clamp(210px, 41vw, 330px);
-    margin-top: -0.75rem;
+    width: min(100vw, 680px);
+    height: clamp(250px, 48vw, 390px);
+    margin-top: 0;
   }
 
   .sceneImage {
     object-fit: contain;
     object-position: center bottom;
     max-height: none;
+    transform: scale(1.08);
   }
 }
 
