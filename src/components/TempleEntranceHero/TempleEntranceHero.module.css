@@ -294,7 +294,6 @@
     width: 100vw;
     height: clamp(430px, 86vw, 660px);
     margin-top: -0.2rem;
-    filter: blur(1.1px) brightness(0.9) saturate(0.8);
   }
 
   .sceneImage {
