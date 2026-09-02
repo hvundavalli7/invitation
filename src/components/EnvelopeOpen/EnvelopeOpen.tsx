@@ -29,23 +29,6 @@ export default function EnvelopeOpen({ onOpenStart, onComplete }: Props) {
       <div className={styles.backdrop} aria-hidden="true" />
 
       <div className={styles.content}>
-        <div className={styles.sideLeaves} aria-hidden="true">
-          <Image
-            src="/images/decor/banana-leaf-left.svg"
-            alt=""
-            width={220}
-            height={400}
-            className={`${styles.banana} ${styles.bananaLeft}`}
-          />
-          <Image
-            src="/images/decor/banana-leaf-right.svg"
-            alt=""
-            width={220}
-            height={400}
-            className={`${styles.banana} ${styles.bananaRight}`}
-          />
-        </div>
-
         <button type="button" className={styles.envelopeBtn} onClick={open} aria-label="Open invitation">
           <span className={`${styles.card} ${opening ? styles.cardOpen : ""}`}>
             <Image

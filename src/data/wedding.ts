@@ -5,9 +5,9 @@
 
 export const weddingData = {
   couple: {
-    bride: "Aarohi",
-    groom: "Rohan",
-    displayName: "Aarohi & Rohan",
+    bride: "Abhigna",
+    groom: "Hemanth",
+    displayName: "Abhigna & Hemanth",
     /** Line shown directly above the couple names in the hero */
     togetherLine: "With love and blessings from both families",
     inviteLine: "invite you to celebrate their wedding",
@@ -21,10 +21,10 @@ export const weddingData = {
     timeZone: "America/Chicago",
     timeZoneLabel: "Central Time (Texas)",
     time: "8:30 AM",
-    venue: "The Royal Palm Courtyard",
+    venue: "Bella Cavalli Events",
     location: "Austin, Texas",
-    address: "The Royal Palm Courtyard, Austin, Texas",
-    mapsQuery: "The Royal Palm Courtyard, Austin, Texas",
+    address: "Bella Cavalli Events, Aubrey, Texas",
+    mapsQuery: "Bella Cavalli Events, Aubrey, Texas",
     description:
       "Together with our families, we invite you to witness our sacred Hindu wedding celebration, rooted in Telugu tradition, as we begin our forever.",
   },
@@ -38,7 +38,7 @@ export const weddingData = {
      */
     image: "/images/couple/caricature-hero-feathered.webp",
     imageAlt:
-      "Illustrated caricature of Aarohi and Rohan in traditional South Indian wedding attire",
+      "Illustrated caricature of Abhigna and Hemanth in traditional South Indian wedding attire",
   },
 
   scratchCard: {
@@ -56,21 +56,6 @@ export const weddingData = {
 
   events: [
     {
-      id: "mehendi",
-      name: "Mehendi",
-      dateLabel: "March 9, 2027",
-      time: "9:00 AM onwards",
-      venue: "316 Parkwood Dr",
-      location: "Austin, Texas",
-      address: "316 Parkwood Dr, Lakewood Village, TX 75068",
-      mapsQuery: "316 Parkwood Dr, Lakewood Village, TX 75068",
-      description:
-        "Join us for a joyful morning filled with vibrant colours, music, dance and henna as we kick off the wedding celebrations!",
-      attire: "Attire: Bright festive colours.",
-      motif: "mehendi" as const,
-      icon: "henna",
-    },
-    {
       id: "sangeet",
       name: "Sangeet",
       dateLabel: "March 9, 2027",
@@ -86,44 +71,14 @@ export const weddingData = {
       icon: "music",
     },
     {
-      id: "pellikoduku-pellikuthuru",
-      name: "Pellikoduku & Pellikuthuru",
-      dateLabel: "March 10, 2027",
-      time: "9:30 AM",
-      venue: "316 Parkwood Dr",
-      location: "Austin, Texas",
-      address: "316 Parkwood Dr, Lakewood Village, TX 75068",
-      mapsQuery: "316 Parkwood Dr, Lakewood Village, TX 75068",
-      description:
-        "Traditional Telugu pre-wedding rituals with family blessings, sacred customs, and meaningful moments for both bride and groom.",
-      attire: "Attire: Traditional Indian wear is recommended.",
-      motif: "pellikuthuru" as const,
-      icon: "bell",
-    },
-    {
-      id: "haldi",
-      name: "Haldi",
-      dateLabel: "March 10, 2027",
-      time: "After Pellikoduku & Pellikuthuru",
-      venue: "316 Parkwood Dr",
-      location: "Austin, Texas",
-      address: "316 Parkwood Dr, Lakewood Village, TX 75068",
-      mapsQuery: "316 Parkwood Dr, Lakewood Village, TX 75068",
-      description:
-        "A vibrant turmeric ceremony filled with laughter, blessings, and a joyful chapter of our wedding celebrations.",
-      attire: "Attire: Shades of mint and sage green are encouraged.",
-      motif: "haldi" as const,
-      icon: "turmeric",
-    },
-    {
       id: "wedding",
       name: "Wedding Ceremony",
       dateLabel: "April 12, 2027",
       time: "8:30 AM",
-      venue: "The Royal Palm Courtyard",
+      venue: "Bella Cavalli Events",
       location: "Austin, Texas",
-      address: "The Royal Palm Courtyard, Austin, Texas",
-      mapsQuery: "The Royal Palm Courtyard, Austin, Texas",
+      address: "Bella Cavalli Events, Aubrey, Texas",
+      mapsQuery: "Bella Cavalli Events, Aubrey, Texas",
       description:
         "Together with our families, we invite you to witness our sacred Hindu wedding celebration, rooted in Telugu tradition, as we begin our forever.",
       attire: "Attire: Traditional attire. Please avoid black.",
@@ -139,7 +94,7 @@ export const weddingData = {
       body: "A Cafe, A conversation. The year 2022. Neither of us knew it then, but that day marked the beginning of our journey together.",
       photo: {
         src: "/images/gallery/meeting.jpeg",
-        alt: "Aarohi and Rohan during one of their early cafe dates",
+        alt: "Abhigna and Hemanth during one of their early cafe dates",
         caption: "Where it all began",
       },
     },
@@ -157,7 +112,7 @@ export const weddingData = {
       body: "Dear family and friends, we are so grateful to celebrate this sacred occasion with you. Your love and blessings mean the world to us as we begin our life together. Here's to forever.",
       photo: {
         src: "/images/gallery/WhatsApp Image 2026-08-09 at 20.08.57.jpeg",
-        alt: "Aarohi and Rohan standing together on a beach",
+        alt: "Abhigna and Hemanth standing together on a beach",
         caption: "Here's to forever",
       },
     },
@@ -200,7 +155,7 @@ export const weddingData = {
       movie: "",
       travelDestination: "",
       partnerQuality: "",
-      ultimateFavorite: "Aarohi",
+      ultimateFavorite: "Abhigna",
       ultimateTagline: "That’s it. That’s the favourite!",
     },
   },
@@ -222,27 +177,27 @@ export const weddingData = {
       subtitle: "Tap the box below to view our suggestions.",
       hotels: [
         {
-          name: "The Westin Austin Downtown",
+          name: "Courtyard by Marriott Denton Texas",
           fullAddress: "Courtyard by Marriott Denton, 2800 Colorado Blvd, Denton, TX 76210",
           query: "Courtyard by Marriott Denton, TX",
         },
         {
-          name: "Hotel Indigo Austin",
+          name: "Hampton Inn and Suites Denton Texas",
           fullAddress: "Hampton Inn & Suites Denton, 1513 Centre Place Dr, Denton, TX 76205",
           query: "Hampton Inn and Suites Denton, TX",
         },
         {
-          name: "The Driskill",
+          name: "Hilton Garden Inn Denton Texas",
           fullAddress: "Hilton Garden Inn Denton, 4211 N Interstate 35, Denton, TX 76207",
           query: "Hilton Garden Inn Denton, TX",
         },
         {
-          name: "Hyatt Regency Austin",
+          name: "SpringHill Suites by Marriott Denton Texas",
           fullAddress: "SpringHill Suites by Marriott Denton, 1434 Centre Place Dr, Denton, TX 76205",
           query: "SpringHill Suites by Marriott Denton, TX",
         },
         {
-          name: "Fairmont Austin",
+          name: "The Elm, a Ramada by Wyndham Little Elm Texas",
           fullAddress: "The Elm, a Ramada by Wyndham, 1100 W Eldorado Pkwy, Little Elm, TX 75068",
           query: "The Elm, a Ramada by Wyndham, Little Elm, TX",
         },
@@ -250,10 +205,10 @@ export const weddingData = {
     },
     contact: {
       title: "Contact",
-      email: "rohan.wedding@example.com",
-      phone: "+1 (512) 555-0142",
+      email: "hemanthbhargav13@gmail.com",
+      phone: "+1 (609) 598-6457",
       additional: {
-        email: "aarohi.family@example.com",
+        email: "sai.abhigna7@yahoo.com",
         phone: "+1 (512) 555-0148",
       },
       note: "For questions about the wedding, please reach out to the couple or their families.",
@@ -263,10 +218,10 @@ export const weddingData = {
   venues: [
     {
       id: "bella-cavalli",
-      name: "The Royal Palm Courtyard",
-      fullAddress: "The Royal Palm Courtyard, Austin, Texas",
+      name: "Bella Cavalli Events",
+      fullAddress: "Bella Cavalli Events, Aubrey, Texas",
       location: "Austin, Texas",
-      mapsQuery: "The Royal Palm Courtyard, Austin, Texas",
+      mapsQuery: "Bella Cavalli Events, Aubrey, Texas",
       note: "Primary wedding venue.",
     },
     {
@@ -276,14 +231,6 @@ export const weddingData = {
       location: "Austin, Texas",
       mapsQuery: "The Bliss at Aubrey, Austin, Texas",
       note: "Sangeet venue.",
-    },
-    {
-      id: "airbnb-lakewood-village",
-      name: "Pre Wedding Events",
-      fullAddress: "316 Parkwood Dr, Lakewood Village, TX 75068",
-      location: "Lakewood Village, Texas",
-      mapsQuery: "316 Parkwood Dr, Lakewood Village, TX 75068",
-      note: "Haldi, Mehendi, and Pellikoduku & Pellikuthuru venue.",
     },
   ],
 
@@ -298,10 +245,7 @@ export const weddingData = {
      */
     endpoint: "",
     events: [
-      { id: "mehendi", label: "Mehendi" },
       { id: "sangeet", label: "Sangeet" },
-      { id: "haldi", label: "Haldi" },
-      { id: "pellikoduku-pellikuthuru", label: "Pellikoduku & Pellikuthuru" },
       { id: "wedding", label: "Wedding Ceremony" },
     ],
   },
@@ -326,15 +270,15 @@ export const weddingData = {
   },
 
   seo: {
-    title: "Aarohi & Rohan | Wedding Invitation",
+    title: "Abhigna & Hemanth | Wedding Invitation",
     description:
-      "You are warmly invited to the wedding of Aarohi and Rohan on April 12, 2027 at The Royal Palm Courtyard, Austin, Texas. Join us for sacred South Indian Hindu wedding celebrations.",
+      "You are warmly invited to the wedding of Abhigna and Hemanth on April 12, 2027 at Bella Cavalli Events, Aubrey, Texas. Join us for sacred South Indian Hindu wedding celebrations.",
     siteUrl: "https://abhigna-hemanth.wedding",
     ogImage: "/images/couple/caricature-hero-feathered.webp",
   },
 } as const;
 
-export type EventMotif = "mehendi" | "haldi" | "pellikuthuru" | "sangeet" | "wedding";
+export type EventMotif = "sangeet" | "wedding";
 
 export type WeddingEvent = {
   id: string;
