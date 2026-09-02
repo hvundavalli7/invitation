@@ -23,7 +23,7 @@ export const weddingData = {
     time: "8:00 AM",
     venue: "Bella Cavalli Events",
     location: "Aubrey, Texas",
-    address: "Bella Cavalli Events, Aubrey, Texas", // Update with verified full address
+    address: "Bella Cavalli Events, Aubrey, Texas",
     mapsQuery: "Bella Cavalli Events, Aubrey, Texas",
     description:
       "Together with our families, we invite you to witness our sacred Hindu wedding, rooted in Telugu tradition, as we begin our forever.",
@@ -77,7 +77,7 @@ export const weddingData = {
       time: "6:00 PM",
       venue: "The Bliss at Aubrey",
       location: "Aubrey, Texas",
-      address: "The Bliss at Aubrey, Aubrey, Texas", // Update with verified full address
+      address: "The Bliss at Aubrey, Aubrey, Texas",
       mapsQuery: "The Bliss at Aubrey, Aubrey, Texas",
       description:
         "Two families. One playlist. Endless dancing. With hearts full and speakers louder, please join us to celebrate our Sangeet night.",
@@ -122,7 +122,7 @@ export const weddingData = {
       time: "8:00 AM",
       venue: "Bella Cavalli Events",
       location: "Aubrey, Texas",
-      address: "Bella Cavalli Events, Aubrey, Texas", // Update with verified full address
+      address: "Bella Cavalli Events, Aubrey, Texas",
       mapsQuery: "Bella Cavalli Events, Aubrey, Texas",
       description:
         "Together with our families, we invite you to witness our sacred Hindu wedding, rooted in Telugu tradition, as we begin our forever.",
@@ -250,8 +250,8 @@ export const weddingData = {
     },
     contact: {
       title: "Contact",
-      email: "hemanthbhargav13@gmail.com", // Update with real contact
-      phone: "+1 (609) 598-6984", // Update with real contact
+      email: "hemanthbhargav13@gmail.com",
+      phone: "+1 (609) 598-6984",
       additional: {
         email: "sai.abhigna7@yahoo.com",
         phone: "+1 (204) 939-4590",
@@ -264,7 +264,7 @@ export const weddingData = {
     {
       id: "bella-cavalli",
       name: "Bella Cavalli Events",
-      fullAddress: "Bella Cavalli Events, Aubrey, Texas", // Replace with verified street address
+      fullAddress: "Bella Cavalli Events, Aubrey, Texas",
       location: "Aubrey, Texas",
       mapsQuery: "Bella Cavalli Events, Aubrey, Texas",
       note: "Primary wedding venue.",
@@ -272,7 +272,7 @@ export const weddingData = {
     {
       id: "the-bliss",
       name: "The Bliss at Aubrey",
-      fullAddress: "The Bliss at Aubrey, Aubrey, Texas", // Replace with verified street address
+      fullAddress: "The Bliss at Aubrey, Aubrey, Texas",
       location: "Aubrey, Texas",
       mapsQuery: "The Bliss at Aubrey, Aubrey, Texas",
       note: "Sangeet venue.",
@@ -289,7 +289,7 @@ export const weddingData = {
 
   rsvp: {
     title: "RSVP",
-    subtitle: "We joyfully request the honour of your presence. Please rsvp by November 1st 2026",
+    subtitle: "We joyfully request the honour of your presence. Please RSVP by November 1, 2026.",
     confirmation:
       "Thank you! Your RSVP has been received. We cannot wait to celebrate with you.",
     /**

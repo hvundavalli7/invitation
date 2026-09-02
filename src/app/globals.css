@@ -48,9 +48,9 @@
   --shadow-card: 0 10px 30px rgba(12, 36, 18, 0.18);
   --shadow-gold: 0 0 18px rgba(200, 155, 60, 0.35);
 
-  --font-display: var(--font-cinzel-dec), var(--font-cinzel), "Cinzel Decorative", "Cinzel", "Palatino Linotype", serif;
-  --font-script: var(--font-great-vibes), "Great Vibes", "Segoe Script", cursive;
-  --font-body: var(--font-lora), var(--font-cormorant), "Lora", "Cormorant Garamond", Georgia, serif;
+  --font-display: "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  --font-script: "Segoe Script", "Lucida Handwriting", "Snell Roundhand", cursive;
+  --font-body: Georgia, "Times New Roman", serif;
 
   --radius-sm: 8px;
   --radius-md: 14px;
