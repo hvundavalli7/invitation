@@ -248,25 +248,25 @@
 
 @media (max-width: 700px) {
   .stage {
-    padding-top: 3.8rem;
-    gap: 0.12rem;
+    padding-top: 3.2rem;
+    gap: 0.08rem;
   }
 
   .ganeshWrap {
-    width: clamp(52px, 12vw, 72px);
+    width: clamp(52px, 12vw, 74px);
   }
 
   .blessing {
     white-space: normal;
     letter-spacing: 0.05em;
     line-height: 1.35;
-    font-size: clamp(0.7rem, 2.8vw, 0.9rem);
-    margin-bottom: 0.15rem;
+    font-size: clamp(0.82rem, 3.5vw, 1rem);
+    margin-bottom: 0.2rem;
   }
 
   .together {
-    font-size: clamp(0.9rem, 3.8vw, 1.08rem);
-    margin-bottom: 0.45rem;
+    font-size: clamp(1rem, 4vw, 1.2rem);
+    margin-bottom: 0.5rem;
   }
 
   .names {
@@ -274,29 +274,29 @@
   }
 
   .name {
-    font-size: clamp(2.6rem, 12vw, 4rem);
-    line-height: 0.9;
+    font-size: clamp(3.2rem, 16vw, 5.2rem);
+    line-height: 0.86;
   }
 
   .ampersand {
-    font-size: clamp(1.08rem, 4.6vw, 1.6rem);
+    font-size: clamp(1.2rem, 5vw, 2rem);
   }
 
   .inviteLine {
-    margin: 0.35rem 0 0;
+    margin: 0.4rem 0 0;
     line-height: 1.35;
-    font-size: clamp(0.9rem, 3.7vw, 1.08rem);
+    font-size: clamp(1rem, 4vw, 1.25rem);
   }
 
   .scene {
     width: 100vw;
-    height: clamp(260px, 50vw, 430px);
-    margin-top: -0.1rem;
+    height: clamp(290px, 56vw, 500px);
+    margin-top: -0.25rem;
   }
 
   .sceneImage {
     object-fit: cover;
-    object-position: center 32%;
+    object-position: center 38%;
     max-height: none;
     transform: none;
   }
