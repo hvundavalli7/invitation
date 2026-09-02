@@ -5,28 +5,28 @@
 
 export const weddingData = {
   couple: {
-    bride: "Abhigna",
-    groom: "Hemanth",
-    displayName: "Abhigna & Hemanth",
+    bride: "Aarohi",
+    groom: "Rohan",
+    displayName: "Aarohi & Rohan",
     /** Line shown directly above the couple names in the hero */
-    togetherLine: "Together with their families",
+    togetherLine: "With love and blessings from both families",
     inviteLine: "invite you to celebrate their wedding",
   },
 
   /** Main wedding ceremony — America/Chicago (Texas Central Time) */
   wedding: {
-    dateLabel: "March 11, 2027",
+    dateLabel: "April 12, 2027",
     /** ISO-like local datetime used for countdown (Texas / America/Chicago) */
     dateISO: "2027-03-11T08:00:00",
     timeZone: "America/Chicago",
     timeZoneLabel: "Central Time (Texas)",
-    time: "8:00 AM",
-    venue: "Bella Cavalli Events",
-    location: "Aubrey, Texas",
-    address: "Bella Cavalli Events, Aubrey, Texas",
-    mapsQuery: "Bella Cavalli Events, Aubrey, Texas",
+    time: "8:30 AM",
+    venue: "The Royal Palm Courtyard",
+    location: "Austin, Texas",
+    address: "The Royal Palm Courtyard, Austin, Texas",
+    mapsQuery: "The Royal Palm Courtyard, Austin, Texas",
     description:
-      "Together with our families, we invite you to witness our sacred Hindu wedding, rooted in Telugu tradition, as we begin our forever.",
+      "Together with our families, we invite you to witness our sacred Hindu wedding celebration, rooted in Telugu tradition, as we begin our forever.",
   },
 
   hero: {
@@ -38,7 +38,7 @@ export const weddingData = {
      */
     image: "/images/couple/caricature-hero-feathered.webp",
     imageAlt:
-      "Illustrated caricature of Abhigna and Hemanth in traditional South Indian wedding attire",
+      "Illustrated caricature of Aarohi and Rohan in traditional South Indian wedding attire",
   },
 
   scratchCard: {
@@ -49,7 +49,7 @@ export const weddingData = {
   },
 
   countdown: {
-    heading: "The big day is just around the corner",
+    heading: "The celebration is almost here",
     endedMessage: "The Celebration Has Begun!",
     celebrationMessage: "We cannot wait to celebrate with you.",
   },
@@ -61,7 +61,7 @@ export const weddingData = {
       dateLabel: "March 9, 2027",
       time: "9:00 AM onwards",
       venue: "316 Parkwood Dr",
-      location: "Aubrey, Texas",
+      location: "Austin, Texas",
       address: "316 Parkwood Dr, Lakewood Village, TX 75068",
       mapsQuery: "316 Parkwood Dr, Lakewood Village, TX 75068",
       description:
@@ -76,9 +76,9 @@ export const weddingData = {
       dateLabel: "March 9, 2027",
       time: "6:00 PM",
       venue: "The Bliss at Aubrey",
-      location: "Aubrey, Texas",
-      address: "The Bliss at Aubrey, Aubrey, Texas",
-      mapsQuery: "The Bliss at Aubrey, Aubrey, Texas",
+      location: "Austin, Texas",
+      address: "The Bliss at Aubrey, Austin, Texas",
+      mapsQuery: "The Bliss at Aubrey, Austin, Texas",
       description:
         "Two families. One playlist. Endless dancing. With hearts full and speakers louder, please join us to celebrate our Sangeet night.",
       attire: "Attire: Festive glam/Bollywood chic (comfortable shoes recommended).",
@@ -91,7 +91,7 @@ export const weddingData = {
       dateLabel: "March 10, 2027",
       time: "9:30 AM",
       venue: "316 Parkwood Dr",
-      location: "Aubrey, Texas",
+      location: "Austin, Texas",
       address: "316 Parkwood Dr, Lakewood Village, TX 75068",
       mapsQuery: "316 Parkwood Dr, Lakewood Village, TX 75068",
       description:
@@ -106,7 +106,7 @@ export const weddingData = {
       dateLabel: "March 10, 2027",
       time: "After Pellikoduku & Pellikuthuru",
       venue: "316 Parkwood Dr",
-      location: "Aubrey, Texas",
+      location: "Austin, Texas",
       address: "316 Parkwood Dr, Lakewood Village, TX 75068",
       mapsQuery: "316 Parkwood Dr, Lakewood Village, TX 75068",
       description:
@@ -118,14 +118,14 @@ export const weddingData = {
     {
       id: "wedding",
       name: "Wedding Ceremony",
-      dateLabel: "March 11, 2027",
-      time: "8:00 AM",
-      venue: "Bella Cavalli Events",
-      location: "Aubrey, Texas",
-      address: "Bella Cavalli Events, Aubrey, Texas",
-      mapsQuery: "Bella Cavalli Events, Aubrey, Texas",
+      dateLabel: "April 12, 2027",
+      time: "8:30 AM",
+      venue: "The Royal Palm Courtyard",
+      location: "Austin, Texas",
+      address: "The Royal Palm Courtyard, Austin, Texas",
+      mapsQuery: "The Royal Palm Courtyard, Austin, Texas",
       description:
-        "Together with our families, we invite you to witness our sacred Hindu wedding, rooted in Telugu tradition, as we begin our forever.",
+        "Together with our families, we invite you to witness our sacred Hindu wedding celebration, rooted in Telugu tradition, as we begin our forever.",
       attire: "Attire: Traditional attire. Please avoid black.",
       motif: "wedding" as const,
       icon: "lotus",
@@ -139,7 +139,7 @@ export const weddingData = {
       body: "A Cafe, A conversation. The year 2022. Neither of us knew it then, but that day marked the beginning of our journey together.",
       photo: {
         src: "/images/gallery/meeting.jpeg",
-        alt: "Abhigna and Hemanth during one of their early cafe dates",
+        alt: "Aarohi and Rohan during one of their early cafe dates",
         caption: "Where it all began",
       },
     },
@@ -157,7 +157,7 @@ export const weddingData = {
       body: "Dear family and friends, we are so grateful to celebrate this sacred occasion with you. Your love and blessings mean the world to us as we begin our life together. Here's to forever.",
       photo: {
         src: "/images/gallery/WhatsApp Image 2026-08-09 at 20.08.57.jpeg",
-        alt: "Abhigna and Hemanth standing together on a beach",
+        alt: "Aarohi and Rohan standing together on a beach",
         caption: "Here's to forever",
       },
     },
@@ -200,7 +200,7 @@ export const weddingData = {
       movie: "",
       travelDestination: "",
       partnerQuality: "",
-      ultimateFavorite: "Abhigna",
+      ultimateFavorite: "Aarohi",
       ultimateTagline: "That’s it. That’s the favourite!",
     },
   },
@@ -210,7 +210,7 @@ export const weddingData = {
     items: [
       {
         title: "Ceremony Timing",
-        body: "The wedding ceremony begins at 8:00 AM on March 11, 2027. Guests are kindly requested to arrive 30–45 minutes early to settle in and receive a warm welcome.",
+        body: "The wedding ceremony begins at 8:30 AM on April 12, 2027. Guests are kindly requested to arrive 30–45 minutes early to settle in and receive a warm welcome.",
       },
       {
         title: "A Note on Gifts",
@@ -222,27 +222,27 @@ export const weddingData = {
       subtitle: "Tap the box below to view our suggestions.",
       hotels: [
         {
-          name: "Courtyard by Marriott Denton Texas",
+          name: "The Westin Austin Downtown",
           fullAddress: "Courtyard by Marriott Denton, 2800 Colorado Blvd, Denton, TX 76210",
           query: "Courtyard by Marriott Denton, TX",
         },
         {
-          name: "Hampton Inn and Suites Denton Texas",
+          name: "Hotel Indigo Austin",
           fullAddress: "Hampton Inn & Suites Denton, 1513 Centre Place Dr, Denton, TX 76205",
           query: "Hampton Inn and Suites Denton, TX",
         },
         {
-          name: "Hilton Garden Inn Denton Texas",
+          name: "The Driskill",
           fullAddress: "Hilton Garden Inn Denton, 4211 N Interstate 35, Denton, TX 76207",
           query: "Hilton Garden Inn Denton, TX",
         },
         {
-          name: "SpringHill Suites by Marriott Denton Texas",
+          name: "Hyatt Regency Austin",
           fullAddress: "SpringHill Suites by Marriott Denton, 1434 Centre Place Dr, Denton, TX 76205",
           query: "SpringHill Suites by Marriott Denton, TX",
         },
         {
-          name: "The Elm, a Ramada by Wyndham Little Elm Texas",
+          name: "Fairmont Austin",
           fullAddress: "The Elm, a Ramada by Wyndham, 1100 W Eldorado Pkwy, Little Elm, TX 75068",
           query: "The Elm, a Ramada by Wyndham, Little Elm, TX",
         },
@@ -250,11 +250,11 @@ export const weddingData = {
     },
     contact: {
       title: "Contact",
-      email: "hemanthbhargav13@gmail.com",
-      phone: "+1 (609) 598-6984",
+      email: "rohan.wedding@example.com",
+      phone: "+1 (512) 555-0142",
       additional: {
-        email: "sai.abhigna7@yahoo.com",
-        phone: "+1 (204) 939-4590",
+        email: "aarohi.family@example.com",
+        phone: "+1 (512) 555-0148",
       },
       note: "For questions about the wedding, please reach out to the couple or their families.",
     },
@@ -263,18 +263,18 @@ export const weddingData = {
   venues: [
     {
       id: "bella-cavalli",
-      name: "Bella Cavalli Events",
-      fullAddress: "Bella Cavalli Events, Aubrey, Texas",
-      location: "Aubrey, Texas",
-      mapsQuery: "Bella Cavalli Events, Aubrey, Texas",
+      name: "The Royal Palm Courtyard",
+      fullAddress: "The Royal Palm Courtyard, Austin, Texas",
+      location: "Austin, Texas",
+      mapsQuery: "The Royal Palm Courtyard, Austin, Texas",
       note: "Primary wedding venue.",
     },
     {
       id: "the-bliss",
       name: "The Bliss at Aubrey",
-      fullAddress: "The Bliss at Aubrey, Aubrey, Texas",
-      location: "Aubrey, Texas",
-      mapsQuery: "The Bliss at Aubrey, Aubrey, Texas",
+      fullAddress: "The Bliss at Aubrey, Austin, Texas",
+      location: "Austin, Texas",
+      mapsQuery: "The Bliss at Aubrey, Austin, Texas",
       note: "Sangeet venue.",
     },
     {
@@ -326,9 +326,9 @@ export const weddingData = {
   },
 
   seo: {
-    title: "Abhigna & Hemanth | Wedding Invitation",
+    title: "Aarohi & Rohan | Wedding Invitation",
     description:
-      "You are warmly invited to the wedding of Abhigna and Hemanth on March 11, 2027 at Bella Cavalli Events, Aubrey, Texas. Join us for sacred South Indian Hindu wedding celebrations.",
+      "You are warmly invited to the wedding of Aarohi and Rohan on April 12, 2027 at The Royal Palm Courtyard, Austin, Texas. Join us for sacred South Indian Hindu wedding celebrations.",
     siteUrl: "https://abhigna-hemanth.wedding",
     ogImage: "/images/couple/caricature-hero-feathered.webp",
   },
