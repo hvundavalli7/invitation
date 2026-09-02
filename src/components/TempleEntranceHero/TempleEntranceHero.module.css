@@ -298,7 +298,8 @@
     object-fit: cover;
     object-position: center 24%;
     max-height: none;
-    transform: none;
+    transform: scale(1.18);
+    transform-origin: center bottom;
   }
 }
 
