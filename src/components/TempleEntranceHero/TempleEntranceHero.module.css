@@ -248,7 +248,7 @@
 
 @media (max-width: 700px) {
   .stage {
-    padding-top: 4.7rem;
+    padding-top: 5.2rem;
     gap: 0;
   }
 
@@ -261,17 +261,17 @@
     letter-spacing: 0.05em;
     line-height: 1.35;
     font-size: clamp(0.82rem, 3.5vw, 1rem);
-    margin: 0.1rem 0 0;
+    margin: 0.2rem 0 0;
   }
 
   .together {
     font-size: clamp(1rem, 4vw, 1.2rem);
-    margin: 0.35rem 0 0.2rem;
+    margin: 0.15rem 0 0.1rem;
   }
 
   .names {
-    gap: 0.04rem;
-    margin: 0.15rem 0 0;
+    gap: 0.02rem;
+    margin: 0.05rem 0 0;
   }
 
   .name {
@@ -284,7 +284,7 @@
   }
 
   .inviteLine {
-    margin: 0.5rem 0 -0.2rem;
+    margin: 0.3rem 0 -0.2rem;
     line-height: 1.35;
     font-size: clamp(1rem, 4vw, 1.25rem);
   }
