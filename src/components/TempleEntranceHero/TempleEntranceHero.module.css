@@ -283,22 +283,22 @@
   }
 
   .inviteLine {
-    margin: 0.2rem 0 -0.9rem;
+    margin: 0.2rem 0 -0.45rem;
     line-height: 1.35;
     font-size: clamp(1rem, 4vw, 1.25rem);
   }
 
   .scene {
     width: 100vw;
-    height: clamp(420px, 84vw, 640px);
-    margin-top: -0.7rem;
+    height: clamp(430px, 86vw, 660px);
+    margin-top: -0.2rem;
   }
 
   .sceneImage {
     object-fit: cover;
-    object-position: center 16%;
+    object-position: center 18%;
     max-height: none;
-    transform: scale(1.22);
+    transform: scale(1.16);
     transform-origin: center bottom;
   }
 }
