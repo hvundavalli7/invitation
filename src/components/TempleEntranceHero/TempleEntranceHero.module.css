@@ -290,8 +290,8 @@
 
   .scene {
     width: 100vw;
-    height: clamp(460px, 92vw, 700px);
-    margin-top: -1rem;
+    height: clamp(440px, 88vw, 680px);
+    margin-top: -0.35rem;
   }
 
   .sceneImage {
