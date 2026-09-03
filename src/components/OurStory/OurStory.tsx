@@ -23,7 +23,7 @@ export default function OurStory() {
 
         <div className={styles.grid}>
           <ScrollReveal className={styles.copy}>
-            <article className={`${styles.block} wood-panel`}>
+            <article className={`${styles.block} ${styles.storyCard} wood-panel`}>
               <h3>{story.howWeMet.title}</h3>
               <p>{story.howWeMet.body}</p>
               {story.howWeMet.photo ? (
@@ -40,7 +40,7 @@ export default function OurStory() {
                 </figure>
               ) : null}
             </article>
-            <article className={`${styles.block} wood-panel`}>
+            <article className={`${styles.block} ${styles.proposalCard} wood-panel`}>
               <h3>{story.proposal.title}</h3>
               <p>{story.proposal.body}</p>
               {story.proposal.photo ? (
@@ -57,7 +57,7 @@ export default function OurStory() {
                 </figure>
               ) : null}
             </article>
-            <article className={`${styles.block} ${styles.message} wood-panel`}>
+            <article className={`${styles.block} ${styles.message} ${styles.storyCard} wood-panel`}>
               <h3>{story.message.title}</h3>
               <p>{story.message.body}</p>
               {story.message.photo ? (

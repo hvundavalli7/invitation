@@ -18,12 +18,12 @@ type FavoriteFields = {
 };
 
 const CHIPS: { key: keyof Omit<FavoriteFields, "ultimateFavorite" | "ultimateTagline" | "photo" | "quote">; icon: string }[] = [
-  { key: "food",              icon: "🍽️" },
+  { key: "food",              icon: "☕" },
   { key: "dessert",           icon: "🍦" },
-  { key: "song",              icon: "🎵" },
+  { key: "song",              icon: "💃" },
   { key: "movie",             icon: "🎬" },
   { key: "travelDestination", icon: "✈️" },
-  { key: "partnerQuality",    icon: "❤️" },
+  { key: "partnerQuality",    icon: "🐶" },
 ];
 
 function FavoriteCard({ name, data }: { name: string; data: FavoriteFields }) {

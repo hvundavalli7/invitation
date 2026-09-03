@@ -66,6 +66,11 @@
   color: var(--ink);
 }
 
+.storyCard,
+.proposalCard {
+  background: #f6ecd9;
+}
+
 .inlineFrame {
   margin-top: 0.9rem;
   width: min(100%, 320px);
@@ -105,7 +110,7 @@
 
 .message {
   border-color: rgba(123, 30, 43, 0.35);
-  background: linear-gradient(160deg, var(--ivory), #f5e6d2);
+  background: #f6ecd9;
 }
 
 .message h3 {

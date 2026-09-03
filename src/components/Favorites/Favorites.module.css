@@ -14,7 +14,7 @@
   position: relative;
   padding: clamp(1.4rem, 3vw, 1.9rem) clamp(1.2rem, 2.5vw, 1.7rem);
   border-radius: var(--radius-md);
-  background: #fff;
+  background: #f6ecd9;
   border: 1px solid rgba(200, 155, 60, 0.25);
   box-shadow:
     0 4px 20px rgba(12, 36, 18, 0.08),

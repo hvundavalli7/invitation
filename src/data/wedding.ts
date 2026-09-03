@@ -17,10 +17,11 @@ export const weddingData = {
   wedding: {
     dateLabel: "March 11, 2027",
     /** ISO-like local datetime used for countdown (Texas / America/Chicago) */
-    dateISO: "2027-03-11T08:00:00",
+    dateISO: "2027-03-11T07:30:00",
     timeZone: "America/Chicago",
     timeZoneLabel: "Central Time (Texas)",
-    time: "8:00 AM",
+    time: "7:30 AM",
+    muhurtham: "Muhurtham: 9:18 AM",
     venue: "Bella Cavalli Events",
     location: "Aubrey, Texas",
     address: "Bella Cavalli Events, Aubrey, Texas",
@@ -119,7 +120,7 @@ export const weddingData = {
       id: "wedding",
       name: "Wedding Ceremony",
       dateLabel: "March 11, 2027",
-      time: "8:00 AM",
+      time: "7:30 AM • Muhurtham 9:18 AM",
       venue: "Bella Cavalli Events",
       location: "Aubrey, Texas",
       address: "Bella Cavalli Events, Aubrey, Texas",
@@ -210,7 +211,7 @@ export const weddingData = {
     items: [
       {
         title: "Ceremony Timing",
-        body: "The wedding ceremony begins at 8:00 AM on March 11, 2027. Guests are kindly requested to arrive 30–45 minutes early to settle in and receive a warm welcome.",
+        body: "The wedding ceremony begins at 7:30 AM on March 11, 2027, with the muhurtham at 9:18 AM. Guests are kindly requested to arrive 30–45 minutes early to settle in and receive a warm welcome.",
       },
       {
         title: "A Note on Gifts",

@@ -159,6 +159,7 @@ export default function DateScratch({
         <div className={styles.reveal} aria-hidden={!revealed}>
           <p className={styles.save}>SAVE THE DATE</p>
           <p className={styles.date}>{weddingData.wedding.dateLabel}</p>
+          <p className={styles.muhurtham}>{weddingData.wedding.muhurtham}</p>
         </div>
 
         {!revealed ? (

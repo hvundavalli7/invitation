@@ -7,13 +7,13 @@ type Props = {
   active: boolean;
 };
 
-const PIECES = Array.from({ length: 42 }, (_, i) => ({
+const PIECES = Array.from({ length: 140 }, (_, i) => ({
   id: i,
-  left: 8 + ((i * 17) % 84),
-  delay: (i % 12) * 0.04,
-  duration: 1.8 + (i % 5) * 0.22,
-  size: 6 + (i % 5),
-  rotate: (i * 37) % 360,
+  left: 1 + ((i * 19) % 98),
+  delay: (i % 20) * 0.025,
+  duration: 1.3 + (i % 7) * 0.15,
+  size: 7 + (i % 7),
+  rotate: (i * 29) % 360,
   color:
     ["#c89b3c", "#e4c36a", "#7b1e2b", "#2f6b24", "#f0a020", "#fff8e8", "#9a2f3f"][
       i % 7
